@@ -57,16 +57,6 @@ $thank_you_url = trailingslashit( $gateway->get_option( 'url_thank_you' ) );
 $thank_you_url .= $order_id;
 $thank_you_url .= '/?key=' . $order_key;
 
-// Optionally clear cart for logged-in user
-if ( is_user_logged_in() ) {
-	WC()->cart->empty_cart();
-}
-
-//TODO: Delete to production
-// print '<pre>';
-// print_r( $thank_you_url );
-// print '</pre>';
-
 ?>
 	<script type="text/javascript">
         window.top.location.href = "<?php echo esc_url( $thank_you_url ); ?>"
