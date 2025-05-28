@@ -49,6 +49,12 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 	}
 
 	public function init_form_fields(): void {
+		$order_received_url = wc_get_endpoint_url(
+			'order-received',
+			'',
+			trailingslashit( wc_get_page_permalink( 'checkout' ) )
+		);
+
 		$this->form_fields = [
 			'enabled'                => [
 				'title'   => __( 'Enable/Disable', WCG_YOPAGO_TEXT_DOMAIN ),
@@ -103,16 +109,16 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 				'title'       => __( 'Thank You URL', WCG_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter the URL to redirect after successful payment.', WCG_YOPAGO_TEXT_DOMAIN ),
-				'default'     => get_site_url() . '/sample-page',
-				'placeholder' => 'ej. https://yourwebsite.com/thank-you',
+				'default'     => $order_received_url,
+				'placeholder' => 'ej. ' . $order_received_url,
 				'desc_tip'    => TRUE,
 			],
 			'url_error'              => [
 				'title'       => __( 'Error URL', WCG_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter the URL to redirect in case of payment error.', WCG_YOPAGO_TEXT_DOMAIN ),
-				'default'     => get_site_url() . '/error-page',
-				'placeholder' => 'ej. https://yourwebsite.com/error',
+				'default'     => $order_received_url,
+				'placeholder' => 'ej. ' . $order_received_url,
 				'desc_tip'    => TRUE,
 			],
 			'mensaje_checkout_title' => [
@@ -166,8 +172,10 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		$body = [
 			'companyCode'     => sanitize_text_field( $this->code ),
 			'codeTransaction' => $order->get_id() . '-' . random_int( 100, 999 ),
-			'urlSuccess'      => $this->url_thank_you,
-			'urlFailed'       => $this->url_error,
+			// 'urlSuccess'      => $this->url_thank_you,
+			// 'urlFailed'       => $this->url_error,
+			'urlSuccess'      => WCG_YOPAGO_PLUGIN_URL . 'receive.php',
+			'urlFailed'       => WCG_YOPAGO_PLUGIN_URL . 'receive.php',
 			'billName'        => $order->get_billing_first_name() . ' ' . $order->get_billing_last_name(),
 			'billNit'         => '000000',
 			'email'           => $order->get_billing_email(),
@@ -178,6 +186,11 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 			'messagePayment'  => __( 'Thank you for use our service', WCG_YOPAGO_TEXT_DOMAIN ),
 			'codeExternal'    => md5( $order->get_order_key() ),
 		];
+
+		//TODO: Delete to production
+		print '<pre>';
+		print_r( $body );
+		print '</pre>';
 
 		$response = wp_remote_post(
 			$this->url_yopago,
