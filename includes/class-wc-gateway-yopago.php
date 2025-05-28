@@ -1,5 +1,7 @@
 <?php
 
+use Random\RandomException;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -123,47 +125,92 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		];
 	}
 
-	public function payment_fields(): void {
-		// Optional: Add custom HTML fields here
-		if ( $this->description ) {
-			echo wpautop( wp_kses_post( $this->description ) );
-		}
-	}
+	// public function payment_fields(): void {
+	// 	// Optional: Add custom HTML fields here
+	// 	if ( $this->description ) {
+	// 		echo wpautop( wp_kses_post( $this->description ) );
+	// 	}
+	// }
 
 	public function process_payment( $order_id ): array {
 		$order = wc_get_order( $order_id );
 
 		// Mark the order as processing or completed
-		$order->update_status( 'on-hold', __( 'Awaiting ' . WCG_YOPAGO_NAME . ' payment', WCG_YOPAGO_TEXT_DOMAIN ) );
+		$order->update_status( 'pending', __( 'Awaiting ' . WCG_YOPAGO_NAME . ' payment', WCG_YOPAGO_TEXT_DOMAIN ) );
 
 		// Return the redirect URL
 		return [
 			'result'   => 'success',
-			'redirect' => $this->get_yopago_redirect_url( $order ),
+			// 'redirect' => $this->get_yopago_redirect_url( $order ),
+			'redirect' => $order->get_checkout_payment_url( TRUE )
 		];
 	}
 
-	public function get_yopago_redirect_url( $order ): string {
-		$redirect_url = $this->url_yopago . '?';
-		// TODO: The code parameter should can error - change to "codigo"
-		$redirect_url .= 'code=' . urlencode( $this->code );
-		$redirect_url .= '&name_company=' . urlencode( $this->name_company );
-		$redirect_url .= '&amount=' . urlencode( $order->get_total() );
-		$redirect_url .= '&currency=' . urlencode( get_woocommerce_currency() );
-		$redirect_url .= '&return_url=' . urlencode( $this->url_thank_you );
-		$redirect_url .= '&cancel_url=' . urlencode( $this->url_error );
+	public function receipt_page( $order_id ): void {
+		$order       = wc_get_order( $order_id );
+		$payment_url = $this->create_yopago_transaction( $order );
 
-		return $redirect_url;
+		if ( $payment_url ) {
+			echo '<iframe src="'
+			     . esc_url( $payment_url )
+			     . '" style="border:none; height:700px; width:100%;" scrolling="yes"></iframe>';
+		} else {
+			echo '<p>' . __( 'There was a problem connecting to YoPago.', WCG_YOPAGO_TEXT_DOMAIN ) . '</p>';
+		}
 	}
 
-	public function receipt_page( $order ): void {
-		echo '<p>' . __( 'Thank you for your order, please click the button below to pay with ' . WCG_YOPAGO_NAME . '.',
-				WCG_YOPAGO_TEXT_DOMAIN ) . '</p>';
-		echo '<a class="button" href="'
-		     . esc_url( $this->get_yopago_redirect_url( $order ) )
-		     . '">'
-		     . __( 'Pay with ' . WCG_YOPAGO_NAME, WCG_YOPAGO_TEXT_DOMAIN )
-		     . '</a>';
+	/**
+	 * @throws RandomException
+	 */
+	private function create_yopago_transaction( WC_Order $order ): ?string {
+		$body = [
+			'companyCode'     => sanitize_text_field( $this->code ),
+			'codeTransaction' => $order->get_id() . '-' . random_int( 100, 999 ),
+			'urlSuccess'      => $this->url_thank_you,
+			'urlFailed'       => $this->url_error,
+			'billName'        => $order->get_billing_first_name() . ' ' . $order->get_billing_last_name(),
+			'billNit'         => '000000',
+			'email'           => $order->get_billing_email(),
+			'generateBill'    => '1',
+			'concept'         => 'Pago por servicios ' . $this->name_company,
+			'currency'        => 'BOB',
+			'amount'          => $order->get_total(),
+			'messagePayment'  => __( 'Thank you for use our service', WCG_YOPAGO_TEXT_DOMAIN ),
+			'codeExternal'    => md5( $order->get_order_key() ),
+		];
+
+		$response = wp_remote_post(
+			$this->url_yopago,
+			[
+				'method'  => 'POST',
+				'headers' => [
+					'Content-Type' => 'application/json',
+				],
+				'body'    => json_encode( $body ),
+				'timeout' => 60,
+			] );
+
+		if ( is_wp_error( $response ) ) {
+			return NULL;
+		}
+
+		$data = json_decode( wp_remote_retrieve_body( $response ), TRUE );
+
+		return $data['url'] ?? NULL;
 	}
+
+
+	// public function get_yopago_redirect_url( $order ): string {
+	// 	$redirect_url = $this->url_yopago . '?';
+	// 	// TODO: Check if 'code' should actually be 'codigo' (Spanish spelling)
+	// 	$redirect_url .= 'code=' . urlencode( sanitize_text_field( $this->code ) );
+	// 	$redirect_url .= '&name_company=' . urlencode( $this->name_company );
+	// 	$redirect_url .= '&amount=' . urlencode( $order->get_total() );
+	// 	$redirect_url .= '&currency=' . urlencode( get_woocommerce_currency() );
+	// 	$redirect_url .= '&return_url=' . urlencode( $this->url_thank_you );
+	// 	$redirect_url .= '&cancel_url=' . urlencode( $this->url_error );
+	//
+	// 	return $redirect_url;
+	// }
 
 }
