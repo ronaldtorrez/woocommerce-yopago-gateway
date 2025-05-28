@@ -52,10 +52,18 @@ define( 'WCG_YOPAGO_TEXT_DOMAIN', 'wc-gateway-' . WCG_YOPAGO_ID );
  */
 function wc_gateway_yopago_init(): void {
 	if ( ! class_exists( 'WC_Payment_Gateway' ) ) {
+		add_action( 'admin_notices',
+			function() {
+				echo '<div class="error"><p><strong>YoPago:</strong> WooCommerce no está activo. Activa WooCommerce para usar esta pasarela de pago.</p></div>';
+			} );
+
 		return;
 	}
 
-	require_once WCG_YOPAGO_PLUGIN_PATH . 'includes/class-wc-gateway-yopago.php';
+	$class_path = WCG_YOPAGO_PLUGIN_PATH . 'includes/class-wc-gateway-yopago.php';
+	if ( file_exists( $class_path ) ) {
+		require_once $class_path;
+	}
 
 	add_filter( 'woocommerce_payment_gateways', 'wc_gateway_yopago_add_gateway' );
 }
@@ -73,7 +81,7 @@ add_action( 'plugins_loaded', 'wc_gateway_yopago_init', 0 );
  */
 
 function wc_gateway_yopago_activate(): void {
-	if ( ! class_exists( 'WooCommerce' ) ) {
+	if ( ! class_exists( 'WooCommerce' ) || ! class_exists( 'WC_Payment_Gateway' ) ) {
 		return;
 	}
 
@@ -82,21 +90,6 @@ function wc_gateway_yopago_activate(): void {
 		// Register the gateway
 		WC()->payment_gateways()->init();
 	}
-
-	// Optionally, you can add default settings or perform other activation tasks here
-	// For example, you can set default options for the gateway
-	// update_option( 'woocommerce_yopago_settings',
-	// 	[
-	// 		'enabled'                => 'yes',
-	// 		'title'                  => __( 'Paga con Yo Pago', WCG_YOPAGO_TEXT_DOMAIN ),
-	// 		'description'            => __( 'Paga con Yo Pago', WCG_YOPAGO_TEXT_DOMAIN ),
-	// 		'codigo'                 => '',
-	// 		'name_company'           => '',
-	// 		'url_yopago'             => '',
-	// 		'url_thank_you'          => '',
-	// 		'url_error'              => '',
-	// 		'mensaje_chekcout_title' => __( 'Gracias por su compra', WCG_YOPAGO_TEXT_DOMAIN ),
-	// 	] );
 }
 
 register_activation_hook( __FILE__, 'wc_gateway_yopago_activate' );
@@ -123,19 +116,6 @@ function wc_gateway_yopago_uninstall(): void {
 }
 
 register_uninstall_hook( __FILE__, 'wc_gateway_yopago_uninstall' );
-
-/**
- * Load the gateway class
- */
-function wc_gateway_yopago_load_gateway_class(): void {
-	if ( ! class_exists( 'WC_Payment_Gateway' ) ) {
-		return;
-	}
-
-	require_once WCG_YOPAGO_PLUGIN_PATH . 'includes/class-wc-gateway-yopago.php';
-}
-
-add_action( 'plugins_loaded', 'wc_gateway_yopago_load_gateway_class', 0 );
 
 /**
  * Load the plugin text domain for translations
