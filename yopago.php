@@ -91,10 +91,6 @@ function yopago_register_gateway( $methods ) {
 
 add_action( 'plugins_loaded', 'yopago_init_gateway', 0 );
 
-/**
- * Activation hook
- */
-
 function yopago_on_activate(): void {
 	if (
 		! class_exists( 'WooCommerce' )
@@ -113,18 +109,11 @@ function yopago_on_activate(): void {
 
 register_activation_hook( __FILE__, 'yopago_on_activate' );
 
-/**
- * Deactivation hook
- */
 function yopago_on_deactivate(): void {
 	delete_option( 'woocommerce_yopago_settings' );
 }
 
 register_deactivation_hook( __FILE__, 'yopago_on_deactivate' );
-
-/**
- * Uninstall hook
- */
 
 function yopago_on_uninstall(): void {
 	delete_option( 'woocommerce_yopago_settings' );
