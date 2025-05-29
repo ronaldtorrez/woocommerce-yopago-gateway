@@ -33,7 +33,15 @@ if ( $tx_hash !== md5( $wc_order->get_order_key() ) ) {
 	wp_die( 'Hash verification failed.' );
 }
 
-$gateway = new WC_Gateway_YoPago();
+$gateways = WC()->payment_gateways()->payment_gateways();
+$gateway  = $gateways[ WC_YOPAGO_ID ] ?? NULL;
+
+if ( ! $gateway ) {
+	wp_die( sprintf(
+		__( 'Payment gateway %s not found.', WC_YOPAGO_TEXT_DOMAIN ),
+		WC_YOPAGO_NAME
+	) );
+}
 
 if ( isset( $_REQUEST['error'] ) && isset( $_REQUEST['message'] ) ) {
 	$err_url = trailingslashit( $gateway->get_option( 'error_url' ) );

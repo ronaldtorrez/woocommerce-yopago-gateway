@@ -24,8 +24,10 @@ define( 'WC_YOPAGO_SETTING', 'woocommerce_' . WC_YOPAGO_ID . '_settings' );
 
 require_once WC_YOPAGO_PLUGIN_PATH . 'includes/class-yopago-init.php';
 require_once WC_YOPAGO_PLUGIN_PATH . 'includes/yopago-functions.php';
+require_once WC_YOPAGO_PLUGIN_PATH . 'includes/hooks/class-yopago-checkout-hooks.php';
 
 add_action( 'plugins_loaded', 'yopago_load_textdomain' );
+add_action( 'woocommerce_init', [ 'YoPago_Checkout_Hooks', 'init' ] );
 
 function yopago_load_textdomain(): void {
 	load_plugin_textdomain( WC_YOPAGO_TEXT_DOMAIN,

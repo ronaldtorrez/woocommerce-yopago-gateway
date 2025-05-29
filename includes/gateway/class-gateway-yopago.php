@@ -24,7 +24,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		$this->icon               = apply_filters( 'woocommerce_' . WC_YOPAGO_ID . '_icon',
 			WC_YOPAGO_PLUGIN_URL . 'assets/images/yopago.png' );
 		$this->has_fields         = FALSE;
-		$this->method_title       = __( WC_YOPAGO_NAME, WC_YOPAGO_TEXT_DOMAIN );
+		$this->method_title       = WC_YOPAGO_NAME;
 		$this->method_description =
 			__( 'Multiple payment methods including credit/debit cards, QR, and Bolivian banks.',
 				WC_YOPAGO_TEXT_DOMAIN );
@@ -51,9 +51,12 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 
 	public function process_payment( $order_id ): array {
 		$order = wc_get_order( $order_id );
-		$order->update_status( 'pending',
-			__( 'Awaiting ' . WC_YOPAGO_NAME . ' payment',
-				WC_YOPAGO_TEXT_DOMAIN ) );
+		$order->update_status(
+			'pending',
+			sprintf(
+				__( 'Awaiting %s payment', WC_YOPAGO_TEXT_DOMAIN ),
+				WC_YOPAGO_NAME
+			) );
 
 		return [
 			'result'   => 'success',

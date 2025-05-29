@@ -16,14 +16,20 @@ class YoPago_Settings {
 			'enabled'      => [
 				'title'   => __( 'Enable/Disable', WC_YOPAGO_TEXT_DOMAIN ),
 				'type'    => 'checkbox',
-				'label'   => __( 'Enable ' . WC_YOPAGO_NAME . ' Gateway', WC_YOPAGO_TEXT_DOMAIN ),
+				'label'   => sprintf(
+					__( 'Enable %s gateway', WC_YOPAGO_TEXT_DOMAIN ),
+					WC_YOPAGO_NAME
+				),
 				'default' => 'no',
 			],
 			'title'        => [
 				'title'       => __( 'Title', WC_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter a title for the payment method.', WC_YOPAGO_TEXT_DOMAIN ),
-				'default'     => __( 'Pay with ' . WC_YOPAGO_NAME, WC_YOPAGO_TEXT_DOMAIN ),
+				'default'     => sprintf(
+					__( 'Pay with %s', WC_YOPAGO_TEXT_DOMAIN ),
+					WC_YOPAGO_NAME
+				),
 				'desc_tip'    => TRUE,
 			],
 			'description'  => [
@@ -49,7 +55,10 @@ class YoPago_Settings {
 				'desc_tip'    => TRUE,
 			],
 			'api_url'      => [
-				'title'       => __( WC_YOPAGO_NAME . ' URL', WC_YOPAGO_TEXT_DOMAIN ),
+				'title'       => sprintf(
+					__( '%s url', WC_YOPAGO_TEXT_DOMAIN ),
+					WC_YOPAGO_NAME
+				),
 				'type'        => 'text',
 				'description' => __( 'Enter the URL for payment processing.', WC_YOPAGO_TEXT_DOMAIN ),
 				'default'     => 'https://yopago.com.bo/pay/api/generateUrl',
@@ -73,7 +82,10 @@ class YoPago_Settings {
 				'title'       => __( 'Checkout Message Title', WC_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter a title for the checkout message.', WC_YOPAGO_TEXT_DOMAIN ),
-				'default'     => __( 'Pay with ' . WC_YOPAGO_NAME, WC_YOPAGO_TEXT_DOMAIN ),
+				'default'     => sprintf(
+					__( 'Pay with %s', WC_YOPAGO_TEXT_DOMAIN ),
+					WC_YOPAGO_NAME
+				),
 				'desc_tip'    => TRUE,
 			],
 		];
