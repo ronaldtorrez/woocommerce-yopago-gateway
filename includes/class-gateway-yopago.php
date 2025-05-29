@@ -131,13 +131,6 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		];
 	}
 
-	// public function payment_fields(): void {
-	// 	// Optional: Add custom HTML fields here
-	// 	if ( $this->description ) {
-	// 		echo wpautop( wp_kses_post( $this->description ) );
-	// 	}
-	// }
-
 	public function process_payment( $order_id ): array {
 		$order = wc_get_order( $order_id );
 
@@ -174,8 +167,8 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 			'codeTransaction' => $order->get_id() . '-' . random_int( 100, 999 ),
 			// 'urlSuccess'      => $this->url_thank_you,
 			// 'urlFailed'       => $this->url_error,
-			'urlSuccess'      => WCG_YOPAGO_PLUGIN_URL . 'receive.php',
-			'urlFailed'       => WCG_YOPAGO_PLUGIN_URL . 'receive.php',
+			'urlSuccess'      => WCG_YOPAGO_PLUGIN_URL . 'callback.php',
+			'urlFailed'       => WCG_YOPAGO_PLUGIN_URL . 'callback.php',
 			'billName'        => $order->get_billing_first_name() . ' ' . $order->get_billing_last_name(),
 			'billNit'         => '000000',
 			'email'           => $order->get_billing_email(),
@@ -206,19 +199,5 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 
 		return $data['url'] ?? NULL;
 	}
-
-
-	// public function get_yopago_redirect_url( $order ): string {
-	// 	$redirect_url = $this->url_yopago . '?';
-	// 	// TODO: Check if 'code' should actually be 'codigo' (Spanish spelling)
-	// 	$redirect_url .= 'code=' . urlencode( sanitize_text_field( $this->code ) );
-	// 	$redirect_url .= '&name_company=' . urlencode( $this->name_company );
-	// 	$redirect_url .= '&amount=' . urlencode( $order->get_total() );
-	// 	$redirect_url .= '&currency=' . urlencode( get_woocommerce_currency() );
-	// 	$redirect_url .= '&return_url=' . urlencode( $this->url_thank_you );
-	// 	$redirect_url .= '&cancel_url=' . urlencode( $this->url_error );
-	//
-	// 	return $redirect_url;
-	// }
 
 }

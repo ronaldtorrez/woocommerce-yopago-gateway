@@ -74,7 +74,7 @@ function wc_gateway_yopago_init(): void {
 		return;
 	}
 
-	$class_path = WCG_YOPAGO_PLUGIN_PATH . 'includes/class-wc-gateway-yopago.php';
+	$class_path = WCG_YOPAGO_PLUGIN_PATH . 'includes/class-gateway-yopago.php';
 
 	if ( file_exists( $class_path ) ) {
 		require_once $class_path;
