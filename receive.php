@@ -49,6 +49,8 @@ if ( $order->get_status() !== 'completed' ) {
 			$payform
 		)
 	);
+
+	WC()->cart->empty_cart();
 }
 
 // Generate thank you page URL
