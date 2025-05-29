@@ -44,7 +44,8 @@ class YoPago_Settings {
 				'title'       => __( 'Code', WC_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter the code for the payment method.', WC_YOPAGO_TEXT_DOMAIN ),
-				'default'     => 'EZ2J-AA34-BA26-T87B',
+				'default'     => '',
+				'placeholder' => 'ej. ABC1-DE12-F123-1234',
 				'desc_tip'    => TRUE,
 			],
 			'name_company' => [
