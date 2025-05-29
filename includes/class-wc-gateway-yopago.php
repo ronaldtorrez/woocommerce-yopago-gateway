@@ -187,11 +187,6 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 			'codeExternal'    => md5( $order->get_order_key() ),
 		];
 
-		//TODO: Delete to production
-		print '<pre>';
-		print_r( $body );
-		print '</pre>';
-
 		$response = wp_remote_post(
 			$this->url_yopago,
 			[
