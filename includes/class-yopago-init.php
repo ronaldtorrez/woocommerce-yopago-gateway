@@ -1,11 +1,13 @@
 <?php
 
+// include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 function yopago_init_gateway(): void {
-	if ( ! class_exists( 'WC_Payment_Gateway' ) ) {
+	if ( ! class_exists( 'WC_Payment_Gateway' ) || ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 		add_action( 'admin_notices',
 			function() {
 				echo '<div class="error"><p><strong>'
@@ -23,8 +25,7 @@ function yopago_init_gateway(): void {
 		return;
 	}
 
-	require_once WC_YOPAGO_PLUGIN_PATH
-	             . 'includes/gateway/class-gateway-yopago.php';
+	require_once WC_YOPAGO_PLUGIN_PATH . 'includes/gateway/class-gateway-yopago.php';
 
 	add_filter( 'woocommerce_payment_gateways', 'yopago_register_gateway' );
 }

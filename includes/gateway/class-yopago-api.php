@@ -35,6 +35,9 @@ class YoPago_API {
 			] );
 
 		if ( is_wp_error( $response ) ) {
+			wc_get_logger()->error( 'YoPago API error: ' . $response->get_error_message(),
+				[ 'source' => WC_YOPAGO_ID ] );
+
 			return NULL;
 		}
 
