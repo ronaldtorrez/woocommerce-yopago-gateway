@@ -35,9 +35,12 @@ if ( $tx_hash !== md5( $wc_order->get_order_key() ) ) {
 $gateway = new WC_Gateway_YoPago();
 
 if ( isset( $_REQUEST['error'] ) && isset( $_REQUEST['message'] ) ) {
-	$err_url = trailingslashit( $gateway->get_option( 'url_error' ) );
-	$err_url .= $order_id . '/?error=' . sanitize_text_field( $_REQUEST['error'] );
-	$err_url .= '&message=' . urlencode( sanitize_text_field( $_REQUEST['message'] ) );
+	$err_url = trailingslashit( $gateway->get_option( 'error_url' ) );
+	$err_url .= $order_id
+	            . '/?error='
+	            . sanitize_text_field( $_REQUEST['error'] )
+	            . '&message='
+	            . urlencode( sanitize_text_field( $_REQUEST['message'] ) );
 
 	// wp_safe_redirect( $err_url );
 
@@ -54,14 +57,15 @@ if ( isset( $_REQUEST['error'] ) && isset( $_REQUEST['message'] ) ) {
 if ( ! $wc_order->is_paid() ) {
 	$wc_order->payment_complete( $tx_id );
 	$wc_order->add_order_note( sprintf(
-		__( 'YoPago confirmed payment. Transaction #%s via %s.', WCG_YOPAGO_TEXT_DOMAIN ),
+		__( 'YoPago confirmed payment. Transaction #%s via %s.',
+			WC_YOPAGO_TEXT_DOMAIN ),
 		$tx_id,
 		$paymethod
 	) );
 }
 
 // Generate thank you page URL
-$success_url = trailingslashit( $gateway->get_option( 'url_thank_you' ) );
+$success_url = trailingslashit( $gateway->get_option( 'success_url' ) );
 $success_url .= $order_id;
 $success_url .= '/?key=' . $wc_order->get_order_key();
 
