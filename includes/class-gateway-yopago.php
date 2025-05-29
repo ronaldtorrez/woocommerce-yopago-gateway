@@ -37,10 +37,10 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		$this->description  = $this->get_option( 'description' );
 		$this->code         = $this->get_option( 'code' );
 		$this->name_company = $this->get_option( 'name_company' );
-		$this->api_url      = $this->get_option( 'url_yopago' );
-		$this->success_url  = $this->get_option( 'url_thank_you' );
-		$this->error_url    = $this->get_option( 'url_error' );
-		$this->checkout_msg = $this->get_option( 'mensaje_checkout_title' );
+		$this->api_url      = $this->get_option( 'api_url' );
+		$this->success_url  = $this->get_option( 'success_url' );
+		$this->error_url    = $this->get_option( 'error_url' );
+		$this->checkout_msg = $this->get_option( 'checkout_msg' );
 
 		add_action( 'woocommerce_receipt_' . $this->id, [ $this, 'render_iframe' ] );
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, [ $this, 'process_admin_options' ] );
@@ -54,13 +54,13 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		);
 
 		$this->form_fields = [
-			'enabled'                => [
+			'enabled'      => [
 				'title'   => __( 'Enable/Disable', WCG_YOPAGO_TEXT_DOMAIN ),
 				'type'    => 'checkbox',
 				'label'   => __( 'Enable ' . WCG_YOPAGO_NAME . ' Gateway', WCG_YOPAGO_TEXT_DOMAIN ),
 				'default' => 'no',
 			],
-			'title'                  => [
+			'title'        => [
 				'title'       => __( 'Title', WCG_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter a title for the payment method.', WCG_YOPAGO_TEXT_DOMAIN ),
@@ -69,7 +69,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 					WCG_YOPAGO_TEXT_DOMAIN ),
 				'desc_tip'    => TRUE,
 			],
-			'description'            => [
+			'description'  => [
 				'title'       => __( 'Description', WCG_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'textarea',
 				'description' => __( 'Enter a description for the payment method.', WCG_YOPAGO_TEXT_DOMAIN ),
@@ -77,7 +77,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 					WCG_YOPAGO_TEXT_DOMAIN ),
 				'desc_tip'    => TRUE,
 			],
-			'code'                   => [
+			'code'         => [
 				'title'       => __( 'Code', WCG_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter the code for the payment method.', WCG_YOPAGO_TEXT_DOMAIN ),
@@ -85,7 +85,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 				'placeholder' => 'ej. ZPOG-P1V2-23gK-H34G',
 				'desc_tip'    => TRUE,
 			],
-			'name_company'           => [
+			'name_company' => [
 				'title'       => __( 'Company Name', WCG_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter the name of your company.', WCG_YOPAGO_TEXT_DOMAIN ),
@@ -93,7 +93,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 				'placeholder' => 'ej. My Business Name',
 				'desc_tip'    => TRUE,
 			],
-			'url_yopago'             => [
+			'api_url'      => [
 				'title'       => __( WCG_YOPAGO_NAME . ' URL', WCG_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter the ' . WCG_YOPAGO_NAME . ' URL for payment processing.',
@@ -103,7 +103,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 				'placeholder' => 'ej. https://yopago.com.bo/pay/api/generateUrl',
 				'desc_tip'    => TRUE,
 			],
-			'url_thank_you'          => [
+			'success_url'  => [
 				'title'       => __( 'Thank You URL', WCG_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter the URL to redirect after successful payment.', WCG_YOPAGO_TEXT_DOMAIN ),
@@ -111,7 +111,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 				'placeholder' => 'ej. ' . $order_received_url,
 				'desc_tip'    => TRUE,
 			],
-			'url_error'              => [
+			'error_url'    => [
 				'title'       => __( 'Error URL', WCG_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter the URL to redirect in case of payment error.', WCG_YOPAGO_TEXT_DOMAIN ),
@@ -119,7 +119,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 				'placeholder' => 'ej. ' . $order_received_url,
 				'desc_tip'    => TRUE,
 			],
-			'mensaje_checkout_title' => [
+			'checkout_msg' => [
 				'title'       => __( 'Checkout Message Title', WCG_YOPAGO_TEXT_DOMAIN ),
 				'type'        => 'text',
 				'description' => __( 'Enter a title for the checkout message.', WCG_YOPAGO_TEXT_DOMAIN ),
@@ -160,8 +160,6 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		$body = [
 			'companyCode'     => sanitize_text_field( $this->code ),
 			'codeTransaction' => $order->get_id() . '-' . random_int( 100, 999 ),
-			// 'urlSuccess'      => $this->url_thank_you,
-			// 'urlFailed'       => $this->url_error,
 			'urlSuccess'      => WCG_YOPAGO_PLUGIN_URL . 'callback.php',
 			'urlFailed'       => WCG_YOPAGO_PLUGIN_URL . 'callback.php',
 			'billName'        => $order->get_billing_first_name() . ' ' . $order->get_billing_last_name(),
