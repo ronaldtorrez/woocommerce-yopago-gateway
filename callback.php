@@ -1,6 +1,7 @@
 <?php
 
 require_once dirname( __FILE__, 4 ) . '/wp-load.php';
+require_once dirname( __FILE__ ) . '/includes/util/render-js-script.php';
 
 $required_params = [ 'hash', 'transactionId', 'codeTransaction', 'payform' ];
 
@@ -42,14 +43,10 @@ if ( isset( $_REQUEST['error'] ) && isset( $_REQUEST['message'] ) ) {
 	            . '&message='
 	            . urlencode( sanitize_text_field( $_REQUEST['message'] ) );
 
-	// wp_safe_redirect( $err_url );
-
-	?>
-	<!-- TODO: Try to use wp_safe_redirect or similar -->
-	<script type="text/javascript">
-        window.top.location.href = "<?php echo esc_url( $err_url ); ?>"
-	</script>
-	<?php
+	yopago_js_redirect_script( $err_url,
+		__( 'Redirection to error page failed. Please click the link below:', WC_YOPAGO_TEXT_DOMAIN ),
+		__( 'Go to error page', WC_YOPAGO_TEXT_DOMAIN )
+	);
 
 	exit;
 }
@@ -69,11 +66,9 @@ $success_url = trailingslashit( $gateway->get_option( 'success_url' ) );
 $success_url .= $order_id;
 $success_url .= '/?key=' . $wc_order->get_order_key();
 
-?>
-	<!-- TODO: Try to use wp_safe_redirect or similar -->
-	<script type="text/javascript">
-        window.top.location.href = "<?php echo esc_url( $success_url ); ?>"
-	</script>
-<?php
+yopago_js_redirect_script( $success_url,
+	__( 'Redirection to success page failed. Please click the link below:', WC_YOPAGO_TEXT_DOMAIN ),
+	__( 'Go to success page', WC_YOPAGO_TEXT_DOMAIN )
+);
 
 exit;
