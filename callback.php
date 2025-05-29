@@ -11,74 +11,65 @@ foreach ( $required_params as $param ) {
 }
 
 // Sanitize input values
-$hash             = sanitize_text_field( $_REQUEST['hash'] );
-$transaction_id   = sanitize_text_field( $_REQUEST['transactionId'] );
-$code_transaction = sanitize_text_field( $_REQUEST['codeTransaction'] );
-$method           = sanitize_text_field( $_REQUEST['payform'] );
+$tx_hash   = sanitize_text_field( $_REQUEST['hash'] );
+$tx_id     = sanitize_text_field( $_REQUEST['transactionId'] );
+$tx_code   = sanitize_text_field( $_REQUEST['codeTransaction'] );
+$paymethod = sanitize_text_field( $_REQUEST['payform'] );
 
-// Extract order ID from transaction code
-$order_parts = explode( '-', $code_transaction );
-$order_id    = intval( $order_parts[0] );
+[ $order_id ] = explode( '-', $tx_code );
+$order_id = intval( $order_id );
+$wc_order = wc_get_order( $order_id );
 
 if ( ! $order_id ) {
-	wp_die( 'Invalid order ID.' );
+	wp_die( 'Invalid or missing order.' );
 }
 
-// Load the order
-$order = wc_get_order( $order_id );
-
-if ( ! $order ) {
+if ( ! $wc_order ) {
 	wp_die( 'Order not found.' );
 }
 
-// Verify the hash
-$order_key  = $order->get_order_key();
-$hash_check = md5( $order_key );
-
-if ( $hash !== $hash_check ) {
+if ( $tx_hash !== md5( $wc_order->get_order_key() ) ) {
 	wp_die( 'Hash verification failed.' );
 }
 
-// Mark order as paid if it's not already completed
-if ( $order->get_status() !== 'completed' ) {
-	$order->payment_complete( $transaction_id );
-	$order->add_order_note(
-		sprintf(
-			'YoPago confirmed payment. Transaction #%1$s by %2$s.',
-			$transaction_id,
-			$method
-		)
-	);
+$gateway = new WC_Gateway_YoPago();
 
-	WC()->cart->empty_cart();
-}
-
-// Generate thank you page URL
-$gateway     = new WC_Gateway_YoPago();
-$success_url = trailingslashit( $gateway->get_option( 'url_thank_you' ) );
-$success_url .= $order_id;
-$success_url .= '/?key=' . $order_key;
-
-?>
-	<script type="text/javascript">
-        window.top.location.href = "<?php echo esc_url( $success_url ); ?>"
-	</script>
-<?php
-
-// Handle error case if provided
 if ( isset( $_REQUEST['error'] ) && isset( $_REQUEST['message'] ) ) {
-	$gateway  = new WC_Gateway_YoPago();
-	$fail_url = trailingslashit( $gateway->get_option( 'url_error' ) );
-	$fail_url .= $order_id;
-	$fail_url .= '/?error=' . sanitize_text_field( $_REQUEST['error'] );
-	$fail_url .= '&message=' . urlencode( sanitize_text_field( $_REQUEST['message'] ) );
+	$err_url = trailingslashit( $gateway->get_option( 'url_error' ) );
+	$err_url .= $order_id . '/?error=' . sanitize_text_field( $_REQUEST['error'] );
+	$err_url .= '&message=' . urlencode( sanitize_text_field( $_REQUEST['message'] ) );
+
+	// wp_safe_redirect( $err_url );
 
 	?>
-
+	<!-- TODO: Try to use wp_safe_redirect or similar -->
 	<script type="text/javascript">
-        window.top.location.href = "<?php echo esc_url( $fail_url ); ?>"
+        window.top.location.href = "<?php echo esc_url( $err_url ); ?>"
 	</script>
 	<?php
 
 	exit;
 }
+
+if ( ! $wc_order->is_paid() ) {
+	$wc_order->payment_complete( $tx_id );
+	$wc_order->add_order_note( sprintf(
+		__( 'YoPago confirmed payment. Transaction #%s via %s.', WCG_YOPAGO_TEXT_DOMAIN ),
+		$tx_id,
+		$paymethod
+	) );
+}
+
+// Generate thank you page URL
+$success_url = trailingslashit( $gateway->get_option( 'url_thank_you' ) );
+$success_url .= $order_id;
+$success_url .= '/?key=' . $wc_order->get_order_key();
+
+?>
+	<!-- TODO: Try to use wp_safe_redirect or similar -->
+	<script type="text/javascript">
+        window.top.location.href = "<?php echo esc_url( $success_url ); ?>"
+	</script>
+<?php
+
+exit;
