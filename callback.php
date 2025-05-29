@@ -11,13 +11,13 @@ foreach ( $required_params as $param ) {
 }
 
 // Sanitize input values
-$hash           = sanitize_text_field( $_REQUEST['hash'] );
-$transaction_id = sanitize_text_field( $_REQUEST['transactionId'] );
-$code           = sanitize_text_field( $_REQUEST['codeTransaction'] );
-$payform        = sanitize_text_field( $_REQUEST['payform'] );
+$hash             = sanitize_text_field( $_REQUEST['hash'] );
+$transaction_id   = sanitize_text_field( $_REQUEST['transactionId'] );
+$code_transaction = sanitize_text_field( $_REQUEST['codeTransaction'] );
+$method           = sanitize_text_field( $_REQUEST['payform'] );
 
 // Extract order ID from transaction code
-$order_parts = explode( '-', $code );
+$order_parts = explode( '-', $code_transaction );
 $order_id    = intval( $order_parts[0] );
 
 if ( ! $order_id ) {
@@ -46,7 +46,7 @@ if ( $order->get_status() !== 'completed' ) {
 		sprintf(
 			'YoPago confirmed payment. Transaction #%1$s by %2$s.',
 			$transaction_id,
-			$payform
+			$method
 		)
 	);
 
@@ -54,29 +54,29 @@ if ( $order->get_status() !== 'completed' ) {
 }
 
 // Generate thank you page URL
-$gateway       = new WC_Gateway_YoPago();
-$thank_you_url = trailingslashit( $gateway->get_option( 'url_thank_you' ) );
-$thank_you_url .= $order_id;
-$thank_you_url .= '/?key=' . $order_key;
+$gateway     = new WC_Gateway_YoPago();
+$success_url = trailingslashit( $gateway->get_option( 'url_thank_you' ) );
+$success_url .= $order_id;
+$success_url .= '/?key=' . $order_key;
 
 ?>
 	<script type="text/javascript">
-        window.top.location.href = "<?php echo esc_url( $thank_you_url ); ?>"
+        window.top.location.href = "<?php echo esc_url( $success_url ); ?>"
 	</script>
 <?php
 
 // Handle error case if provided
 if ( isset( $_REQUEST['error'] ) && isset( $_REQUEST['message'] ) ) {
-	$gateway   = new WC_Gateway_YoPago();
-	$error_url = trailingslashit( $gateway->get_option( 'url_error' ) );
-	$error_url .= $order_id;
-	$error_url .= '/?error=' . sanitize_text_field( $_REQUEST['error'] );
-	$error_url .= '&message=' . urlencode( sanitize_text_field( $_REQUEST['message'] ) );
+	$gateway  = new WC_Gateway_YoPago();
+	$fail_url = trailingslashit( $gateway->get_option( 'url_error' ) );
+	$fail_url .= $order_id;
+	$fail_url .= '/?error=' . sanitize_text_field( $_REQUEST['error'] );
+	$fail_url .= '&message=' . urlencode( sanitize_text_field( $_REQUEST['message'] ) );
 
 	?>
 
 	<script type="text/javascript">
-        window.top.location.href = "<?php echo esc_url( $error_url ); ?>"
+        window.top.location.href = "<?php echo esc_url( $fail_url ); ?>"
 	</script>
 	<?php
 

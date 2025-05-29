@@ -56,7 +56,7 @@ define( 'WCG_YOPAGO_TEXT_DOMAIN', 'wc-gateway-' . WCG_YOPAGO_ID );
  *
  * @return void
  */
-function wc_gateway_yopago_init(): void {
+function yopago_init_gateway(): void {
 	if ( ! class_exists( 'WC_Payment_Gateway' ) ) {
 		add_action( 'admin_notices',
 			function() {
@@ -80,22 +80,22 @@ function wc_gateway_yopago_init(): void {
 		require_once $class_path;
 	}
 
-	add_filter( 'woocommerce_payment_gateways', 'wc_gateway_yopago_add_gateway' );
+	add_filter( 'woocommerce_payment_gateways', 'yopago_register_gateway' );
 }
 
-function wc_gateway_yopago_add_gateway( $methods ) {
+function yopago_register_gateway( $methods ) {
 	$methods[] = 'WC_Gateway_YoPago';
 
 	return $methods;
 }
 
-add_action( 'plugins_loaded', 'wc_gateway_yopago_init', 0 );
+add_action( 'plugins_loaded', 'yopago_init_gateway', 0 );
 
 /**
  * Activation hook
  */
 
-function wc_gateway_yopago_activate(): void {
+function yopago_on_activate(): void {
 	if (
 		! class_exists( 'WooCommerce' )
 		|| ! class_exists( 'WC_Payment_Gateway' )
@@ -111,35 +111,31 @@ function wc_gateway_yopago_activate(): void {
 	}
 }
 
-register_activation_hook( __FILE__, 'wc_gateway_yopago_activate' );
+register_activation_hook( __FILE__, 'yopago_on_activate' );
 
 /**
  * Deactivation hook
  */
-function wc_gateway_yopago_deactivate(): void {
-	// Optionally, you can perform cleanup tasks here
-	// For example, you can remove the gateway settings
+function yopago_on_deactivate(): void {
 	delete_option( 'woocommerce_yopago_settings' );
 }
 
-register_deactivation_hook( __FILE__, 'wc_gateway_yopago_deactivate' );
+register_deactivation_hook( __FILE__, 'yopago_on_deactivate' );
 
 /**
  * Uninstall hook
  */
 
-function wc_gateway_yopago_uninstall(): void {
-	// Optionally, you can perform cleanup tasks here
-	// For example, you can remove the gateway settings
+function yopago_on_uninstall(): void {
 	delete_option( 'woocommerce_yopago_settings' );
 }
 
-register_uninstall_hook( __FILE__, 'wc_gateway_yopago_uninstall' );
+register_uninstall_hook( __FILE__, 'yopago_on_uninstall' );
 
 /**
  * Load the plugin text domain for translations
  */
-function wc_gateway_yopago_load_textdomain(): void {
+function yopago_load_textdomain(): void {
 	load_plugin_textdomain(
 		WCG_YOPAGO_TEXT_DOMAIN,
 		FALSE,
@@ -147,4 +143,4 @@ function wc_gateway_yopago_load_textdomain(): void {
 	);
 }
 
-add_action( 'plugins_loaded', 'wc_gateway_yopago_load_textdomain' );
+add_action( 'plugins_loaded', 'yopago_load_textdomain' );

@@ -1,7 +1,5 @@
 <?php
 
-use Random\RandomException;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -12,10 +10,10 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 	public $description;
 	public string $code;
 	public string $name_company;
-	public string $url_yopago;
-	public string $url_thank_you;
-	public string $url_error;
-	public string $mensaje_checkout_title;
+	public string $api_url;
+	public string $success_url;
+	public string $error_url;
+	public string $checkout_msg;
 
 	public function __construct() {
 		$this->id                 = WCG_YOPAGO_ID;
@@ -35,16 +33,16 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		$this->init_settings();
 
 		// Load settings
-		$this->title                  = $this->get_option( 'title' );
-		$this->description            = $this->get_option( 'description' );
-		$this->code                   = $this->get_option( 'code' );
-		$this->name_company           = $this->get_option( 'name_company' );
-		$this->url_yopago             = $this->get_option( 'url_yopago' );
-		$this->url_thank_you          = $this->get_option( 'url_thank_you' );
-		$this->url_error              = $this->get_option( 'url_error' );
-		$this->mensaje_checkout_title = $this->get_option( 'mensaje_checkout_title' );
+		$this->title        = $this->get_option( 'title' );
+		$this->description  = $this->get_option( 'description' );
+		$this->code         = $this->get_option( 'code' );
+		$this->name_company = $this->get_option( 'name_company' );
+		$this->api_url      = $this->get_option( 'url_yopago' );
+		$this->success_url  = $this->get_option( 'url_thank_you' );
+		$this->error_url    = $this->get_option( 'url_error' );
+		$this->checkout_msg = $this->get_option( 'mensaje_checkout_title' );
 
-		add_action( 'woocommerce_receipt_' . $this->id, [ $this, 'receipt_page' ] );
+		add_action( 'woocommerce_receipt_' . $this->id, [ $this, 'render_iframe' ] );
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, [ $this, 'process_admin_options' ] );
 	}
 
@@ -145,9 +143,9 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		];
 	}
 
-	public function receipt_page( $order_id ): void {
+	public function render_iframe( $order_id ): void {
 		$order       = wc_get_order( $order_id );
-		$payment_url = $this->create_yopago_transaction( $order );
+		$payment_url = $this->build_payment_url( $order );
 
 		if ( $payment_url ) {
 			echo '<iframe src="'
@@ -158,10 +156,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		}
 	}
 
-	/**
-	 * @throws RandomException
-	 */
-	private function create_yopago_transaction( WC_Order $order ): ?string {
+	private function build_payment_url( WC_Order $order ): ?string {
 		$body = [
 			'companyCode'     => sanitize_text_field( $this->code ),
 			'codeTransaction' => $order->get_id() . '-' . random_int( 100, 999 ),
@@ -181,7 +176,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		];
 
 		$response = wp_remote_post(
-			$this->url_yopago,
+			$this->api_url,
 			[
 				'method'  => 'POST',
 				'headers' => [
