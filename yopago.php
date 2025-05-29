@@ -48,19 +48,34 @@ define( 'WCG_YOPAGO_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'WCG_YOPAGO_TEXT_DOMAIN', 'wc-gateway-' . WCG_YOPAGO_ID );
 
 /**
- * Load the gateway class
+ * Initializes the YoPago payment gateway for WooCommerce.
+ *
+ * - Checks if the WC_Payment_Gateway class exists (WooCommerce active).
+ * - Includes the main gateway class if the file exists.
+ * - Adds the gateway to the list of WooCommerce payment methods.
+ *
+ * @return void
  */
 function wc_gateway_yopago_init(): void {
 	if ( ! class_exists( 'WC_Payment_Gateway' ) ) {
 		add_action( 'admin_notices',
 			function() {
-				echo '<div class="error"><p><strong>YoPago:</strong> WooCommerce no está activo. Activa WooCommerce para usar esta pasarela de pago.</p></div>';
-			} );
+				echo '<div class="error"><p><strong>' . WCG_YOPAGO_NAME . ':</strong> '
+				     . __(
+					     'WooCommerce is not active. Activate WooCommerce to use this payment gateway.',
+					     WCG_YOPAGO_TEXT_DOMAIN
+				     )
+				     . '</p></div>';
+			}
+		);
+
+		deactivate_plugins( WCG_YOPAGO_PLUGIN_BASENAME );
 
 		return;
 	}
 
 	$class_path = WCG_YOPAGO_PLUGIN_PATH . 'includes/class-wc-gateway-yopago.php';
+
 	if ( file_exists( $class_path ) ) {
 		require_once $class_path;
 	}
@@ -81,7 +96,11 @@ add_action( 'plugins_loaded', 'wc_gateway_yopago_init', 0 );
  */
 
 function wc_gateway_yopago_activate(): void {
-	if ( ! class_exists( 'WooCommerce' ) || ! class_exists( 'WC_Payment_Gateway' ) ) {
+	if (
+		! class_exists( 'WooCommerce' )
+		|| ! class_exists( 'WC_Payment_Gateway' )
+		|| ! is_plugin_active( 'woocommerce/woocommerce.php' )
+	) {
 		return;
 	}
 
@@ -121,9 +140,11 @@ register_uninstall_hook( __FILE__, 'wc_gateway_yopago_uninstall' );
  * Load the plugin text domain for translations
  */
 function wc_gateway_yopago_load_textdomain(): void {
-	load_plugin_textdomain( WCG_YOPAGO_TEXT_DOMAIN,
+	load_plugin_textdomain(
+		WCG_YOPAGO_TEXT_DOMAIN,
 		FALSE,
-		dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		dirname( WCG_YOPAGO_PLUGIN_BASENAME ) . '/languages/'
+	);
 }
 
 add_action( 'plugins_loaded', 'wc_gateway_yopago_load_textdomain' );
