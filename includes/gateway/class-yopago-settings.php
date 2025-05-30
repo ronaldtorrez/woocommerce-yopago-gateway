@@ -13,7 +13,7 @@ class YoPago_Settings {
 				trailingslashit( wc_get_page_permalink( 'checkout' ) ) );
 
 		return [
-			'enabled'      => [
+			'enabled'                     => [
 				'title'   => __( 'Enable/Disable', WC_YOPAGO_ID ),
 				'type'    => 'checkbox',
 				'label'   => sprintf(
@@ -22,7 +22,7 @@ class YoPago_Settings {
 				),
 				'default' => 'no',
 			],
-			'title'        => [
+			'title'                       => [
 				'title'       => __( 'Title', WC_YOPAGO_ID ),
 				'type'        => 'text',
 				'description' => __( 'Enter a title for the payment method.', WC_YOPAGO_ID ),
@@ -32,7 +32,7 @@ class YoPago_Settings {
 				),
 				'desc_tip'    => TRUE,
 			],
-			'description'  => [
+			'description'                 => [
 				'title'       => __( 'Description', WC_YOPAGO_ID ),
 				'type'        => 'textarea',
 				'description' => __( 'Enter a description for the payment method.', WC_YOPAGO_ID ),
@@ -40,7 +40,7 @@ class YoPago_Settings {
 					WC_YOPAGO_ID ),
 				'desc_tip'    => TRUE,
 			],
-			'code'         => [
+			'code'                        => [
 				'title'       => __( 'Code', WC_YOPAGO_ID ),
 				'type'        => 'text',
 				'description' => __( 'Enter the code for the payment method.', WC_YOPAGO_ID ),
@@ -48,14 +48,14 @@ class YoPago_Settings {
 				'placeholder' => 'ej. ABC1-DE12-F123-1234',
 				'desc_tip'    => TRUE,
 			],
-			'name_company' => [
+			'name_company'                => [
 				'title'       => __( 'Company Name', WC_YOPAGO_ID ),
 				'type'        => 'text',
 				'description' => __( 'Enter the name of your company.', WC_YOPAGO_ID ),
 				'default'     => '',
 				'desc_tip'    => TRUE,
 			],
-			'api_url'      => [
+			'api_url'                     => [
 				'title'       => sprintf(
 					__( '%s url', WC_YOPAGO_ID ),
 					WC_YOPAGO_NAME
@@ -65,21 +65,21 @@ class YoPago_Settings {
 				'default'     => 'https://yopago.com.bo/pay/api/generateUrl',
 				'desc_tip'    => TRUE,
 			],
-			'success_url'  => [
+			'success_url'                 => [
 				'title'       => __( 'Thank You URL', WC_YOPAGO_ID ),
 				'type'        => 'text',
 				'description' => __( 'Enter the URL to redirect after successful payment.', WC_YOPAGO_ID ),
 				'default'     => $order_received_url,
 				'desc_tip'    => TRUE,
 			],
-			'error_url'    => [
+			'error_url'                   => [
 				'title'       => __( 'Error URL', WC_YOPAGO_ID ),
 				'type'        => 'text',
 				'description' => __( 'Enter the URL to redirect in case of payment error.', WC_YOPAGO_ID ),
 				'default'     => $order_received_url,
 				'desc_tip'    => TRUE,
 			],
-			'checkout_msg' => [
+			'checkout_msg'                => [
 				'title'       => __( 'Checkout Message Title', WC_YOPAGO_ID ),
 				'type'        => 'text',
 				'description' => __( 'Enter a title for the checkout message.', WC_YOPAGO_ID ),
@@ -89,6 +89,18 @@ class YoPago_Settings {
 				),
 				'desc_tip'    => TRUE,
 			],
+			'currency_conversion_enabled' => [
+				'title'       => __( 'Currency Conversion', WC_YOPAGO_ID ),
+				'type'        => 'checkbox',
+				'label'       => __( 'Enable currency conversion', WC_YOPAGO_ID ),
+				'default'     => 'no',
+				'description' => __( 'Allow currency conversion for payments.', WC_YOPAGO_ID ),
+			],
+			'currency_conversion_table'   => [
+				'type'  => 'currency_conversion_table',
+				'title' => __( 'Currency Conversion Rates', WC_YOPAGO_ID ),
+			],
+
 		];
 	}
 }

@@ -67,4 +67,16 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 	public function render_iframe( $order_id ): void {
 		YoPago_Render::render_iframe( $order_id, $this );
 	}
+
+	public function generate_currency_conversion_table_html() {
+		ob_start();
+		YoPago_Currency_Table::init()->render_table();
+
+		return ob_get_clean();
+	}
+
+	public function process_admin_options(): void {
+		parent::process_admin_options();
+		YoPago_Currency_Table::init()->save_rates( $this->settings );
+	}
 }

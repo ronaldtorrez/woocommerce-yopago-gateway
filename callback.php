@@ -61,6 +61,24 @@ if ( isset( $_REQUEST['error'] ) && isset( $_REQUEST['message'] ) ) {
 
 if ( ! $wc_order->is_paid() ) {
 	$wc_order->payment_complete( $tx_id );
+
+	$original_amount   = $wc_order->get_total();
+	$original_currency = get_woocommerce_currency();
+	$conversion        = YoPago_Currency_Converter::convert_to_bob( $original_amount, $original_currency );
+
+	if ( $conversion ) {
+		$wc_order->add_order_note( sprintf(
+			'Conversion applied: %s %.2f × %.4f = Bs. %.2f. Commission %s: %.2f. Total charged: Bs. %.2f.',
+			$original_currency,
+			$original_amount,
+			$conversion['rate'],
+			$conversion['converted'],
+			$conversion['fee_type'],
+			$conversion['fee_amount'],
+			$conversion['total']
+		) );
+	}
+
 	$wc_order->add_order_note( sprintf(
 		__( 'YoPago confirmed payment. Transaction #%s via %s.',
 			WC_YOPAGO_ID ),

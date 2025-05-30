@@ -10,6 +10,9 @@ class YoPago_API {
 		WC_Order $order,
 		$gateway
 	): ?string {
+		$conversion = YoPago_Currency_Converter::convert_to_bob( $order->get_total(), get_woocommerce_currency() );
+		$amount_bob = $conversion ? $conversion['total'] : $order->get_total();
+
 		$body = [
 			'companyCode'     => sanitize_text_field( $gateway->code ),
 			'codeTransaction' => $order->get_id() . '-' . random_int( 100, 999 ),
@@ -21,7 +24,7 @@ class YoPago_API {
 			'generateBill'    => '1',
 			'concept'         => 'Pago por servicios ' . $gateway->name_company,
 			'currency'        => 'BOB',
-			'amount'          => $order->get_total(),
+			'amount'          => $amount_bob,
 			'messagePayment'  => __( 'Thank you for use our service', WC_YOPAGO_ID ),
 			'codeExternal'    => md5( $order->get_order_key() ),
 		];

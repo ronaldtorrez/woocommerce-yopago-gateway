@@ -22,6 +22,7 @@ function yopago_on_activate(): void {
 
 function yopago_on_deactivate(): void {
 	delete_option( WC_YOPAGO_SETTING );
+	delete_option( 'yopago_currency_rates' );
 }
 
 register_activation_hook( WC_YOPAGO_PLUGIN_FILE, 'yopago_on_activate' );

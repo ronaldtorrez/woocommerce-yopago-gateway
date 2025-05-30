@@ -15,10 +15,14 @@ final class YoPago {
 		require_once WC_YOPAGO_PLUGIN_PATH . 'includes/core/class-yopago-loader.php';
 		require_once WC_YOPAGO_PLUGIN_PATH . 'includes/core/class-yopago-activator.php';
 		require_once WC_YOPAGO_PLUGIN_PATH . 'includes/core/class-yopago-deactivator.php';
-		// require_once WC_YOPAGO_PLUGIN_PATH . 'includes/gateway/class-gateway-yopago.php';
+
+		require_once WC_YOPAGO_PLUGIN_PATH . 'includes/util/class-yopago-currency-converter.php';
+		require_once WC_YOPAGO_PLUGIN_PATH . 'includes/admin/class-yopago-currency-table.php';
+
 		require_once WC_YOPAGO_PLUGIN_PATH . 'includes/gateway/class-yopago-settings.php';
 		require_once WC_YOPAGO_PLUGIN_PATH . 'includes/gateway/class-yopago-api.php';
 		require_once WC_YOPAGO_PLUGIN_PATH . 'includes/gateway/class-yopago-render.php';
+
 		require_once WC_YOPAGO_PLUGIN_PATH . 'includes/hooks/class-yopago-checkout-hooks.php';
 		require_once WC_YOPAGO_PLUGIN_PATH . 'includes/functions.php';
 	}
@@ -26,5 +30,6 @@ final class YoPago {
 	private static function init_hooks(): void {
 		YoPago_Loader::init();
 		YoPago_Checkout_Hooks::init();
+		YoPago_Assets::init();
 	}
 }

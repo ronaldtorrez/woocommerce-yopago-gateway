@@ -1,0 +1,32 @@
+[
+	{
+		"code": "USD",
+		"name": "US Dollar",
+		"symbol": "$",
+		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
+	},
+	{
+		"code": "EUR",
+		"name": "Euro",
+		"symbol": "€",
+		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/eu.svg"
+	},
+	{
+		"code": "BRL",
+		"name": "Brazilian Real",
+		"symbol": "R$",
+		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/br.svg"
+	},
+	{
+		"code": "ARS",
+		"name": "Argentine Peso",
+		"symbol": "$",
+		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ar.svg"
+	},
+	{
+		"code": "CLP",
+		"name": "Chilean Peso",
+		"symbol": "$",
+		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cl.svg"
+	}
+]
