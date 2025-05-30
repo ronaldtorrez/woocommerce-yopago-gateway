@@ -38,7 +38,7 @@ $gateway  = $gateways[ WC_YOPAGO_ID ] ?? NULL;
 
 if ( ! $gateway ) {
 	wp_die( sprintf(
-		__( 'Payment gateway %s not found.', WC_YOPAGO_TEXT_DOMAIN ),
+		__( 'Payment gateway %s not found.', WC_YOPAGO_ID ),
 		WC_YOPAGO_NAME
 	) );
 }
@@ -52,8 +52,8 @@ if ( isset( $_REQUEST['error'] ) && isset( $_REQUEST['message'] ) ) {
 	            . urlencode( sanitize_text_field( $_REQUEST['message'] ) );
 
 	yopago_js_redirect_script( $err_url,
-		__( 'Redirection to error page failed. Please click the link below:', WC_YOPAGO_TEXT_DOMAIN ),
-		__( 'Go to error page', WC_YOPAGO_TEXT_DOMAIN )
+		__( 'Redirection to error page failed. Please click the link below:', WC_YOPAGO_ID ),
+		__( 'Go to error page', WC_YOPAGO_ID )
 	);
 
 	exit;
@@ -63,7 +63,7 @@ if ( ! $wc_order->is_paid() ) {
 	$wc_order->payment_complete( $tx_id );
 	$wc_order->add_order_note( sprintf(
 		__( 'YoPago confirmed payment. Transaction #%s via %s.',
-			WC_YOPAGO_TEXT_DOMAIN ),
+			WC_YOPAGO_ID ),
 		$tx_id,
 		$paymethod
 	) );
@@ -75,8 +75,8 @@ $success_url .= $order_id;
 $success_url .= '/?key=' . $wc_order->get_order_key();
 
 yopago_js_redirect_script( $success_url,
-	__( 'Redirection to success page failed. Please click the link below:', WC_YOPAGO_TEXT_DOMAIN ),
-	__( 'Go to success page', WC_YOPAGO_TEXT_DOMAIN )
+	__( 'Redirection to success page failed. Please click the link below:', WC_YOPAGO_ID ),
+	__( 'Go to success page', WC_YOPAGO_ID )
 );
 
 exit;

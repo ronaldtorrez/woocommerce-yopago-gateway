@@ -27,7 +27,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		$this->method_title       = WC_YOPAGO_NAME;
 		$this->method_description =
 			__( 'Multiple payment methods including credit/debit cards, QR, and Bolivian banks.',
-				WC_YOPAGO_TEXT_DOMAIN );
+				WC_YOPAGO_ID );
 
 		$this->init_form_fields();
 		$this->init_settings();
@@ -54,7 +54,7 @@ class WC_Gateway_YoPago extends WC_Payment_Gateway {
 		$order->update_status(
 			'pending',
 			sprintf(
-				__( 'Awaiting %s payment', WC_YOPAGO_TEXT_DOMAIN ),
+				__( 'Awaiting %s payment', WC_YOPAGO_ID ),
 				WC_YOPAGO_NAME
 			) );
 

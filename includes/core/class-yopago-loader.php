@@ -17,7 +17,7 @@ class YoPago_Loader {
 				function() {
 					echo '<div class="error"><p><strong>' . WC_YOPAGO_NAME . ':</strong> ' .
 					     __( 'WooCommerce is not active. Activate WooCommerce to use this payment gateway.',
-						     WC_YOPAGO_TEXT_DOMAIN ) . '</p></div>';
+						     WC_YOPAGO_ID ) . '</p></div>';
 				} );
 			deactivate_plugins( WC_YOPAGO_PLUGIN_BASENAME );
 
@@ -36,7 +36,7 @@ class YoPago_Loader {
 
 	public static function load_textdomain(): void {
 		load_plugin_textdomain(
-			WC_YOPAGO_TEXT_DOMAIN,
+			WC_YOPAGO_ID,
 			FALSE,
 			dirname( WC_YOPAGO_PLUGIN_BASENAME ) . '/languages/'
 		);

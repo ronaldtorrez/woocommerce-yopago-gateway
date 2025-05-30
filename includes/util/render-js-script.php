@@ -13,9 +13,9 @@ function yopago_js_redirect_script(
 	string $link_text = ''
 ): void {
 	$url       = esc_url( $url );
-	$message   = $message ?: esc_html__( 'Redirection failed. Please click the link below:', WC_YOPAGO_TEXT_DOMAIN );
-	$link_text = $link_text ?: esc_html__( 'Go to page', WC_YOPAGO_TEXT_DOMAIN );
-	$title     = esc_html__( 'Redirecting...', WC_YOPAGO_TEXT_DOMAIN );
+	$message   = $message ?: esc_html__( 'Redirection failed. Please click the link below:', WC_YOPAGO_ID );
+	$link_text = $link_text ?: esc_html__( 'Go to page', WC_YOPAGO_ID );
+	$title     = esc_html__( 'Redirecting...', WC_YOPAGO_ID );
 
 	echo '<!DOCTYPE html>';
 	echo '<html lang="' . esc_attr( get_bloginfo( 'language' ) ) . '">';

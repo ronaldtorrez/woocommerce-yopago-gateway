@@ -15,7 +15,7 @@ class YoPago_Render {
 			     . esc_url( $url )
 			     . '" style="border:none; height:700px; width:100%;" scrolling="yes"></iframe>';
 		} else {
-			echo '<p>' . __( 'There was a problem connecting to YoPago.', WC_YOPAGO_TEXT_DOMAIN ) . '</p>';
+			echo '<p>' . __( 'There was a problem connecting to YoPago.', WC_YOPAGO_ID ) . '</p>';
 		}
 	}
 }

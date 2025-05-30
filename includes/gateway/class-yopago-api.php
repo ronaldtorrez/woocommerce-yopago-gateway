@@ -22,7 +22,7 @@ class YoPago_API {
 			'concept'         => 'Pago por servicios ' . $gateway->name_company,
 			'currency'        => 'BOB',
 			'amount'          => $order->get_total(),
-			'messagePayment'  => __( 'Thank you for use our service', WC_YOPAGO_TEXT_DOMAIN ),
+			'messagePayment'  => __( 'Thank you for use our service', WC_YOPAGO_ID ),
 			'codeExternal'    => md5( $order->get_order_key() ),
 		];
 
