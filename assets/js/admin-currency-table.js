@@ -63,6 +63,7 @@ jQuery( document ).ready( function ( $ ) {
     } )
 
     // Mostrar ejemplo
+    // Mostrar ejemplo
     table.on( 'click', '.yopago-example-btn', function () {
         const index = $( this ).data( 'index' )
         const row = $( `tr[data-index="${ index }"]` )
@@ -71,30 +72,70 @@ jQuery( document ).ready( function ( $ ) {
         const fee = parseFloat( row.find( 'input[name*="[fee]"]' ).val() ) || 0
         const feeType = row.find( 'select[name*="[fee_type]"]' ).val()
         const currencyCode = row.find( '.yopago-currency-select' ).val()
-        const currency = window.yopagoCurrencies.find( c => c.code === currencyCode )
+        const curr = window.yopagoCurrencies.find( c => c.code === currencyCode )
 
-        if ( !currency ) {
+        if ( !curr ) {
             return
         }
 
-        const amount = 100 // Ejemplo: 100 BOB
-        let converted = amount * rate
+        /* ----- Cálculos ----- */
+        const orderOriginal = 50  // <- monto ejemplo en moneda del sitio (puedes cambiarlo si prefieres)
+        const subtotalConv = orderOriginal * rate
+        const feeAmount = (
+                              feeType === 'fixed'
+                          ) ? fee : subtotalConv * fee / 100
+        const totalBob = subtotalConv + feeAmount
 
-        if ( feeType === 'fixed' ) {
-            converted += fee
-        } else {
-            converted += (
-                             converted * fee
-                         ) / 100
-        }
+        /* ----- Plantilla HTML ----- */
+        const html = `
+        <h4>${ wc_yopago_params.ex_title.replace( '{from}', curr.code ).replace( '{to}', 'BOB' ) }</h4>
 
-        const exampleText = wc_yopago_params.example_text
-                                            .replace( '{amount}', amount )
-                                            .replace( '{currency}', `${ currency.name } (${ currency.symbol })` )
-                                            .replace( '{converted}', converted.toFixed( 2 ) )
-                                            .replace( '{symbol}', currency.symbol )
+        <p><strong>${ wc_yopago_params.ex_assumptions }</strong></p>
+        <ul>
+            <li>${ wc_yopago_params.ex_site_currency }: ${ curr.code }</li>
+            <li>${ wc_yopago_params.ex_rate }: 1 ${ curr.code } = ${ rate.toFixed( 4 ) } BOB</li>
+            <li>${ wc_yopago_params.ex_fee }: ${ feeType === 'fixed'
+                                                 ? wc_yopago_params.fixed + ' ' + fee
+                                                 : fee + '%'
+        }</li>
+            <li>${ wc_yopago_params.ex_original }: ${ curr.symbol }${ orderOriginal.toFixed( 2 ) }</li>
+        </ul>
 
-        modalText.html( exampleText )
+        <p><strong>${ wc_yopago_params.ex_calc }</strong></p>
+        <table class='widefat'>
+            <thead>
+                <tr>
+                    <th>${ wc_yopago_params.ex_concept }</th>
+                    <th>${ wc_yopago_params.ex_value }</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>${ wc_yopago_params.ex_c_original.replace(
+            '{from}',
+            curr.code
+        ) }</td><td>${ curr.symbol }${ orderOriginal.toFixed( 2 ) }</td></tr>
+                <tr><td>${ wc_yopago_params.ex_c_rate }</td><td>1 ${ curr.code } = ${ rate.toFixed( 4 ) } BOB</td></tr>
+                <tr><td>${ wc_yopago_params.ex_c_subtotal.replace(
+            '{to}',
+            'BOB'
+        ) }</td><td>Bs. ${ subtotalConv.toFixed( 2 ) }</td></tr>
+                <tr><td>${ wc_yopago_params.ex_c_commission }</td><td>Bs. ${ feeAmount.toFixed( 2 ) }</td></tr>
+                <tr><td><strong>${ wc_yopago_params.ex_c_total.replace(
+            '{to}',
+            'BOB'
+        ) }</strong></td><td><strong>Bs. ${ totalBob.toFixed( 2 ) }</strong></td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>${ wc_yopago_params.ex_result }</strong></p>
+        <p>${ wc_yopago_params.ex_result_text
+                              .replace( '{symbol}', 'Bs. ' )
+                              .replace( '{total}', totalBob.toFixed( 2 ) )
+                              .replace( '{to}', 'BOB' )
+        }</p>
+    `
+
+        modalText.html( html )
         modal.show()
     } )
 
