@@ -170,7 +170,7 @@ jQuery( document ).ready( function ( $ ) {
         )
 
         if ( selectedCurrency ) {
-            select.val( selectedCurrency ).trigger( 'change' )
+            select.val( selectedCurrency ).trigger( 'select2:select' )
         }
     }
 
