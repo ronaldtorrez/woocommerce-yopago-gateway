@@ -46,6 +46,8 @@ jQuery( document ).ready( function ( $ ) {
         table.find( 'tbody .empty-row' ).remove()
         table.find( 'tbody' ).append( row )
         initCurrencySelect( table.find( `tr[data-index="${ index }"] .yopago-currency-select` ) )
+
+        markWooSettingsDirty()
     } )
 
     // Eliminar fila
@@ -60,6 +62,8 @@ jQuery( document ).ready( function ( $ ) {
                 </tr>
             ` )
         }
+
+        markWooSettingsDirty()
     } )
 
     // Mostrar ejemplo
@@ -194,5 +198,14 @@ jQuery( document ).ready( function ( $ ) {
         }
         const curr = window.yopagoCurrencies.find( c => c.code === currency.id )
         return curr ? curr.code + ' - ' + curr.name : currency.text
+    }
+
+    function markWooSettingsDirty() {
+        // Dispara un change en el primer input real que WooCommerce haya
+        // registrado al cargar la pestaña de ajustes.
+        const $firstInput = $( '#mainform :input' ).first()
+        if ( $firstInput.length ) {
+            $firstInput.trigger( 'change' )   // ← WooCommerce captará esto
+        }
     }
 } )
