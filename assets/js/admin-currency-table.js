@@ -1,9 +1,49 @@
 jQuery( document ).ready( function ( $ ) {
+
     const $table = $( '#yopago-currency-rates-table' )
     const $modal = $( '#yopago-example-modal' )
     const $modalContent = $( '#yopago-example-text' )
 
     initCurrencyRateManager()
+
+    $( document ).on( 'change', '.yopago-currency-select', function () {
+        updateCurrencyOptions()
+        markSettingsAsDirty()
+    } )
+
+    function updateCurrencyOptions() {
+        const selectedCodes = $( '.yopago-currency-select' )
+            .map( function () {
+                return $( this ).val()
+            } )
+            .get()
+            .filter( Boolean )
+
+        $( '.yopago-currency-select' ).each( function () {
+            const $sel = $( this )
+            const myCode = $sel.val()
+
+            $sel.find( 'option' ).prop( 'disabled', false )
+
+            $sel.find( 'option' ).each( function () {
+                const code = this.value
+                if ( !code ) {
+                    return
+                }
+                $( this ).prop(
+                    'disabled',
+                    code !== myCode && selectedCodes.includes( code )
+                )
+            } )
+
+            const currentVal = $sel.val()
+            $sel.select2( 'destroy' )
+            attachSelect2( $sel )
+            if ( currentVal ) {
+                $sel.val( currentVal ).trigger( 'change.select2' )
+            }
+        } )
+    }
 
     function initCurrencyRateManager() {
         loadCurrencyData()
@@ -14,9 +54,12 @@ jQuery( document ).ready( function ( $ ) {
         $.getJSON( wc_yopago_params.currency_data_url )
          .done( function ( currencies ) {
              window.yopagoCurrencies = currencies
+
              $( '.yopago-currency-select' ).each( function () {
                  initializeCurrencyDropdown( $( this ) )
              } )
+
+             updateCurrencyOptions()
          } )
          .fail( function ( jqxhr, status, error ) {
              console.error( 'Failed to load currencies:', status, error )
@@ -38,7 +81,10 @@ jQuery( document ).ready( function ( $ ) {
         $table.find( 'tbody .empty-row' ).remove()
         $table.find( 'tbody' ).append( newRow )
 
-        initializeCurrencyDropdown( $table.find( `tr[data-index="${ index }"] .yopago-currency-select` ) )
+        const $newSelect = $table.find( `tr[data-index="${ index }"] .yopago-currency-select` )
+        initializeCurrencyDropdown( $newSelect )
+
+        updateCurrencyOptions()
         markSettingsAsDirty()
     }
 
@@ -46,10 +92,12 @@ jQuery( document ).ready( function ( $ ) {
         $( this ).closest( 'tr' ).remove()
 
         if ( $table.find( 'tbody tr' ).length === 0 ) {
-            $table.find( 'tbody' )
-                  .append( `<tr class='empty-row'><td colspan='6'>${ wc_yopago_params.no_currencies }</td></tr>` )
+            $table.find( 'tbody' ).append(
+                `<tr class='empty-row'><td colspan='6'>${ wc_yopago_params.no_currencies }</td></tr>`
+            )
         }
 
+        updateCurrencyOptions()
         markSettingsAsDirty()
     }
 
@@ -76,13 +124,20 @@ jQuery( document ).ready( function ( $ ) {
         return `
             <tr data-index='${ index }'>
                 <td>
-                    <select class='yopago-currency-select' name='currency_rates[${ index }][currency]'></select>
+                    <select class='yopago-currency-select'
+                            name='currency_rates[${ index }][currency]'>
+                        <option value='' disabled selected hidden></option>
+                    </select>
                 </td>
                 <td>
-                    <input type='number' step='0.0001' name='currency_rates[${ index }][rate]' value='1' min='0.0001' required>
+                    <input type='number' step='0.0001'
+                           name='currency_rates[${ index }][rate]' value='1'
+                           min='0.0001' required>
                 </td>
                 <td>
-                    <input type='number' step='0.01' name='currency_rates[${ index }][fee]' value='0' min='0' required>
+                    <input type='number' step='0.01'
+                           name='currency_rates[${ index }][fee]' value='0'
+                           min='0' required>
                 </td>
                 <td>
                     <select name='currency_rates[${ index }][fee_type]'>
@@ -91,12 +146,15 @@ jQuery( document ).ready( function ( $ ) {
                     </select>
                 </td>
                 <td>
-                    <button type='button' class='button yopago-example-btn' data-index='${ index }'>
+                    <button type='button'
+                            class='button yopago-example-btn'
+                            data-index='${ index }'>
                         ${ wc_yopago_params.view }
                     </button>
                 </td>
                 <td>
-                    <button type='button' class='button button-link-delete yopago-remove-rate'>
+                    <button type='button'
+                            class='button button-link-delete yopago-remove-rate'>
                         ${ wc_yopago_params.remove }
                     </button>
                 </td>
@@ -106,28 +164,38 @@ jQuery( document ).ready( function ( $ ) {
 
     function initializeCurrencyDropdown( $select ) {
         const selectedValue = $select.data( 'selected' )
-        $select.empty()
+        $select.empty().append(
+            `<option value='' disabled ${ selectedValue ? '' : 'selected' } hidden></option>`
+        )
 
         window.yopagoCurrencies.forEach( currency => {
-            $select.append( new Option(
-                `${ currency.name } (${ currency.symbol })`,
-                currency.code,
-                false,
-                currency.code === selectedValue
-            ) )
+            $select.append(
+                new Option(
+                    `${ currency.name } (${ currency.symbol })`,
+                    currency.code,
+                    false,
+                    currency.code === selectedValue
+                )
+            )
         } )
 
-        $select.select2( {
-                             width: '100%',
-                             placeholder: wc_yopago_params.select_currency,
-                             allowClear: false,
-                             templateResult: formatCurrencyOption,
-                             templateSelection: formatCurrencySelection
-                         } )
+        attachSelect2( $select )
 
         if ( selectedValue ) {
-            $select.val( selectedValue ).trigger( 'select2:select' )
+            $select.val( selectedValue ).trigger( 'change.select2' )
         }
+    }
+
+    function attachSelect2( $sel ) {
+        $sel.select2(
+            {
+                width: '100%',
+                placeholder: wc_yopago_params.select_currency,
+                allowClear: false,
+                templateResult: formatCurrencyOption,
+                templateSelection: formatCurrencySelection
+            }
+        )
     }
 
     function formatCurrencyOption( option ) {
@@ -149,14 +217,13 @@ jQuery( document ).ready( function ( $ ) {
     }
 
     function markSettingsAsDirty() {
-        const $firstInput = $( '#mainform :input' ).first()
-        if ( $firstInput.length ) {
-            $firstInput.trigger( 'change' ) // triggers WooCommerce to enable Save
-        }
+        $( '#mainform :input' ).first().trigger( 'change' )
     }
 
     function generateExampleHTML( currency, rate, fee, feeType ) {
-        const orderAmount = 50
+        const orderAmount = Math.floor( Math.random() * (
+            200 - 20 + 1
+        ) ) + 20
         const subtotal = orderAmount * rate
         const feeAmount = feeType === 'fixed' ? fee : subtotal * (
             fee / 100
@@ -207,6 +274,6 @@ jQuery( document ).ready( function ( $ ) {
                                   .replace( '{symbol}', 'Bs. ' )
                                   .replace( '{total}', total.toFixed( 2 ) )
                                   .replace( '{to}', 'BOB' ) }</p>
-        `;
+        `
     }
-} );
+} )
