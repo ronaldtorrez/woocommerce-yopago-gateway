@@ -1,20 +1,5345 @@
-!function(e){"use strict";var t,n,o,i={exports:{}};
-/*!
-   * Select2 4.1.0-rc.0
-   * https://select2.github.io
-   *
-   * Released under the MIT license
-   * https://github.com/select2/select2/blob/master/LICENSE.md
-   */function s(){const t=e(".yopago-currency-select").map((function(){return e(this).val()})).get().filter(Boolean);e(".yopago-currency-select").each((function(){const n=e(this),o=n.val();n.find("option").prop("disabled",!1),n.find("option").each((function(){const n=this.value;n&&e(this).prop("disabled",n!==o&&t.includes(n))}));const i=n.val();n.select2("destroy"),l(n),i&&n.val(i).trigger("change.select2")}))}function r(){const t=window.yopagoCurrencies?window.yopagoCurrencies.length:0,n=e("#yopago-currency-rates-table tbody tr").not(".empty-row").length;e("#yopago-add-rate").prop("disabled",n>=t)}function a(e){const t=e.data("selected");e.empty().append(`<option value='' disabled ${t?"":"selected"} hidden></option>`),window.yopagoCurrencies.forEach((n=>{e.append(new Option(`${n.name} (${n.symbol})`,n.code,!1,n.code===t))})),l(e),t&&e.val(t).trigger("change.select2"),e.closest("tr").find(".yopago-example-btn").prop("disabled",!e.val())}function l(e){e.select2({width:"100%",placeholder:wc_yopago_params.select_currency,allowClear:!1,templateResult:e=>c(e,!0),templateSelection:e=>c(e,!1)})}function c(t,n){if(!t.id)return t.text;const o=window.yopagoCurrencies.find((e=>e.code===t.id));return o?n?e(`<span><img src='${o.flag}' class='yopago-flag' /> ${o.name} (${o.symbol})</span>`):`${o.code} - ${o.name}`:t.text}t||(t=1,o=function(e){var t=function(){if(e&&e.fn&&e.fn.select2&&e.fn.select2.amd)var t=e.fn.select2.amd;var o,i,s,r;return t&&t.requirejs||(t?i=t:t={}
-/**
-               * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
-               * Released under MIT license, http://github.com/requirejs/almond/LICENSE
-               */,function(e){var t,n,r,a,l={},c={},u={},d={},p=Object.prototype.hasOwnProperty,h=[].slice,f=/\.js$/;function g(e,t){return p.call(e,t)}function m(e,t){var n,o,i,s,r,a,l,c,d,p,h,g=t&&t.split("/"),m=u.map,y=m&&m["*"]||{};if(e){for(r=(e=e.split("/")).length-1,u.nodeIdCompat&&f.test(e[r])&&(e[r]=e[r].replace(f,"")),"."===e[0].charAt(0)&&g&&(e=g.slice(0,g.length-1).concat(e)),d=0;d<e.length;d++)if("."===(h=e[d]))e.splice(d,1),d-=1;else if(".."===h){if(0===d||1===d&&".."===e[2]||".."===e[d-1])continue;d>0&&(e.splice(d-1,2),d-=2)}e=e.join("/")}if((g||y)&&m){for(d=(n=e.split("/")).length;d>0;d-=1){if(o=n.slice(0,d).join("/"),g)for(p=g.length;p>0;p-=1)if((i=m[g.slice(0,p).join("/")])&&(i=i[o])){s=i,a=d;break}if(s)break;!l&&y&&y[o]&&(l=y[o],c=d)}!s&&l&&(s=l,a=c),s&&(n.splice(0,a,s),e=n.join("/"))}return e}function y(t,o){return function(){var i=h.call(arguments,0);return"string"!=typeof i[0]&&1===i.length&&i.push(null),n.apply(e,i.concat([t,o]))}}function v(e){return function(t){l[e]=t}}function _(n){if(g(c,n)){var o=c[n];delete c[n],d[n]=!0,t.apply(e,o)}if(!g(l,n)&&!g(d,n))throw new Error("No "+n);return l[n]}function w(e){var t,n=e?e.indexOf("!"):-1;return n>-1&&(t=e.substring(0,n),e=e.substring(n+1,e.length)),[t,e]}function b(e){return e?w(e):[]}function $(e){return function(){return u&&u.config&&u.config[e]||{}}}r=function(e,t){var n,o,i=w(e),s=i[0],r=t[1];return e=i[1],s&&(n=_(s=m(s,r))),s?e=n&&n.normalize?n.normalize(e,(o=r,function(e){return m(e,o)})):m(e,r):(s=(i=w(e=m(e,r)))[0],e=i[1],s&&(n=_(s))),{f:s?s+"!"+e:e,n:e,pr:s,p:n}},a={require:function(e){return y(e)},exports:function(e){var t=l[e];return void 0!==t?t:l[e]={}},module:function(e){return{id:e,uri:"",exports:l[e],config:$(e)}}},t=function(t,n,o,i){var s,u,p,h,f,m,w,$=[],x=typeof o;if(m=b(i=i||t),"undefined"===x||"function"===x){for(n=!n.length&&o.length?["require","exports","module"]:n,f=0;f<n.length;f+=1)if("require"===(u=(h=r(n[f],m)).f))$[f]=a.require(t);else if("exports"===u)$[f]=a.exports(t),w=!0;else if("module"===u)s=$[f]=a.module(t);else if(g(l,u)||g(c,u)||g(d,u))$[f]=_(u);else{if(!h.p)throw new Error(t+" missing "+u);h.p.load(h.n,y(i,!0),v(u),{}),$[f]=l[u]}p=o?o.apply(l[t],$):void 0,t&&(s&&s.exports!==e&&s.exports!==l[t]?l[t]=s.exports:p===e&&w||(l[t]=p))}else t&&(l[t]=o)},o=i=n=function(o,i,s,l,c){if("string"==typeof o)return a[o]?a[o](i):_(r(o,b(i)).f);if(!o.splice){if((u=o).deps&&n(u.deps,u.callback),!i)return;i.splice?(o=i,i=s,s=null):o=e}return i=i||function(){},"function"==typeof s&&(s=l,l=c),l?t(e,o,i,s):setTimeout((function(){t(e,o,i,s)}),4),n},n.config=function(e){return n(e)},o._defined=l,(s=function(e,t,n){if("string"!=typeof e)throw new Error("See almond README: incorrect module build, no module name");t.splice||(n=t,t=[]),g(l,e)||g(c,e)||(c[e]=[e,t,n])}).amd={jQuery:!0}}(),t.requirejs=o,t.require=i,t.define=s),t.define("almond",(function(){})),t.define("jquery",[],(function(){var t=e||$;return null==t&&console&&console.error&&console.error("Select2: An instance of jQuery or a jQuery-compatible library was not found. Make sure that you are including jQuery before Select2 on your web page."),t})),t.define("select2/utils",["jquery"],(function(e){var t={};function n(e){var t=e.prototype,n=[];for(var o in t)"function"==typeof t[o]&&"constructor"!==o&&n.push(o);return n}t.Extend=function(e,t){var n={}.hasOwnProperty;function o(){this.constructor=e}for(var i in t)n.call(t,i)&&(e[i]=t[i]);return o.prototype=t.prototype,e.prototype=new o,e.__super__=t.prototype,e},t.Decorate=function(e,t){var o=n(t),i=n(e);function s(){var n=Array.prototype.unshift,o=t.prototype.constructor.length,i=e.prototype.constructor;o>0&&(n.call(arguments,e.prototype.constructor),i=t.prototype.constructor),i.apply(this,arguments)}t.displayName=e.displayName,s.prototype=new function(){this.constructor=s};for(var r=0;r<i.length;r++){var a=i[r];s.prototype[a]=e.prototype[a]}for(var l=function(e){var n=function(){};e in s.prototype&&(n=s.prototype[e]);var o=t.prototype[e];return function(){return Array.prototype.unshift.call(arguments,n),o.apply(this,arguments)}},c=0;c<o.length;c++){var u=o[c];s.prototype[u]=l(u)}return s};var o=function(){this.listeners={}};o.prototype.on=function(e,t){this.listeners=this.listeners||{},e in this.listeners?this.listeners[e].push(t):this.listeners[e]=[t]},o.prototype.trigger=function(e){var t=Array.prototype.slice,n=t.call(arguments,1);this.listeners=this.listeners||{},null==n&&(n=[]),0===n.length&&n.push({}),n[0]._type=e,e in this.listeners&&this.invoke(this.listeners[e],t.call(arguments,1)),"*"in this.listeners&&this.invoke(this.listeners["*"],arguments)},o.prototype.invoke=function(e,t){for(var n=0,o=e.length;n<o;n++)e[n].apply(this,t)},t.Observable=o,t.generateChars=function(e){for(var t="",n=0;n<e;n++)t+=Math.floor(36*Math.random()).toString(36);return t},t.bind=function(e,t){return function(){e.apply(t,arguments)}},t._convertData=function(e){for(var t in e){var n=t.split("-"),o=e;if(1!==n.length){for(var i=0;i<n.length;i++){var s=n[i];(s=s.substring(0,1).toLowerCase()+s.substring(1))in o||(o[s]={}),i==n.length-1&&(o[s]=e[t]),o=o[s]}delete e[t]}}return e},t.hasScroll=function(t,n){var o=e(n),i=n.style.overflowX,s=n.style.overflowY;return(i!==s||"hidden"!==s&&"visible"!==s)&&("scroll"===i||"scroll"===s||o.innerHeight()<n.scrollHeight||o.innerWidth()<n.scrollWidth)},t.escapeMarkup=function(e){var t={"\\":"&#92;","&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;","/":"&#47;"};return"string"!=typeof e?e:String(e).replace(/[&<>"'\/\\]/g,(function(e){return t[e]}))},t.__cache={};var i=0;return t.GetUniqueElementId=function(e){var n=e.getAttribute("data-select2-id");return null!=n||(n=e.id?"select2-data-"+e.id:"select2-data-"+(++i).toString()+"-"+t.generateChars(4),e.setAttribute("data-select2-id",n)),n},t.StoreData=function(e,n,o){var i=t.GetUniqueElementId(e);t.__cache[i]||(t.__cache[i]={}),t.__cache[i][n]=o},t.GetData=function(n,o){var i=t.GetUniqueElementId(n);return o?t.__cache[i]&&null!=t.__cache[i][o]?t.__cache[i][o]:e(n).data(o):t.__cache[i]},t.RemoveData=function(e){var n=t.GetUniqueElementId(e);null!=t.__cache[n]&&delete t.__cache[n],e.removeAttribute("data-select2-id")},t.copyNonInternalCssClasses=function(e,t){var n=e.getAttribute("class").trim().split(/\s+/);n=n.filter((function(e){return 0===e.indexOf("select2-")}));var o=t.getAttribute("class").trim().split(/\s+/);o=o.filter((function(e){return 0!==e.indexOf("select2-")}));var i=n.concat(o);e.setAttribute("class",i.join(" "))},t})),t.define("select2/results",["jquery","./utils"],(function(e,t){function n(e,t,o){this.$element=e,this.data=o,this.options=t,n.__super__.constructor.call(this)}return t.Extend(n,t.Observable),n.prototype.render=function(){var t=e('<ul class="select2-results__options" role="listbox"></ul>');return this.options.get("multiple")&&t.attr("aria-multiselectable","true"),this.$results=t,t},n.prototype.clear=function(){this.$results.empty()},n.prototype.displayMessage=function(t){var n=this.options.get("escapeMarkup");this.clear(),this.hideLoading();var o=e('<li role="alert" aria-live="assertive" class="select2-results__option"></li>'),i=this.options.get("translations").get(t.message);o.append(n(i(t.args))),o[0].className+=" select2-results__message",this.$results.append(o)},n.prototype.hideMessages=function(){this.$results.find(".select2-results__message").remove()},n.prototype.append=function(e){this.hideLoading();var t=[];if(null!=e.results&&0!==e.results.length){e.results=this.sort(e.results);for(var n=0;n<e.results.length;n++){var o=e.results[n],i=this.option(o);t.push(i)}this.$results.append(t)}else 0===this.$results.children().length&&this.trigger("results:message",{message:"noResults"})},n.prototype.position=function(e,t){t.find(".select2-results").append(e)},n.prototype.sort=function(e){return this.options.get("sorter")(e)},n.prototype.highlightFirstItem=function(){var e=this.$results.find(".select2-results__option--selectable"),t=e.filter(".select2-results__option--selected");t.length>0?t.first().trigger("mouseenter"):e.first().trigger("mouseenter"),this.ensureHighlightVisible()},n.prototype.setClasses=function(){var n=this;this.data.current((function(o){var i=o.map((function(e){return e.id.toString()}));n.$results.find(".select2-results__option--selectable").each((function(){var n=e(this),o=t.GetData(this,"data"),s=""+o.id;null!=o.element&&o.element.selected||null==o.element&&i.indexOf(s)>-1?(this.classList.add("select2-results__option--selected"),n.attr("aria-selected","true")):(this.classList.remove("select2-results__option--selected"),n.attr("aria-selected","false"))}))}))},n.prototype.showLoading=function(e){this.hideLoading();var t={disabled:!0,loading:!0,text:this.options.get("translations").get("searching")(e)},n=this.option(t);n.className+=" loading-results",this.$results.prepend(n)},n.prototype.hideLoading=function(){this.$results.find(".loading-results").remove()},n.prototype.option=function(n){var o=document.createElement("li");o.classList.add("select2-results__option"),o.classList.add("select2-results__option--selectable");var i={role:"option"},s=window.Element.prototype.matches||window.Element.prototype.msMatchesSelector||window.Element.prototype.webkitMatchesSelector;for(var r in(null!=n.element&&s.call(n.element,":disabled")||null==n.element&&n.disabled)&&(i["aria-disabled"]="true",o.classList.remove("select2-results__option--selectable"),o.classList.add("select2-results__option--disabled")),null==n.id&&o.classList.remove("select2-results__option--selectable"),null!=n._resultId&&(o.id=n._resultId),n.title&&(o.title=n.title),n.children&&(i.role="group",i["aria-label"]=n.text,o.classList.remove("select2-results__option--selectable"),o.classList.add("select2-results__option--group")),i){var a=i[r];o.setAttribute(r,a)}if(n.children){var l=e(o),c=document.createElement("strong");c.className="select2-results__group",this.template(n,c);for(var u=[],d=0;d<n.children.length;d++){var p=n.children[d],h=this.option(p);u.push(h)}var f=e("<ul></ul>",{class:"select2-results__options select2-results__options--nested",role:"none"});f.append(u),l.append(c),l.append(f)}else this.template(n,o);return t.StoreData(o,"data",n),o},n.prototype.bind=function(n,o){var i=this,s=n.id+"-results";this.$results.attr("id",s),n.on("results:all",(function(e){i.clear(),i.append(e.data),n.isOpen()&&(i.setClasses(),i.highlightFirstItem())})),n.on("results:append",(function(e){i.append(e.data),n.isOpen()&&i.setClasses()})),n.on("query",(function(e){i.hideMessages(),i.showLoading(e)})),n.on("select",(function(){n.isOpen()&&(i.setClasses(),i.options.get("scrollAfterSelect")&&i.highlightFirstItem())})),n.on("unselect",(function(){n.isOpen()&&(i.setClasses(),i.options.get("scrollAfterSelect")&&i.highlightFirstItem())})),n.on("open",(function(){i.$results.attr("aria-expanded","true"),i.$results.attr("aria-hidden","false"),i.setClasses(),i.ensureHighlightVisible()})),n.on("close",(function(){i.$results.attr("aria-expanded","false"),i.$results.attr("aria-hidden","true"),i.$results.removeAttr("aria-activedescendant")})),n.on("results:toggle",(function(){var e=i.getHighlightedResults();0!==e.length&&e.trigger("mouseup")})),n.on("results:select",(function(){var e=i.getHighlightedResults();if(0!==e.length){var n=t.GetData(e[0],"data");e.hasClass("select2-results__option--selected")?i.trigger("close",{}):i.trigger("select",{data:n})}})),n.on("results:previous",(function(){var e=i.getHighlightedResults(),t=i.$results.find(".select2-results__option--selectable"),n=t.index(e);if(!(n<=0)){var o=n-1;0===e.length&&(o=0);var s=t.eq(o);s.trigger("mouseenter");var r=i.$results.offset().top,a=s.offset().top,l=i.$results.scrollTop()+(a-r);0===o?i.$results.scrollTop(0):a-r<0&&i.$results.scrollTop(l)}})),n.on("results:next",(function(){var e=i.getHighlightedResults(),t=i.$results.find(".select2-results__option--selectable"),n=t.index(e)+1;if(!(n>=t.length)){var o=t.eq(n);o.trigger("mouseenter");var s=i.$results.offset().top+i.$results.outerHeight(!1),r=o.offset().top+o.outerHeight(!1),a=i.$results.scrollTop()+r-s;0===n?i.$results.scrollTop(0):r>s&&i.$results.scrollTop(a)}})),n.on("results:focus",(function(e){e.element[0].classList.add("select2-results__option--highlighted"),e.element[0].setAttribute("aria-selected","true")})),n.on("results:message",(function(e){i.displayMessage(e)})),e.fn.mousewheel&&this.$results.on("mousewheel",(function(e){var t=i.$results.scrollTop(),n=i.$results.get(0).scrollHeight-t+e.deltaY,o=e.deltaY>0&&t-e.deltaY<=0,s=e.deltaY<0&&n<=i.$results.height();o?(i.$results.scrollTop(0),e.preventDefault(),e.stopPropagation()):s&&(i.$results.scrollTop(i.$results.get(0).scrollHeight-i.$results.height()),e.preventDefault(),e.stopPropagation())})),this.$results.on("mouseup",".select2-results__option--selectable",(function(n){var o=e(this),s=t.GetData(this,"data");o.hasClass("select2-results__option--selected")?i.options.get("multiple")?i.trigger("unselect",{originalEvent:n,data:s}):i.trigger("close",{}):i.trigger("select",{originalEvent:n,data:s})})),this.$results.on("mouseenter",".select2-results__option--selectable",(function(n){var o=t.GetData(this,"data");i.getHighlightedResults().removeClass("select2-results__option--highlighted").attr("aria-selected","false"),i.trigger("results:focus",{data:o,element:e(this)})}))},n.prototype.getHighlightedResults=function(){return this.$results.find(".select2-results__option--highlighted")},n.prototype.destroy=function(){this.$results.remove()},n.prototype.ensureHighlightVisible=function(){var e=this.getHighlightedResults();if(0!==e.length){var t=this.$results.find(".select2-results__option--selectable").index(e),n=this.$results.offset().top,o=e.offset().top,i=this.$results.scrollTop()+(o-n),s=o-n;i-=2*e.outerHeight(!1),t<=2?this.$results.scrollTop(0):(s>this.$results.outerHeight()||s<0)&&this.$results.scrollTop(i)}},n.prototype.template=function(t,n){var o=this.options.get("templateResult"),i=this.options.get("escapeMarkup"),s=o(t,n);null==s?n.style.display="none":"string"==typeof s?n.innerHTML=i(s):e(n).append(s)},n})),t.define("select2/keys",[],(function(){return{BACKSPACE:8,TAB:9,ENTER:13,SHIFT:16,CTRL:17,ALT:18,ESC:27,SPACE:32,PAGE_UP:33,PAGE_DOWN:34,END:35,HOME:36,LEFT:37,UP:38,RIGHT:39,DOWN:40,DELETE:46}})),t.define("select2/selection/base",["jquery","../utils","../keys"],(function(e,t,n){function o(e,t){this.$element=e,this.options=t,o.__super__.constructor.call(this)}return t.Extend(o,t.Observable),o.prototype.render=function(){var n=e('<span class="select2-selection" role="combobox"  aria-haspopup="true" aria-expanded="false"></span>');return this._tabindex=0,null!=t.GetData(this.$element[0],"old-tabindex")?this._tabindex=t.GetData(this.$element[0],"old-tabindex"):null!=this.$element.attr("tabindex")&&(this._tabindex=this.$element.attr("tabindex")),n.attr("title",this.$element.attr("title")),n.attr("tabindex",this._tabindex),n.attr("aria-disabled","false"),this.$selection=n,n},o.prototype.bind=function(e,t){var o=this,i=e.id+"-results";this.container=e,this.$selection.on("focus",(function(e){o.trigger("focus",e)})),this.$selection.on("blur",(function(e){o._handleBlur(e)})),this.$selection.on("keydown",(function(e){o.trigger("keypress",e),e.which===n.SPACE&&e.preventDefault()})),e.on("results:focus",(function(e){o.$selection.attr("aria-activedescendant",e.data._resultId)})),e.on("selection:update",(function(e){o.update(e.data)})),e.on("open",(function(){o.$selection.attr("aria-expanded","true"),o.$selection.attr("aria-owns",i),o._attachCloseHandler(e)})),e.on("close",(function(){o.$selection.attr("aria-expanded","false"),o.$selection.removeAttr("aria-activedescendant"),o.$selection.removeAttr("aria-owns"),o.$selection.trigger("focus"),o._detachCloseHandler(e)})),e.on("enable",(function(){o.$selection.attr("tabindex",o._tabindex),o.$selection.attr("aria-disabled","false")})),e.on("disable",(function(){o.$selection.attr("tabindex","-1"),o.$selection.attr("aria-disabled","true")}))},o.prototype._handleBlur=function(t){var n=this;window.setTimeout((function(){document.activeElement==n.$selection[0]||e.contains(n.$selection[0],document.activeElement)||n.trigger("blur",t)}),1)},o.prototype._attachCloseHandler=function(n){e(document.body).on("mousedown.select2."+n.id,(function(n){var o=e(n.target).closest(".select2");e(".select2.select2-container--open").each((function(){this!=o[0]&&t.GetData(this,"element").select2("close")}))}))},o.prototype._detachCloseHandler=function(t){e(document.body).off("mousedown.select2."+t.id)},o.prototype.position=function(e,t){t.find(".selection").append(e)},o.prototype.destroy=function(){this._detachCloseHandler(this.container)},o.prototype.update=function(e){throw new Error("The `update` method must be defined in child classes.")},o.prototype.isEnabled=function(){return!this.isDisabled()},o.prototype.isDisabled=function(){return this.options.get("disabled")},o})),t.define("select2/selection/single",["jquery","./base","../utils","../keys"],(function(e,t,n,o){function i(){i.__super__.constructor.apply(this,arguments)}return n.Extend(i,t),i.prototype.render=function(){var e=i.__super__.render.call(this);return e[0].classList.add("select2-selection--single"),e.html('<span class="select2-selection__rendered"></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>'),e},i.prototype.bind=function(e,t){var n=this;i.__super__.bind.apply(this,arguments);var o=e.id+"-container";this.$selection.find(".select2-selection__rendered").attr("id",o).attr("role","textbox").attr("aria-readonly","true"),this.$selection.attr("aria-labelledby",o),this.$selection.attr("aria-controls",o),this.$selection.on("mousedown",(function(e){1===e.which&&n.trigger("toggle",{originalEvent:e})})),this.$selection.on("focus",(function(e){})),this.$selection.on("blur",(function(e){})),e.on("focus",(function(t){e.isOpen()||n.$selection.trigger("focus")}))},i.prototype.clear=function(){var e=this.$selection.find(".select2-selection__rendered");e.empty(),e.removeAttr("title")},i.prototype.display=function(e,t){var n=this.options.get("templateSelection");return this.options.get("escapeMarkup")(n(e,t))},i.prototype.selectionContainer=function(){return e("<span></span>")},i.prototype.update=function(e){if(0!==e.length){var t=e[0],n=this.$selection.find(".select2-selection__rendered"),o=this.display(t,n);n.empty().append(o);var i=t.title||t.text;i?n.attr("title",i):n.removeAttr("title")}else this.clear()},i})),t.define("select2/selection/multiple",["jquery","./base","../utils"],(function(e,t,n){function o(e,t){o.__super__.constructor.apply(this,arguments)}return n.Extend(o,t),o.prototype.render=function(){var e=o.__super__.render.call(this);return e[0].classList.add("select2-selection--multiple"),e.html('<ul class="select2-selection__rendered"></ul>'),e},o.prototype.bind=function(t,i){var s=this;o.__super__.bind.apply(this,arguments);var r=t.id+"-container";this.$selection.find(".select2-selection__rendered").attr("id",r),this.$selection.on("click",(function(e){s.trigger("toggle",{originalEvent:e})})),this.$selection.on("click",".select2-selection__choice__remove",(function(t){if(!s.isDisabled()){var o=e(this).parent(),i=n.GetData(o[0],"data");s.trigger("unselect",{originalEvent:t,data:i})}})),this.$selection.on("keydown",".select2-selection__choice__remove",(function(e){s.isDisabled()||e.stopPropagation()}))},o.prototype.clear=function(){var e=this.$selection.find(".select2-selection__rendered");e.empty(),e.removeAttr("title")},o.prototype.display=function(e,t){var n=this.options.get("templateSelection");return this.options.get("escapeMarkup")(n(e,t))},o.prototype.selectionContainer=function(){return e('<li class="select2-selection__choice"><button type="button" class="select2-selection__choice__remove" tabindex="-1"><span aria-hidden="true">&times;</span></button><span class="select2-selection__choice__display"></span></li>')},o.prototype.update=function(e){if(this.clear(),0!==e.length){for(var t=[],o=this.$selection.find(".select2-selection__rendered").attr("id")+"-choice-",i=0;i<e.length;i++){var s=e[i],r=this.selectionContainer(),a=this.display(s,r),l=o+n.generateChars(4)+"-";s.id?l+=s.id:l+=n.generateChars(4),r.find(".select2-selection__choice__display").append(a).attr("id",l);var c=s.title||s.text;c&&r.attr("title",c);var u=this.options.get("translations").get("removeItem"),d=r.find(".select2-selection__choice__remove");d.attr("title",u()),d.attr("aria-label",u()),d.attr("aria-describedby",l),n.StoreData(r[0],"data",s),t.push(r)}this.$selection.find(".select2-selection__rendered").append(t)}},o})),t.define("select2/selection/placeholder",[],(function(){function e(e,t,n){this.placeholder=this.normalizePlaceholder(n.get("placeholder")),e.call(this,t,n)}return e.prototype.normalizePlaceholder=function(e,t){return"string"==typeof t&&(t={id:"",text:t}),t},e.prototype.createPlaceholder=function(e,t){var n=this.selectionContainer();n.html(this.display(t)),n[0].classList.add("select2-selection__placeholder"),n[0].classList.remove("select2-selection__choice");var o=t.title||t.text||n.text();return this.$selection.find(".select2-selection__rendered").attr("title",o),n},e.prototype.update=function(e,t){var n=1==t.length&&t[0].id!=this.placeholder.id;if(t.length>1||n)return e.call(this,t);this.clear();var o=this.createPlaceholder(this.placeholder);this.$selection.find(".select2-selection__rendered").append(o)},e})),t.define("select2/selection/allowClear",["jquery","../keys","../utils"],(function(e,t,n){function o(){}return o.prototype.bind=function(e,t,n){var o=this;e.call(this,t,n),null==this.placeholder&&this.options.get("debug")&&window.console&&console.error&&console.error("Select2: The `allowClear` option should be used in combination with the `placeholder` option."),this.$selection.on("mousedown",".select2-selection__clear",(function(e){o._handleClear(e)})),t.on("keypress",(function(e){o._handleKeyboardClear(e,t)}))},o.prototype._handleClear=function(e,t){if(!this.isDisabled()){var o=this.$selection.find(".select2-selection__clear");if(0!==o.length){t.stopPropagation();var i=n.GetData(o[0],"data"),s=this.$element.val();this.$element.val(this.placeholder.id);var r={data:i};if(this.trigger("clear",r),r.prevented)this.$element.val(s);else{for(var a=0;a<i.length;a++)if(r={data:i[a]},this.trigger("unselect",r),r.prevented)return void this.$element.val(s);this.$element.trigger("input").trigger("change"),this.trigger("toggle",{})}}}},o.prototype._handleKeyboardClear=function(e,n,o){o.isOpen()||n.which!=t.DELETE&&n.which!=t.BACKSPACE||this._handleClear(n)},o.prototype.update=function(t,o){if(t.call(this,o),this.$selection.find(".select2-selection__clear").remove(),this.$selection[0].classList.remove("select2-selection--clearable"),!(this.$selection.find(".select2-selection__placeholder").length>0||0===o.length)){var i=this.$selection.find(".select2-selection__rendered").attr("id"),s=this.options.get("translations").get("removeAllItems"),r=e('<button type="button" class="select2-selection__clear" tabindex="-1"><span aria-hidden="true">&times;</span></button>');r.attr("title",s()),r.attr("aria-label",s()),r.attr("aria-describedby",i),n.StoreData(r[0],"data",o),this.$selection.prepend(r),this.$selection[0].classList.add("select2-selection--clearable")}},o})),t.define("select2/selection/search",["jquery","../utils","../keys"],(function(e,t,n){function o(e,t,n){e.call(this,t,n)}return o.prototype.render=function(t){var n=this.options.get("translations").get("search"),o=e('<span class="select2-search select2-search--inline"><textarea class="select2-search__field" type="search" tabindex="-1" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" ></textarea></span>');this.$searchContainer=o,this.$search=o.find("textarea"),this.$search.prop("autocomplete",this.options.get("autocomplete")),this.$search.attr("aria-label",n());var i=t.call(this);return this._transferTabIndex(),i.append(this.$searchContainer),i},o.prototype.bind=function(e,o,i){var s=this,r=o.id+"-results",a=o.id+"-container";e.call(this,o,i),s.$search.attr("aria-describedby",a),o.on("open",(function(){s.$search.attr("aria-controls",r),s.$search.trigger("focus")})),o.on("close",(function(){s.$search.val(""),s.resizeSearch(),s.$search.removeAttr("aria-controls"),s.$search.removeAttr("aria-activedescendant"),s.$search.trigger("focus")})),o.on("enable",(function(){s.$search.prop("disabled",!1),s._transferTabIndex()})),o.on("disable",(function(){s.$search.prop("disabled",!0)})),o.on("focus",(function(e){s.$search.trigger("focus")})),o.on("results:focus",(function(e){e.data._resultId?s.$search.attr("aria-activedescendant",e.data._resultId):s.$search.removeAttr("aria-activedescendant")})),this.$selection.on("focusin",".select2-search--inline",(function(e){s.trigger("focus",e)})),this.$selection.on("focusout",".select2-search--inline",(function(e){s._handleBlur(e)})),this.$selection.on("keydown",".select2-search--inline",(function(e){if(e.stopPropagation(),s.trigger("keypress",e),s._keyUpPrevented=e.isDefaultPrevented(),e.which===n.BACKSPACE&&""===s.$search.val()){var o=s.$selection.find(".select2-selection__choice").last();if(o.length>0){var i=t.GetData(o[0],"data");s.searchRemoveChoice(i),e.preventDefault()}}})),this.$selection.on("click",".select2-search--inline",(function(e){s.$search.val()&&e.stopPropagation()}));var l=document.documentMode,c=l&&l<=11;this.$selection.on("input.searchcheck",".select2-search--inline",(function(e){c?s.$selection.off("input.search input.searchcheck"):s.$selection.off("keyup.search")})),this.$selection.on("keyup.search input.search",".select2-search--inline",(function(e){if(c&&"input"===e.type)s.$selection.off("input.search input.searchcheck");else{var t=e.which;t!=n.SHIFT&&t!=n.CTRL&&t!=n.ALT&&t!=n.TAB&&s.handleSearch(e)}}))},o.prototype._transferTabIndex=function(e){this.$search.attr("tabindex",this.$selection.attr("tabindex")),this.$selection.attr("tabindex","-1")},o.prototype.createPlaceholder=function(e,t){this.$search.attr("placeholder",t.text)},o.prototype.update=function(e,t){var n=this.$search[0]==document.activeElement;this.$search.attr("placeholder",""),e.call(this,t),this.resizeSearch(),n&&this.$search.trigger("focus")},o.prototype.handleSearch=function(){if(this.resizeSearch(),!this._keyUpPrevented){var e=this.$search.val();this.trigger("query",{term:e})}this._keyUpPrevented=!1},o.prototype.searchRemoveChoice=function(e,t){this.trigger("unselect",{data:t}),this.$search.val(t.text),this.handleSearch()},o.prototype.resizeSearch=function(){this.$search.css("width","25px");var e="100%";""===this.$search.attr("placeholder")&&(e=.75*(this.$search.val().length+1)+"em"),this.$search.css("width",e)},o})),t.define("select2/selection/selectionCss",["../utils"],(function(e){function t(){}return t.prototype.render=function(t){var n=t.call(this),o=this.options.get("selectionCssClass")||"";return-1!==o.indexOf(":all:")&&(o=o.replace(":all:",""),e.copyNonInternalCssClasses(n[0],this.$element[0])),n.addClass(o),n},t})),t.define("select2/selection/eventRelay",["jquery"],(function(e){function t(){}return t.prototype.bind=function(t,n,o){var i=this,s=["open","opening","close","closing","select","selecting","unselect","unselecting","clear","clearing"],r=["opening","closing","selecting","unselecting","clearing"];t.call(this,n,o),n.on("*",(function(t,n){if(-1!==s.indexOf(t)){n=n||{};var o=e.Event("select2:"+t,{params:n});i.$element.trigger(o),-1!==r.indexOf(t)&&(n.prevented=o.isDefaultPrevented())}}))},t})),t.define("select2/translation",["jquery","require"],(function(e,t){function n(e){this.dict=e||{}}return n.prototype.all=function(){return this.dict},n.prototype.get=function(e){return this.dict[e]},n.prototype.extend=function(t){this.dict=e.extend({},t.all(),this.dict)},n._cache={},n.loadPath=function(e){if(!(e in n._cache)){var o=t(e);n._cache[e]=o}return new n(n._cache[e])},n})),t.define("select2/diacritics",[],(function(){return{"Ⓐ":"A","Ａ":"A","À":"A","Á":"A","Â":"A","Ầ":"A","Ấ":"A","Ẫ":"A","Ẩ":"A","Ã":"A","Ā":"A","Ă":"A","Ằ":"A","Ắ":"A","Ẵ":"A","Ẳ":"A","Ȧ":"A","Ǡ":"A","Ä":"A","Ǟ":"A","Ả":"A","Å":"A","Ǻ":"A","Ǎ":"A","Ȁ":"A","Ȃ":"A","Ạ":"A","Ậ":"A","Ặ":"A","Ḁ":"A","Ą":"A","Ⱥ":"A","Ɐ":"A","Ꜳ":"AA","Æ":"AE","Ǽ":"AE","Ǣ":"AE","Ꜵ":"AO","Ꜷ":"AU","Ꜹ":"AV","Ꜻ":"AV","Ꜽ":"AY","Ⓑ":"B","Ｂ":"B","Ḃ":"B","Ḅ":"B","Ḇ":"B","Ƀ":"B","Ƃ":"B","Ɓ":"B","Ⓒ":"C","Ｃ":"C","Ć":"C","Ĉ":"C","Ċ":"C","Č":"C","Ç":"C","Ḉ":"C","Ƈ":"C","Ȼ":"C","Ꜿ":"C","Ⓓ":"D","Ｄ":"D","Ḋ":"D","Ď":"D","Ḍ":"D","Ḑ":"D","Ḓ":"D","Ḏ":"D","Đ":"D","Ƌ":"D","Ɗ":"D","Ɖ":"D","Ꝺ":"D","Ǳ":"DZ","Ǆ":"DZ","ǲ":"Dz","ǅ":"Dz","Ⓔ":"E","Ｅ":"E","È":"E","É":"E","Ê":"E","Ề":"E","Ế":"E","Ễ":"E","Ể":"E","Ẽ":"E","Ē":"E","Ḕ":"E","Ḗ":"E","Ĕ":"E","Ė":"E","Ë":"E","Ẻ":"E","Ě":"E","Ȅ":"E","Ȇ":"E","Ẹ":"E","Ệ":"E","Ȩ":"E","Ḝ":"E","Ę":"E","Ḙ":"E","Ḛ":"E","Ɛ":"E","Ǝ":"E","Ⓕ":"F","Ｆ":"F","Ḟ":"F","Ƒ":"F","Ꝼ":"F","Ⓖ":"G","Ｇ":"G","Ǵ":"G","Ĝ":"G","Ḡ":"G","Ğ":"G","Ġ":"G","Ǧ":"G","Ģ":"G","Ǥ":"G","Ɠ":"G","Ꞡ":"G","Ᵹ":"G","Ꝿ":"G","Ⓗ":"H","Ｈ":"H","Ĥ":"H","Ḣ":"H","Ḧ":"H","Ȟ":"H","Ḥ":"H","Ḩ":"H","Ḫ":"H","Ħ":"H","Ⱨ":"H","Ⱶ":"H","Ɥ":"H","Ⓘ":"I","Ｉ":"I","Ì":"I","Í":"I","Î":"I","Ĩ":"I","Ī":"I","Ĭ":"I","İ":"I","Ï":"I","Ḯ":"I","Ỉ":"I","Ǐ":"I","Ȉ":"I","Ȋ":"I","Ị":"I","Į":"I","Ḭ":"I","Ɨ":"I","Ⓙ":"J","Ｊ":"J","Ĵ":"J","Ɉ":"J","Ⓚ":"K","Ｋ":"K","Ḱ":"K","Ǩ":"K","Ḳ":"K","Ķ":"K","Ḵ":"K","Ƙ":"K","Ⱪ":"K","Ꝁ":"K","Ꝃ":"K","Ꝅ":"K","Ꞣ":"K","Ⓛ":"L","Ｌ":"L","Ŀ":"L","Ĺ":"L","Ľ":"L","Ḷ":"L","Ḹ":"L","Ļ":"L","Ḽ":"L","Ḻ":"L","Ł":"L","Ƚ":"L","Ɫ":"L","Ⱡ":"L","Ꝉ":"L","Ꝇ":"L","Ꞁ":"L","Ǉ":"LJ","ǈ":"Lj","Ⓜ":"M","Ｍ":"M","Ḿ":"M","Ṁ":"M","Ṃ":"M","Ɱ":"M","Ɯ":"M","Ⓝ":"N","Ｎ":"N","Ǹ":"N","Ń":"N","Ñ":"N","Ṅ":"N","Ň":"N","Ṇ":"N","Ņ":"N","Ṋ":"N","Ṉ":"N","Ƞ":"N","Ɲ":"N","Ꞑ":"N","Ꞥ":"N","Ǌ":"NJ","ǋ":"Nj","Ⓞ":"O","Ｏ":"O","Ò":"O","Ó":"O","Ô":"O","Ồ":"O","Ố":"O","Ỗ":"O","Ổ":"O","Õ":"O","Ṍ":"O","Ȭ":"O","Ṏ":"O","Ō":"O","Ṑ":"O","Ṓ":"O","Ŏ":"O","Ȯ":"O","Ȱ":"O","Ö":"O","Ȫ":"O","Ỏ":"O","Ő":"O","Ǒ":"O","Ȍ":"O","Ȏ":"O","Ơ":"O","Ờ":"O","Ớ":"O","Ỡ":"O","Ở":"O","Ợ":"O","Ọ":"O","Ộ":"O","Ǫ":"O","Ǭ":"O","Ø":"O","Ǿ":"O","Ɔ":"O","Ɵ":"O","Ꝋ":"O","Ꝍ":"O","Œ":"OE","Ƣ":"OI","Ꝏ":"OO","Ȣ":"OU","Ⓟ":"P","Ｐ":"P","Ṕ":"P","Ṗ":"P","Ƥ":"P","Ᵽ":"P","Ꝑ":"P","Ꝓ":"P","Ꝕ":"P","Ⓠ":"Q","Ｑ":"Q","Ꝗ":"Q","Ꝙ":"Q","Ɋ":"Q","Ⓡ":"R","Ｒ":"R","Ŕ":"R","Ṙ":"R","Ř":"R","Ȑ":"R","Ȓ":"R","Ṛ":"R","Ṝ":"R","Ŗ":"R","Ṟ":"R","Ɍ":"R","Ɽ":"R","Ꝛ":"R","Ꞧ":"R","Ꞃ":"R","Ⓢ":"S","Ｓ":"S","ẞ":"S","Ś":"S","Ṥ":"S","Ŝ":"S","Ṡ":"S","Š":"S","Ṧ":"S","Ṣ":"S","Ṩ":"S","Ș":"S","Ş":"S","Ȿ":"S","Ꞩ":"S","Ꞅ":"S","Ⓣ":"T","Ｔ":"T","Ṫ":"T","Ť":"T","Ṭ":"T","Ț":"T","Ţ":"T","Ṱ":"T","Ṯ":"T","Ŧ":"T","Ƭ":"T","Ʈ":"T","Ⱦ":"T","Ꞇ":"T","Ꜩ":"TZ","Ⓤ":"U","Ｕ":"U","Ù":"U","Ú":"U","Û":"U","Ũ":"U","Ṹ":"U","Ū":"U","Ṻ":"U","Ŭ":"U","Ü":"U","Ǜ":"U","Ǘ":"U","Ǖ":"U","Ǚ":"U","Ủ":"U","Ů":"U","Ű":"U","Ǔ":"U","Ȕ":"U","Ȗ":"U","Ư":"U","Ừ":"U","Ứ":"U","Ữ":"U","Ử":"U","Ự":"U","Ụ":"U","Ṳ":"U","Ų":"U","Ṷ":"U","Ṵ":"U","Ʉ":"U","Ⓥ":"V","Ｖ":"V","Ṽ":"V","Ṿ":"V","Ʋ":"V","Ꝟ":"V","Ʌ":"V","Ꝡ":"VY","Ⓦ":"W","Ｗ":"W","Ẁ":"W","Ẃ":"W","Ŵ":"W","Ẇ":"W","Ẅ":"W","Ẉ":"W","Ⱳ":"W","Ⓧ":"X","Ｘ":"X","Ẋ":"X","Ẍ":"X","Ⓨ":"Y","Ｙ":"Y","Ỳ":"Y","Ý":"Y","Ŷ":"Y","Ỹ":"Y","Ȳ":"Y","Ẏ":"Y","Ÿ":"Y","Ỷ":"Y","Ỵ":"Y","Ƴ":"Y","Ɏ":"Y","Ỿ":"Y","Ⓩ":"Z","Ｚ":"Z","Ź":"Z","Ẑ":"Z","Ż":"Z","Ž":"Z","Ẓ":"Z","Ẕ":"Z","Ƶ":"Z","Ȥ":"Z","Ɀ":"Z","Ⱬ":"Z","Ꝣ":"Z","ⓐ":"a","ａ":"a","ẚ":"a","à":"a","á":"a","â":"a","ầ":"a","ấ":"a","ẫ":"a","ẩ":"a","ã":"a","ā":"a","ă":"a","ằ":"a","ắ":"a","ẵ":"a","ẳ":"a","ȧ":"a","ǡ":"a","ä":"a","ǟ":"a","ả":"a","å":"a","ǻ":"a","ǎ":"a","ȁ":"a","ȃ":"a","ạ":"a","ậ":"a","ặ":"a","ḁ":"a","ą":"a","ⱥ":"a","ɐ":"a","ꜳ":"aa","æ":"ae","ǽ":"ae","ǣ":"ae","ꜵ":"ao","ꜷ":"au","ꜹ":"av","ꜻ":"av","ꜽ":"ay","ⓑ":"b","ｂ":"b","ḃ":"b","ḅ":"b","ḇ":"b","ƀ":"b","ƃ":"b","ɓ":"b","ⓒ":"c","ｃ":"c","ć":"c","ĉ":"c","ċ":"c","č":"c","ç":"c","ḉ":"c","ƈ":"c","ȼ":"c","ꜿ":"c","ↄ":"c","ⓓ":"d","ｄ":"d","ḋ":"d","ď":"d","ḍ":"d","ḑ":"d","ḓ":"d","ḏ":"d","đ":"d","ƌ":"d","ɖ":"d","ɗ":"d","ꝺ":"d","ǳ":"dz","ǆ":"dz","ⓔ":"e","ｅ":"e","è":"e","é":"e","ê":"e","ề":"e","ế":"e","ễ":"e","ể":"e","ẽ":"e","ē":"e","ḕ":"e","ḗ":"e","ĕ":"e","ė":"e","ë":"e","ẻ":"e","ě":"e","ȅ":"e","ȇ":"e","ẹ":"e","ệ":"e","ȩ":"e","ḝ":"e","ę":"e","ḙ":"e","ḛ":"e","ɇ":"e","ɛ":"e","ǝ":"e","ⓕ":"f","ｆ":"f","ḟ":"f","ƒ":"f","ꝼ":"f","ⓖ":"g","ｇ":"g","ǵ":"g","ĝ":"g","ḡ":"g","ğ":"g","ġ":"g","ǧ":"g","ģ":"g","ǥ":"g","ɠ":"g","ꞡ":"g","ᵹ":"g","ꝿ":"g","ⓗ":"h","ｈ":"h","ĥ":"h","ḣ":"h","ḧ":"h","ȟ":"h","ḥ":"h","ḩ":"h","ḫ":"h","ẖ":"h","ħ":"h","ⱨ":"h","ⱶ":"h","ɥ":"h","ƕ":"hv","ⓘ":"i","ｉ":"i","ì":"i","í":"i","î":"i","ĩ":"i","ī":"i","ĭ":"i","ï":"i","ḯ":"i","ỉ":"i","ǐ":"i","ȉ":"i","ȋ":"i","ị":"i","į":"i","ḭ":"i","ɨ":"i","ı":"i","ⓙ":"j","ｊ":"j","ĵ":"j","ǰ":"j","ɉ":"j","ⓚ":"k","ｋ":"k","ḱ":"k","ǩ":"k","ḳ":"k","ķ":"k","ḵ":"k","ƙ":"k","ⱪ":"k","ꝁ":"k","ꝃ":"k","ꝅ":"k","ꞣ":"k","ⓛ":"l","ｌ":"l","ŀ":"l","ĺ":"l","ľ":"l","ḷ":"l","ḹ":"l","ļ":"l","ḽ":"l","ḻ":"l","ſ":"l","ł":"l","ƚ":"l","ɫ":"l","ⱡ":"l","ꝉ":"l","ꞁ":"l","ꝇ":"l","ǉ":"lj","ⓜ":"m","ｍ":"m","ḿ":"m","ṁ":"m","ṃ":"m","ɱ":"m","ɯ":"m","ⓝ":"n","ｎ":"n","ǹ":"n","ń":"n","ñ":"n","ṅ":"n","ň":"n","ṇ":"n","ņ":"n","ṋ":"n","ṉ":"n","ƞ":"n","ɲ":"n","ŉ":"n","ꞑ":"n","ꞥ":"n","ǌ":"nj","ⓞ":"o","ｏ":"o","ò":"o","ó":"o","ô":"o","ồ":"o","ố":"o","ỗ":"o","ổ":"o","õ":"o","ṍ":"o","ȭ":"o","ṏ":"o","ō":"o","ṑ":"o","ṓ":"o","ŏ":"o","ȯ":"o","ȱ":"o","ö":"o","ȫ":"o","ỏ":"o","ő":"o","ǒ":"o","ȍ":"o","ȏ":"o","ơ":"o","ờ":"o","ớ":"o","ỡ":"o","ở":"o","ợ":"o","ọ":"o","ộ":"o","ǫ":"o","ǭ":"o","ø":"o","ǿ":"o","ɔ":"o","ꝋ":"o","ꝍ":"o","ɵ":"o","œ":"oe","ƣ":"oi","ȣ":"ou","ꝏ":"oo","ⓟ":"p","ｐ":"p","ṕ":"p","ṗ":"p","ƥ":"p","ᵽ":"p","ꝑ":"p","ꝓ":"p","ꝕ":"p","ⓠ":"q","ｑ":"q","ɋ":"q","ꝗ":"q","ꝙ":"q","ⓡ":"r","ｒ":"r","ŕ":"r","ṙ":"r","ř":"r","ȑ":"r","ȓ":"r","ṛ":"r","ṝ":"r","ŗ":"r","ṟ":"r","ɍ":"r","ɽ":"r","ꝛ":"r","ꞧ":"r","ꞃ":"r","ⓢ":"s","ｓ":"s","ß":"s","ś":"s","ṥ":"s","ŝ":"s","ṡ":"s","š":"s","ṧ":"s","ṣ":"s","ṩ":"s","ș":"s","ş":"s","ȿ":"s","ꞩ":"s","ꞅ":"s","ẛ":"s","ⓣ":"t","ｔ":"t","ṫ":"t","ẗ":"t","ť":"t","ṭ":"t","ț":"t","ţ":"t","ṱ":"t","ṯ":"t","ŧ":"t","ƭ":"t","ʈ":"t","ⱦ":"t","ꞇ":"t","ꜩ":"tz","ⓤ":"u","ｕ":"u","ù":"u","ú":"u","û":"u","ũ":"u","ṹ":"u","ū":"u","ṻ":"u","ŭ":"u","ü":"u","ǜ":"u","ǘ":"u","ǖ":"u","ǚ":"u","ủ":"u","ů":"u","ű":"u","ǔ":"u","ȕ":"u","ȗ":"u","ư":"u","ừ":"u","ứ":"u","ữ":"u","ử":"u","ự":"u","ụ":"u","ṳ":"u","ų":"u","ṷ":"u","ṵ":"u","ʉ":"u","ⓥ":"v","ｖ":"v","ṽ":"v","ṿ":"v","ʋ":"v","ꝟ":"v","ʌ":"v","ꝡ":"vy","ⓦ":"w","ｗ":"w","ẁ":"w","ẃ":"w","ŵ":"w","ẇ":"w","ẅ":"w","ẘ":"w","ẉ":"w","ⱳ":"w","ⓧ":"x","ｘ":"x","ẋ":"x","ẍ":"x","ⓨ":"y","ｙ":"y","ỳ":"y","ý":"y","ŷ":"y","ỹ":"y","ȳ":"y","ẏ":"y","ÿ":"y","ỷ":"y","ẙ":"y","ỵ":"y","ƴ":"y","ɏ":"y","ỿ":"y","ⓩ":"z","ｚ":"z","ź":"z","ẑ":"z","ż":"z","ž":"z","ẓ":"z","ẕ":"z","ƶ":"z","ȥ":"z","ɀ":"z","ⱬ":"z","ꝣ":"z","Ά":"Α","Έ":"Ε","Ή":"Η","Ί":"Ι","Ϊ":"Ι","Ό":"Ο","Ύ":"Υ","Ϋ":"Υ","Ώ":"Ω","ά":"α","έ":"ε","ή":"η","ί":"ι","ϊ":"ι","ΐ":"ι","ό":"ο","ύ":"υ","ϋ":"υ","ΰ":"υ","ώ":"ω","ς":"σ","’":"'"}})),t.define("select2/data/base",["../utils"],(function(e){function t(e,n){t.__super__.constructor.call(this)}return e.Extend(t,e.Observable),t.prototype.current=function(e){throw new Error("The `current` method must be defined in child classes.")},t.prototype.query=function(e,t){throw new Error("The `query` method must be defined in child classes.")},t.prototype.bind=function(e,t){},t.prototype.destroy=function(){},t.prototype.generateResultId=function(t,n){var o=t.id+"-result-";return o+=e.generateChars(4),null!=n.id?o+="-"+n.id.toString():o+="-"+e.generateChars(4),o},t})),t.define("select2/data/select",["./base","../utils","jquery"],(function(e,t,n){function o(e,t){this.$element=e,this.options=t,o.__super__.constructor.call(this)}return t.Extend(o,e),o.prototype.current=function(e){var t=this;e(Array.prototype.map.call(this.$element[0].querySelectorAll(":checked"),(function(e){return t.item(n(e))})))},o.prototype.select=function(e){var t=this;if(e.selected=!0,null!=e.element&&"option"===e.element.tagName.toLowerCase())return e.element.selected=!0,void this.$element.trigger("input").trigger("change");if(this.$element.prop("multiple"))this.current((function(n){var o=[];(e=[e]).push.apply(e,n);for(var i=0;i<e.length;i++){var s=e[i].id;-1===o.indexOf(s)&&o.push(s)}t.$element.val(o),t.$element.trigger("input").trigger("change")}));else{var n=e.id;this.$element.val(n),this.$element.trigger("input").trigger("change")}},o.prototype.unselect=function(e){var t=this;if(this.$element.prop("multiple")){if(e.selected=!1,null!=e.element&&"option"===e.element.tagName.toLowerCase())return e.element.selected=!1,void this.$element.trigger("input").trigger("change");this.current((function(n){for(var o=[],i=0;i<n.length;i++){var s=n[i].id;s!==e.id&&-1===o.indexOf(s)&&o.push(s)}t.$element.val(o),t.$element.trigger("input").trigger("change")}))}},o.prototype.bind=function(e,t){var n=this;this.container=e,e.on("select",(function(e){n.select(e.data)})),e.on("unselect",(function(e){n.unselect(e.data)}))},o.prototype.destroy=function(){this.$element.find("*").each((function(){t.RemoveData(this)}))},o.prototype.query=function(e,t){var o=[],i=this;this.$element.children().each((function(){if("option"===this.tagName.toLowerCase()||"optgroup"===this.tagName.toLowerCase()){var t=n(this),s=i.item(t),r=i.matches(e,s);null!==r&&o.push(r)}})),t({results:o})},o.prototype.addOptions=function(e){this.$element.append(e)},o.prototype.option=function(e){var o;e.children?(o=document.createElement("optgroup")).label=e.text:void 0!==(o=document.createElement("option")).textContent?o.textContent=e.text:o.innerText=e.text,void 0!==e.id&&(o.value=e.id),e.disabled&&(o.disabled=!0),e.selected&&(o.selected=!0),e.title&&(o.title=e.title);var i=this._normalizeItem(e);return i.element=o,t.StoreData(o,"data",i),n(o)},o.prototype.item=function(e){var o={};if(null!=(o=t.GetData(e[0],"data")))return o;var i=e[0];if("option"===i.tagName.toLowerCase())o={id:e.val(),text:e.text(),disabled:e.prop("disabled"),selected:e.prop("selected"),title:e.prop("title")};else if("optgroup"===i.tagName.toLowerCase()){o={text:e.prop("label"),children:[],title:e.prop("title")};for(var s=e.children("option"),r=[],a=0;a<s.length;a++){var l=n(s[a]),c=this.item(l);r.push(c)}o.children=r}return(o=this._normalizeItem(o)).element=e[0],t.StoreData(e[0],"data",o),o},o.prototype._normalizeItem=function(e){return e!==Object(e)&&(e={id:e,text:e}),null!=(e=n.extend({},{text:""},e)).id&&(e.id=e.id.toString()),null!=e.text&&(e.text=e.text.toString()),null==e._resultId&&e.id&&null!=this.container&&(e._resultId=this.generateResultId(this.container,e)),n.extend({},{selected:!1,disabled:!1},e)},o.prototype.matches=function(e,t){return this.options.get("matcher")(e,t)},o})),t.define("select2/data/array",["./select","../utils","jquery"],(function(e,t,n){function o(e,t){this._dataToConvert=t.get("data")||[],o.__super__.constructor.call(this,e,t)}return t.Extend(o,e),o.prototype.bind=function(e,t){o.__super__.bind.call(this,e,t),this.addOptions(this.convertToOptions(this._dataToConvert))},o.prototype.select=function(e){var t=this.$element.find("option").filter((function(t,n){return n.value==e.id.toString()}));0===t.length&&(t=this.option(e),this.addOptions(t)),o.__super__.select.call(this,e)},o.prototype.convertToOptions=function(e){var t=this,o=this.$element.find("option"),i=o.map((function(){return t.item(n(this)).id})).get(),s=[];function r(e){return function(){return n(this).val()==e.id}}for(var a=0;a<e.length;a++){var l=this._normalizeItem(e[a]);if(i.indexOf(l.id)>=0){var c=o.filter(r(l)),u=this.item(c),d=n.extend(!0,{},l,u),p=this.option(d);c.replaceWith(p)}else{var h=this.option(l);if(l.children){var f=this.convertToOptions(l.children);h.append(f)}s.push(h)}}return s},o})),t.define("select2/data/ajax",["./array","../utils","jquery"],(function(e,t,n){function o(e,t){this.ajaxOptions=this._applyDefaults(t.get("ajax")),null!=this.ajaxOptions.processResults&&(this.processResults=this.ajaxOptions.processResults),o.__super__.constructor.call(this,e,t)}return t.Extend(o,e),o.prototype._applyDefaults=function(e){var t={data:function(e){return n.extend({},e,{q:e.term})},transport:function(e,t,o){var i=n.ajax(e);return i.then(t),i.fail(o),i}};return n.extend({},t,e,!0)},o.prototype.processResults=function(e){return e},o.prototype.query=function(e,t){var o=this;null!=this._request&&("function"==typeof this._request.abort&&this._request.abort(),this._request=null);var i=n.extend({type:"GET"},this.ajaxOptions);function s(){var n=i.transport(i,(function(n){var i=o.processResults(n,e);o.options.get("debug")&&window.console&&console.error&&(i&&i.results&&Array.isArray(i.results)||console.error("Select2: The AJAX results did not return an array in the `results` key of the response.")),t(i)}),(function(){(!("status"in n)||0!==n.status&&"0"!==n.status)&&o.trigger("results:message",{message:"errorLoading"})}));o._request=n}"function"==typeof i.url&&(i.url=i.url.call(this.$element,e)),"function"==typeof i.data&&(i.data=i.data.call(this.$element,e)),this.ajaxOptions.delay&&null!=e.term?(this._queryTimeout&&window.clearTimeout(this._queryTimeout),this._queryTimeout=window.setTimeout(s,this.ajaxOptions.delay)):s()},o})),t.define("select2/data/tags",["jquery"],(function(e){function t(e,t,n){var o=n.get("tags"),i=n.get("createTag");void 0!==i&&(this.createTag=i);var s=n.get("insertTag");if(void 0!==s&&(this.insertTag=s),e.call(this,t,n),Array.isArray(o))for(var r=0;r<o.length;r++){var a=o[r],l=this._normalizeItem(a),c=this.option(l);this.$element.append(c)}}return t.prototype.query=function(e,t,n){var o=this;this._removeOldTags(),null!=t.term&&null==t.page?e.call(this,t,(function e(i,s){for(var r=i.results,a=0;a<r.length;a++){var l=r[a],c=null!=l.children&&!e({results:l.children},!0);if((l.text||"").toUpperCase()===(t.term||"").toUpperCase()||c)return!s&&(i.data=r,void n(i))}if(s)return!0;var u=o.createTag(t);if(null!=u){var d=o.option(u);d.attr("data-select2-tag","true"),o.addOptions([d]),o.insertTag(r,u)}i.results=r,n(i)})):e.call(this,t,n)},t.prototype.createTag=function(e,t){if(null==t.term)return null;var n=t.term.trim();return""===n?null:{id:n,text:n}},t.prototype.insertTag=function(e,t,n){t.unshift(n)},t.prototype._removeOldTags=function(t){this.$element.find("option[data-select2-tag]").each((function(){this.selected||e(this).remove()}))},t})),t.define("select2/data/tokenizer",["jquery"],(function(e){function t(e,t,n){var o=n.get("tokenizer");void 0!==o&&(this.tokenizer=o),e.call(this,t,n)}return t.prototype.bind=function(e,t,n){e.call(this,t,n),this.$search=t.dropdown.$search||t.selection.$search||n.find(".select2-search__field")},t.prototype.query=function(t,n,o){var i=this;n.term=n.term||"";var s=this.tokenizer(n,this.options,(function(t){var n=i._normalizeItem(t);if(!i.$element.find("option").filter((function(){return e(this).val()===n.id})).length){var o=i.option(n);o.attr("data-select2-tag",!0),i._removeOldTags(),i.addOptions([o])}!function(e){i.trigger("select",{data:e})}(n)}));s.term!==n.term&&(this.$search.length&&(this.$search.val(s.term),this.$search.trigger("focus")),n.term=s.term),t.call(this,n,o)},t.prototype.tokenizer=function(t,n,o,i){for(var s=o.get("tokenSeparators")||[],r=n.term,a=0,l=this.createTag||function(e){return{id:e.term,text:e.term}};a<r.length;){var c=r[a];if(-1!==s.indexOf(c)){var u=r.substr(0,a),d=l(e.extend({},n,{term:u}));null!=d?(i(d),r=r.substr(a+1)||"",a=0):a++}else a++}return{term:r}},t})),t.define("select2/data/minimumInputLength",[],(function(){function e(e,t,n){this.minimumInputLength=n.get("minimumInputLength"),e.call(this,t,n)}return e.prototype.query=function(e,t,n){t.term=t.term||"",t.term.length<this.minimumInputLength?this.trigger("results:message",{message:"inputTooShort",args:{minimum:this.minimumInputLength,input:t.term,params:t}}):e.call(this,t,n)},e})),t.define("select2/data/maximumInputLength",[],(function(){function e(e,t,n){this.maximumInputLength=n.get("maximumInputLength"),e.call(this,t,n)}return e.prototype.query=function(e,t,n){t.term=t.term||"",this.maximumInputLength>0&&t.term.length>this.maximumInputLength?this.trigger("results:message",{message:"inputTooLong",args:{maximum:this.maximumInputLength,input:t.term,params:t}}):e.call(this,t,n)},e})),t.define("select2/data/maximumSelectionLength",[],(function(){function e(e,t,n){this.maximumSelectionLength=n.get("maximumSelectionLength"),e.call(this,t,n)}return e.prototype.bind=function(e,t,n){var o=this;e.call(this,t,n),t.on("select",(function(){o._checkIfMaximumSelected()}))},e.prototype.query=function(e,t,n){var o=this;this._checkIfMaximumSelected((function(){e.call(o,t,n)}))},e.prototype._checkIfMaximumSelected=function(e,t){var n=this;this.current((function(e){var o=null!=e?e.length:0;n.maximumSelectionLength>0&&o>=n.maximumSelectionLength?n.trigger("results:message",{message:"maximumSelected",args:{maximum:n.maximumSelectionLength}}):t&&t()}))},e})),t.define("select2/dropdown",["jquery","./utils"],(function(e,t){function n(e,t){this.$element=e,this.options=t,n.__super__.constructor.call(this)}return t.Extend(n,t.Observable),n.prototype.render=function(){var t=e('<span class="select2-dropdown"><span class="select2-results"></span></span>');return t.attr("dir",this.options.get("dir")),this.$dropdown=t,t},n.prototype.bind=function(){},n.prototype.position=function(e,t){},n.prototype.destroy=function(){this.$dropdown.remove()},n})),t.define("select2/dropdown/search",["jquery"],(function(e){function t(){}return t.prototype.render=function(t){var n=t.call(this),o=this.options.get("translations").get("search"),i=e('<span class="select2-search select2-search--dropdown"><input class="select2-search__field" type="search" tabindex="-1" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" /></span>');return this.$searchContainer=i,this.$search=i.find("input"),this.$search.prop("autocomplete",this.options.get("autocomplete")),this.$search.attr("aria-label",o()),n.prepend(i),n},t.prototype.bind=function(t,n,o){var i=this,s=n.id+"-results";t.call(this,n,o),this.$search.on("keydown",(function(e){i.trigger("keypress",e),i._keyUpPrevented=e.isDefaultPrevented()})),this.$search.on("input",(function(t){e(this).off("keyup")})),this.$search.on("keyup input",(function(e){i.handleSearch(e)})),n.on("open",(function(){i.$search.attr("tabindex",0),i.$search.attr("aria-controls",s),i.$search.trigger("focus"),window.setTimeout((function(){i.$search.trigger("focus")}),0)})),n.on("close",(function(){i.$search.attr("tabindex",-1),i.$search.removeAttr("aria-controls"),i.$search.removeAttr("aria-activedescendant"),i.$search.val(""),i.$search.trigger("blur")})),n.on("focus",(function(){n.isOpen()||i.$search.trigger("focus")})),n.on("results:all",(function(e){null!=e.query.term&&""!==e.query.term||(i.showSearch(e)?i.$searchContainer[0].classList.remove("select2-search--hide"):i.$searchContainer[0].classList.add("select2-search--hide"))})),n.on("results:focus",(function(e){e.data._resultId?i.$search.attr("aria-activedescendant",e.data._resultId):i.$search.removeAttr("aria-activedescendant")}))},t.prototype.handleSearch=function(e){if(!this._keyUpPrevented){var t=this.$search.val();this.trigger("query",{term:t})}this._keyUpPrevented=!1},t.prototype.showSearch=function(e,t){return!0},t})),t.define("select2/dropdown/hidePlaceholder",[],(function(){function e(e,t,n,o){this.placeholder=this.normalizePlaceholder(n.get("placeholder")),e.call(this,t,n,o)}return e.prototype.append=function(e,t){t.results=this.removePlaceholder(t.results),e.call(this,t)},e.prototype.normalizePlaceholder=function(e,t){return"string"==typeof t&&(t={id:"",text:t}),t},e.prototype.removePlaceholder=function(e,t){for(var n=t.slice(0),o=t.length-1;o>=0;o--){var i=t[o];this.placeholder.id===i.id&&n.splice(o,1)}return n},e})),t.define("select2/dropdown/infiniteScroll",["jquery"],(function(e){function t(e,t,n,o){this.lastParams={},e.call(this,t,n,o),this.$loadingMore=this.createLoadingMore(),this.loading=!1}return t.prototype.append=function(e,t){this.$loadingMore.remove(),this.loading=!1,e.call(this,t),this.showLoadingMore(t)&&(this.$results.append(this.$loadingMore),this.loadMoreIfNeeded())},t.prototype.bind=function(e,t,n){var o=this;e.call(this,t,n),t.on("query",(function(e){o.lastParams=e,o.loading=!0})),t.on("query:append",(function(e){o.lastParams=e,o.loading=!0})),this.$results.on("scroll",this.loadMoreIfNeeded.bind(this))},t.prototype.loadMoreIfNeeded=function(){var t=e.contains(document.documentElement,this.$loadingMore[0]);!this.loading&&t&&this.$results.offset().top+this.$results.outerHeight(!1)+50>=this.$loadingMore.offset().top+this.$loadingMore.outerHeight(!1)&&this.loadMore()},t.prototype.loadMore=function(){this.loading=!0;var t=e.extend({},{page:1},this.lastParams);t.page++,this.trigger("query:append",t)},t.prototype.showLoadingMore=function(e,t){return t.pagination&&t.pagination.more},t.prototype.createLoadingMore=function(){var t=e('<li class="select2-results__option select2-results__option--load-more"role="option" aria-disabled="true"></li>'),n=this.options.get("translations").get("loadingMore");return t.html(n(this.lastParams)),t},t})),t.define("select2/dropdown/attachBody",["jquery","../utils"],(function(e,t){function n(t,n,o){this.$dropdownParent=e(o.get("dropdownParent")||document.body),t.call(this,n,o)}return n.prototype.bind=function(e,t,n){var o=this;e.call(this,t,n),t.on("open",(function(){o._showDropdown(),o._attachPositioningHandler(t),o._bindContainerResultHandlers(t)})),t.on("close",(function(){o._hideDropdown(),o._detachPositioningHandler(t)})),this.$dropdownContainer.on("mousedown",(function(e){e.stopPropagation()}))},n.prototype.destroy=function(e){e.call(this),this.$dropdownContainer.remove()},n.prototype.position=function(e,t,n){t.attr("class",n.attr("class")),t[0].classList.remove("select2"),t[0].classList.add("select2-container--open"),t.css({position:"absolute",top:-999999}),this.$container=n},n.prototype.render=function(t){var n=e("<span></span>"),o=t.call(this);return n.append(o),this.$dropdownContainer=n,n},n.prototype._hideDropdown=function(e){this.$dropdownContainer.detach()},n.prototype._bindContainerResultHandlers=function(e,t){if(!this._containerResultsHandlersBound){var n=this;t.on("results:all",(function(){n._positionDropdown(),n._resizeDropdown()})),t.on("results:append",(function(){n._positionDropdown(),n._resizeDropdown()})),t.on("results:message",(function(){n._positionDropdown(),n._resizeDropdown()})),t.on("select",(function(){n._positionDropdown(),n._resizeDropdown()})),t.on("unselect",(function(){n._positionDropdown(),n._resizeDropdown()})),this._containerResultsHandlersBound=!0}},n.prototype._attachPositioningHandler=function(n,o){var i=this,s="scroll.select2."+o.id,r="resize.select2."+o.id,a="orientationchange.select2."+o.id,l=this.$container.parents().filter(t.hasScroll);l.each((function(){t.StoreData(this,"select2-scroll-position",{x:e(this).scrollLeft(),y:e(this).scrollTop()})})),l.on(s,(function(n){var o=t.GetData(this,"select2-scroll-position");e(this).scrollTop(o.y)})),e(window).on(s+" "+r+" "+a,(function(e){i._positionDropdown(),i._resizeDropdown()}))},n.prototype._detachPositioningHandler=function(n,o){var i="scroll.select2."+o.id,s="resize.select2."+o.id,r="orientationchange.select2."+o.id;this.$container.parents().filter(t.hasScroll).off(i),e(window).off(i+" "+s+" "+r)},n.prototype._positionDropdown=function(){var t=e(window),n=this.$dropdown[0].classList.contains("select2-dropdown--above"),o=this.$dropdown[0].classList.contains("select2-dropdown--below"),i=null,s=this.$container.offset();s.bottom=s.top+this.$container.outerHeight(!1);var r={height:this.$container.outerHeight(!1)};r.top=s.top,r.bottom=s.top+r.height;var a=this.$dropdown.outerHeight(!1),l=t.scrollTop(),c=t.scrollTop()+t.height(),u=l<s.top-a,d=c>s.bottom+a,p={left:s.left,top:r.bottom},h=this.$dropdownParent;"static"===h.css("position")&&(h=h.offsetParent());var f={top:0,left:0};(e.contains(document.body,h[0])||h[0].isConnected)&&(f=h.offset()),p.top-=f.top,p.left-=f.left,n||o||(i="below"),d||!u||n?!u&&d&&n&&(i="below"):i="above",("above"==i||n&&"below"!==i)&&(p.top=r.top-f.top-a),null!=i&&(this.$dropdown[0].classList.remove("select2-dropdown--below"),this.$dropdown[0].classList.remove("select2-dropdown--above"),this.$dropdown[0].classList.add("select2-dropdown--"+i),this.$container[0].classList.remove("select2-container--below"),this.$container[0].classList.remove("select2-container--above"),this.$container[0].classList.add("select2-container--"+i)),this.$dropdownContainer.css(p)},n.prototype._resizeDropdown=function(){var e={width:this.$container.outerWidth(!1)+"px"};this.options.get("dropdownAutoWidth")&&(e.minWidth=e.width,e.position="relative",e.width="auto"),this.$dropdown.css(e)},n.prototype._showDropdown=function(e){this.$dropdownContainer.appendTo(this.$dropdownParent),this._positionDropdown(),this._resizeDropdown()},n})),t.define("select2/dropdown/minimumResultsForSearch",[],(function(){function e(t){for(var n=0,o=0;o<t.length;o++){var i=t[o];i.children?n+=e(i.children):n++}return n}function t(e,t,n,o){this.minimumResultsForSearch=n.get("minimumResultsForSearch"),this.minimumResultsForSearch<0&&(this.minimumResultsForSearch=1/0),e.call(this,t,n,o)}return t.prototype.showSearch=function(t,n){return!(e(n.data.results)<this.minimumResultsForSearch)&&t.call(this,n)},t})),t.define("select2/dropdown/selectOnClose",["../utils"],(function(e){function t(){}return t.prototype.bind=function(e,t,n){var o=this;e.call(this,t,n),t.on("close",(function(e){o._handleSelectOnClose(e)}))},t.prototype._handleSelectOnClose=function(t,n){if(n&&null!=n.originalSelect2Event){var o=n.originalSelect2Event;if("select"===o._type||"unselect"===o._type)return}var i=this.getHighlightedResults();if(!(i.length<1)){var s=e.GetData(i[0],"data");null!=s.element&&s.element.selected||null==s.element&&s.selected||this.trigger("select",{data:s})}},t})),t.define("select2/dropdown/closeOnSelect",[],(function(){function e(){}return e.prototype.bind=function(e,t,n){var o=this;e.call(this,t,n),t.on("select",(function(e){o._selectTriggered(e)})),t.on("unselect",(function(e){o._selectTriggered(e)}))},e.prototype._selectTriggered=function(e,t){var n=t.originalEvent;n&&(n.ctrlKey||n.metaKey)||this.trigger("close",{originalEvent:n,originalSelect2Event:t})},e})),t.define("select2/dropdown/dropdownCss",["../utils"],(function(e){function t(){}return t.prototype.render=function(t){var n=t.call(this),o=this.options.get("dropdownCssClass")||"";return-1!==o.indexOf(":all:")&&(o=o.replace(":all:",""),e.copyNonInternalCssClasses(n[0],this.$element[0])),n.addClass(o),n},t})),t.define("select2/dropdown/tagsSearchHighlight",["../utils"],(function(e){function t(){}return t.prototype.highlightFirstItem=function(t){var n=this.$results.find(".select2-results__option--selectable:not(.select2-results__option--selected)");if(n.length>0){var o=n.first(),i=e.GetData(o[0],"data").element;if(i&&i.getAttribute&&"true"===i.getAttribute("data-select2-tag"))return void o.trigger("mouseenter")}t.call(this)},t})),t.define("select2/i18n/en",[],(function(){return{errorLoading:function(){return"The results could not be loaded."},inputTooLong:function(e){var t=e.input.length-e.maximum,n="Please delete "+t+" character";return 1!=t&&(n+="s"),n},inputTooShort:function(e){return"Please enter "+(e.minimum-e.input.length)+" or more characters"},loadingMore:function(){return"Loading more results…"},maximumSelected:function(e){var t="You can only select "+e.maximum+" item";return 1!=e.maximum&&(t+="s"),t},noResults:function(){return"No results found"},searching:function(){return"Searching…"},removeAllItems:function(){return"Remove all items"},removeItem:function(){return"Remove item"},search:function(){return"Search"}}})),t.define("select2/defaults",["jquery","./results","./selection/single","./selection/multiple","./selection/placeholder","./selection/allowClear","./selection/search","./selection/selectionCss","./selection/eventRelay","./utils","./translation","./diacritics","./data/select","./data/array","./data/ajax","./data/tags","./data/tokenizer","./data/minimumInputLength","./data/maximumInputLength","./data/maximumSelectionLength","./dropdown","./dropdown/search","./dropdown/hidePlaceholder","./dropdown/infiniteScroll","./dropdown/attachBody","./dropdown/minimumResultsForSearch","./dropdown/selectOnClose","./dropdown/closeOnSelect","./dropdown/dropdownCss","./dropdown/tagsSearchHighlight","./i18n/en"],(function(e,t,n,o,i,s,r,a,l,c,u,d,p,h,f,g,m,y,v,_,w,b,$,x,A,D,S,O,C,L,E){function T(){this.reset()}return T.prototype.apply=function(u){if(null==(u=e.extend(!0,{},this.defaults,u)).dataAdapter&&(null!=u.ajax?u.dataAdapter=f:null!=u.data?u.dataAdapter=h:u.dataAdapter=p,u.minimumInputLength>0&&(u.dataAdapter=c.Decorate(u.dataAdapter,y)),u.maximumInputLength>0&&(u.dataAdapter=c.Decorate(u.dataAdapter,v)),u.maximumSelectionLength>0&&(u.dataAdapter=c.Decorate(u.dataAdapter,_)),u.tags&&(u.dataAdapter=c.Decorate(u.dataAdapter,g)),null==u.tokenSeparators&&null==u.tokenizer||(u.dataAdapter=c.Decorate(u.dataAdapter,m))),null==u.resultsAdapter&&(u.resultsAdapter=t,null!=u.ajax&&(u.resultsAdapter=c.Decorate(u.resultsAdapter,x)),null!=u.placeholder&&(u.resultsAdapter=c.Decorate(u.resultsAdapter,$)),u.selectOnClose&&(u.resultsAdapter=c.Decorate(u.resultsAdapter,S)),u.tags&&(u.resultsAdapter=c.Decorate(u.resultsAdapter,L))),null==u.dropdownAdapter){if(u.multiple)u.dropdownAdapter=w;else{var d=c.Decorate(w,b);u.dropdownAdapter=d}0!==u.minimumResultsForSearch&&(u.dropdownAdapter=c.Decorate(u.dropdownAdapter,D)),u.closeOnSelect&&(u.dropdownAdapter=c.Decorate(u.dropdownAdapter,O)),null!=u.dropdownCssClass&&(u.dropdownAdapter=c.Decorate(u.dropdownAdapter,C)),u.dropdownAdapter=c.Decorate(u.dropdownAdapter,A)}null==u.selectionAdapter&&(u.multiple?u.selectionAdapter=o:u.selectionAdapter=n,null!=u.placeholder&&(u.selectionAdapter=c.Decorate(u.selectionAdapter,i)),u.allowClear&&(u.selectionAdapter=c.Decorate(u.selectionAdapter,s)),u.multiple&&(u.selectionAdapter=c.Decorate(u.selectionAdapter,r)),null!=u.selectionCssClass&&(u.selectionAdapter=c.Decorate(u.selectionAdapter,a)),u.selectionAdapter=c.Decorate(u.selectionAdapter,l)),u.language=this._resolveLanguage(u.language),u.language.push("en");for(var E=[],T=0;T<u.language.length;T++){var k=u.language[T];-1===E.indexOf(k)&&E.push(k)}return u.language=E,u.translations=this._processTranslations(u.language,u.debug),u},T.prototype.reset=function(){function t(e){return e.replace(/[^\u0000-\u007E]/g,(function(e){return d[e]||e}))}this.defaults={amdLanguageBase:"./i18n/",autocomplete:"off",closeOnSelect:!0,debug:!1,dropdownAutoWidth:!1,escapeMarkup:c.escapeMarkup,language:{},matcher:function n(o,i){if(null==o.term||""===o.term.trim())return i;if(i.children&&i.children.length>0){for(var s=e.extend(!0,{},i),r=i.children.length-1;r>=0;r--)null==n(o,i.children[r])&&s.children.splice(r,1);return s.children.length>0?s:n(o,s)}var a=t(i.text).toUpperCase(),l=t(o.term).toUpperCase();return a.indexOf(l)>-1?i:null},minimumInputLength:0,maximumInputLength:0,maximumSelectionLength:0,minimumResultsForSearch:0,selectOnClose:!1,scrollAfterSelect:!1,sorter:function(e){return e},templateResult:function(e){return e.text},templateSelection:function(e){return e.text},theme:"default",width:"resolve"}},T.prototype.applyFromElement=function(e,t){var n=e.language,o=this.defaults.language,i=t.prop("lang"),s=t.closest("[lang]").prop("lang"),r=Array.prototype.concat.call(this._resolveLanguage(i),this._resolveLanguage(n),this._resolveLanguage(o),this._resolveLanguage(s));return e.language=r,e},T.prototype._resolveLanguage=function(t){if(!t)return[];if(e.isEmptyObject(t))return[];if(e.isPlainObject(t))return[t];var n;n=Array.isArray(t)?t:[t];for(var o=[],i=0;i<n.length;i++)if(o.push(n[i]),"string"==typeof n[i]&&n[i].indexOf("-")>0){var s=n[i].split("-")[0];o.push(s)}return o},T.prototype._processTranslations=function(t,n){for(var o=new u,i=0;i<t.length;i++){var s=new u,r=t[i];if("string"==typeof r)try{s=u.loadPath(r)}catch(a){try{r=this.defaults.amdLanguageBase+r,s=u.loadPath(r)}catch(l){n&&window.console&&console.warn&&console.warn('Select2: The language file for "'+r+'" could not be automatically loaded. A fallback will be used instead.')}}else s=e.isPlainObject(r)?new u(r):r;o.extend(s)}return o},T.prototype.set=function(t,n){var o={};o[e.camelCase(t)]=n;var i=c._convertData(o);e.extend(!0,this.defaults,i)},new T})),t.define("select2/options",["jquery","./defaults","./utils"],(function(e,t,n){function o(e,n){this.options=e,null!=n&&this.fromElement(n),null!=n&&(this.options=t.applyFromElement(this.options,n)),this.options=t.apply(this.options)}return o.prototype.fromElement=function(t){var o=["select2"];null==this.options.multiple&&(this.options.multiple=t.prop("multiple")),null==this.options.disabled&&(this.options.disabled=t.prop("disabled")),null==this.options.autocomplete&&t.prop("autocomplete")&&(this.options.autocomplete=t.prop("autocomplete")),null==this.options.dir&&(t.prop("dir")?this.options.dir=t.prop("dir"):t.closest("[dir]").prop("dir")?this.options.dir=t.closest("[dir]").prop("dir"):this.options.dir="ltr"),t.prop("disabled",this.options.disabled),t.prop("multiple",this.options.multiple),n.GetData(t[0],"select2Tags")&&(this.options.debug&&window.console&&console.warn&&console.warn('Select2: The `data-select2-tags` attribute has been changed to use the `data-data` and `data-tags="true"` attributes and will be removed in future versions of Select2.'),n.StoreData(t[0],"data",n.GetData(t[0],"select2Tags")),n.StoreData(t[0],"tags",!0)),n.GetData(t[0],"ajaxUrl")&&(this.options.debug&&window.console&&console.warn&&console.warn("Select2: The `data-ajax-url` attribute has been changed to `data-ajax--url` and support for the old attribute will be removed in future versions of Select2."),t.attr("ajax--url",n.GetData(t[0],"ajaxUrl")),n.StoreData(t[0],"ajax-Url",n.GetData(t[0],"ajaxUrl")));var i={};function s(e,t){return t.toUpperCase()}for(var r=0;r<t[0].attributes.length;r++){var a=t[0].attributes[r].name,l="data-";if(a.substr(0,5)==l){var c=a.substring(5),u=n.GetData(t[0],c);i[c.replace(/-([a-z])/g,s)]=u}}e.fn.jquery&&"1."==e.fn.jquery.substr(0,2)&&t[0].dataset&&(i=e.extend(!0,{},t[0].dataset,i));var d=e.extend(!0,{},n.GetData(t[0]),i);for(var p in d=n._convertData(d))o.indexOf(p)>-1||(e.isPlainObject(this.options[p])?e.extend(this.options[p],d[p]):this.options[p]=d[p]);return this},o.prototype.get=function(e){return this.options[e]},o.prototype.set=function(e,t){this.options[e]=t},o})),t.define("select2/core",["jquery","./options","./utils","./keys"],(function(e,t,n,o){var i=function(e,o){null!=n.GetData(e[0],"select2")&&n.GetData(e[0],"select2").destroy(),this.$element=e,this.id=this._generateId(e),o=o||{},this.options=new t(o,e),i.__super__.constructor.call(this);var s=e.attr("tabindex")||0;n.StoreData(e[0],"old-tabindex",s),e.attr("tabindex","-1");var r=this.options.get("dataAdapter");this.dataAdapter=new r(e,this.options);var a=this.render();this._placeContainer(a);var l=this.options.get("selectionAdapter");this.selection=new l(e,this.options),this.$selection=this.selection.render(),this.selection.position(this.$selection,a);var c=this.options.get("dropdownAdapter");this.dropdown=new c(e,this.options),this.$dropdown=this.dropdown.render(),this.dropdown.position(this.$dropdown,a);var u=this.options.get("resultsAdapter");this.results=new u(e,this.options,this.dataAdapter),this.$results=this.results.render(),this.results.position(this.$results,this.$dropdown);var d=this;this._bindAdapters(),this._registerDomEvents(),this._registerDataEvents(),this._registerSelectionEvents(),this._registerDropdownEvents(),this._registerResultsEvents(),this._registerEvents(),this.dataAdapter.current((function(e){d.trigger("selection:update",{data:e})})),e[0].classList.add("select2-hidden-accessible"),e.attr("aria-hidden","true"),this._syncAttributes(),n.StoreData(e[0],"select2",this),e.data("select2",this)};return n.Extend(i,n.Observable),i.prototype._generateId=function(e){return"select2-"+(null!=e.attr("id")?e.attr("id"):null!=e.attr("name")?e.attr("name")+"-"+n.generateChars(2):n.generateChars(4)).replace(/(:|\.|\[|\]|,)/g,"")},i.prototype._placeContainer=function(e){e.insertAfter(this.$element);var t=this._resolveWidth(this.$element,this.options.get("width"));null!=t&&e.css("width",t)},i.prototype._resolveWidth=function(e,t){var n=/^width:(([-+]?([0-9]*\.)?[0-9]+)(px|em|ex|%|in|cm|mm|pt|pc))/i;if("resolve"==t){var o=this._resolveWidth(e,"style");return null!=o?o:this._resolveWidth(e,"element")}if("element"==t){var i=e.outerWidth(!1);return i<=0?"auto":i+"px"}if("style"==t){var s=e.attr("style");if("string"!=typeof s)return null;for(var r=s.split(";"),a=0,l=r.length;a<l;a+=1){var c=r[a].replace(/\s/g,"").match(n);if(null!==c&&c.length>=1)return c[1]}return null}return"computedstyle"==t?window.getComputedStyle(e[0]).width:t},i.prototype._bindAdapters=function(){this.dataAdapter.bind(this,this.$container),this.selection.bind(this,this.$container),this.dropdown.bind(this,this.$container),this.results.bind(this,this.$container)},i.prototype._registerDomEvents=function(){var e=this;this.$element.on("change.select2",(function(){e.dataAdapter.current((function(t){e.trigger("selection:update",{data:t})}))})),this.$element.on("focus.select2",(function(t){e.trigger("focus",t)})),this._syncA=n.bind(this._syncAttributes,this),this._syncS=n.bind(this._syncSubtree,this),this._observer=new window.MutationObserver((function(t){e._syncA(),e._syncS(t)})),this._observer.observe(this.$element[0],{attributes:!0,childList:!0,subtree:!1})},i.prototype._registerDataEvents=function(){var e=this;this.dataAdapter.on("*",(function(t,n){e.trigger(t,n)}))},i.prototype._registerSelectionEvents=function(){var e=this,t=["toggle","focus"];this.selection.on("toggle",(function(){e.toggleDropdown()})),this.selection.on("focus",(function(t){e.focus(t)})),this.selection.on("*",(function(n,o){-1===t.indexOf(n)&&e.trigger(n,o)}))},i.prototype._registerDropdownEvents=function(){var e=this;this.dropdown.on("*",(function(t,n){e.trigger(t,n)}))},i.prototype._registerResultsEvents=function(){var e=this;this.results.on("*",(function(t,n){e.trigger(t,n)}))},i.prototype._registerEvents=function(){var e=this;this.on("open",(function(){e.$container[0].classList.add("select2-container--open")})),this.on("close",(function(){e.$container[0].classList.remove("select2-container--open")})),this.on("enable",(function(){e.$container[0].classList.remove("select2-container--disabled")})),this.on("disable",(function(){e.$container[0].classList.add("select2-container--disabled")})),this.on("blur",(function(){e.$container[0].classList.remove("select2-container--focus")})),this.on("query",(function(t){e.isOpen()||e.trigger("open",{}),this.dataAdapter.query(t,(function(n){e.trigger("results:all",{data:n,query:t})}))})),this.on("query:append",(function(t){this.dataAdapter.query(t,(function(n){e.trigger("results:append",{data:n,query:t})}))})),this.on("keypress",(function(t){var n=t.which;e.isOpen()?n===o.ESC||n===o.UP&&t.altKey?(e.close(t),t.preventDefault()):n===o.ENTER||n===o.TAB?(e.trigger("results:select",{}),t.preventDefault()):n===o.SPACE&&t.ctrlKey?(e.trigger("results:toggle",{}),t.preventDefault()):n===o.UP?(e.trigger("results:previous",{}),t.preventDefault()):n===o.DOWN&&(e.trigger("results:next",{}),t.preventDefault()):(n===o.ENTER||n===o.SPACE||n===o.DOWN&&t.altKey)&&(e.open(),t.preventDefault())}))},i.prototype._syncAttributes=function(){this.options.set("disabled",this.$element.prop("disabled")),this.isDisabled()?(this.isOpen()&&this.close(),this.trigger("disable",{})):this.trigger("enable",{})},i.prototype._isChangeMutation=function(e){var t=this;if(e.addedNodes&&e.addedNodes.length>0){for(var n=0;n<e.addedNodes.length;n++)if(e.addedNodes[n].selected)return!0}else{if(e.removedNodes&&e.removedNodes.length>0)return!0;if(Array.isArray(e))return e.some((function(e){return t._isChangeMutation(e)}))}return!1},i.prototype._syncSubtree=function(e){var t=this._isChangeMutation(e),n=this;t&&this.dataAdapter.current((function(e){n.trigger("selection:update",{data:e})}))},i.prototype.trigger=function(e,t){var n=i.__super__.trigger,o={open:"opening",close:"closing",select:"selecting",unselect:"unselecting",clear:"clearing"};if(void 0===t&&(t={}),e in o){var s=o[e],r={prevented:!1,name:e,args:t};if(n.call(this,s,r),r.prevented)return void(t.prevented=!0)}n.call(this,e,t)},i.prototype.toggleDropdown=function(){this.isDisabled()||(this.isOpen()?this.close():this.open())},i.prototype.open=function(){this.isOpen()||this.isDisabled()||this.trigger("query",{})},i.prototype.close=function(e){this.isOpen()&&this.trigger("close",{originalEvent:e})},i.prototype.isEnabled=function(){return!this.isDisabled()},i.prototype.isDisabled=function(){return this.options.get("disabled")},i.prototype.isOpen=function(){return this.$container[0].classList.contains("select2-container--open")},i.prototype.hasFocus=function(){return this.$container[0].classList.contains("select2-container--focus")},i.prototype.focus=function(e){this.hasFocus()||(this.$container[0].classList.add("select2-container--focus"),this.trigger("focus",{}))},i.prototype.enable=function(e){this.options.get("debug")&&window.console&&console.warn&&console.warn('Select2: The `select2("enable")` method has been deprecated and will be removed in later Select2 versions. Use $element.prop("disabled") instead.'),null!=e&&0!==e.length||(e=[!0]);var t=!e[0];this.$element.prop("disabled",t)},i.prototype.data=function(){this.options.get("debug")&&arguments.length>0&&window.console&&console.warn&&console.warn('Select2: Data can no longer be set using `select2("data")`. You should consider setting the value instead using `$element.val()`.');var e=[];return this.dataAdapter.current((function(t){e=t})),e},i.prototype.val=function(e){if(this.options.get("debug")&&window.console&&console.warn&&console.warn('Select2: The `select2("val")` method has been deprecated and will be removed in later Select2 versions. Use $element.val() instead.'),null==e||0===e.length)return this.$element.val();var t=e[0];Array.isArray(t)&&(t=t.map((function(e){return e.toString()}))),this.$element.val(t).trigger("input").trigger("change")},i.prototype.destroy=function(){n.RemoveData(this.$container[0]),this.$container.remove(),this._observer.disconnect(),this._observer=null,this._syncA=null,this._syncS=null,this.$element.off(".select2"),this.$element.attr("tabindex",n.GetData(this.$element[0],"old-tabindex")),this.$element[0].classList.remove("select2-hidden-accessible"),this.$element.attr("aria-hidden","false"),n.RemoveData(this.$element[0]),this.$element.removeData("select2"),this.dataAdapter.destroy(),this.selection.destroy(),this.dropdown.destroy(),this.results.destroy(),this.dataAdapter=null,this.selection=null,this.dropdown=null,this.results=null},i.prototype.render=function(){var t=e('<span class="select2 select2-container"><span class="selection"></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>');return t.attr("dir",this.options.get("dir")),this.$container=t,this.$container[0].classList.add("select2-container--"+this.options.get("theme")),n.StoreData(t[0],"element",this.$element),t},i})),t.define("select2/dropdown/attachContainer",[],(function(){function e(e,t,n){e.call(this,t,n)}return e.prototype.position=function(e,t,n){n.find(".dropdown-wrapper").append(t),t[0].classList.add("select2-dropdown--below"),n[0].classList.add("select2-container--below")},e})),t.define("select2/dropdown/stopPropagation",[],(function(){function e(){}return e.prototype.bind=function(e,t,n){e.call(this,t,n),this.$dropdown.on(["blur","change","click","dblclick","focus","focusin","focusout","input","keydown","keyup","keypress","mousedown","mouseenter","mouseleave","mousemove","mouseover","mouseup","search","touchend","touchstart"].join(" "),(function(e){e.stopPropagation()}))},e})),t.define("select2/selection/stopPropagation",[],(function(){function e(){}return e.prototype.bind=function(e,t,n){e.call(this,t,n),this.$selection.on(["blur","change","click","dblclick","focus","focusin","focusout","input","keydown","keyup","keypress","mousedown","mouseenter","mouseleave","mousemove","mouseover","mouseup","search","touchend","touchstart"].join(" "),(function(e){e.stopPropagation()}))},e})),
-/*!
-           * jQuery Mousewheel 3.1.13
-           *
-           * Copyright jQuery Foundation and other contributors
-           * Released under the MIT license
-           * http://jquery.org/license
-           */
-r=function(e){var t,n,o=["wheel","mousewheel","DOMMouseScroll","MozMousePixelScroll"],i="onwheel"in document||document.documentMode>=9?["wheel"]:["mousewheel","DomMouseScroll","MozMousePixelScroll"],s=Array.prototype.slice;if(e.event.fixHooks)for(var r=o.length;r;)e.event.fixHooks[o[--r]]=e.event.mouseHooks;var a=e.event.special.mousewheel={version:"3.1.12",setup:function(){if(this.addEventListener)for(var t=i.length;t;)this.addEventListener(i[--t],l,!1);else this.onmousewheel=l;e.data(this,"mousewheel-line-height",a.getLineHeight(this)),e.data(this,"mousewheel-page-height",a.getPageHeight(this))},teardown:function(){if(this.removeEventListener)for(var t=i.length;t;)this.removeEventListener(i[--t],l,!1);else this.onmousewheel=null;e.removeData(this,"mousewheel-line-height"),e.removeData(this,"mousewheel-page-height")},getLineHeight:function(t){var n=e(t),o=n["offsetParent"in e.fn?"offsetParent":"parent"]();return o.length||(o=e("body")),parseInt(o.css("fontSize"),10)||parseInt(n.css("fontSize"),10)||16},getPageHeight:function(t){return e(t).height()},settings:{adjustOldDeltas:!0,normalizeOffset:!0}};function l(o){var i,r=o||window.event,l=s.call(arguments,1),d=0,p=0,h=0,f=0,g=0;if((o=e.event.fix(r)).type="mousewheel","detail"in r&&(h=-1*r.detail),"wheelDelta"in r&&(h=r.wheelDelta),"wheelDeltaY"in r&&(h=r.wheelDeltaY),"wheelDeltaX"in r&&(p=-1*r.wheelDeltaX),"axis"in r&&r.axis===r.HORIZONTAL_AXIS&&(p=-1*h,h=0),d=0===h?p:h,"deltaY"in r&&(d=h=-1*r.deltaY),"deltaX"in r&&(p=r.deltaX,0===h&&(d=-1*p)),0!==h||0!==p){if(1===r.deltaMode){var m=e.data(this,"mousewheel-line-height");d*=m,h*=m,p*=m}else if(2===r.deltaMode){var y=e.data(this,"mousewheel-page-height");d*=y,h*=y,p*=y}if(i=Math.max(Math.abs(h),Math.abs(p)),(!n||i<n)&&(n=i,u(r,i)&&(n/=40)),u(r,i)&&(d/=40,p/=40,h/=40),d=Math[d>=1?"floor":"ceil"](d/n),p=Math[p>=1?"floor":"ceil"](p/n),h=Math[h>=1?"floor":"ceil"](h/n),a.settings.normalizeOffset&&this.getBoundingClientRect){var v=this.getBoundingClientRect();f=o.clientX-v.left,g=o.clientY-v.top}return o.deltaX=p,o.deltaY=h,o.deltaFactor=n,o.offsetX=f,o.offsetY=g,o.deltaMode=0,l.unshift(o,d,p,h),t&&clearTimeout(t),t=setTimeout(c,200),(e.event.dispatch||e.event.handle).apply(this,l)}}function c(){n=null}function u(e,t){return a.settings.adjustOldDeltas&&"mousewheel"===e.type&&t%120==0}e.fn.extend({mousewheel:function(e){return e?this.bind("mousewheel",e):this.trigger("mousewheel")},unmousewheel:function(e){return this.unbind("mousewheel",e)}})},"function"==typeof t.define&&t.define.amd?t.define("jquery-mousewheel",["jquery"],r):n.exports=r,t.define("jquery.select2",["jquery","jquery-mousewheel","./select2/core","./select2/defaults","./select2/utils"],(function(e,t,n,o,i){if(null==e.fn.select2){var s=["open","close","destroy"];e.fn.select2=function(t){if("object"==typeof(t=t||{}))return this.each((function(){var o=e.extend(!0,{},t);new n(e(this),o)})),this;if("string"==typeof t){var o,r=Array.prototype.slice.call(arguments,1);return this.each((function(){var e=i.GetData(this,"select2");null==e&&window.console&&console.error&&console.error("The select2('"+t+"') method was called on an element that is not using Select2."),o=e[t].apply(e,r)})),s.indexOf(t)>-1?this:o}throw new Error("Invalid arguments for Select2: "+t)}}return null==e.fn.select2.defaults&&(e.fn.select2.defaults=o),n})),{define:t.define,require:t.require}}(),o=t.require("jquery.select2");return e.fn.select2.amd=t,o},(n=i).exports?n.exports=function(t,n){return void 0===n&&(n="undefined"!=typeof window?e:e(t)),o(n),n}:o(jQuery));const u=()=>e("#mainform :input").first().trigger("change");function d({$table:t,$addBtn:n,$modal:o,$modalContent:i}){n.on("click",(function(){const e=Date.now(),n=function(e){return`\n  <tr data-index='${e}'>\n    <td>\n      <select class='yopago-currency-select' name='currency_rates[${e}][currency]'>\n        <option value='' disabled selected hidden></option>\n      </select>\n    </td>\n    <td><input  type='number' step='0.0001' name='currency_rates[${e}][rate]' value='1' min='0.0001' required></td>\n    <td><input  type='number' step='0.01'  name='currency_rates[${e}][fee]'  value='0' min='0'     required></td>\n    <td>\n      <select name='currency_rates[${e}][fee_type]'>\n        <option value='fixed'>${wc_yopago_params.fixed}</option>\n        <option value='percent'>${wc_yopago_params.percent}</option>\n      </select>\n    </td>\n    <td>\n      <button type='button' class='button yopago-example-btn' data-index='${e}' disabled>\n        ${wc_yopago_params.view}\n      </button>\n    </td>\n    <td>\n      <button type='button' class='button button-link-delete yopago-remove-rate'>\n        ${wc_yopago_params.remove}\n      </button>\n    </td>\n  </tr>`}(e);t.find("tbody .empty-row").remove(),t.find("tbody").append(n);a(t.find(`tr[data-index="${e}"] .yopago-currency-select`)),s(),r(),u()})),t.on("click",".yopago-remove-rate",(function(){e(this).closest("tr").remove(),0===t.find("tbody tr").length&&t.find("tbody").append(`<tr class='empty-row'><td colspan='6'>${wc_yopago_params.no_currencies}</td></tr>`),s(),r(),u()})),t.on("click",".yopago-example-btn",(function(){const n=e(this).data("index"),s=t.find(`tr[data-index="${n}"]`),r=parseFloat(s.find('input[name*="[rate]"]').val())||1,a=parseFloat(s.find('input[name*="[fee]"]').val())||0,l=s.find('select[name*="[fee_type]"]').val(),c=s.find(".yopago-currency-select").val(),u=window.yopagoCurrencies.find((e=>e.code===c));u&&(i.html(function(e,t,n,o){const i=50*t,s="fixed"===o?n:i*(n/100),r=i+s;return`\n    <h4>${wc_yopago_params.ex_title.replace("{from}",e.code).replace("{to}","BOB")}</h4>\n    <p><strong>${wc_yopago_params.ex_assumptions}</strong></p>\n    <ul>\n      <li>${wc_yopago_params.ex_site_currency}: ${e.code}</li>\n      <li>${wc_yopago_params.ex_rate}: 1 ${e.code} = ${t.toFixed(4)} BOB</li>\n      <li>${wc_yopago_params.ex_fee}: ${"fixed"===o?wc_yopago_params.fixed+" "+n:n+"%"}</li>\n      <li>${wc_yopago_params.ex_original}: ${e.symbol}${50..toFixed(2)}</li>\n    </ul>\n    <p><strong>${wc_yopago_params.ex_calc}</strong></p>\n    <table class='widefat'>\n      <thead><tr><th>${wc_yopago_params.ex_concept}</th><th>${wc_yopago_params.ex_value}</th></tr></thead>\n      <tbody>\n        <tr><td>${wc_yopago_params.ex_c_original.replace("{from}",e.code)}</td><td>${e.symbol}${50..toFixed(2)}</td></tr>\n        <tr><td>${wc_yopago_params.ex_c_rate}</td><td>1 ${e.code} = ${t.toFixed(4)} BOB</td></tr>\n        <tr><td>${wc_yopago_params.ex_c_subtotal.replace("{to}","BOB")}</td><td>Bs. ${i.toFixed(2)}</td></tr>\n        <tr><td>${wc_yopago_params.ex_c_commission}</td><td>Bs. ${s.toFixed(2)}</td></tr>\n        <tr><td><strong>${wc_yopago_params.ex_c_total.replace("{to}","BOB")}</strong></td><td><strong>Bs. ${r.toFixed(2)}</strong></td></tr>\n      </tbody>\n    </table>\n    <p><strong>${wc_yopago_params.ex_result}</strong></p>\n    <p>${wc_yopago_params.ex_result_text.replace("{symbol}","Bs. ").replace("{total}",r.toFixed(2)).replace("{to}","BOB")}</p>\n  `}(u,r,a,l)),o.show())})),e("#yopago-modal-close").on("click",(()=>o.hide()))}window.jQuery=window.$=e,e(document).ready((function(e){const t=e("#yopago-currency-rates-table"),n=e("#yopago-example-modal"),o=e("#yopago-example-text"),i=e("#yopago-add-rate");e.getJSON(wc_yopago_params.currency_data_url).done((function(t){window.yopagoCurrencies=t,e(".yopago-currency-select").each((function(){a(e(this))})),s(),r()})).fail((function(e,t,n){console.error("Failed to load currencies:",t,n),console.log("Attempted path:",wc_yopago_params.currency_data_url)})),d({$table:t,$addBtn:i,$modal:n,$modalContent:o}),e(document).on("change",".yopago-currency-select",(function(){s(),r(),e(this).closest("tr").find(".yopago-example-btn").prop("disabled",!e(this).val()),e("#mainform :input").first().trigger("change")})),e("#mainform").on("submit",(function(){t.find("tbody tr").each((function(){e(this).find(".yopago-currency-select").val()||e(this).remove()}))}))}))}(jQuery);
+(
+    function ( $$1 ) {
+        'use strict'
+        var select2_full = { exports: {} }
+        /*!
+         * Select2 4.1.0-rc.0
+         * https://select2.github.io
+         *
+         * Released under the MIT license
+         * https://github.com/select2/select2/blob/master/LICENSE.md
+         */
+        var hasRequiredSelect2_full
+
+        function requireSelect2_full() {
+            if ( hasRequiredSelect2_full ) {
+                return select2_full.exports
+            }
+            hasRequiredSelect2_full = 1;
+            (
+                function ( module, exports ) {
+                    (
+                        function ( factory ) {
+                            if ( module.exports ) {
+                                module.exports = function ( root, jQuery2 ) {
+                                    if ( jQuery2 === void 0 ) {
+                                        if ( typeof window !== 'undefined' ) {
+                                            jQuery2 = $$1
+                                        } else {
+                                            jQuery2 = $$1( root )
+                                        }
+                                    }
+                                    factory( jQuery2 )
+                                    return jQuery2
+                                }
+                            } else {
+                                factory( jQuery )
+                            }
+                        }
+                    )( function ( jQuery2 ) {
+                        var S2 = function () {
+                            if ( jQuery2 && jQuery2.fn && jQuery2.fn.select2 && jQuery2.fn.select2.amd ) {
+                                var S22 = jQuery2.fn.select2.amd
+                            }
+                            var S22;
+                            (
+                                function () {
+                                    if ( !S22 || !S22.requirejs ) {
+                                        if ( !S22 ) {
+                                            S22 = {}
+                                        } else {
+                                            require = S22
+                                        }
+                                        /**
+                                         * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
+                                         * Released under MIT license, http://github.com/requirejs/almond/LICENSE
+                                         */
+                                        var requirejs, require, define;
+                                        (
+                                            function ( undef ) {
+                                                var main,
+                                                    req,
+                                                    makeMap,
+                                                    handlers,
+                                                    defined = {},
+                                                    waiting = {},
+                                                    config = {},
+                                                    defining = {},
+                                                    hasOwn = Object.prototype.hasOwnProperty,
+                                                    aps = [].slice,
+                                                    jsSuffixRegExp = /\.js$/
+
+                                                function hasProp( obj, prop ) {
+                                                    return hasOwn.call( obj, prop )
+                                                }
+
+                                                function normalize( name, baseName ) {
+                                                    var nameParts,
+                                                        nameSegment,
+                                                        mapValue,
+                                                        foundMap,
+                                                        lastIndex,
+                                                        foundI,
+                                                        foundStarMap,
+                                                        starI,
+                                                        i,
+                                                        j,
+                                                        part,
+                                                        normalizedBaseParts,
+                                                        baseParts = baseName && baseName.split( '/' ),
+                                                        map = config.map,
+                                                        starMap = map && map[ '*' ] || {}
+                                                    if ( name ) {
+                                                        name = name.split( '/' )
+                                                        lastIndex = name.length - 1
+                                                        if ( config.nodeIdCompat
+                                                             && jsSuffixRegExp.test( name[ lastIndex ] ) ) {
+                                                            name[ lastIndex ] = name[ lastIndex ].replace(
+                                                                jsSuffixRegExp,
+                                                                ''
+                                                            )
+                                                        }
+                                                        if ( name[ 0 ].charAt( 0 ) === '.' && baseParts ) {
+                                                            normalizedBaseParts = baseParts.slice(
+                                                                0,
+                                                                baseParts.length - 1
+                                                            )
+                                                            name = normalizedBaseParts.concat( name )
+                                                        }
+                                                        for ( i = 0; i < name.length; i++ ) {
+                                                            part = name[ i ]
+                                                            if ( part === '.' ) {
+                                                                name.splice( i, 1 )
+                                                                i -= 1
+                                                            } else if ( part === '..' ) {
+                                                                if ( i
+                                                                     === 0
+                                                                     || i
+                                                                     === 1
+                                                                     && name[ 2 ]
+                                                                     === '..'
+                                                                     || name[ i
+                                                                              - 1 ]
+                                                                     === '..' ) {
+
+                                                                } else if ( i > 0 ) {
+                                                                    name.splice( i - 1, 2 )
+                                                                    i -= 2
+                                                                }
+                                                            }
+                                                        }
+                                                        name = name.join( '/' )
+                                                    }
+                                                    if ( (
+                                                             baseParts || starMap
+                                                         ) && map ) {
+                                                        nameParts = name.split( '/' )
+                                                        for ( i = nameParts.length; i > 0; i -= 1 ) {
+                                                            nameSegment = nameParts.slice( 0, i ).join( '/' )
+                                                            if ( baseParts ) {
+                                                                for ( j = baseParts.length; j > 0; j -= 1 ) {
+                                                                    mapValue = map[ baseParts.slice( 0, j )
+                                                                                             .join( '/' ) ]
+                                                                    if ( mapValue ) {
+                                                                        mapValue = mapValue[ nameSegment ]
+                                                                        if ( mapValue ) {
+                                                                            foundMap = mapValue
+                                                                            foundI = i
+                                                                            break
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if ( foundMap ) {
+                                                                break
+                                                            }
+                                                            if ( !foundStarMap && starMap && starMap[ nameSegment ] ) {
+                                                                foundStarMap = starMap[ nameSegment ]
+                                                                starI = i
+                                                            }
+                                                        }
+                                                        if ( !foundMap && foundStarMap ) {
+                                                            foundMap = foundStarMap
+                                                            foundI = starI
+                                                        }
+                                                        if ( foundMap ) {
+                                                            nameParts.splice( 0, foundI, foundMap )
+                                                            name = nameParts.join( '/' )
+                                                        }
+                                                    }
+                                                    return name
+                                                }
+
+                                                function makeRequire( relName, forceSync ) {
+                                                    return function () {
+                                                        var args = aps.call( arguments, 0 )
+                                                        if ( typeof args[ 0 ] !== 'string' && args.length === 1 ) {
+                                                            args.push( null )
+                                                        }
+                                                        return req.apply(
+                                                            undef,
+                                                            args.concat( [ relName, forceSync ] )
+                                                        )
+                                                    }
+                                                }
+
+                                                function makeNormalize( relName ) {
+                                                    return function ( name ) {
+                                                        return normalize( name, relName )
+                                                    }
+                                                }
+
+                                                function makeLoad( depName ) {
+                                                    return function ( value ) {
+                                                        defined[ depName ] = value
+                                                    }
+                                                }
+
+                                                function callDep( name ) {
+                                                    if ( hasProp( waiting, name ) ) {
+                                                        var args = waiting[ name ]
+                                                        delete waiting[ name ]
+                                                        defining[ name ] = true
+                                                        main.apply( undef, args )
+                                                    }
+                                                    if ( !hasProp( defined, name ) && !hasProp( defining, name ) ) {
+                                                        throw new Error( 'No ' + name )
+                                                    }
+                                                    return defined[ name ]
+                                                }
+
+                                                function splitPrefix( name ) {
+                                                    var prefix, index = name ? name.indexOf( '!' ) : -1
+                                                    if ( index > -1 ) {
+                                                        prefix = name.substring( 0, index )
+                                                        name = name.substring( index + 1, name.length )
+                                                    }
+                                                    return [ prefix, name ]
+                                                }
+
+                                                function makeRelParts( relName ) {
+                                                    return relName ? splitPrefix( relName ) : []
+                                                }
+
+                                                makeMap = function ( name, relParts ) {
+                                                    var plugin,
+                                                        parts = splitPrefix( name ),
+                                                        prefix = parts[ 0 ],
+                                                        relResourceName = relParts[ 1 ]
+                                                    name = parts[ 1 ]
+                                                    if ( prefix ) {
+                                                        prefix = normalize( prefix, relResourceName )
+                                                        plugin = callDep( prefix )
+                                                    }
+                                                    if ( prefix ) {
+                                                        if ( plugin && plugin.normalize ) {
+                                                            name = plugin.normalize(
+                                                                name,
+                                                                makeNormalize( relResourceName )
+                                                            )
+                                                        } else {
+                                                            name = normalize( name, relResourceName )
+                                                        }
+                                                    } else {
+                                                        name = normalize( name, relResourceName )
+                                                        parts = splitPrefix( name )
+                                                        prefix = parts[ 0 ]
+                                                        name = parts[ 1 ]
+                                                        if ( prefix ) {
+                                                            plugin = callDep( prefix )
+                                                        }
+                                                    }
+                                                    return {
+                                                        f: prefix ? prefix + '!' + name : name,
+                                                        //fullName
+                                                        n: name,
+                                                        pr: prefix,
+                                                        p: plugin
+                                                    }
+                                                }
+
+                                                function makeConfig( name ) {
+                                                    return function () {
+                                                        return config && config.config && config.config[ name ] || {}
+                                                    }
+                                                }
+
+                                                handlers = {
+                                                    require: function ( name ) {
+                                                        return makeRequire( name )
+                                                    },
+                                                    exports: function ( name ) {
+                                                        var e = defined[ name ]
+                                                        if ( typeof e !== 'undefined' ) {
+                                                            return e
+                                                        } else {
+                                                            return defined[ name ] = {}
+                                                        }
+                                                    },
+                                                    module: function ( name ) {
+                                                        return {
+                                                            id: name,
+                                                            uri: '',
+                                                            exports: defined[ name ],
+                                                            config: makeConfig( name )
+                                                        }
+                                                    }
+                                                }
+                                                main = function ( name, deps, callback, relName ) {
+                                                    var cjsModule,
+                                                        depName,
+                                                        ret,
+                                                        map,
+                                                        i,
+                                                        relParts,
+                                                        args = [],
+                                                        callbackType = typeof callback,
+                                                        usingExports
+                                                    relName = relName || name
+                                                    relParts = makeRelParts( relName )
+                                                    if ( callbackType === 'undefined' || callbackType === 'function' ) {
+                                                        deps = !deps.length && callback.length ? [
+                                                            'require',
+                                                            'exports',
+                                                            'module'
+                                                        ] : deps
+                                                        for ( i = 0; i < deps.length; i += 1 ) {
+                                                            map = makeMap( deps[ i ], relParts )
+                                                            depName = map.f
+                                                            if ( depName === 'require' ) {
+                                                                args[ i ] = handlers.require( name )
+                                                            } else if ( depName === 'exports' ) {
+                                                                args[ i ] = handlers.exports( name )
+                                                                usingExports = true
+                                                            } else if ( depName === 'module' ) {
+                                                                cjsModule = args[ i ] = handlers.module( name )
+                                                            } else if ( hasProp( defined, depName ) || hasProp(
+                                                                waiting,
+                                                                depName
+                                                            ) || hasProp(
+                                                                defining,
+                                                                depName
+                                                            ) ) {
+                                                                args[ i ] = callDep( depName )
+                                                            } else if ( map.p ) {
+                                                                map.p.load(
+                                                                    map.n,
+                                                                    makeRequire( relName, true ),
+                                                                    makeLoad( depName ),
+                                                                    {}
+                                                                )
+                                                                args[ i ] = defined[ depName ]
+                                                            } else {
+                                                                throw new Error( name + ' missing ' + depName )
+                                                            }
+                                                        }
+                                                        ret = callback
+                                                              ? callback.apply( defined[ name ], args )
+                                                              : void 0
+                                                        if ( name ) {
+                                                            if ( cjsModule
+                                                                 && cjsModule.exports
+                                                                 !== undef
+                                                                 && cjsModule.exports
+                                                                 !== defined[ name ] ) {
+                                                                defined[ name ] = cjsModule.exports
+                                                            } else if ( ret !== undef || !usingExports ) {
+                                                                defined[ name ] = ret
+                                                            }
+                                                        }
+                                                    } else if ( name ) {
+                                                        defined[ name ] = callback
+                                                    }
+                                                }
+                                                requirejs = require = req = function (
+                                                    deps,
+                                                    callback,
+                                                    relName,
+                                                    forceSync,
+                                                    alt
+                                                ) {
+                                                    if ( typeof deps === 'string' ) {
+                                                        if ( handlers[ deps ] ) {
+                                                            return handlers[ deps ]( callback )
+                                                        }
+                                                        return callDep( makeMap( deps, makeRelParts( callback ) ).f )
+                                                    } else if ( !deps.splice ) {
+                                                        config = deps
+                                                        if ( config.deps ) {
+                                                            req( config.deps, config.callback )
+                                                        }
+                                                        if ( !callback ) {
+                                                            return
+                                                        }
+                                                        if ( callback.splice ) {
+                                                            deps = callback
+                                                            callback = relName
+                                                            relName = null
+                                                        } else {
+                                                            deps = undef
+                                                        }
+                                                    }
+                                                    callback = callback || function () {
+                                                    }
+                                                    if ( typeof relName === 'function' ) {
+                                                        relName = forceSync
+                                                        forceSync = alt
+                                                    }
+                                                    if ( forceSync ) {
+                                                        main( undef, deps, callback, relName )
+                                                    } else {
+                                                        setTimeout( function () {
+                                                            main( undef, deps, callback, relName )
+                                                        }, 4 )
+                                                    }
+                                                    return req
+                                                }
+                                                req.config = function ( cfg ) {
+                                                    return req( cfg )
+                                                }
+                                                requirejs._defined = defined
+                                                define = function ( name, deps, callback ) {
+                                                    if ( typeof name !== 'string' ) {
+                                                        throw new Error(
+                                                            'See almond README: incorrect module build, no module name' )
+                                                    }
+                                                    if ( !deps.splice ) {
+                                                        callback = deps
+                                                        deps = []
+                                                    }
+                                                    if ( !hasProp( defined, name ) && !hasProp( waiting, name ) ) {
+                                                        waiting[ name ] = [ name, deps, callback ]
+                                                    }
+                                                }
+                                                define.amd = {
+                                                    jQuery: true
+                                                }
+                                            }
+                                        )()
+                                        S22.requirejs = requirejs
+                                        S22.require = require
+                                        S22.define = define
+                                    }
+                                }
+                            )()
+                            S22.define( 'almond', function () {
+                            } )
+                            S22.define( 'jquery', [], function () {
+                                var _$ = jQuery2 || $
+                                if ( _$ == null && console && console.error ) {
+                                    console.error(
+                                        'Select2: An instance of jQuery or a jQuery-compatible library was not found. Make sure that you are including jQuery before Select2 on your web page.'
+                                    )
+                                }
+                                return _$
+                            } )
+                            S22.define( 'select2/utils', [
+                                'jquery'
+                            ], function ( $2 ) {
+                                var Utils = {}
+                                Utils.Extend = function ( ChildClass, SuperClass ) {
+                                    var __hasProp = {}.hasOwnProperty
+
+                                    function BaseConstructor() {
+                                        this.constructor = ChildClass
+                                    }
+
+                                    for ( var key in SuperClass ) {
+                                        if ( __hasProp.call( SuperClass, key ) ) {
+                                            ChildClass[ key ] = SuperClass[ key ]
+                                        }
+                                    }
+                                    BaseConstructor.prototype = SuperClass.prototype
+                                    ChildClass.prototype = new BaseConstructor()
+                                    ChildClass.__super__ = SuperClass.prototype
+                                    return ChildClass
+                                }
+
+                                function getMethods( theClass ) {
+                                    var proto = theClass.prototype
+                                    var methods = []
+                                    for ( var methodName in proto ) {
+                                        var m = proto[ methodName ]
+                                        if ( typeof m !== 'function' ) {
+                                            continue
+                                        }
+                                        if ( methodName === 'constructor' ) {
+                                            continue
+                                        }
+                                        methods.push( methodName )
+                                    }
+                                    return methods
+                                }
+
+                                Utils.Decorate = function ( SuperClass, DecoratorClass ) {
+                                    var decoratedMethods = getMethods( DecoratorClass )
+                                    var superMethods = getMethods( SuperClass )
+
+                                    function DecoratedClass() {
+                                        var unshift = Array.prototype.unshift
+                                        var argCount = DecoratorClass.prototype.constructor.length
+                                        var calledConstructor = SuperClass.prototype.constructor
+                                        if ( argCount > 0 ) {
+                                            unshift.call( arguments, SuperClass.prototype.constructor )
+                                            calledConstructor = DecoratorClass.prototype.constructor
+                                        }
+                                        calledConstructor.apply( this, arguments )
+                                    }
+
+                                    DecoratorClass.displayName = SuperClass.displayName
+
+                                    function ctr() {
+                                        this.constructor = DecoratedClass
+                                    }
+
+                                    DecoratedClass.prototype = new ctr()
+                                    for ( var m = 0; m < superMethods.length; m++ ) {
+                                        var superMethod = superMethods[ m ]
+                                        DecoratedClass.prototype[ superMethod ] = SuperClass.prototype[ superMethod ]
+                                    }
+                                    var calledMethod = function ( methodName ) {
+                                        var originalMethod = function () {
+                                        }
+                                        if ( methodName in DecoratedClass.prototype ) {
+                                            originalMethod = DecoratedClass.prototype[ methodName ]
+                                        }
+                                        var decoratedMethod2 = DecoratorClass.prototype[ methodName ]
+                                        return function () {
+                                            var unshift = Array.prototype.unshift
+                                            unshift.call( arguments, originalMethod )
+                                            return decoratedMethod2.apply( this, arguments )
+                                        }
+                                    }
+                                    for ( var d = 0; d < decoratedMethods.length; d++ ) {
+                                        var decoratedMethod = decoratedMethods[ d ]
+                                        DecoratedClass.prototype[ decoratedMethod ] = calledMethod( decoratedMethod )
+                                    }
+                                    return DecoratedClass
+                                }
+                                var Observable = function () {
+                                    this.listeners = {}
+                                }
+                                Observable.prototype.on = function ( event, callback ) {
+                                    this.listeners = this.listeners || {}
+                                    if ( event in this.listeners ) {
+                                        this.listeners[ event ].push( callback )
+                                    } else {
+                                        this.listeners[ event ] = [ callback ]
+                                    }
+                                }
+                                Observable.prototype.trigger = function ( event ) {
+                                    var slice = Array.prototype.slice
+                                    var params = slice.call( arguments, 1 )
+                                    this.listeners = this.listeners || {}
+                                    if ( params == null ) {
+                                        params = []
+                                    }
+                                    if ( params.length === 0 ) {
+                                        params.push( {} )
+                                    }
+                                    params[ 0 ]._type = event
+                                    if ( event in this.listeners ) {
+                                        this.invoke( this.listeners[ event ], slice.call( arguments, 1 ) )
+                                    }
+                                    if ( '*' in this.listeners ) {
+                                        this.invoke( this.listeners[ '*' ], arguments )
+                                    }
+                                }
+                                Observable.prototype.invoke = function ( listeners, params ) {
+                                    for ( var i = 0, len = listeners.length; i < len; i++ ) {
+                                        listeners[ i ].apply( this, params )
+                                    }
+                                }
+                                Utils.Observable = Observable
+                                Utils.generateChars = function ( length ) {
+                                    var chars = ''
+                                    for ( var i = 0; i < length; i++ ) {
+                                        var randomChar = Math.floor( Math.random() * 36 )
+                                        chars += randomChar.toString( 36 )
+                                    }
+                                    return chars
+                                }
+                                Utils.bind = function ( func, context ) {
+                                    return function () {
+                                        func.apply( context, arguments )
+                                    }
+                                }
+                                Utils._convertData = function ( data ) {
+                                    for ( var originalKey in data ) {
+                                        var keys = originalKey.split( '-' )
+                                        var dataLevel = data
+                                        if ( keys.length === 1 ) {
+                                            continue
+                                        }
+                                        for ( var k = 0; k < keys.length; k++ ) {
+                                            var key = keys[ k ]
+                                            key = key.substring( 0, 1 ).toLowerCase() + key.substring( 1 )
+                                            if ( !(
+                                                key in dataLevel
+                                            ) ) {
+                                                dataLevel[ key ] = {}
+                                            }
+                                            if ( k == keys.length - 1 ) {
+                                                dataLevel[ key ] = data[ originalKey ]
+                                            }
+                                            dataLevel = dataLevel[ key ]
+                                        }
+                                        delete data[ originalKey ]
+                                    }
+                                    return data
+                                }
+                                Utils.hasScroll = function ( index, el ) {
+                                    var $el = $2( el )
+                                    var overflowX = el.style.overflowX
+                                    var overflowY = el.style.overflowY
+                                    if ( overflowX === overflowY && (
+                                        overflowY === 'hidden' || overflowY === 'visible'
+                                    ) ) {
+                                        return false
+                                    }
+                                    if ( overflowX === 'scroll' || overflowY === 'scroll' ) {
+                                        return true
+                                    }
+                                    return $el.innerHeight() < el.scrollHeight || $el.innerWidth() < el.scrollWidth
+                                }
+                                Utils.escapeMarkup = function ( markup ) {
+                                    var replaceMap = {
+                                        '\\': '&#92;',
+                                        '&': '&amp;',
+                                        '<': '&lt;',
+                                        '>': '&gt;',
+                                        '"': '&quot;',
+                                        '\'': '&#39;',
+                                        '/': '&#47;'
+                                    }
+                                    if ( typeof markup !== 'string' ) {
+                                        return markup
+                                    }
+                                    return String( markup ).replace( /[&<>"'\/\\]/g, function ( match ) {
+                                        return replaceMap[ match ]
+                                    } )
+                                }
+                                Utils.__cache = {}
+                                var id = 0
+                                Utils.GetUniqueElementId = function ( element ) {
+                                    var select2Id = element.getAttribute( 'data-select2-id' )
+                                    if ( select2Id != null ) {
+                                        return select2Id
+                                    }
+                                    if ( element.id ) {
+                                        select2Id = 'select2-data-' + element.id
+                                    } else {
+                                        select2Id = 'select2-data-' + (
+                                            ++id
+                                        ).toString() + '-' + Utils.generateChars( 4 )
+                                    }
+                                    element.setAttribute( 'data-select2-id', select2Id )
+                                    return select2Id
+                                }
+                                Utils.StoreData = function ( element, name, value ) {
+                                    var id2 = Utils.GetUniqueElementId( element )
+                                    if ( !Utils.__cache[ id2 ] ) {
+                                        Utils.__cache[ id2 ] = {}
+                                    }
+                                    Utils.__cache[ id2 ][ name ] = value
+                                }
+                                Utils.GetData = function ( element, name ) {
+                                    var id2 = Utils.GetUniqueElementId( element )
+                                    if ( name ) {
+                                        if ( Utils.__cache[ id2 ] ) {
+                                            if ( Utils.__cache[ id2 ][ name ] != null ) {
+                                                return Utils.__cache[ id2 ][ name ]
+                                            }
+                                            return $2( element ).data( name )
+                                        }
+                                        return $2( element ).data( name )
+                                    } else {
+                                        return Utils.__cache[ id2 ]
+                                    }
+                                }
+                                Utils.RemoveData = function ( element ) {
+                                    var id2 = Utils.GetUniqueElementId( element )
+                                    if ( Utils.__cache[ id2 ] != null ) {
+                                        delete Utils.__cache[ id2 ]
+                                    }
+                                    element.removeAttribute( 'data-select2-id' )
+                                }
+                                Utils.copyNonInternalCssClasses = function ( dest, src ) {
+                                    var destinationClasses = dest.getAttribute( 'class' ).trim().split( /\s+/ )
+                                    destinationClasses = destinationClasses.filter( function ( clazz ) {
+                                        return clazz.indexOf( 'select2-' ) === 0
+                                    } )
+                                    var sourceClasses = src.getAttribute( 'class' ).trim().split( /\s+/ )
+                                    sourceClasses = sourceClasses.filter( function ( clazz ) {
+                                        return clazz.indexOf( 'select2-' ) !== 0
+                                    } )
+                                    var replacements = destinationClasses.concat( sourceClasses )
+                                    dest.setAttribute( 'class', replacements.join( ' ' ) )
+                                }
+                                return Utils
+                            } )
+                            S22.define( 'select2/results', [
+                                'jquery',
+                                './utils'
+                            ], function ( $2, Utils ) {
+                                function Results( $element, options, dataAdapter ) {
+                                    this.$element = $element
+                                    this.data = dataAdapter
+                                    this.options = options
+                                    Results.__super__.constructor.call( this )
+                                }
+
+                                Utils.Extend( Results, Utils.Observable )
+                                Results.prototype.render = function () {
+                                    var $results = $2(
+                                        '<ul class="select2-results__options" role="listbox"></ul>'
+                                    )
+                                    if ( this.options.get( 'multiple' ) ) {
+                                        $results.attr( 'aria-multiselectable', 'true' )
+                                    }
+                                    this.$results = $results
+                                    return $results
+                                }
+                                Results.prototype.clear = function () {
+                                    this.$results.empty()
+                                }
+                                Results.prototype.displayMessage = function ( params ) {
+                                    var escapeMarkup = this.options.get( 'escapeMarkup' )
+                                    this.clear()
+                                    this.hideLoading()
+                                    var $message = $2(
+                                        '<li role="alert" aria-live="assertive" class="select2-results__option"></li>'
+                                    )
+                                    var message = this.options.get( 'translations' ).get( params.message )
+                                    $message.append(
+                                        escapeMarkup(
+                                            message( params.args )
+                                        )
+                                    )
+                                    $message[ 0 ].className += ' select2-results__message'
+                                    this.$results.append( $message )
+                                }
+                                Results.prototype.hideMessages = function () {
+                                    this.$results.find( '.select2-results__message' ).remove()
+                                }
+                                Results.prototype.append = function ( data ) {
+                                    this.hideLoading()
+                                    var $options = []
+                                    if ( data.results == null || data.results.length === 0 ) {
+                                        if ( this.$results.children().length === 0 ) {
+                                            this.trigger( 'results:message', {
+                                                message: 'noResults'
+                                            } )
+                                        }
+                                        return
+                                    }
+                                    data.results = this.sort( data.results )
+                                    for ( var d = 0; d < data.results.length; d++ ) {
+                                        var item = data.results[ d ]
+                                        var $option = this.option( item )
+                                        $options.push( $option )
+                                    }
+                                    this.$results.append( $options )
+                                }
+                                Results.prototype.position = function ( $results, $dropdown ) {
+                                    var $resultsContainer = $dropdown.find( '.select2-results' )
+                                    $resultsContainer.append( $results )
+                                }
+                                Results.prototype.sort = function ( data ) {
+                                    var sorter = this.options.get( 'sorter' )
+                                    return sorter( data )
+                                }
+                                Results.prototype.highlightFirstItem = function () {
+                                    var $options = this.$results.find( '.select2-results__option--selectable' )
+                                    var $selected = $options.filter( '.select2-results__option--selected' )
+                                    if ( $selected.length > 0 ) {
+                                        $selected.first().trigger( 'mouseenter' )
+                                    } else {
+                                        $options.first().trigger( 'mouseenter' )
+                                    }
+                                    this.ensureHighlightVisible()
+                                }
+                                Results.prototype.setClasses = function () {
+                                    var self = this
+                                    this.data.current( function ( selected ) {
+                                        var selectedIds = selected.map( function ( s ) {
+                                            return s.id.toString()
+                                        } )
+                                        var $options = self.$results.find( '.select2-results__option--selectable' )
+                                        $options.each( function () {
+                                            var $option = $2( this )
+                                            var item = Utils.GetData( this, 'data' )
+                                            var id = '' + item.id
+                                            if ( item.element
+                                                 != null
+                                                 && item.element.selected
+                                                 || item.element
+                                                 == null
+                                                 && selectedIds.indexOf( id )
+                                                 > -1 ) {
+                                                this.classList.add( 'select2-results__option--selected' )
+                                                $option.attr( 'aria-selected', 'true' )
+                                            } else {
+                                                this.classList.remove( 'select2-results__option--selected' )
+                                                $option.attr( 'aria-selected', 'false' )
+                                            }
+                                        } )
+                                    } )
+                                }
+                                Results.prototype.showLoading = function ( params ) {
+                                    this.hideLoading()
+                                    var loadingMore = this.options.get( 'translations' ).get( 'searching' )
+                                    var loading = {
+                                        disabled: true,
+                                        loading: true,
+                                        text: loadingMore( params )
+                                    }
+                                    var $loading = this.option( loading )
+                                    $loading.className += ' loading-results'
+                                    this.$results.prepend( $loading )
+                                }
+                                Results.prototype.hideLoading = function () {
+                                    this.$results.find( '.loading-results' ).remove()
+                                }
+                                Results.prototype.option = function ( data ) {
+                                    var option = document.createElement( 'li' )
+                                    option.classList.add( 'select2-results__option' )
+                                    option.classList.add( 'select2-results__option--selectable' )
+                                    var attrs = {
+                                        'role': 'option'
+                                    }
+                                    var matches = window.Element.prototype.matches
+                                                  || window.Element.prototype.msMatchesSelector
+                                                  || window.Element.prototype.webkitMatchesSelector
+                                    if ( data.element
+                                         != null
+                                         && matches.call( data.element, ':disabled' )
+                                         || data.element
+                                         == null
+                                         && data.disabled ) {
+                                        attrs[ 'aria-disabled' ] = 'true'
+                                        option.classList.remove( 'select2-results__option--selectable' )
+                                        option.classList.add( 'select2-results__option--disabled' )
+                                    }
+                                    if ( data.id == null ) {
+                                        option.classList.remove( 'select2-results__option--selectable' )
+                                    }
+                                    if ( data._resultId != null ) {
+                                        option.id = data._resultId
+                                    }
+                                    if ( data.title ) {
+                                        option.title = data.title
+                                    }
+                                    if ( data.children ) {
+                                        attrs.role = 'group'
+                                        attrs[ 'aria-label' ] = data.text
+                                        option.classList.remove( 'select2-results__option--selectable' )
+                                        option.classList.add( 'select2-results__option--group' )
+                                    }
+                                    for ( var attr in attrs ) {
+                                        var val = attrs[ attr ]
+                                        option.setAttribute( attr, val )
+                                    }
+                                    if ( data.children ) {
+                                        var $option = $2( option )
+                                        var label = document.createElement( 'strong' )
+                                        label.className = 'select2-results__group'
+                                        this.template( data, label )
+                                        var $children = []
+                                        for ( var c = 0; c < data.children.length; c++ ) {
+                                            var child = data.children[ c ]
+                                            var $child = this.option( child )
+                                            $children.push( $child )
+                                        }
+                                        var $childrenContainer = $2( '<ul></ul>', {
+                                            'class': 'select2-results__options select2-results__options--nested',
+                                            'role': 'none'
+                                        } )
+                                        $childrenContainer.append( $children )
+                                        $option.append( label )
+                                        $option.append( $childrenContainer )
+                                    } else {
+                                        this.template( data, option )
+                                    }
+                                    Utils.StoreData( option, 'data', data )
+                                    return option
+                                }
+                                Results.prototype.bind = function ( container, $container ) {
+                                    var self = this
+                                    var id = container.id + '-results'
+                                    this.$results.attr( 'id', id )
+                                    container.on( 'results:all', function ( params ) {
+                                        self.clear()
+                                        self.append( params.data )
+                                        if ( container.isOpen() ) {
+                                            self.setClasses()
+                                            self.highlightFirstItem()
+                                        }
+                                    } )
+                                    container.on( 'results:append', function ( params ) {
+                                        self.append( params.data )
+                                        if ( container.isOpen() ) {
+                                            self.setClasses()
+                                        }
+                                    } )
+                                    container.on( 'query', function ( params ) {
+                                        self.hideMessages()
+                                        self.showLoading( params )
+                                    } )
+                                    container.on( 'select', function () {
+                                        if ( !container.isOpen() ) {
+                                            return
+                                        }
+                                        self.setClasses()
+                                        if ( self.options.get( 'scrollAfterSelect' ) ) {
+                                            self.highlightFirstItem()
+                                        }
+                                    } )
+                                    container.on( 'unselect', function () {
+                                        if ( !container.isOpen() ) {
+                                            return
+                                        }
+                                        self.setClasses()
+                                        if ( self.options.get( 'scrollAfterSelect' ) ) {
+                                            self.highlightFirstItem()
+                                        }
+                                    } )
+                                    container.on( 'open', function () {
+                                        self.$results.attr( 'aria-expanded', 'true' )
+                                        self.$results.attr( 'aria-hidden', 'false' )
+                                        self.setClasses()
+                                        self.ensureHighlightVisible()
+                                    } )
+                                    container.on( 'close', function () {
+                                        self.$results.attr( 'aria-expanded', 'false' )
+                                        self.$results.attr( 'aria-hidden', 'true' )
+                                        self.$results.removeAttr( 'aria-activedescendant' )
+                                    } )
+                                    container.on( 'results:toggle', function () {
+                                        var $highlighted = self.getHighlightedResults()
+                                        if ( $highlighted.length === 0 ) {
+                                            return
+                                        }
+                                        $highlighted.trigger( 'mouseup' )
+                                    } )
+                                    container.on( 'results:select', function () {
+                                        var $highlighted = self.getHighlightedResults()
+                                        if ( $highlighted.length === 0 ) {
+                                            return
+                                        }
+                                        var data = Utils.GetData( $highlighted[ 0 ], 'data' )
+                                        if ( $highlighted.hasClass( 'select2-results__option--selected' ) ) {
+                                            self.trigger( 'close', {} )
+                                        } else {
+                                            self.trigger( 'select', {
+                                                data
+                                            } )
+                                        }
+                                    } )
+                                    container.on( 'results:previous', function () {
+                                        var $highlighted = self.getHighlightedResults()
+                                        var $options = self.$results.find( '.select2-results__option--selectable' )
+                                        var currentIndex = $options.index( $highlighted )
+                                        if ( currentIndex <= 0 ) {
+                                            return
+                                        }
+                                        var nextIndex = currentIndex - 1
+                                        if ( $highlighted.length === 0 ) {
+                                            nextIndex = 0
+                                        }
+                                        var $next = $options.eq( nextIndex )
+                                        $next.trigger( 'mouseenter' )
+                                        var currentOffset = self.$results.offset().top
+                                        var nextTop = $next.offset().top
+                                        var nextOffset = self.$results.scrollTop() + (
+                                            nextTop - currentOffset
+                                        )
+                                        if ( nextIndex === 0 ) {
+                                            self.$results.scrollTop( 0 )
+                                        } else if ( nextTop - currentOffset < 0 ) {
+                                            self.$results.scrollTop( nextOffset )
+                                        }
+                                    } )
+                                    container.on( 'results:next', function () {
+                                        var $highlighted = self.getHighlightedResults()
+                                        var $options = self.$results.find( '.select2-results__option--selectable' )
+                                        var currentIndex = $options.index( $highlighted )
+                                        var nextIndex = currentIndex + 1
+                                        if ( nextIndex >= $options.length ) {
+                                            return
+                                        }
+                                        var $next = $options.eq( nextIndex )
+                                        $next.trigger( 'mouseenter' )
+                                        var currentOffset = self.$results.offset().top + self.$results.outerHeight(
+                                            false )
+                                        var nextBottom = $next.offset().top + $next.outerHeight( false )
+                                        var nextOffset = self.$results.scrollTop() + nextBottom - currentOffset
+                                        if ( nextIndex === 0 ) {
+                                            self.$results.scrollTop( 0 )
+                                        } else if ( nextBottom > currentOffset ) {
+                                            self.$results.scrollTop( nextOffset )
+                                        }
+                                    } )
+                                    container.on( 'results:focus', function ( params ) {
+                                        params.element[ 0 ].classList.add( 'select2-results__option--highlighted' )
+                                        params.element[ 0 ].setAttribute( 'aria-selected', 'true' )
+                                    } )
+                                    container.on( 'results:message', function ( params ) {
+                                        self.displayMessage( params )
+                                    } )
+                                    if ( $2.fn.mousewheel ) {
+                                        this.$results.on( 'mousewheel', function ( e ) {
+                                            var top = self.$results.scrollTop()
+                                            var bottom = self.$results.get( 0 ).scrollHeight - top + e.deltaY
+                                            var isAtTop = e.deltaY > 0 && top - e.deltaY <= 0
+                                            var isAtBottom = e.deltaY < 0 && bottom <= self.$results.height()
+                                            if ( isAtTop ) {
+                                                self.$results.scrollTop( 0 )
+                                                e.preventDefault()
+                                                e.stopPropagation()
+                                            } else if ( isAtBottom ) {
+                                                self.$results.scrollTop(
+                                                    self.$results.get( 0 ).scrollHeight - self.$results.height()
+                                                )
+                                                e.preventDefault()
+                                                e.stopPropagation()
+                                            }
+                                        } )
+                                    }
+                                    this.$results.on(
+                                        'mouseup',
+                                        '.select2-results__option--selectable',
+                                        function ( evt ) {
+                                            var $this = $2( this )
+                                            var data = Utils.GetData( this, 'data' )
+                                            if ( $this.hasClass( 'select2-results__option--selected' ) ) {
+                                                if ( self.options.get( 'multiple' ) ) {
+                                                    self.trigger( 'unselect', {
+                                                        originalEvent: evt,
+                                                        data
+                                                    } )
+                                                } else {
+                                                    self.trigger( 'close', {} )
+                                                }
+                                                return
+                                            }
+                                            self.trigger( 'select', {
+                                                originalEvent: evt,
+                                                data
+                                            } )
+                                        }
+                                    )
+                                    this.$results.on(
+                                        'mouseenter',
+                                        '.select2-results__option--selectable',
+                                        function ( evt ) {
+                                            var data = Utils.GetData( this, 'data' )
+                                            self.getHighlightedResults()
+                                                .removeClass( 'select2-results__option--highlighted' )
+                                                .attr( 'aria-selected', 'false' )
+                                            self.trigger( 'results:focus', {
+                                                data,
+                                                element: $2( this )
+                                            } )
+                                        }
+                                    )
+                                }
+                                Results.prototype.getHighlightedResults = function () {
+                                    var $highlighted = this.$results.find( '.select2-results__option--highlighted' )
+                                    return $highlighted
+                                }
+                                Results.prototype.destroy = function () {
+                                    this.$results.remove()
+                                }
+                                Results.prototype.ensureHighlightVisible = function () {
+                                    var $highlighted = this.getHighlightedResults()
+                                    if ( $highlighted.length === 0 ) {
+                                        return
+                                    }
+                                    var $options = this.$results.find( '.select2-results__option--selectable' )
+                                    var currentIndex = $options.index( $highlighted )
+                                    var currentOffset = this.$results.offset().top
+                                    var nextTop = $highlighted.offset().top
+                                    var nextOffset = this.$results.scrollTop() + (
+                                        nextTop - currentOffset
+                                    )
+                                    var offsetDelta = nextTop - currentOffset
+                                    nextOffset -= $highlighted.outerHeight( false ) * 2
+                                    if ( currentIndex <= 2 ) {
+                                        this.$results.scrollTop( 0 )
+                                    } else if ( offsetDelta > this.$results.outerHeight() || offsetDelta < 0 ) {
+                                        this.$results.scrollTop( nextOffset )
+                                    }
+                                }
+                                Results.prototype.template = function ( result, container ) {
+                                    var template = this.options.get( 'templateResult' )
+                                    var escapeMarkup = this.options.get( 'escapeMarkup' )
+                                    var content = template( result, container )
+                                    if ( content == null ) {
+                                        container.style.display = 'none'
+                                    } else if ( typeof content === 'string' ) {
+                                        container.innerHTML = escapeMarkup( content )
+                                    } else {
+                                        $2( container ).append( content )
+                                    }
+                                }
+                                return Results
+                            } )
+                            S22.define( 'select2/keys', [], function () {
+                                var KEYS = {
+                                    BACKSPACE: 8,
+                                    TAB: 9,
+                                    ENTER: 13,
+                                    SHIFT: 16,
+                                    CTRL: 17,
+                                    ALT: 18,
+                                    ESC: 27,
+                                    SPACE: 32,
+                                    PAGE_UP: 33,
+                                    PAGE_DOWN: 34,
+                                    END: 35,
+                                    HOME: 36,
+                                    LEFT: 37,
+                                    UP: 38,
+                                    RIGHT: 39,
+                                    DOWN: 40,
+                                    DELETE: 46
+                                }
+                                return KEYS
+                            } )
+                            S22.define( 'select2/selection/base', [
+                                'jquery',
+                                '../utils',
+                                '../keys'
+                            ], function ( $2, Utils, KEYS ) {
+                                function BaseSelection( $element, options ) {
+                                    this.$element = $element
+                                    this.options = options
+                                    BaseSelection.__super__.constructor.call( this )
+                                }
+
+                                Utils.Extend( BaseSelection, Utils.Observable )
+                                BaseSelection.prototype.render = function () {
+                                    var $selection = $2(
+                                        '<span class="select2-selection" role="combobox"  aria-haspopup="true" aria-expanded="false"></span>'
+                                    )
+                                    this._tabindex = 0
+                                    if ( Utils.GetData( this.$element[ 0 ], 'old-tabindex' ) != null ) {
+                                        this._tabindex = Utils.GetData( this.$element[ 0 ], 'old-tabindex' )
+                                    } else if ( this.$element.attr( 'tabindex' ) != null ) {
+                                        this._tabindex = this.$element.attr( 'tabindex' )
+                                    }
+                                    $selection.attr( 'title', this.$element.attr( 'title' ) )
+                                    $selection.attr( 'tabindex', this._tabindex )
+                                    $selection.attr( 'aria-disabled', 'false' )
+                                    this.$selection = $selection
+                                    return $selection
+                                }
+                                BaseSelection.prototype.bind = function ( container, $container ) {
+                                    var self = this
+                                    var resultsId = container.id + '-results'
+                                    this.container = container
+                                    this.$selection.on( 'focus', function ( evt ) {
+                                        self.trigger( 'focus', evt )
+                                    } )
+                                    this.$selection.on( 'blur', function ( evt ) {
+                                        self._handleBlur( evt )
+                                    } )
+                                    this.$selection.on( 'keydown', function ( evt ) {
+                                        self.trigger( 'keypress', evt )
+                                        if ( evt.which === KEYS.SPACE ) {
+                                            evt.preventDefault()
+                                        }
+                                    } )
+                                    container.on( 'results:focus', function ( params ) {
+                                        self.$selection.attr( 'aria-activedescendant', params.data._resultId )
+                                    } )
+                                    container.on( 'selection:update', function ( params ) {
+                                        self.update( params.data )
+                                    } )
+                                    container.on( 'open', function () {
+                                        self.$selection.attr( 'aria-expanded', 'true' )
+                                        self.$selection.attr( 'aria-owns', resultsId )
+                                        self._attachCloseHandler( container )
+                                    } )
+                                    container.on( 'close', function () {
+                                        self.$selection.attr( 'aria-expanded', 'false' )
+                                        self.$selection.removeAttr( 'aria-activedescendant' )
+                                        self.$selection.removeAttr( 'aria-owns' )
+                                        self.$selection.trigger( 'focus' )
+                                        self._detachCloseHandler( container )
+                                    } )
+                                    container.on( 'enable', function () {
+                                        self.$selection.attr( 'tabindex', self._tabindex )
+                                        self.$selection.attr( 'aria-disabled', 'false' )
+                                    } )
+                                    container.on( 'disable', function () {
+                                        self.$selection.attr( 'tabindex', '-1' )
+                                        self.$selection.attr( 'aria-disabled', 'true' )
+                                    } )
+                                }
+                                BaseSelection.prototype._handleBlur = function ( evt ) {
+                                    var self = this
+                                    window.setTimeout( function () {
+                                        if ( document.activeElement == self.$selection[ 0 ] || $2.contains(
+                                            self.$selection[ 0 ],
+                                            document.activeElement
+                                        ) ) {
+                                            return
+                                        }
+                                        self.trigger( 'blur', evt )
+                                    }, 1 )
+                                }
+                                BaseSelection.prototype._attachCloseHandler = function ( container ) {
+                                    $2( document.body ).on( 'mousedown.select2.' + container.id, function ( e ) {
+                                        var $target = $2( e.target )
+                                        var $select = $target.closest( '.select2' )
+                                        var $all = $2( '.select2.select2-container--open' )
+                                        $all.each( function () {
+                                            if ( this == $select[ 0 ] ) {
+                                                return
+                                            }
+                                            var $element = Utils.GetData( this, 'element' )
+                                            $element.select2( 'close' )
+                                        } )
+                                    } )
+                                }
+                                BaseSelection.prototype._detachCloseHandler = function ( container ) {
+                                    $2( document.body ).off( 'mousedown.select2.' + container.id )
+                                }
+                                BaseSelection.prototype.position = function ( $selection, $container ) {
+                                    var $selectionContainer = $container.find( '.selection' )
+                                    $selectionContainer.append( $selection )
+                                }
+                                BaseSelection.prototype.destroy = function () {
+                                    this._detachCloseHandler( this.container )
+                                }
+                                BaseSelection.prototype.update = function ( data ) {
+                                    throw new Error( 'The `update` method must be defined in child classes.' )
+                                }
+                                BaseSelection.prototype.isEnabled = function () {
+                                    return !this.isDisabled()
+                                }
+                                BaseSelection.prototype.isDisabled = function () {
+                                    return this.options.get( 'disabled' )
+                                }
+                                return BaseSelection
+                            } )
+                            S22.define( 'select2/selection/single', [
+                                'jquery',
+                                './base',
+                                '../utils',
+                                '../keys'
+                            ], function ( $2, BaseSelection, Utils, KEYS ) {
+                                function SingleSelection() {
+                                    SingleSelection.__super__.constructor.apply( this, arguments )
+                                }
+
+                                Utils.Extend( SingleSelection, BaseSelection )
+                                SingleSelection.prototype.render = function () {
+                                    var $selection = SingleSelection.__super__.render.call( this )
+                                    $selection[ 0 ].classList.add( 'select2-selection--single' )
+                                    $selection.html(
+                                        '<span class="select2-selection__rendered"></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>'
+                                    )
+                                    return $selection
+                                }
+                                SingleSelection.prototype.bind = function ( container, $container ) {
+                                    var self = this
+                                    SingleSelection.__super__.bind.apply( this, arguments )
+                                    var id = container.id + '-container'
+                                    this.$selection.find( '.select2-selection__rendered' )
+                                        .attr( 'id', id )
+                                        .attr( 'role', 'textbox' )
+                                        .attr( 'aria-readonly', 'true' )
+                                    this.$selection.attr( 'aria-labelledby', id )
+                                    this.$selection.attr( 'aria-controls', id )
+                                    this.$selection.on( 'mousedown', function ( evt ) {
+                                        if ( evt.which !== 1 ) {
+                                            return
+                                        }
+                                        self.trigger( 'toggle', {
+                                            originalEvent: evt
+                                        } )
+                                    } )
+                                    this.$selection.on( 'focus', function ( evt ) {
+                                    } )
+                                    this.$selection.on( 'blur', function ( evt ) {
+                                    } )
+                                    container.on( 'focus', function ( evt ) {
+                                        if ( !container.isOpen() ) {
+                                            self.$selection.trigger( 'focus' )
+                                        }
+                                    } )
+                                }
+                                SingleSelection.prototype.clear = function () {
+                                    var $rendered = this.$selection.find( '.select2-selection__rendered' )
+                                    $rendered.empty()
+                                    $rendered.removeAttr( 'title' )
+                                }
+                                SingleSelection.prototype.display = function ( data, container ) {
+                                    var template = this.options.get( 'templateSelection' )
+                                    var escapeMarkup = this.options.get( 'escapeMarkup' )
+                                    return escapeMarkup( template( data, container ) )
+                                }
+                                SingleSelection.prototype.selectionContainer = function () {
+                                    return $2( '<span></span>' )
+                                }
+                                SingleSelection.prototype.update = function ( data ) {
+                                    if ( data.length === 0 ) {
+                                        this.clear()
+                                        return
+                                    }
+                                    var selection = data[ 0 ]
+                                    var $rendered = this.$selection.find( '.select2-selection__rendered' )
+                                    var formatted = this.display( selection, $rendered )
+                                    $rendered.empty().append( formatted )
+                                    var title = selection.title || selection.text
+                                    if ( title ) {
+                                        $rendered.attr( 'title', title )
+                                    } else {
+                                        $rendered.removeAttr( 'title' )
+                                    }
+                                }
+                                return SingleSelection
+                            } )
+                            S22.define( 'select2/selection/multiple', [
+                                'jquery',
+                                './base',
+                                '../utils'
+                            ], function ( $2, BaseSelection, Utils ) {
+                                function MultipleSelection( $element, options ) {
+                                    MultipleSelection.__super__.constructor.apply( this, arguments )
+                                }
+
+                                Utils.Extend( MultipleSelection, BaseSelection )
+                                MultipleSelection.prototype.render = function () {
+                                    var $selection = MultipleSelection.__super__.render.call( this )
+                                    $selection[ 0 ].classList.add( 'select2-selection--multiple' )
+                                    $selection.html(
+                                        '<ul class="select2-selection__rendered"></ul>'
+                                    )
+                                    return $selection
+                                }
+                                MultipleSelection.prototype.bind = function ( container, $container ) {
+                                    var self = this
+                                    MultipleSelection.__super__.bind.apply( this, arguments )
+                                    var id = container.id + '-container'
+                                    this.$selection.find( '.select2-selection__rendered' ).attr( 'id', id )
+                                    this.$selection.on( 'click', function ( evt ) {
+                                        self.trigger( 'toggle', {
+                                            originalEvent: evt
+                                        } )
+                                    } )
+                                    this.$selection.on(
+                                        'click',
+                                        '.select2-selection__choice__remove',
+                                        function ( evt ) {
+                                            if ( self.isDisabled() ) {
+                                                return
+                                            }
+                                            var $remove = $2( this )
+                                            var $selection = $remove.parent()
+                                            var data = Utils.GetData( $selection[ 0 ], 'data' )
+                                            self.trigger( 'unselect', {
+                                                originalEvent: evt,
+                                                data
+                                            } )
+                                        }
+                                    )
+                                    this.$selection.on(
+                                        'keydown',
+                                        '.select2-selection__choice__remove',
+                                        function ( evt ) {
+                                            if ( self.isDisabled() ) {
+                                                return
+                                            }
+                                            evt.stopPropagation()
+                                        }
+                                    )
+                                }
+                                MultipleSelection.prototype.clear = function () {
+                                    var $rendered = this.$selection.find( '.select2-selection__rendered' )
+                                    $rendered.empty()
+                                    $rendered.removeAttr( 'title' )
+                                }
+                                MultipleSelection.prototype.display = function ( data, container ) {
+                                    var template = this.options.get( 'templateSelection' )
+                                    var escapeMarkup = this.options.get( 'escapeMarkup' )
+                                    return escapeMarkup( template( data, container ) )
+                                }
+                                MultipleSelection.prototype.selectionContainer = function () {
+                                    var $container = $2(
+                                        '<li class="select2-selection__choice"><button type="button" class="select2-selection__choice__remove" tabindex="-1"><span aria-hidden="true">&times;</span></button><span class="select2-selection__choice__display"></span></li>'
+                                    )
+                                    return $container
+                                }
+                                MultipleSelection.prototype.update = function ( data ) {
+                                    this.clear()
+                                    if ( data.length === 0 ) {
+                                        return
+                                    }
+                                    var $selections = []
+                                    var selectionIdPrefix = this.$selection.find( '.select2-selection__rendered' )
+                                                                .attr( 'id' )
+                                                            + '-choice-'
+                                    for ( var d = 0; d < data.length; d++ ) {
+                                        var selection = data[ d ]
+                                        var $selection = this.selectionContainer()
+                                        var formatted = this.display( selection, $selection )
+                                        var selectionId = selectionIdPrefix + Utils.generateChars( 4 ) + '-'
+                                        if ( selection.id ) {
+                                            selectionId += selection.id
+                                        } else {
+                                            selectionId += Utils.generateChars( 4 )
+                                        }
+                                        $selection.find( '.select2-selection__choice__display' )
+                                                  .append( formatted )
+                                                  .attr( 'id', selectionId )
+                                        var title = selection.title || selection.text
+                                        if ( title ) {
+                                            $selection.attr( 'title', title )
+                                        }
+                                        var removeItem = this.options.get( 'translations' ).get( 'removeItem' )
+                                        var $remove = $selection.find( '.select2-selection__choice__remove' )
+                                        $remove.attr( 'title', removeItem() )
+                                        $remove.attr( 'aria-label', removeItem() )
+                                        $remove.attr( 'aria-describedby', selectionId )
+                                        Utils.StoreData( $selection[ 0 ], 'data', selection )
+                                        $selections.push( $selection )
+                                    }
+                                    var $rendered = this.$selection.find( '.select2-selection__rendered' )
+                                    $rendered.append( $selections )
+                                }
+                                return MultipleSelection
+                            } )
+                            S22.define( 'select2/selection/placeholder', [], function () {
+                                function Placeholder( decorated, $element, options ) {
+                                    this.placeholder = this.normalizePlaceholder( options.get( 'placeholder' ) )
+                                    decorated.call( this, $element, options )
+                                }
+
+                                Placeholder.prototype.normalizePlaceholder = function ( _, placeholder ) {
+                                    if ( typeof placeholder === 'string' ) {
+                                        placeholder = {
+                                            id: '',
+                                            text: placeholder
+                                        }
+                                    }
+                                    return placeholder
+                                }
+                                Placeholder.prototype.createPlaceholder = function ( decorated, placeholder ) {
+                                    var $placeholder = this.selectionContainer()
+                                    $placeholder.html( this.display( placeholder ) )
+                                    $placeholder[ 0 ].classList.add( 'select2-selection__placeholder' )
+                                    $placeholder[ 0 ].classList.remove( 'select2-selection__choice' )
+                                    var placeholderTitle = placeholder.title || placeholder.text || $placeholder.text()
+                                    this.$selection.find( '.select2-selection__rendered' ).attr(
+                                        'title',
+                                        placeholderTitle
+                                    )
+                                    return $placeholder
+                                }
+                                Placeholder.prototype.update = function ( decorated, data ) {
+                                    var singlePlaceholder = data.length == 1 && data[ 0 ].id != this.placeholder.id
+                                    var multipleSelections = data.length > 1
+                                    if ( multipleSelections || singlePlaceholder ) {
+                                        return decorated.call( this, data )
+                                    }
+                                    this.clear()
+                                    var $placeholder = this.createPlaceholder( this.placeholder )
+                                    this.$selection.find( '.select2-selection__rendered' ).append( $placeholder )
+                                }
+                                return Placeholder
+                            } )
+                            S22.define( 'select2/selection/allowClear', [
+                                'jquery',
+                                '../keys',
+                                '../utils'
+                            ], function ( $2, KEYS, Utils ) {
+                                function AllowClear() {
+                                }
+
+                                AllowClear.prototype.bind = function ( decorated, container, $container ) {
+                                    var self = this
+                                    decorated.call( this, container, $container )
+                                    if ( this.placeholder == null ) {
+                                        if ( this.options.get( 'debug' ) && window.console && console.error ) {
+                                            console.error(
+                                                'Select2: The `allowClear` option should be used in combination with the `placeholder` option.'
+                                            )
+                                        }
+                                    }
+                                    this.$selection.on(
+                                        'mousedown',
+                                        '.select2-selection__clear',
+                                        function ( evt ) {
+                                            self._handleClear( evt )
+                                        }
+                                    )
+                                    container.on( 'keypress', function ( evt ) {
+                                        self._handleKeyboardClear( evt, container )
+                                    } )
+                                }
+                                AllowClear.prototype._handleClear = function ( _, evt ) {
+                                    if ( this.isDisabled() ) {
+                                        return
+                                    }
+                                    var $clear = this.$selection.find( '.select2-selection__clear' )
+                                    if ( $clear.length === 0 ) {
+                                        return
+                                    }
+                                    evt.stopPropagation()
+                                    var data = Utils.GetData( $clear[ 0 ], 'data' )
+                                    var previousVal = this.$element.val()
+                                    this.$element.val( this.placeholder.id )
+                                    var unselectData = {
+                                        data
+                                    }
+                                    this.trigger( 'clear', unselectData )
+                                    if ( unselectData.prevented ) {
+                                        this.$element.val( previousVal )
+                                        return
+                                    }
+                                    for ( var d = 0; d < data.length; d++ ) {
+                                        unselectData = {
+                                            data: data[ d ]
+                                        }
+                                        this.trigger( 'unselect', unselectData )
+                                        if ( unselectData.prevented ) {
+                                            this.$element.val( previousVal )
+                                            return
+                                        }
+                                    }
+                                    this.$element.trigger( 'input' ).trigger( 'change' )
+                                    this.trigger( 'toggle', {} )
+                                }
+                                AllowClear.prototype._handleKeyboardClear = function ( _, evt, container ) {
+                                    if ( container.isOpen() ) {
+                                        return
+                                    }
+                                    if ( evt.which == KEYS.DELETE || evt.which == KEYS.BACKSPACE ) {
+                                        this._handleClear( evt )
+                                    }
+                                }
+                                AllowClear.prototype.update = function ( decorated, data ) {
+                                    decorated.call( this, data )
+                                    this.$selection.find( '.select2-selection__clear' ).remove()
+                                    this.$selection[ 0 ].classList.remove( 'select2-selection--clearable' )
+                                    if ( this.$selection.find( '.select2-selection__placeholder' ).length
+                                         > 0
+                                         || data.length
+                                         === 0 ) {
+                                        return
+                                    }
+                                    var selectionId = this.$selection.find( '.select2-selection__rendered' )
+                                                          .attr( 'id' )
+                                    var removeAll = this.options.get( 'translations' ).get( 'removeAllItems' )
+                                    var $remove = $2(
+                                        '<button type="button" class="select2-selection__clear" tabindex="-1"><span aria-hidden="true">&times;</span></button>'
+                                    )
+                                    $remove.attr( 'title', removeAll() )
+                                    $remove.attr( 'aria-label', removeAll() )
+                                    $remove.attr( 'aria-describedby', selectionId )
+                                    Utils.StoreData( $remove[ 0 ], 'data', data )
+                                    this.$selection.prepend( $remove )
+                                    this.$selection[ 0 ].classList.add( 'select2-selection--clearable' )
+                                }
+                                return AllowClear
+                            } )
+                            S22.define( 'select2/selection/search', [
+                                'jquery',
+                                '../utils',
+                                '../keys'
+                            ], function ( $2, Utils, KEYS ) {
+                                function Search( decorated, $element, options ) {
+                                    decorated.call( this, $element, options )
+                                }
+
+                                Search.prototype.render = function ( decorated ) {
+                                    var searchLabel = this.options.get( 'translations' ).get( 'search' )
+                                    var $search = $2(
+                                        '<span class="select2-search select2-search--inline"><textarea class="select2-search__field" type="search" tabindex="-1" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" ></textarea></span>'
+                                    )
+                                    this.$searchContainer = $search
+                                    this.$search = $search.find( 'textarea' )
+                                    this.$search.prop( 'autocomplete', this.options.get( 'autocomplete' ) )
+                                    this.$search.attr( 'aria-label', searchLabel() )
+                                    var $rendered = decorated.call( this )
+                                    this._transferTabIndex()
+                                    $rendered.append( this.$searchContainer )
+                                    return $rendered
+                                }
+                                Search.prototype.bind = function ( decorated, container, $container ) {
+                                    var self = this
+                                    var resultsId = container.id + '-results'
+                                    var selectionId = container.id + '-container'
+                                    decorated.call( this, container, $container )
+                                    self.$search.attr( 'aria-describedby', selectionId )
+                                    container.on( 'open', function () {
+                                        self.$search.attr( 'aria-controls', resultsId )
+                                        self.$search.trigger( 'focus' )
+                                    } )
+                                    container.on( 'close', function () {
+                                        self.$search.val( '' )
+                                        self.resizeSearch()
+                                        self.$search.removeAttr( 'aria-controls' )
+                                        self.$search.removeAttr( 'aria-activedescendant' )
+                                        self.$search.trigger( 'focus' )
+                                    } )
+                                    container.on( 'enable', function () {
+                                        self.$search.prop( 'disabled', false )
+                                        self._transferTabIndex()
+                                    } )
+                                    container.on( 'disable', function () {
+                                        self.$search.prop( 'disabled', true )
+                                    } )
+                                    container.on( 'focus', function ( evt ) {
+                                        self.$search.trigger( 'focus' )
+                                    } )
+                                    container.on( 'results:focus', function ( params ) {
+                                        if ( params.data._resultId ) {
+                                            self.$search.attr( 'aria-activedescendant', params.data._resultId )
+                                        } else {
+                                            self.$search.removeAttr( 'aria-activedescendant' )
+                                        }
+                                    } )
+                                    this.$selection.on( 'focusin', '.select2-search--inline', function ( evt ) {
+                                        self.trigger( 'focus', evt )
+                                    } )
+                                    this.$selection.on( 'focusout', '.select2-search--inline', function ( evt ) {
+                                        self._handleBlur( evt )
+                                    } )
+                                    this.$selection.on( 'keydown', '.select2-search--inline', function ( evt ) {
+                                        evt.stopPropagation()
+                                        self.trigger( 'keypress', evt )
+                                        self._keyUpPrevented = evt.isDefaultPrevented()
+                                        var key = evt.which
+                                        if ( key === KEYS.BACKSPACE && self.$search.val() === '' ) {
+                                            var $previousChoice = self.$selection.find( '.select2-selection__choice' )
+                                                                      .last()
+                                            if ( $previousChoice.length > 0 ) {
+                                                var item = Utils.GetData( $previousChoice[ 0 ], 'data' )
+                                                self.searchRemoveChoice( item )
+                                                evt.preventDefault()
+                                            }
+                                        }
+                                    } )
+                                    this.$selection.on( 'click', '.select2-search--inline', function ( evt ) {
+                                        if ( self.$search.val() ) {
+                                            evt.stopPropagation()
+                                        }
+                                    } )
+                                    var msie = document.documentMode
+                                    var disableInputEvents = msie && msie <= 11
+                                    this.$selection.on(
+                                        'input.searchcheck',
+                                        '.select2-search--inline',
+                                        function ( evt ) {
+                                            if ( disableInputEvents ) {
+                                                self.$selection.off( 'input.search input.searchcheck' )
+                                                return
+                                            }
+                                            self.$selection.off( 'keyup.search' )
+                                        }
+                                    )
+                                    this.$selection.on(
+                                        'keyup.search input.search',
+                                        '.select2-search--inline',
+                                        function ( evt ) {
+                                            if ( disableInputEvents && evt.type === 'input' ) {
+                                                self.$selection.off( 'input.search input.searchcheck' )
+                                                return
+                                            }
+                                            var key = evt.which
+                                            if ( key == KEYS.SHIFT || key == KEYS.CTRL || key == KEYS.ALT ) {
+                                                return
+                                            }
+                                            if ( key == KEYS.TAB ) {
+                                                return
+                                            }
+                                            self.handleSearch( evt )
+                                        }
+                                    )
+                                }
+                                Search.prototype._transferTabIndex = function ( decorated ) {
+                                    this.$search.attr( 'tabindex', this.$selection.attr( 'tabindex' ) )
+                                    this.$selection.attr( 'tabindex', '-1' )
+                                }
+                                Search.prototype.createPlaceholder = function ( decorated, placeholder ) {
+                                    this.$search.attr( 'placeholder', placeholder.text )
+                                }
+                                Search.prototype.update = function ( decorated, data ) {
+                                    var searchHadFocus = this.$search[ 0 ] == document.activeElement
+                                    this.$search.attr( 'placeholder', '' )
+                                    decorated.call( this, data )
+                                    this.resizeSearch()
+                                    if ( searchHadFocus ) {
+                                        this.$search.trigger( 'focus' )
+                                    }
+                                }
+                                Search.prototype.handleSearch = function () {
+                                    this.resizeSearch()
+                                    if ( !this._keyUpPrevented ) {
+                                        var input = this.$search.val()
+                                        this.trigger( 'query', {
+                                            term: input
+                                        } )
+                                    }
+                                    this._keyUpPrevented = false
+                                }
+                                Search.prototype.searchRemoveChoice = function ( decorated, item ) {
+                                    this.trigger( 'unselect', {
+                                        data: item
+                                    } )
+                                    this.$search.val( item.text )
+                                    this.handleSearch()
+                                }
+                                Search.prototype.resizeSearch = function () {
+                                    this.$search.css( 'width', '25px' )
+                                    var width = '100%'
+                                    if ( this.$search.attr( 'placeholder' ) === '' ) {
+                                        var minimumWidth = this.$search.val().length + 1
+                                        width = minimumWidth * 0.75 + 'em'
+                                    }
+                                    this.$search.css( 'width', width )
+                                }
+                                return Search
+                            } )
+                            S22.define( 'select2/selection/selectionCss', [
+                                '../utils'
+                            ], function ( Utils ) {
+                                function SelectionCSS() {
+                                }
+
+                                SelectionCSS.prototype.render = function ( decorated ) {
+                                    var $selection = decorated.call( this )
+                                    var selectionCssClass = this.options.get( 'selectionCssClass' ) || ''
+                                    if ( selectionCssClass.indexOf( ':all:' ) !== -1 ) {
+                                        selectionCssClass = selectionCssClass.replace( ':all:', '' )
+                                        Utils.copyNonInternalCssClasses( $selection[ 0 ], this.$element[ 0 ] )
+                                    }
+                                    $selection.addClass( selectionCssClass )
+                                    return $selection
+                                }
+                                return SelectionCSS
+                            } )
+                            S22.define( 'select2/selection/eventRelay', [
+                                'jquery'
+                            ], function ( $2 ) {
+                                function EventRelay() {
+                                }
+
+                                EventRelay.prototype.bind = function ( decorated, container, $container ) {
+                                    var self = this
+                                    var relayEvents = [
+                                        'open',
+                                        'opening',
+                                        'close',
+                                        'closing',
+                                        'select',
+                                        'selecting',
+                                        'unselect',
+                                        'unselecting',
+                                        'clear',
+                                        'clearing'
+                                    ]
+                                    var preventableEvents = [
+                                        'opening',
+                                        'closing',
+                                        'selecting',
+                                        'unselecting',
+                                        'clearing'
+                                    ]
+                                    decorated.call( this, container, $container )
+                                    container.on( '*', function ( name, params ) {
+                                        if ( relayEvents.indexOf( name ) === -1 ) {
+                                            return
+                                        }
+                                        params = params || {}
+                                        var evt = $2.Event( 'select2:' + name, {
+                                            params
+                                        } )
+                                        self.$element.trigger( evt )
+                                        if ( preventableEvents.indexOf( name ) === -1 ) {
+                                            return
+                                        }
+                                        params.prevented = evt.isDefaultPrevented()
+                                    } )
+                                }
+                                return EventRelay
+                            } )
+                            S22.define( 'select2/translation', [
+                                'jquery',
+                                'require'
+                            ], function ( $2, require ) {
+                                function Translation( dict ) {
+                                    this.dict = dict || {}
+                                }
+
+                                Translation.prototype.all = function () {
+                                    return this.dict
+                                }
+                                Translation.prototype.get = function ( key ) {
+                                    return this.dict[ key ]
+                                }
+                                Translation.prototype.extend = function ( translation ) {
+                                    this.dict = $2.extend( {}, translation.all(), this.dict )
+                                }
+                                Translation._cache = {}
+                                Translation.loadPath = function ( path ) {
+                                    if ( !(
+                                        path in Translation._cache
+                                    ) ) {
+                                        var translations = require( path )
+                                        Translation._cache[ path ] = translations
+                                    }
+                                    return new Translation( Translation._cache[ path ] )
+                                }
+                                return Translation
+                            } )
+                            S22.define( 'select2/diacritics', [], function () {
+                                var diacritics = {
+                                    'Ⓐ': 'A',
+                                    'Ａ': 'A',
+                                    'À': 'A',
+                                    'Á': 'A',
+                                    'Â': 'A',
+                                    'Ầ': 'A',
+                                    'Ấ': 'A',
+                                    'Ẫ': 'A',
+                                    'Ẩ': 'A',
+                                    'Ã': 'A',
+                                    'Ā': 'A',
+                                    'Ă': 'A',
+                                    'Ằ': 'A',
+                                    'Ắ': 'A',
+                                    'Ẵ': 'A',
+                                    'Ẳ': 'A',
+                                    'Ȧ': 'A',
+                                    'Ǡ': 'A',
+                                    'Ä': 'A',
+                                    'Ǟ': 'A',
+                                    'Ả': 'A',
+                                    'Å': 'A',
+                                    'Ǻ': 'A',
+                                    'Ǎ': 'A',
+                                    'Ȁ': 'A',
+                                    'Ȃ': 'A',
+                                    'Ạ': 'A',
+                                    'Ậ': 'A',
+                                    'Ặ': 'A',
+                                    'Ḁ': 'A',
+                                    'Ą': 'A',
+                                    'Ⱥ': 'A',
+                                    'Ɐ': 'A',
+                                    'Ꜳ': 'AA',
+                                    'Æ': 'AE',
+                                    'Ǽ': 'AE',
+                                    'Ǣ': 'AE',
+                                    'Ꜵ': 'AO',
+                                    'Ꜷ': 'AU',
+                                    'Ꜹ': 'AV',
+                                    'Ꜻ': 'AV',
+                                    'Ꜽ': 'AY',
+                                    'Ⓑ': 'B',
+                                    'Ｂ': 'B',
+                                    'Ḃ': 'B',
+                                    'Ḅ': 'B',
+                                    'Ḇ': 'B',
+                                    'Ƀ': 'B',
+                                    'Ƃ': 'B',
+                                    'Ɓ': 'B',
+                                    'Ⓒ': 'C',
+                                    'Ｃ': 'C',
+                                    'Ć': 'C',
+                                    'Ĉ': 'C',
+                                    'Ċ': 'C',
+                                    'Č': 'C',
+                                    'Ç': 'C',
+                                    'Ḉ': 'C',
+                                    'Ƈ': 'C',
+                                    'Ȼ': 'C',
+                                    'Ꜿ': 'C',
+                                    'Ⓓ': 'D',
+                                    'Ｄ': 'D',
+                                    'Ḋ': 'D',
+                                    'Ď': 'D',
+                                    'Ḍ': 'D',
+                                    'Ḑ': 'D',
+                                    'Ḓ': 'D',
+                                    'Ḏ': 'D',
+                                    'Đ': 'D',
+                                    'Ƌ': 'D',
+                                    'Ɗ': 'D',
+                                    'Ɖ': 'D',
+                                    'Ꝺ': 'D',
+                                    'Ǳ': 'DZ',
+                                    'Ǆ': 'DZ',
+                                    'ǲ': 'Dz',
+                                    'ǅ': 'Dz',
+                                    'Ⓔ': 'E',
+                                    'Ｅ': 'E',
+                                    'È': 'E',
+                                    'É': 'E',
+                                    'Ê': 'E',
+                                    'Ề': 'E',
+                                    'Ế': 'E',
+                                    'Ễ': 'E',
+                                    'Ể': 'E',
+                                    'Ẽ': 'E',
+                                    'Ē': 'E',
+                                    'Ḕ': 'E',
+                                    'Ḗ': 'E',
+                                    'Ĕ': 'E',
+                                    'Ė': 'E',
+                                    'Ë': 'E',
+                                    'Ẻ': 'E',
+                                    'Ě': 'E',
+                                    'Ȅ': 'E',
+                                    'Ȇ': 'E',
+                                    'Ẹ': 'E',
+                                    'Ệ': 'E',
+                                    'Ȩ': 'E',
+                                    'Ḝ': 'E',
+                                    'Ę': 'E',
+                                    'Ḙ': 'E',
+                                    'Ḛ': 'E',
+                                    'Ɛ': 'E',
+                                    'Ǝ': 'E',
+                                    'Ⓕ': 'F',
+                                    'Ｆ': 'F',
+                                    'Ḟ': 'F',
+                                    'Ƒ': 'F',
+                                    'Ꝼ': 'F',
+                                    'Ⓖ': 'G',
+                                    'Ｇ': 'G',
+                                    'Ǵ': 'G',
+                                    'Ĝ': 'G',
+                                    'Ḡ': 'G',
+                                    'Ğ': 'G',
+                                    'Ġ': 'G',
+                                    'Ǧ': 'G',
+                                    'Ģ': 'G',
+                                    'Ǥ': 'G',
+                                    'Ɠ': 'G',
+                                    'Ꞡ': 'G',
+                                    'Ᵹ': 'G',
+                                    'Ꝿ': 'G',
+                                    'Ⓗ': 'H',
+                                    'Ｈ': 'H',
+                                    'Ĥ': 'H',
+                                    'Ḣ': 'H',
+                                    'Ḧ': 'H',
+                                    'Ȟ': 'H',
+                                    'Ḥ': 'H',
+                                    'Ḩ': 'H',
+                                    'Ḫ': 'H',
+                                    'Ħ': 'H',
+                                    'Ⱨ': 'H',
+                                    'Ⱶ': 'H',
+                                    'Ɥ': 'H',
+                                    'Ⓘ': 'I',
+                                    'Ｉ': 'I',
+                                    'Ì': 'I',
+                                    'Í': 'I',
+                                    'Î': 'I',
+                                    'Ĩ': 'I',
+                                    'Ī': 'I',
+                                    'Ĭ': 'I',
+                                    'İ': 'I',
+                                    'Ï': 'I',
+                                    'Ḯ': 'I',
+                                    'Ỉ': 'I',
+                                    'Ǐ': 'I',
+                                    'Ȉ': 'I',
+                                    'Ȋ': 'I',
+                                    'Ị': 'I',
+                                    'Į': 'I',
+                                    'Ḭ': 'I',
+                                    'Ɨ': 'I',
+                                    'Ⓙ': 'J',
+                                    'Ｊ': 'J',
+                                    'Ĵ': 'J',
+                                    'Ɉ': 'J',
+                                    'Ⓚ': 'K',
+                                    'Ｋ': 'K',
+                                    'Ḱ': 'K',
+                                    'Ǩ': 'K',
+                                    'Ḳ': 'K',
+                                    'Ķ': 'K',
+                                    'Ḵ': 'K',
+                                    'Ƙ': 'K',
+                                    'Ⱪ': 'K',
+                                    'Ꝁ': 'K',
+                                    'Ꝃ': 'K',
+                                    'Ꝅ': 'K',
+                                    'Ꞣ': 'K',
+                                    'Ⓛ': 'L',
+                                    'Ｌ': 'L',
+                                    'Ŀ': 'L',
+                                    'Ĺ': 'L',
+                                    'Ľ': 'L',
+                                    'Ḷ': 'L',
+                                    'Ḹ': 'L',
+                                    'Ļ': 'L',
+                                    'Ḽ': 'L',
+                                    'Ḻ': 'L',
+                                    'Ł': 'L',
+                                    'Ƚ': 'L',
+                                    'Ɫ': 'L',
+                                    'Ⱡ': 'L',
+                                    'Ꝉ': 'L',
+                                    'Ꝇ': 'L',
+                                    'Ꞁ': 'L',
+                                    'Ǉ': 'LJ',
+                                    'ǈ': 'Lj',
+                                    'Ⓜ': 'M',
+                                    'Ｍ': 'M',
+                                    'Ḿ': 'M',
+                                    'Ṁ': 'M',
+                                    'Ṃ': 'M',
+                                    'Ɱ': 'M',
+                                    'Ɯ': 'M',
+                                    'Ⓝ': 'N',
+                                    'Ｎ': 'N',
+                                    'Ǹ': 'N',
+                                    'Ń': 'N',
+                                    'Ñ': 'N',
+                                    'Ṅ': 'N',
+                                    'Ň': 'N',
+                                    'Ṇ': 'N',
+                                    'Ņ': 'N',
+                                    'Ṋ': 'N',
+                                    'Ṉ': 'N',
+                                    'Ƞ': 'N',
+                                    'Ɲ': 'N',
+                                    'Ꞑ': 'N',
+                                    'Ꞥ': 'N',
+                                    'Ǌ': 'NJ',
+                                    'ǋ': 'Nj',
+                                    'Ⓞ': 'O',
+                                    'Ｏ': 'O',
+                                    'Ò': 'O',
+                                    'Ó': 'O',
+                                    'Ô': 'O',
+                                    'Ồ': 'O',
+                                    'Ố': 'O',
+                                    'Ỗ': 'O',
+                                    'Ổ': 'O',
+                                    'Õ': 'O',
+                                    'Ṍ': 'O',
+                                    'Ȭ': 'O',
+                                    'Ṏ': 'O',
+                                    'Ō': 'O',
+                                    'Ṑ': 'O',
+                                    'Ṓ': 'O',
+                                    'Ŏ': 'O',
+                                    'Ȯ': 'O',
+                                    'Ȱ': 'O',
+                                    'Ö': 'O',
+                                    'Ȫ': 'O',
+                                    'Ỏ': 'O',
+                                    'Ő': 'O',
+                                    'Ǒ': 'O',
+                                    'Ȍ': 'O',
+                                    'Ȏ': 'O',
+                                    'Ơ': 'O',
+                                    'Ờ': 'O',
+                                    'Ớ': 'O',
+                                    'Ỡ': 'O',
+                                    'Ở': 'O',
+                                    'Ợ': 'O',
+                                    'Ọ': 'O',
+                                    'Ộ': 'O',
+                                    'Ǫ': 'O',
+                                    'Ǭ': 'O',
+                                    'Ø': 'O',
+                                    'Ǿ': 'O',
+                                    'Ɔ': 'O',
+                                    'Ɵ': 'O',
+                                    'Ꝋ': 'O',
+                                    'Ꝍ': 'O',
+                                    'Œ': 'OE',
+                                    'Ƣ': 'OI',
+                                    'Ꝏ': 'OO',
+                                    'Ȣ': 'OU',
+                                    'Ⓟ': 'P',
+                                    'Ｐ': 'P',
+                                    'Ṕ': 'P',
+                                    'Ṗ': 'P',
+                                    'Ƥ': 'P',
+                                    'Ᵽ': 'P',
+                                    'Ꝑ': 'P',
+                                    'Ꝓ': 'P',
+                                    'Ꝕ': 'P',
+                                    'Ⓠ': 'Q',
+                                    'Ｑ': 'Q',
+                                    'Ꝗ': 'Q',
+                                    'Ꝙ': 'Q',
+                                    'Ɋ': 'Q',
+                                    'Ⓡ': 'R',
+                                    'Ｒ': 'R',
+                                    'Ŕ': 'R',
+                                    'Ṙ': 'R',
+                                    'Ř': 'R',
+                                    'Ȑ': 'R',
+                                    'Ȓ': 'R',
+                                    'Ṛ': 'R',
+                                    'Ṝ': 'R',
+                                    'Ŗ': 'R',
+                                    'Ṟ': 'R',
+                                    'Ɍ': 'R',
+                                    'Ɽ': 'R',
+                                    'Ꝛ': 'R',
+                                    'Ꞧ': 'R',
+                                    'Ꞃ': 'R',
+                                    'Ⓢ': 'S',
+                                    'Ｓ': 'S',
+                                    'ẞ': 'S',
+                                    'Ś': 'S',
+                                    'Ṥ': 'S',
+                                    'Ŝ': 'S',
+                                    'Ṡ': 'S',
+                                    'Š': 'S',
+                                    'Ṧ': 'S',
+                                    'Ṣ': 'S',
+                                    'Ṩ': 'S',
+                                    'Ș': 'S',
+                                    'Ş': 'S',
+                                    'Ȿ': 'S',
+                                    'Ꞩ': 'S',
+                                    'Ꞅ': 'S',
+                                    'Ⓣ': 'T',
+                                    'Ｔ': 'T',
+                                    'Ṫ': 'T',
+                                    'Ť': 'T',
+                                    'Ṭ': 'T',
+                                    'Ț': 'T',
+                                    'Ţ': 'T',
+                                    'Ṱ': 'T',
+                                    'Ṯ': 'T',
+                                    'Ŧ': 'T',
+                                    'Ƭ': 'T',
+                                    'Ʈ': 'T',
+                                    'Ⱦ': 'T',
+                                    'Ꞇ': 'T',
+                                    'Ꜩ': 'TZ',
+                                    'Ⓤ': 'U',
+                                    'Ｕ': 'U',
+                                    'Ù': 'U',
+                                    'Ú': 'U',
+                                    'Û': 'U',
+                                    'Ũ': 'U',
+                                    'Ṹ': 'U',
+                                    'Ū': 'U',
+                                    'Ṻ': 'U',
+                                    'Ŭ': 'U',
+                                    'Ü': 'U',
+                                    'Ǜ': 'U',
+                                    'Ǘ': 'U',
+                                    'Ǖ': 'U',
+                                    'Ǚ': 'U',
+                                    'Ủ': 'U',
+                                    'Ů': 'U',
+                                    'Ű': 'U',
+                                    'Ǔ': 'U',
+                                    'Ȕ': 'U',
+                                    'Ȗ': 'U',
+                                    'Ư': 'U',
+                                    'Ừ': 'U',
+                                    'Ứ': 'U',
+                                    'Ữ': 'U',
+                                    'Ử': 'U',
+                                    'Ự': 'U',
+                                    'Ụ': 'U',
+                                    'Ṳ': 'U',
+                                    'Ų': 'U',
+                                    'Ṷ': 'U',
+                                    'Ṵ': 'U',
+                                    'Ʉ': 'U',
+                                    'Ⓥ': 'V',
+                                    'Ｖ': 'V',
+                                    'Ṽ': 'V',
+                                    'Ṿ': 'V',
+                                    'Ʋ': 'V',
+                                    'Ꝟ': 'V',
+                                    'Ʌ': 'V',
+                                    'Ꝡ': 'VY',
+                                    'Ⓦ': 'W',
+                                    'Ｗ': 'W',
+                                    'Ẁ': 'W',
+                                    'Ẃ': 'W',
+                                    'Ŵ': 'W',
+                                    'Ẇ': 'W',
+                                    'Ẅ': 'W',
+                                    'Ẉ': 'W',
+                                    'Ⱳ': 'W',
+                                    'Ⓧ': 'X',
+                                    'Ｘ': 'X',
+                                    'Ẋ': 'X',
+                                    'Ẍ': 'X',
+                                    'Ⓨ': 'Y',
+                                    'Ｙ': 'Y',
+                                    'Ỳ': 'Y',
+                                    'Ý': 'Y',
+                                    'Ŷ': 'Y',
+                                    'Ỹ': 'Y',
+                                    'Ȳ': 'Y',
+                                    'Ẏ': 'Y',
+                                    'Ÿ': 'Y',
+                                    'Ỷ': 'Y',
+                                    'Ỵ': 'Y',
+                                    'Ƴ': 'Y',
+                                    'Ɏ': 'Y',
+                                    'Ỿ': 'Y',
+                                    'Ⓩ': 'Z',
+                                    'Ｚ': 'Z',
+                                    'Ź': 'Z',
+                                    'Ẑ': 'Z',
+                                    'Ż': 'Z',
+                                    'Ž': 'Z',
+                                    'Ẓ': 'Z',
+                                    'Ẕ': 'Z',
+                                    'Ƶ': 'Z',
+                                    'Ȥ': 'Z',
+                                    'Ɀ': 'Z',
+                                    'Ⱬ': 'Z',
+                                    'Ꝣ': 'Z',
+                                    'ⓐ': 'a',
+                                    'ａ': 'a',
+                                    'ẚ': 'a',
+                                    'à': 'a',
+                                    'á': 'a',
+                                    'â': 'a',
+                                    'ầ': 'a',
+                                    'ấ': 'a',
+                                    'ẫ': 'a',
+                                    'ẩ': 'a',
+                                    'ã': 'a',
+                                    'ā': 'a',
+                                    'ă': 'a',
+                                    'ằ': 'a',
+                                    'ắ': 'a',
+                                    'ẵ': 'a',
+                                    'ẳ': 'a',
+                                    'ȧ': 'a',
+                                    'ǡ': 'a',
+                                    'ä': 'a',
+                                    'ǟ': 'a',
+                                    'ả': 'a',
+                                    'å': 'a',
+                                    'ǻ': 'a',
+                                    'ǎ': 'a',
+                                    'ȁ': 'a',
+                                    'ȃ': 'a',
+                                    'ạ': 'a',
+                                    'ậ': 'a',
+                                    'ặ': 'a',
+                                    'ḁ': 'a',
+                                    'ą': 'a',
+                                    'ⱥ': 'a',
+                                    'ɐ': 'a',
+                                    'ꜳ': 'aa',
+                                    'æ': 'ae',
+                                    'ǽ': 'ae',
+                                    'ǣ': 'ae',
+                                    'ꜵ': 'ao',
+                                    'ꜷ': 'au',
+                                    'ꜹ': 'av',
+                                    'ꜻ': 'av',
+                                    'ꜽ': 'ay',
+                                    'ⓑ': 'b',
+                                    'ｂ': 'b',
+                                    'ḃ': 'b',
+                                    'ḅ': 'b',
+                                    'ḇ': 'b',
+                                    'ƀ': 'b',
+                                    'ƃ': 'b',
+                                    'ɓ': 'b',
+                                    'ⓒ': 'c',
+                                    'ｃ': 'c',
+                                    'ć': 'c',
+                                    'ĉ': 'c',
+                                    'ċ': 'c',
+                                    'č': 'c',
+                                    'ç': 'c',
+                                    'ḉ': 'c',
+                                    'ƈ': 'c',
+                                    'ȼ': 'c',
+                                    'ꜿ': 'c',
+                                    'ↄ': 'c',
+                                    'ⓓ': 'd',
+                                    'ｄ': 'd',
+                                    'ḋ': 'd',
+                                    'ď': 'd',
+                                    'ḍ': 'd',
+                                    'ḑ': 'd',
+                                    'ḓ': 'd',
+                                    'ḏ': 'd',
+                                    'đ': 'd',
+                                    'ƌ': 'd',
+                                    'ɖ': 'd',
+                                    'ɗ': 'd',
+                                    'ꝺ': 'd',
+                                    'ǳ': 'dz',
+                                    'ǆ': 'dz',
+                                    'ⓔ': 'e',
+                                    'ｅ': 'e',
+                                    'è': 'e',
+                                    'é': 'e',
+                                    'ê': 'e',
+                                    'ề': 'e',
+                                    'ế': 'e',
+                                    'ễ': 'e',
+                                    'ể': 'e',
+                                    'ẽ': 'e',
+                                    'ē': 'e',
+                                    'ḕ': 'e',
+                                    'ḗ': 'e',
+                                    'ĕ': 'e',
+                                    'ė': 'e',
+                                    'ë': 'e',
+                                    'ẻ': 'e',
+                                    'ě': 'e',
+                                    'ȅ': 'e',
+                                    'ȇ': 'e',
+                                    'ẹ': 'e',
+                                    'ệ': 'e',
+                                    'ȩ': 'e',
+                                    'ḝ': 'e',
+                                    'ę': 'e',
+                                    'ḙ': 'e',
+                                    'ḛ': 'e',
+                                    'ɇ': 'e',
+                                    'ɛ': 'e',
+                                    'ǝ': 'e',
+                                    'ⓕ': 'f',
+                                    'ｆ': 'f',
+                                    'ḟ': 'f',
+                                    'ƒ': 'f',
+                                    'ꝼ': 'f',
+                                    'ⓖ': 'g',
+                                    'ｇ': 'g',
+                                    'ǵ': 'g',
+                                    'ĝ': 'g',
+                                    'ḡ': 'g',
+                                    'ğ': 'g',
+                                    'ġ': 'g',
+                                    'ǧ': 'g',
+                                    'ģ': 'g',
+                                    'ǥ': 'g',
+                                    'ɠ': 'g',
+                                    'ꞡ': 'g',
+                                    'ᵹ': 'g',
+                                    'ꝿ': 'g',
+                                    'ⓗ': 'h',
+                                    'ｈ': 'h',
+                                    'ĥ': 'h',
+                                    'ḣ': 'h',
+                                    'ḧ': 'h',
+                                    'ȟ': 'h',
+                                    'ḥ': 'h',
+                                    'ḩ': 'h',
+                                    'ḫ': 'h',
+                                    'ẖ': 'h',
+                                    'ħ': 'h',
+                                    'ⱨ': 'h',
+                                    'ⱶ': 'h',
+                                    'ɥ': 'h',
+                                    'ƕ': 'hv',
+                                    'ⓘ': 'i',
+                                    'ｉ': 'i',
+                                    'ì': 'i',
+                                    'í': 'i',
+                                    'î': 'i',
+                                    'ĩ': 'i',
+                                    'ī': 'i',
+                                    'ĭ': 'i',
+                                    'ï': 'i',
+                                    'ḯ': 'i',
+                                    'ỉ': 'i',
+                                    'ǐ': 'i',
+                                    'ȉ': 'i',
+                                    'ȋ': 'i',
+                                    'ị': 'i',
+                                    'į': 'i',
+                                    'ḭ': 'i',
+                                    'ɨ': 'i',
+                                    'ı': 'i',
+                                    'ⓙ': 'j',
+                                    'ｊ': 'j',
+                                    'ĵ': 'j',
+                                    'ǰ': 'j',
+                                    'ɉ': 'j',
+                                    'ⓚ': 'k',
+                                    'ｋ': 'k',
+                                    'ḱ': 'k',
+                                    'ǩ': 'k',
+                                    'ḳ': 'k',
+                                    'ķ': 'k',
+                                    'ḵ': 'k',
+                                    'ƙ': 'k',
+                                    'ⱪ': 'k',
+                                    'ꝁ': 'k',
+                                    'ꝃ': 'k',
+                                    'ꝅ': 'k',
+                                    'ꞣ': 'k',
+                                    'ⓛ': 'l',
+                                    'ｌ': 'l',
+                                    'ŀ': 'l',
+                                    'ĺ': 'l',
+                                    'ľ': 'l',
+                                    'ḷ': 'l',
+                                    'ḹ': 'l',
+                                    'ļ': 'l',
+                                    'ḽ': 'l',
+                                    'ḻ': 'l',
+                                    'ſ': 'l',
+                                    'ł': 'l',
+                                    'ƚ': 'l',
+                                    'ɫ': 'l',
+                                    'ⱡ': 'l',
+                                    'ꝉ': 'l',
+                                    'ꞁ': 'l',
+                                    'ꝇ': 'l',
+                                    'ǉ': 'lj',
+                                    'ⓜ': 'm',
+                                    'ｍ': 'm',
+                                    'ḿ': 'm',
+                                    'ṁ': 'm',
+                                    'ṃ': 'm',
+                                    'ɱ': 'm',
+                                    'ɯ': 'm',
+                                    'ⓝ': 'n',
+                                    'ｎ': 'n',
+                                    'ǹ': 'n',
+                                    'ń': 'n',
+                                    'ñ': 'n',
+                                    'ṅ': 'n',
+                                    'ň': 'n',
+                                    'ṇ': 'n',
+                                    'ņ': 'n',
+                                    'ṋ': 'n',
+                                    'ṉ': 'n',
+                                    'ƞ': 'n',
+                                    'ɲ': 'n',
+                                    'ŉ': 'n',
+                                    'ꞑ': 'n',
+                                    'ꞥ': 'n',
+                                    'ǌ': 'nj',
+                                    'ⓞ': 'o',
+                                    'ｏ': 'o',
+                                    'ò': 'o',
+                                    'ó': 'o',
+                                    'ô': 'o',
+                                    'ồ': 'o',
+                                    'ố': 'o',
+                                    'ỗ': 'o',
+                                    'ổ': 'o',
+                                    'õ': 'o',
+                                    'ṍ': 'o',
+                                    'ȭ': 'o',
+                                    'ṏ': 'o',
+                                    'ō': 'o',
+                                    'ṑ': 'o',
+                                    'ṓ': 'o',
+                                    'ŏ': 'o',
+                                    'ȯ': 'o',
+                                    'ȱ': 'o',
+                                    'ö': 'o',
+                                    'ȫ': 'o',
+                                    'ỏ': 'o',
+                                    'ő': 'o',
+                                    'ǒ': 'o',
+                                    'ȍ': 'o',
+                                    'ȏ': 'o',
+                                    'ơ': 'o',
+                                    'ờ': 'o',
+                                    'ớ': 'o',
+                                    'ỡ': 'o',
+                                    'ở': 'o',
+                                    'ợ': 'o',
+                                    'ọ': 'o',
+                                    'ộ': 'o',
+                                    'ǫ': 'o',
+                                    'ǭ': 'o',
+                                    'ø': 'o',
+                                    'ǿ': 'o',
+                                    'ɔ': 'o',
+                                    'ꝋ': 'o',
+                                    'ꝍ': 'o',
+                                    'ɵ': 'o',
+                                    'œ': 'oe',
+                                    'ƣ': 'oi',
+                                    'ȣ': 'ou',
+                                    'ꝏ': 'oo',
+                                    'ⓟ': 'p',
+                                    'ｐ': 'p',
+                                    'ṕ': 'p',
+                                    'ṗ': 'p',
+                                    'ƥ': 'p',
+                                    'ᵽ': 'p',
+                                    'ꝑ': 'p',
+                                    'ꝓ': 'p',
+                                    'ꝕ': 'p',
+                                    'ⓠ': 'q',
+                                    'ｑ': 'q',
+                                    'ɋ': 'q',
+                                    'ꝗ': 'q',
+                                    'ꝙ': 'q',
+                                    'ⓡ': 'r',
+                                    'ｒ': 'r',
+                                    'ŕ': 'r',
+                                    'ṙ': 'r',
+                                    'ř': 'r',
+                                    'ȑ': 'r',
+                                    'ȓ': 'r',
+                                    'ṛ': 'r',
+                                    'ṝ': 'r',
+                                    'ŗ': 'r',
+                                    'ṟ': 'r',
+                                    'ɍ': 'r',
+                                    'ɽ': 'r',
+                                    'ꝛ': 'r',
+                                    'ꞧ': 'r',
+                                    'ꞃ': 'r',
+                                    'ⓢ': 's',
+                                    'ｓ': 's',
+                                    'ß': 's',
+                                    'ś': 's',
+                                    'ṥ': 's',
+                                    'ŝ': 's',
+                                    'ṡ': 's',
+                                    'š': 's',
+                                    'ṧ': 's',
+                                    'ṣ': 's',
+                                    'ṩ': 's',
+                                    'ș': 's',
+                                    'ş': 's',
+                                    'ȿ': 's',
+                                    'ꞩ': 's',
+                                    'ꞅ': 's',
+                                    'ẛ': 's',
+                                    'ⓣ': 't',
+                                    'ｔ': 't',
+                                    'ṫ': 't',
+                                    'ẗ': 't',
+                                    'ť': 't',
+                                    'ṭ': 't',
+                                    'ț': 't',
+                                    'ţ': 't',
+                                    'ṱ': 't',
+                                    'ṯ': 't',
+                                    'ŧ': 't',
+                                    'ƭ': 't',
+                                    'ʈ': 't',
+                                    'ⱦ': 't',
+                                    'ꞇ': 't',
+                                    'ꜩ': 'tz',
+                                    'ⓤ': 'u',
+                                    'ｕ': 'u',
+                                    'ù': 'u',
+                                    'ú': 'u',
+                                    'û': 'u',
+                                    'ũ': 'u',
+                                    'ṹ': 'u',
+                                    'ū': 'u',
+                                    'ṻ': 'u',
+                                    'ŭ': 'u',
+                                    'ü': 'u',
+                                    'ǜ': 'u',
+                                    'ǘ': 'u',
+                                    'ǖ': 'u',
+                                    'ǚ': 'u',
+                                    'ủ': 'u',
+                                    'ů': 'u',
+                                    'ű': 'u',
+                                    'ǔ': 'u',
+                                    'ȕ': 'u',
+                                    'ȗ': 'u',
+                                    'ư': 'u',
+                                    'ừ': 'u',
+                                    'ứ': 'u',
+                                    'ữ': 'u',
+                                    'ử': 'u',
+                                    'ự': 'u',
+                                    'ụ': 'u',
+                                    'ṳ': 'u',
+                                    'ų': 'u',
+                                    'ṷ': 'u',
+                                    'ṵ': 'u',
+                                    'ʉ': 'u',
+                                    'ⓥ': 'v',
+                                    'ｖ': 'v',
+                                    'ṽ': 'v',
+                                    'ṿ': 'v',
+                                    'ʋ': 'v',
+                                    'ꝟ': 'v',
+                                    'ʌ': 'v',
+                                    'ꝡ': 'vy',
+                                    'ⓦ': 'w',
+                                    'ｗ': 'w',
+                                    'ẁ': 'w',
+                                    'ẃ': 'w',
+                                    'ŵ': 'w',
+                                    'ẇ': 'w',
+                                    'ẅ': 'w',
+                                    'ẘ': 'w',
+                                    'ẉ': 'w',
+                                    'ⱳ': 'w',
+                                    'ⓧ': 'x',
+                                    'ｘ': 'x',
+                                    'ẋ': 'x',
+                                    'ẍ': 'x',
+                                    'ⓨ': 'y',
+                                    'ｙ': 'y',
+                                    'ỳ': 'y',
+                                    'ý': 'y',
+                                    'ŷ': 'y',
+                                    'ỹ': 'y',
+                                    'ȳ': 'y',
+                                    'ẏ': 'y',
+                                    'ÿ': 'y',
+                                    'ỷ': 'y',
+                                    'ẙ': 'y',
+                                    'ỵ': 'y',
+                                    'ƴ': 'y',
+                                    'ɏ': 'y',
+                                    'ỿ': 'y',
+                                    'ⓩ': 'z',
+                                    'ｚ': 'z',
+                                    'ź': 'z',
+                                    'ẑ': 'z',
+                                    'ż': 'z',
+                                    'ž': 'z',
+                                    'ẓ': 'z',
+                                    'ẕ': 'z',
+                                    'ƶ': 'z',
+                                    'ȥ': 'z',
+                                    'ɀ': 'z',
+                                    'ⱬ': 'z',
+                                    'ꝣ': 'z',
+                                    'Ά': 'Α',
+                                    'Έ': 'Ε',
+                                    'Ή': 'Η',
+                                    'Ί': 'Ι',
+                                    'Ϊ': 'Ι',
+                                    'Ό': 'Ο',
+                                    'Ύ': 'Υ',
+                                    'Ϋ': 'Υ',
+                                    'Ώ': 'Ω',
+                                    'ά': 'α',
+                                    'έ': 'ε',
+                                    'ή': 'η',
+                                    'ί': 'ι',
+                                    'ϊ': 'ι',
+                                    'ΐ': 'ι',
+                                    'ό': 'ο',
+                                    'ύ': 'υ',
+                                    'ϋ': 'υ',
+                                    'ΰ': 'υ',
+                                    'ώ': 'ω',
+                                    'ς': 'σ',
+                                    '’': '\''
+                                }
+                                return diacritics
+                            } )
+                            S22.define( 'select2/data/base', [
+                                '../utils'
+                            ], function ( Utils ) {
+                                function BaseAdapter( $element, options ) {
+                                    BaseAdapter.__super__.constructor.call( this )
+                                }
+
+                                Utils.Extend( BaseAdapter, Utils.Observable )
+                                BaseAdapter.prototype.current = function ( callback ) {
+                                    throw new Error( 'The `current` method must be defined in child classes.' )
+                                }
+                                BaseAdapter.prototype.query = function ( params, callback ) {
+                                    throw new Error( 'The `query` method must be defined in child classes.' )
+                                }
+                                BaseAdapter.prototype.bind = function ( container, $container ) {
+                                }
+                                BaseAdapter.prototype.destroy = function () {
+                                }
+                                BaseAdapter.prototype.generateResultId = function ( container, data ) {
+                                    var id = container.id + '-result-'
+                                    id += Utils.generateChars( 4 )
+                                    if ( data.id != null ) {
+                                        id += '-' + data.id.toString()
+                                    } else {
+                                        id += '-' + Utils.generateChars( 4 )
+                                    }
+                                    return id
+                                }
+                                return BaseAdapter
+                            } )
+                            S22.define( 'select2/data/select', [
+                                './base',
+                                '../utils',
+                                'jquery'
+                            ], function ( BaseAdapter, Utils, $2 ) {
+                                function SelectAdapter( $element, options ) {
+                                    this.$element = $element
+                                    this.options = options
+                                    SelectAdapter.__super__.constructor.call( this )
+                                }
+
+                                Utils.Extend( SelectAdapter, BaseAdapter )
+                                SelectAdapter.prototype.current = function ( callback ) {
+                                    var self = this
+                                    var data = Array.prototype.map.call(
+                                        this.$element[ 0 ].querySelectorAll( ':checked' ),
+                                        function ( selectedElement ) {
+                                            return self.item( $2( selectedElement ) )
+                                        }
+                                    )
+                                    callback( data )
+                                }
+                                SelectAdapter.prototype.select = function ( data ) {
+                                    var self = this
+                                    data.selected = true
+                                    if ( data.element != null && data.element.tagName.toLowerCase() === 'option' ) {
+                                        data.element.selected = true
+                                        this.$element.trigger( 'input' ).trigger( 'change' )
+                                        return
+                                    }
+                                    if ( this.$element.prop( 'multiple' ) ) {
+                                        this.current( function ( currentData ) {
+                                            var val2 = []
+                                            data = [ data ]
+                                            data.push.apply( data, currentData )
+                                            for ( var d = 0; d < data.length; d++ ) {
+                                                var id = data[ d ].id
+                                                if ( val2.indexOf( id ) === -1 ) {
+                                                    val2.push( id )
+                                                }
+                                            }
+                                            self.$element.val( val2 )
+                                            self.$element.trigger( 'input' ).trigger( 'change' )
+                                        } )
+                                    } else {
+                                        var val = data.id
+                                        this.$element.val( val )
+                                        this.$element.trigger( 'input' ).trigger( 'change' )
+                                    }
+                                }
+                                SelectAdapter.prototype.unselect = function ( data ) {
+                                    var self = this
+                                    if ( !this.$element.prop( 'multiple' ) ) {
+                                        return
+                                    }
+                                    data.selected = false
+                                    if ( data.element != null && data.element.tagName.toLowerCase() === 'option' ) {
+                                        data.element.selected = false
+                                        this.$element.trigger( 'input' ).trigger( 'change' )
+                                        return
+                                    }
+                                    this.current( function ( currentData ) {
+                                        var val = []
+                                        for ( var d = 0; d < currentData.length; d++ ) {
+                                            var id = currentData[ d ].id
+                                            if ( id !== data.id && val.indexOf( id ) === -1 ) {
+                                                val.push( id )
+                                            }
+                                        }
+                                        self.$element.val( val )
+                                        self.$element.trigger( 'input' ).trigger( 'change' )
+                                    } )
+                                }
+                                SelectAdapter.prototype.bind = function ( container, $container ) {
+                                    var self = this
+                                    this.container = container
+                                    container.on( 'select', function ( params ) {
+                                        self.select( params.data )
+                                    } )
+                                    container.on( 'unselect', function ( params ) {
+                                        self.unselect( params.data )
+                                    } )
+                                }
+                                SelectAdapter.prototype.destroy = function () {
+                                    this.$element.find( '*' ).each( function () {
+                                        Utils.RemoveData( this )
+                                    } )
+                                }
+                                SelectAdapter.prototype.query = function ( params, callback ) {
+                                    var data = []
+                                    var self = this
+                                    var $options = this.$element.children()
+                                    $options.each( function () {
+                                        if ( this.tagName.toLowerCase()
+                                             !== 'option'
+                                             && this.tagName.toLowerCase()
+                                             !== 'optgroup' ) {
+                                            return
+                                        }
+                                        var $option = $2( this )
+                                        var option = self.item( $option )
+                                        var matches = self.matches( params, option )
+                                        if ( matches !== null ) {
+                                            data.push( matches )
+                                        }
+                                    } )
+                                    callback( {
+                                                  results: data
+                                              } )
+                                }
+                                SelectAdapter.prototype.addOptions = function ( $options ) {
+                                    this.$element.append( $options )
+                                }
+                                SelectAdapter.prototype.option = function ( data ) {
+                                    var option
+                                    if ( data.children ) {
+                                        option = document.createElement( 'optgroup' )
+                                        option.label = data.text
+                                    } else {
+                                        option = document.createElement( 'option' )
+                                        if ( option.textContent !== void 0 ) {
+                                            option.textContent = data.text
+                                        } else {
+                                            option.innerText = data.text
+                                        }
+                                    }
+                                    if ( data.id !== void 0 ) {
+                                        option.value = data.id
+                                    }
+                                    if ( data.disabled ) {
+                                        option.disabled = true
+                                    }
+                                    if ( data.selected ) {
+                                        option.selected = true
+                                    }
+                                    if ( data.title ) {
+                                        option.title = data.title
+                                    }
+                                    var normalizedData = this._normalizeItem( data )
+                                    normalizedData.element = option
+                                    Utils.StoreData( option, 'data', normalizedData )
+                                    return $2( option )
+                                }
+                                SelectAdapter.prototype.item = function ( $option ) {
+                                    var data = {}
+                                    data = Utils.GetData( $option[ 0 ], 'data' )
+                                    if ( data != null ) {
+                                        return data
+                                    }
+                                    var option = $option[ 0 ]
+                                    if ( option.tagName.toLowerCase() === 'option' ) {
+                                        data = {
+                                            id: $option.val(),
+                                            text: $option.text(),
+                                            disabled: $option.prop( 'disabled' ),
+                                            selected: $option.prop( 'selected' ),
+                                            title: $option.prop( 'title' )
+                                        }
+                                    } else if ( option.tagName.toLowerCase() === 'optgroup' ) {
+                                        data = {
+                                            text: $option.prop( 'label' ),
+                                            children: [],
+                                            title: $option.prop( 'title' )
+                                        }
+                                        var $children = $option.children( 'option' )
+                                        var children = []
+                                        for ( var c = 0; c < $children.length; c++ ) {
+                                            var $child = $2( $children[ c ] )
+                                            var child = this.item( $child )
+                                            children.push( child )
+                                        }
+                                        data.children = children
+                                    }
+                                    data = this._normalizeItem( data )
+                                    data.element = $option[ 0 ]
+                                    Utils.StoreData( $option[ 0 ], 'data', data )
+                                    return data
+                                }
+                                SelectAdapter.prototype._normalizeItem = function ( item ) {
+                                    if ( item !== Object( item ) ) {
+                                        item = {
+                                            id: item,
+                                            text: item
+                                        }
+                                    }
+                                    item = $2.extend( {}, {
+                                        text: ''
+                                    }, item )
+                                    var defaults = {
+                                        selected: false,
+                                        disabled: false
+                                    }
+                                    if ( item.id != null ) {
+                                        item.id = item.id.toString()
+                                    }
+                                    if ( item.text != null ) {
+                                        item.text = item.text.toString()
+                                    }
+                                    if ( item._resultId == null && item.id && this.container != null ) {
+                                        item._resultId = this.generateResultId( this.container, item )
+                                    }
+                                    return $2.extend( {}, defaults, item )
+                                }
+                                SelectAdapter.prototype.matches = function ( params, data ) {
+                                    var matcher = this.options.get( 'matcher' )
+                                    return matcher( params, data )
+                                }
+                                return SelectAdapter
+                            } )
+                            S22.define( 'select2/data/array', [
+                                './select',
+                                '../utils',
+                                'jquery'
+                            ], function ( SelectAdapter, Utils, $2 ) {
+                                function ArrayAdapter( $element, options ) {
+                                    this._dataToConvert = options.get( 'data' ) || []
+                                    ArrayAdapter.__super__.constructor.call( this, $element, options )
+                                }
+
+                                Utils.Extend( ArrayAdapter, SelectAdapter )
+                                ArrayAdapter.prototype.bind = function ( container, $container ) {
+                                    ArrayAdapter.__super__.bind.call( this, container, $container )
+                                    this.addOptions( this.convertToOptions( this._dataToConvert ) )
+                                }
+                                ArrayAdapter.prototype.select = function ( data ) {
+                                    var $option = this.$element.find( 'option' ).filter( function ( i, elm ) {
+                                        return elm.value == data.id.toString()
+                                    } )
+                                    if ( $option.length === 0 ) {
+                                        $option = this.option( data )
+                                        this.addOptions( $option )
+                                    }
+                                    ArrayAdapter.__super__.select.call( this, data )
+                                }
+                                ArrayAdapter.prototype.convertToOptions = function ( data ) {
+                                    var self = this
+                                    var $existing = this.$element.find( 'option' )
+                                    var existingIds = $existing.map( function () {
+                                        return self.item( $2( this ) ).id
+                                    } ).get()
+                                    var $options = []
+
+                                    function onlyItem( item2 ) {
+                                        return function () {
+                                            return $2( this ).val() == item2.id
+                                        }
+                                    }
+
+                                    for ( var d = 0; d < data.length; d++ ) {
+                                        var item = this._normalizeItem( data[ d ] )
+                                        if ( existingIds.indexOf( item.id ) >= 0 ) {
+                                            var $existingOption = $existing.filter( onlyItem( item ) )
+                                            var existingData = this.item( $existingOption )
+                                            var newData = $2.extend( true, {}, item, existingData )
+                                            var $newOption = this.option( newData )
+                                            $existingOption.replaceWith( $newOption )
+                                            continue
+                                        }
+                                        var $option = this.option( item )
+                                        if ( item.children ) {
+                                            var $children = this.convertToOptions( item.children )
+                                            $option.append( $children )
+                                        }
+                                        $options.push( $option )
+                                    }
+                                    return $options
+                                }
+                                return ArrayAdapter
+                            } )
+                            S22.define( 'select2/data/ajax', [
+                                './array',
+                                '../utils',
+                                'jquery'
+                            ], function ( ArrayAdapter, Utils, $2 ) {
+                                function AjaxAdapter( $element, options ) {
+                                    this.ajaxOptions = this._applyDefaults( options.get( 'ajax' ) )
+                                    if ( this.ajaxOptions.processResults != null ) {
+                                        this.processResults = this.ajaxOptions.processResults
+                                    }
+                                    AjaxAdapter.__super__.constructor.call( this, $element, options )
+                                }
+
+                                Utils.Extend( AjaxAdapter, ArrayAdapter )
+                                AjaxAdapter.prototype._applyDefaults = function ( options ) {
+                                    var defaults = {
+                                        data: function ( params ) {
+                                            return $2.extend( {}, params, {
+                                                q: params.term
+                                            } )
+                                        },
+                                        transport: function ( params, success, failure ) {
+                                            var $request = $2.ajax( params )
+                                            $request.then( success )
+                                            $request.fail( failure )
+                                            return $request
+                                        }
+                                    }
+                                    return $2.extend( {}, defaults, options, true )
+                                }
+                                AjaxAdapter.prototype.processResults = function ( results ) {
+                                    return results
+                                }
+                                AjaxAdapter.prototype.query = function ( params, callback ) {
+                                    var self = this
+                                    if ( this._request != null ) {
+                                        if ( typeof this._request.abort === 'function' ) {
+                                            this._request.abort()
+                                        }
+                                        this._request = null
+                                    }
+                                    var options = $2.extend( {
+                                                                 type: 'GET'
+                                                             }, this.ajaxOptions )
+                                    if ( typeof options.url === 'function' ) {
+                                        options.url = options.url.call( this.$element, params )
+                                    }
+                                    if ( typeof options.data === 'function' ) {
+                                        options.data = options.data.call( this.$element, params )
+                                    }
+
+                                    function request() {
+                                        var $request = options.transport( options, function ( data ) {
+                                            var results = self.processResults( data, params )
+                                            if ( self.options.get( 'debug' ) && window.console && console.error ) {
+                                                if ( !results
+                                                     || !results.results
+                                                     || !Array.isArray( results.results ) ) {
+                                                    console.error(
+                                                        'Select2: The AJAX results did not return an array in the `results` key of the response.'
+                                                    )
+                                                }
+                                            }
+                                            callback( results )
+                                        }, function () {
+                                            if ( 'status' in $request && (
+                                                $request.status === 0 || $request.status === '0'
+                                            ) ) {
+                                                return
+                                            }
+                                            self.trigger( 'results:message', {
+                                                message: 'errorLoading'
+                                            } )
+                                        } )
+                                        self._request = $request
+                                    }
+
+                                    if ( this.ajaxOptions.delay && params.term != null ) {
+                                        if ( this._queryTimeout ) {
+                                            window.clearTimeout( this._queryTimeout )
+                                        }
+                                        this._queryTimeout = window.setTimeout( request, this.ajaxOptions.delay )
+                                    } else {
+                                        request()
+                                    }
+                                }
+                                return AjaxAdapter
+                            } )
+                            S22.define( 'select2/data/tags', [
+                                'jquery'
+                            ], function ( $2 ) {
+                                function Tags( decorated, $element, options ) {
+                                    var tags = options.get( 'tags' )
+                                    var createTag = options.get( 'createTag' )
+                                    if ( createTag !== void 0 ) {
+                                        this.createTag = createTag
+                                    }
+                                    var insertTag = options.get( 'insertTag' )
+                                    if ( insertTag !== void 0 ) {
+                                        this.insertTag = insertTag
+                                    }
+                                    decorated.call( this, $element, options )
+                                    if ( Array.isArray( tags ) ) {
+                                        for ( var t = 0; t < tags.length; t++ ) {
+                                            var tag = tags[ t ]
+                                            var item = this._normalizeItem( tag )
+                                            var $option = this.option( item )
+                                            this.$element.append( $option )
+                                        }
+                                    }
+                                }
+
+                                Tags.prototype.query = function ( decorated, params, callback ) {
+                                    var self = this
+                                    this._removeOldTags()
+                                    if ( params.term == null || params.page != null ) {
+                                        decorated.call( this, params, callback )
+                                        return
+                                    }
+
+                                    function wrapper( obj, child ) {
+                                        var data = obj.results
+                                        for ( var i = 0; i < data.length; i++ ) {
+                                            var option = data[ i ]
+                                            var checkChildren = option.children != null && !wrapper( {
+                                                                                                         results: option.children
+                                                                                                     }, true )
+                                            var optionText = (
+                                                option.text || ''
+                                            ).toUpperCase()
+                                            var paramsTerm = (
+                                                params.term || ''
+                                            ).toUpperCase()
+                                            var checkText = optionText === paramsTerm
+                                            if ( checkText || checkChildren ) {
+                                                if ( child ) {
+                                                    return false
+                                                }
+                                                obj.data = data
+                                                callback( obj )
+                                                return
+                                            }
+                                        }
+                                        if ( child ) {
+                                            return true
+                                        }
+                                        var tag = self.createTag( params )
+                                        if ( tag != null ) {
+                                            var $option = self.option( tag )
+                                            $option.attr( 'data-select2-tag', 'true' )
+                                            self.addOptions( [ $option ] )
+                                            self.insertTag( data, tag )
+                                        }
+                                        obj.results = data
+                                        callback( obj )
+                                    }
+
+                                    decorated.call( this, params, wrapper )
+                                }
+                                Tags.prototype.createTag = function ( decorated, params ) {
+                                    if ( params.term == null ) {
+                                        return null
+                                    }
+                                    var term = params.term.trim()
+                                    if ( term === '' ) {
+                                        return null
+                                    }
+                                    return {
+                                        id: term,
+                                        text: term
+                                    }
+                                }
+                                Tags.prototype.insertTag = function ( _, data, tag ) {
+                                    data.unshift( tag )
+                                }
+                                Tags.prototype._removeOldTags = function ( _ ) {
+                                    var $options = this.$element.find( 'option[data-select2-tag]' )
+                                    $options.each( function () {
+                                        if ( this.selected ) {
+                                            return
+                                        }
+                                        $2( this ).remove()
+                                    } )
+                                }
+                                return Tags
+                            } )
+                            S22.define( 'select2/data/tokenizer', [
+                                'jquery'
+                            ], function ( $2 ) {
+                                function Tokenizer( decorated, $element, options ) {
+                                    var tokenizer = options.get( 'tokenizer' )
+                                    if ( tokenizer !== void 0 ) {
+                                        this.tokenizer = tokenizer
+                                    }
+                                    decorated.call( this, $element, options )
+                                }
+
+                                Tokenizer.prototype.bind = function ( decorated, container, $container ) {
+                                    decorated.call( this, container, $container )
+                                    this.$search = container.dropdown.$search
+                                                   || container.selection.$search
+                                                   || $container.find(
+                                            '.select2-search__field' )
+                                }
+                                Tokenizer.prototype.query = function ( decorated, params, callback ) {
+                                    var self = this
+
+                                    function createAndSelect( data ) {
+                                        var item = self._normalizeItem( data )
+                                        var $existingOptions = self.$element.find( 'option' ).filter( function () {
+                                            return $2( this ).val() === item.id
+                                        } )
+                                        if ( !$existingOptions.length ) {
+                                            var $option = self.option( item )
+                                            $option.attr( 'data-select2-tag', true )
+                                            self._removeOldTags()
+                                            self.addOptions( [ $option ] )
+                                        }
+                                        select( item )
+                                    }
+
+                                    function select( data ) {
+                                        self.trigger( 'select', {
+                                            data
+                                        } )
+                                    }
+
+                                    params.term = params.term || ''
+                                    var tokenData = this.tokenizer( params, this.options, createAndSelect )
+                                    if ( tokenData.term !== params.term ) {
+                                        if ( this.$search.length ) {
+                                            this.$search.val( tokenData.term )
+                                            this.$search.trigger( 'focus' )
+                                        }
+                                        params.term = tokenData.term
+                                    }
+                                    decorated.call( this, params, callback )
+                                }
+                                Tokenizer.prototype.tokenizer = function ( _, params, options, callback ) {
+                                    var separators = options.get( 'tokenSeparators' ) || []
+                                    var term = params.term
+                                    var i = 0
+                                    var createTag = this.createTag || function ( params2 ) {
+                                        return {
+                                            id: params2.term,
+                                            text: params2.term
+                                        }
+                                    }
+                                    while ( i < term.length ) {
+                                        var termChar = term[ i ]
+                                        if ( separators.indexOf( termChar ) === -1 ) {
+                                            i++
+                                            continue
+                                        }
+                                        var part = term.substr( 0, i )
+                                        var partParams = $2.extend( {}, params, {
+                                            term: part
+                                        } )
+                                        var data = createTag( partParams )
+                                        if ( data == null ) {
+                                            i++
+                                            continue
+                                        }
+                                        callback( data )
+                                        term = term.substr( i + 1 ) || ''
+                                        i = 0
+                                    }
+                                    return {
+                                        term
+                                    }
+                                }
+                                return Tokenizer
+                            } )
+                            S22.define( 'select2/data/minimumInputLength', [], function () {
+                                function MinimumInputLength( decorated, $e, options ) {
+                                    this.minimumInputLength = options.get( 'minimumInputLength' )
+                                    decorated.call( this, $e, options )
+                                }
+
+                                MinimumInputLength.prototype.query = function ( decorated, params, callback ) {
+                                    params.term = params.term || ''
+                                    if ( params.term.length < this.minimumInputLength ) {
+                                        this.trigger( 'results:message', {
+                                            message: 'inputTooShort',
+                                            args: {
+                                                minimum: this.minimumInputLength,
+                                                input: params.term,
+                                                params
+                                            }
+                                        } )
+                                        return
+                                    }
+                                    decorated.call( this, params, callback )
+                                }
+                                return MinimumInputLength
+                            } )
+                            S22.define( 'select2/data/maximumInputLength', [], function () {
+                                function MaximumInputLength( decorated, $e, options ) {
+                                    this.maximumInputLength = options.get( 'maximumInputLength' )
+                                    decorated.call( this, $e, options )
+                                }
+
+                                MaximumInputLength.prototype.query = function ( decorated, params, callback ) {
+                                    params.term = params.term || ''
+                                    if ( this.maximumInputLength > 0 && params.term.length > this.maximumInputLength ) {
+                                        this.trigger( 'results:message', {
+                                            message: 'inputTooLong',
+                                            args: {
+                                                maximum: this.maximumInputLength,
+                                                input: params.term,
+                                                params
+                                            }
+                                        } )
+                                        return
+                                    }
+                                    decorated.call( this, params, callback )
+                                }
+                                return MaximumInputLength
+                            } )
+                            S22.define( 'select2/data/maximumSelectionLength', [], function () {
+                                function MaximumSelectionLength( decorated, $e, options ) {
+                                    this.maximumSelectionLength = options.get( 'maximumSelectionLength' )
+                                    decorated.call( this, $e, options )
+                                }
+
+                                MaximumSelectionLength.prototype.bind = function ( decorated, container, $container ) {
+                                    var self = this
+                                    decorated.call( this, container, $container )
+                                    container.on( 'select', function () {
+                                        self._checkIfMaximumSelected()
+                                    } )
+                                }
+                                MaximumSelectionLength.prototype.query = function ( decorated, params, callback ) {
+                                    var self = this
+                                    this._checkIfMaximumSelected( function () {
+                                        decorated.call( self, params, callback )
+                                    } )
+                                }
+                                MaximumSelectionLength.prototype._checkIfMaximumSelected = function (
+                                    _,
+                                    successCallback
+                                ) {
+                                    var self = this
+                                    this.current( function ( currentData ) {
+                                        var count = currentData != null ? currentData.length : 0
+                                        if ( self.maximumSelectionLength > 0 && count >= self.maximumSelectionLength ) {
+                                            self.trigger( 'results:message', {
+                                                message: 'maximumSelected',
+                                                args: {
+                                                    maximum: self.maximumSelectionLength
+                                                }
+                                            } )
+                                            return
+                                        }
+                                        if ( successCallback ) {
+                                            successCallback()
+                                        }
+                                    } )
+                                }
+                                return MaximumSelectionLength
+                            } )
+                            S22.define( 'select2/dropdown', [
+                                'jquery',
+                                './utils'
+                            ], function ( $2, Utils ) {
+                                function Dropdown( $element, options ) {
+                                    this.$element = $element
+                                    this.options = options
+                                    Dropdown.__super__.constructor.call( this )
+                                }
+
+                                Utils.Extend( Dropdown, Utils.Observable )
+                                Dropdown.prototype.render = function () {
+                                    var $dropdown = $2(
+                                        '<span class="select2-dropdown"><span class="select2-results"></span></span>'
+                                    )
+                                    $dropdown.attr( 'dir', this.options.get( 'dir' ) )
+                                    this.$dropdown = $dropdown
+                                    return $dropdown
+                                }
+                                Dropdown.prototype.bind = function () {
+                                }
+                                Dropdown.prototype.position = function ( $dropdown, $container ) {
+                                }
+                                Dropdown.prototype.destroy = function () {
+                                    this.$dropdown.remove()
+                                }
+                                return Dropdown
+                            } )
+                            S22.define( 'select2/dropdown/search', [
+                                'jquery'
+                            ], function ( $2 ) {
+                                function Search() {
+                                }
+
+                                Search.prototype.render = function ( decorated ) {
+                                    var $rendered = decorated.call( this )
+                                    var searchLabel = this.options.get( 'translations' ).get( 'search' )
+                                    var $search = $2(
+                                        '<span class="select2-search select2-search--dropdown"><input class="select2-search__field" type="search" tabindex="-1" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" /></span>'
+                                    )
+                                    this.$searchContainer = $search
+                                    this.$search = $search.find( 'input' )
+                                    this.$search.prop( 'autocomplete', this.options.get( 'autocomplete' ) )
+                                    this.$search.attr( 'aria-label', searchLabel() )
+                                    $rendered.prepend( $search )
+                                    return $rendered
+                                }
+                                Search.prototype.bind = function ( decorated, container, $container ) {
+                                    var self = this
+                                    var resultsId = container.id + '-results'
+                                    decorated.call( this, container, $container )
+                                    this.$search.on( 'keydown', function ( evt ) {
+                                        self.trigger( 'keypress', evt )
+                                        self._keyUpPrevented = evt.isDefaultPrevented()
+                                    } )
+                                    this.$search.on( 'input', function ( evt ) {
+                                        $2( this ).off( 'keyup' )
+                                    } )
+                                    this.$search.on( 'keyup input', function ( evt ) {
+                                        self.handleSearch( evt )
+                                    } )
+                                    container.on( 'open', function () {
+                                        self.$search.attr( 'tabindex', 0 )
+                                        self.$search.attr( 'aria-controls', resultsId )
+                                        self.$search.trigger( 'focus' )
+                                        window.setTimeout( function () {
+                                            self.$search.trigger( 'focus' )
+                                        }, 0 )
+                                    } )
+                                    container.on( 'close', function () {
+                                        self.$search.attr( 'tabindex', -1 )
+                                        self.$search.removeAttr( 'aria-controls' )
+                                        self.$search.removeAttr( 'aria-activedescendant' )
+                                        self.$search.val( '' )
+                                        self.$search.trigger( 'blur' )
+                                    } )
+                                    container.on( 'focus', function () {
+                                        if ( !container.isOpen() ) {
+                                            self.$search.trigger( 'focus' )
+                                        }
+                                    } )
+                                    container.on( 'results:all', function ( params ) {
+                                        if ( params.query.term == null || params.query.term === '' ) {
+                                            var showSearch = self.showSearch( params )
+                                            if ( showSearch ) {
+                                                self.$searchContainer[ 0 ].classList.remove( 'select2-search--hide' )
+                                            } else {
+                                                self.$searchContainer[ 0 ].classList.add( 'select2-search--hide' )
+                                            }
+                                        }
+                                    } )
+                                    container.on( 'results:focus', function ( params ) {
+                                        if ( params.data._resultId ) {
+                                            self.$search.attr( 'aria-activedescendant', params.data._resultId )
+                                        } else {
+                                            self.$search.removeAttr( 'aria-activedescendant' )
+                                        }
+                                    } )
+                                }
+                                Search.prototype.handleSearch = function ( evt ) {
+                                    if ( !this._keyUpPrevented ) {
+                                        var input = this.$search.val()
+                                        this.trigger( 'query', {
+                                            term: input
+                                        } )
+                                    }
+                                    this._keyUpPrevented = false
+                                }
+                                Search.prototype.showSearch = function ( _, params ) {
+                                    return true
+                                }
+                                return Search
+                            } )
+                            S22.define( 'select2/dropdown/hidePlaceholder', [], function () {
+                                function HidePlaceholder( decorated, $element, options, dataAdapter ) {
+                                    this.placeholder = this.normalizePlaceholder( options.get( 'placeholder' ) )
+                                    decorated.call( this, $element, options, dataAdapter )
+                                }
+
+                                HidePlaceholder.prototype.append = function ( decorated, data ) {
+                                    data.results = this.removePlaceholder( data.results )
+                                    decorated.call( this, data )
+                                }
+                                HidePlaceholder.prototype.normalizePlaceholder = function ( _, placeholder ) {
+                                    if ( typeof placeholder === 'string' ) {
+                                        placeholder = {
+                                            id: '',
+                                            text: placeholder
+                                        }
+                                    }
+                                    return placeholder
+                                }
+                                HidePlaceholder.prototype.removePlaceholder = function ( _, data ) {
+                                    var modifiedData = data.slice( 0 )
+                                    for ( var d = data.length - 1; d >= 0; d-- ) {
+                                        var item = data[ d ]
+                                        if ( this.placeholder.id === item.id ) {
+                                            modifiedData.splice( d, 1 )
+                                        }
+                                    }
+                                    return modifiedData
+                                }
+                                return HidePlaceholder
+                            } )
+                            S22.define( 'select2/dropdown/infiniteScroll', [
+                                'jquery'
+                            ], function ( $2 ) {
+                                function InfiniteScroll( decorated, $element, options, dataAdapter ) {
+                                    this.lastParams = {}
+                                    decorated.call( this, $element, options, dataAdapter )
+                                    this.$loadingMore = this.createLoadingMore()
+                                    this.loading = false
+                                }
+
+                                InfiniteScroll.prototype.append = function ( decorated, data ) {
+                                    this.$loadingMore.remove()
+                                    this.loading = false
+                                    decorated.call( this, data )
+                                    if ( this.showLoadingMore( data ) ) {
+                                        this.$results.append( this.$loadingMore )
+                                        this.loadMoreIfNeeded()
+                                    }
+                                }
+                                InfiniteScroll.prototype.bind = function ( decorated, container, $container ) {
+                                    var self = this
+                                    decorated.call( this, container, $container )
+                                    container.on( 'query', function ( params ) {
+                                        self.lastParams = params
+                                        self.loading = true
+                                    } )
+                                    container.on( 'query:append', function ( params ) {
+                                        self.lastParams = params
+                                        self.loading = true
+                                    } )
+                                    this.$results.on( 'scroll', this.loadMoreIfNeeded.bind( this ) )
+                                }
+                                InfiniteScroll.prototype.loadMoreIfNeeded = function () {
+                                    var isLoadMoreVisible = $2.contains(
+                                        document.documentElement,
+                                        this.$loadingMore[ 0 ]
+                                    )
+                                    if ( this.loading || !isLoadMoreVisible ) {
+                                        return
+                                    }
+                                    var currentOffset = this.$results.offset().top + this.$results.outerHeight( false )
+                                    var loadingMoreOffset = this.$loadingMore.offset().top
+                                                            + this.$loadingMore.outerHeight( false )
+                                    if ( currentOffset + 50 >= loadingMoreOffset ) {
+                                        this.loadMore()
+                                    }
+                                }
+                                InfiniteScroll.prototype.loadMore = function () {
+                                    this.loading = true
+                                    var params = $2.extend( {}, { page: 1 }, this.lastParams )
+                                    params.page++
+                                    this.trigger( 'query:append', params )
+                                }
+                                InfiniteScroll.prototype.showLoadingMore = function ( _, data ) {
+                                    return data.pagination && data.pagination.more
+                                }
+                                InfiniteScroll.prototype.createLoadingMore = function () {
+                                    var $option = $2(
+                                        '<li class="select2-results__option select2-results__option--load-more"role="option" aria-disabled="true"></li>'
+                                    )
+                                    var message = this.options.get( 'translations' ).get( 'loadingMore' )
+                                    $option.html( message( this.lastParams ) )
+                                    return $option
+                                }
+                                return InfiniteScroll
+                            } )
+                            S22.define( 'select2/dropdown/attachBody', [
+                                'jquery',
+                                '../utils'
+                            ], function ( $2, Utils ) {
+                                function AttachBody( decorated, $element, options ) {
+                                    this.$dropdownParent = $2( options.get( 'dropdownParent' ) || document.body )
+                                    decorated.call( this, $element, options )
+                                }
+
+                                AttachBody.prototype.bind = function ( decorated, container, $container ) {
+                                    var self = this
+                                    decorated.call( this, container, $container )
+                                    container.on( 'open', function () {
+                                        self._showDropdown()
+                                        self._attachPositioningHandler( container )
+                                        self._bindContainerResultHandlers( container )
+                                    } )
+                                    container.on( 'close', function () {
+                                        self._hideDropdown()
+                                        self._detachPositioningHandler( container )
+                                    } )
+                                    this.$dropdownContainer.on( 'mousedown', function ( evt ) {
+                                        evt.stopPropagation()
+                                    } )
+                                }
+                                AttachBody.prototype.destroy = function ( decorated ) {
+                                    decorated.call( this )
+                                    this.$dropdownContainer.remove()
+                                }
+                                AttachBody.prototype.position = function ( decorated, $dropdown, $container ) {
+                                    $dropdown.attr( 'class', $container.attr( 'class' ) )
+                                    $dropdown[ 0 ].classList.remove( 'select2' )
+                                    $dropdown[ 0 ].classList.add( 'select2-container--open' )
+                                    $dropdown.css( {
+                                                       position: 'absolute',
+                                                       top: -999999
+                                                   } )
+                                    this.$container = $container
+                                }
+                                AttachBody.prototype.render = function ( decorated ) {
+                                    var $container = $2( '<span></span>' )
+                                    var $dropdown = decorated.call( this )
+                                    $container.append( $dropdown )
+                                    this.$dropdownContainer = $container
+                                    return $container
+                                }
+                                AttachBody.prototype._hideDropdown = function ( decorated ) {
+                                    this.$dropdownContainer.detach()
+                                }
+                                AttachBody.prototype._bindContainerResultHandlers = function ( decorated, container ) {
+                                    if ( this._containerResultsHandlersBound ) {
+                                        return
+                                    }
+                                    var self = this
+                                    container.on( 'results:all', function () {
+                                        self._positionDropdown()
+                                        self._resizeDropdown()
+                                    } )
+                                    container.on( 'results:append', function () {
+                                        self._positionDropdown()
+                                        self._resizeDropdown()
+                                    } )
+                                    container.on( 'results:message', function () {
+                                        self._positionDropdown()
+                                        self._resizeDropdown()
+                                    } )
+                                    container.on( 'select', function () {
+                                        self._positionDropdown()
+                                        self._resizeDropdown()
+                                    } )
+                                    container.on( 'unselect', function () {
+                                        self._positionDropdown()
+                                        self._resizeDropdown()
+                                    } )
+                                    this._containerResultsHandlersBound = true
+                                }
+                                AttachBody.prototype._attachPositioningHandler = function ( decorated, container ) {
+                                    var self = this
+                                    var scrollEvent = 'scroll.select2.' + container.id
+                                    var resizeEvent = 'resize.select2.' + container.id
+                                    var orientationEvent = 'orientationchange.select2.' + container.id
+                                    var $watchers = this.$container.parents().filter( Utils.hasScroll )
+                                    $watchers.each( function () {
+                                        Utils.StoreData( this, 'select2-scroll-position', {
+                                            x: $2( this ).scrollLeft(),
+                                            y: $2( this ).scrollTop()
+                                        } )
+                                    } )
+                                    $watchers.on( scrollEvent, function ( ev ) {
+                                        var position = Utils.GetData( this, 'select2-scroll-position' )
+                                        $2( this ).scrollTop( position.y )
+                                    } )
+                                    $2( window ).on(
+                                        scrollEvent + ' ' + resizeEvent + ' ' + orientationEvent,
+                                        function ( e ) {
+                                            self._positionDropdown()
+                                            self._resizeDropdown()
+                                        }
+                                    )
+                                }
+                                AttachBody.prototype._detachPositioningHandler = function ( decorated, container ) {
+                                    var scrollEvent = 'scroll.select2.' + container.id
+                                    var resizeEvent = 'resize.select2.' + container.id
+                                    var orientationEvent = 'orientationchange.select2.' + container.id
+                                    var $watchers = this.$container.parents().filter( Utils.hasScroll )
+                                    $watchers.off( scrollEvent )
+                                    $2( window ).off( scrollEvent + ' ' + resizeEvent + ' ' + orientationEvent )
+                                }
+                                AttachBody.prototype._positionDropdown = function () {
+                                    var $window = $2( window )
+                                    var isCurrentlyAbove = this.$dropdown[ 0 ].classList.contains(
+                                        'select2-dropdown--above' )
+                                    var isCurrentlyBelow = this.$dropdown[ 0 ].classList.contains(
+                                        'select2-dropdown--below' )
+                                    var newDirection = null
+                                    var offset = this.$container.offset()
+                                    offset.bottom = offset.top + this.$container.outerHeight( false )
+                                    var container = {
+                                        height: this.$container.outerHeight( false )
+                                    }
+                                    container.top = offset.top
+                                    container.bottom = offset.top + container.height
+                                    var dropdown = {
+                                        height: this.$dropdown.outerHeight( false )
+                                    }
+                                    var viewport = {
+                                        top: $window.scrollTop(),
+                                        bottom: $window.scrollTop() + $window.height()
+                                    }
+                                    var enoughRoomAbove = viewport.top < offset.top - dropdown.height
+                                    var enoughRoomBelow = viewport.bottom > offset.bottom + dropdown.height
+                                    var css = {
+                                        left: offset.left,
+                                        top: container.bottom
+                                    }
+                                    var $offsetParent = this.$dropdownParent
+                                    if ( $offsetParent.css( 'position' ) === 'static' ) {
+                                        $offsetParent = $offsetParent.offsetParent()
+                                    }
+                                    var parentOffset = {
+                                        top: 0,
+                                        left: 0
+                                    }
+                                    if ( $2.contains( document.body, $offsetParent[ 0 ] )
+                                         || $offsetParent[ 0 ].isConnected ) {
+                                        parentOffset = $offsetParent.offset()
+                                    }
+                                    css.top -= parentOffset.top
+                                    css.left -= parentOffset.left
+                                    if ( !isCurrentlyAbove && !isCurrentlyBelow ) {
+                                        newDirection = 'below'
+                                    }
+                                    if ( !enoughRoomBelow && enoughRoomAbove && !isCurrentlyAbove ) {
+                                        newDirection = 'above'
+                                    } else if ( !enoughRoomAbove && enoughRoomBelow && isCurrentlyAbove ) {
+                                        newDirection = 'below'
+                                    }
+                                    if ( newDirection == 'above' || isCurrentlyAbove && newDirection !== 'below' ) {
+                                        css.top = container.top - parentOffset.top - dropdown.height
+                                    }
+                                    if ( newDirection != null ) {
+                                        this.$dropdown[ 0 ].classList.remove( 'select2-dropdown--below' )
+                                        this.$dropdown[ 0 ].classList.remove( 'select2-dropdown--above' )
+                                        this.$dropdown[ 0 ].classList.add( 'select2-dropdown--' + newDirection )
+                                        this.$container[ 0 ].classList.remove( 'select2-container--below' )
+                                        this.$container[ 0 ].classList.remove( 'select2-container--above' )
+                                        this.$container[ 0 ].classList.add( 'select2-container--' + newDirection )
+                                    }
+                                    this.$dropdownContainer.css( css )
+                                }
+                                AttachBody.prototype._resizeDropdown = function () {
+                                    var css = {
+                                        width: this.$container.outerWidth( false ) + 'px'
+                                    }
+                                    if ( this.options.get( 'dropdownAutoWidth' ) ) {
+                                        css.minWidth = css.width
+                                        css.position = 'relative'
+                                        css.width = 'auto'
+                                    }
+                                    this.$dropdown.css( css )
+                                }
+                                AttachBody.prototype._showDropdown = function ( decorated ) {
+                                    this.$dropdownContainer.appendTo( this.$dropdownParent )
+                                    this._positionDropdown()
+                                    this._resizeDropdown()
+                                }
+                                return AttachBody
+                            } )
+                            S22.define( 'select2/dropdown/minimumResultsForSearch', [], function () {
+                                function countResults( data ) {
+                                    var count = 0
+                                    for ( var d = 0; d < data.length; d++ ) {
+                                        var item = data[ d ]
+                                        if ( item.children ) {
+                                            count += countResults( item.children )
+                                        } else {
+                                            count++
+                                        }
+                                    }
+                                    return count
+                                }
+
+                                function MinimumResultsForSearch( decorated, $element, options, dataAdapter ) {
+                                    this.minimumResultsForSearch = options.get( 'minimumResultsForSearch' )
+                                    if ( this.minimumResultsForSearch < 0 ) {
+                                        this.minimumResultsForSearch = Infinity
+                                    }
+                                    decorated.call( this, $element, options, dataAdapter )
+                                }
+
+                                MinimumResultsForSearch.prototype.showSearch = function ( decorated, params ) {
+                                    if ( countResults( params.data.results ) < this.minimumResultsForSearch ) {
+                                        return false
+                                    }
+                                    return decorated.call( this, params )
+                                }
+                                return MinimumResultsForSearch
+                            } )
+                            S22.define( 'select2/dropdown/selectOnClose', [
+                                '../utils'
+                            ], function ( Utils ) {
+                                function SelectOnClose() {
+                                }
+
+                                SelectOnClose.prototype.bind = function ( decorated, container, $container ) {
+                                    var self = this
+                                    decorated.call( this, container, $container )
+                                    container.on( 'close', function ( params ) {
+                                        self._handleSelectOnClose( params )
+                                    } )
+                                }
+                                SelectOnClose.prototype._handleSelectOnClose = function ( _, params ) {
+                                    if ( params && params.originalSelect2Event != null ) {
+                                        var event = params.originalSelect2Event
+                                        if ( event._type === 'select' || event._type === 'unselect' ) {
+                                            return
+                                        }
+                                    }
+                                    var $highlightedResults = this.getHighlightedResults()
+                                    if ( $highlightedResults.length < 1 ) {
+                                        return
+                                    }
+                                    var data = Utils.GetData( $highlightedResults[ 0 ], 'data' )
+                                    if ( data.element
+                                         != null
+                                         && data.element.selected
+                                         || data.element
+                                         == null
+                                         && data.selected ) {
+                                        return
+                                    }
+                                    this.trigger( 'select', {
+                                        data
+                                    } )
+                                }
+                                return SelectOnClose
+                            } )
+                            S22.define( 'select2/dropdown/closeOnSelect', [], function () {
+                                function CloseOnSelect() {
+                                }
+
+                                CloseOnSelect.prototype.bind = function ( decorated, container, $container ) {
+                                    var self = this
+                                    decorated.call( this, container, $container )
+                                    container.on( 'select', function ( evt ) {
+                                        self._selectTriggered( evt )
+                                    } )
+                                    container.on( 'unselect', function ( evt ) {
+                                        self._selectTriggered( evt )
+                                    } )
+                                }
+                                CloseOnSelect.prototype._selectTriggered = function ( _, evt ) {
+                                    var originalEvent = evt.originalEvent
+                                    if ( originalEvent && (
+                                        originalEvent.ctrlKey || originalEvent.metaKey
+                                    ) ) {
+                                        return
+                                    }
+                                    this.trigger( 'close', {
+                                        originalEvent,
+                                        originalSelect2Event: evt
+                                    } )
+                                }
+                                return CloseOnSelect
+                            } )
+                            S22.define( 'select2/dropdown/dropdownCss', [
+                                '../utils'
+                            ], function ( Utils ) {
+                                function DropdownCSS() {
+                                }
+
+                                DropdownCSS.prototype.render = function ( decorated ) {
+                                    var $dropdown = decorated.call( this )
+                                    var dropdownCssClass = this.options.get( 'dropdownCssClass' ) || ''
+                                    if ( dropdownCssClass.indexOf( ':all:' ) !== -1 ) {
+                                        dropdownCssClass = dropdownCssClass.replace( ':all:', '' )
+                                        Utils.copyNonInternalCssClasses( $dropdown[ 0 ], this.$element[ 0 ] )
+                                    }
+                                    $dropdown.addClass( dropdownCssClass )
+                                    return $dropdown
+                                }
+                                return DropdownCSS
+                            } )
+                            S22.define( 'select2/dropdown/tagsSearchHighlight', [
+                                '../utils'
+                            ], function ( Utils ) {
+                                function TagsSearchHighlight() {
+                                }
+
+                                TagsSearchHighlight.prototype.highlightFirstItem = function ( decorated ) {
+                                    var $options = this.$results.find(
+                                        '.select2-results__option--selectable:not(.select2-results__option--selected)'
+                                    )
+                                    if ( $options.length > 0 ) {
+                                        var $firstOption = $options.first()
+                                        var data = Utils.GetData( $firstOption[ 0 ], 'data' )
+                                        var firstElement = data.element
+                                        if ( firstElement && firstElement.getAttribute ) {
+                                            if ( firstElement.getAttribute( 'data-select2-tag' ) === 'true' ) {
+                                                $firstOption.trigger( 'mouseenter' )
+                                                return
+                                            }
+                                        }
+                                    }
+                                    decorated.call( this )
+                                }
+                                return TagsSearchHighlight
+                            } )
+                            S22.define( 'select2/i18n/en', [], function () {
+                                return {
+                                    errorLoading: function () {
+                                        return 'The results could not be loaded.'
+                                    },
+                                    inputTooLong: function ( args ) {
+                                        var overChars = args.input.length - args.maximum
+                                        var message = 'Please delete ' + overChars + ' character'
+                                        if ( overChars != 1 ) {
+                                            message += 's'
+                                        }
+                                        return message
+                                    },
+                                    inputTooShort: function ( args ) {
+                                        var remainingChars = args.minimum - args.input.length
+                                        var message = 'Please enter ' + remainingChars + ' or more characters'
+                                        return message
+                                    },
+                                    loadingMore: function () {
+                                        return 'Loading more results…'
+                                    },
+                                    maximumSelected: function ( args ) {
+                                        var message = 'You can only select ' + args.maximum + ' item'
+                                        if ( args.maximum != 1 ) {
+                                            message += 's'
+                                        }
+                                        return message
+                                    },
+                                    noResults: function () {
+                                        return 'No results found'
+                                    },
+                                    searching: function () {
+                                        return 'Searching…'
+                                    },
+                                    removeAllItems: function () {
+                                        return 'Remove all items'
+                                    },
+                                    removeItem: function () {
+                                        return 'Remove item'
+                                    },
+                                    search: function () {
+                                        return 'Search'
+                                    }
+                                }
+                            } )
+                            S22.define(
+                                'select2/defaults',
+                                [
+                                    'jquery',
+                                    './results',
+                                    './selection/single',
+                                    './selection/multiple',
+                                    './selection/placeholder',
+                                    './selection/allowClear',
+                                    './selection/search',
+                                    './selection/selectionCss',
+                                    './selection/eventRelay',
+                                    './utils',
+                                    './translation',
+                                    './diacritics',
+                                    './data/select',
+                                    './data/array',
+                                    './data/ajax',
+                                    './data/tags',
+                                    './data/tokenizer',
+                                    './data/minimumInputLength',
+                                    './data/maximumInputLength',
+                                    './data/maximumSelectionLength',
+                                    './dropdown',
+                                    './dropdown/search',
+                                    './dropdown/hidePlaceholder',
+                                    './dropdown/infiniteScroll',
+                                    './dropdown/attachBody',
+                                    './dropdown/minimumResultsForSearch',
+                                    './dropdown/selectOnClose',
+                                    './dropdown/closeOnSelect',
+                                    './dropdown/dropdownCss',
+                                    './dropdown/tagsSearchHighlight',
+                                    './i18n/en'
+                                ],
+                                function (
+                                    $2,
+                                    ResultsList,
+                                    SingleSelection,
+                                    MultipleSelection,
+                                    Placeholder,
+                                    AllowClear,
+                                    SelectionSearch,
+                                    SelectionCSS,
+                                    EventRelay,
+                                    Utils,
+                                    Translation,
+                                    DIACRITICS,
+                                    SelectData,
+                                    ArrayData,
+                                    AjaxData,
+                                    Tags,
+                                    Tokenizer,
+                                    MinimumInputLength,
+                                    MaximumInputLength,
+                                    MaximumSelectionLength,
+                                    Dropdown,
+                                    DropdownSearch,
+                                    HidePlaceholder,
+                                    InfiniteScroll,
+                                    AttachBody,
+                                    MinimumResultsForSearch,
+                                    SelectOnClose,
+                                    CloseOnSelect,
+                                    DropdownCSS,
+                                    TagsSearchHighlight,
+                                    EnglishTranslation
+                                ) {
+                                    function Defaults() {
+                                        this.reset()
+                                    }
+
+                                    Defaults.prototype.apply = function ( options ) {
+                                        options = $2.extend( true, {}, this.defaults, options )
+                                        if ( options.dataAdapter == null ) {
+                                            if ( options.ajax != null ) {
+                                                options.dataAdapter = AjaxData
+                                            } else if ( options.data != null ) {
+                                                options.dataAdapter = ArrayData
+                                            } else {
+                                                options.dataAdapter = SelectData
+                                            }
+                                            if ( options.minimumInputLength > 0 ) {
+                                                options.dataAdapter = Utils.Decorate(
+                                                    options.dataAdapter,
+                                                    MinimumInputLength
+                                                )
+                                            }
+                                            if ( options.maximumInputLength > 0 ) {
+                                                options.dataAdapter = Utils.Decorate(
+                                                    options.dataAdapter,
+                                                    MaximumInputLength
+                                                )
+                                            }
+                                            if ( options.maximumSelectionLength > 0 ) {
+                                                options.dataAdapter = Utils.Decorate(
+                                                    options.dataAdapter,
+                                                    MaximumSelectionLength
+                                                )
+                                            }
+                                            if ( options.tags ) {
+                                                options.dataAdapter = Utils.Decorate( options.dataAdapter, Tags )
+                                            }
+                                            if ( options.tokenSeparators != null || options.tokenizer != null ) {
+                                                options.dataAdapter = Utils.Decorate(
+                                                    options.dataAdapter,
+                                                    Tokenizer
+                                                )
+                                            }
+                                        }
+                                        if ( options.resultsAdapter == null ) {
+                                            options.resultsAdapter = ResultsList
+                                            if ( options.ajax != null ) {
+                                                options.resultsAdapter = Utils.Decorate(
+                                                    options.resultsAdapter,
+                                                    InfiniteScroll
+                                                )
+                                            }
+                                            if ( options.placeholder != null ) {
+                                                options.resultsAdapter = Utils.Decorate(
+                                                    options.resultsAdapter,
+                                                    HidePlaceholder
+                                                )
+                                            }
+                                            if ( options.selectOnClose ) {
+                                                options.resultsAdapter = Utils.Decorate(
+                                                    options.resultsAdapter,
+                                                    SelectOnClose
+                                                )
+                                            }
+                                            if ( options.tags ) {
+                                                options.resultsAdapter = Utils.Decorate(
+                                                    options.resultsAdapter,
+                                                    TagsSearchHighlight
+                                                )
+                                            }
+                                        }
+                                        if ( options.dropdownAdapter == null ) {
+                                            if ( options.multiple ) {
+                                                options.dropdownAdapter = Dropdown
+                                            } else {
+                                                var SearchableDropdown = Utils.Decorate( Dropdown, DropdownSearch )
+                                                options.dropdownAdapter = SearchableDropdown
+                                            }
+                                            if ( options.minimumResultsForSearch !== 0 ) {
+                                                options.dropdownAdapter = Utils.Decorate(
+                                                    options.dropdownAdapter,
+                                                    MinimumResultsForSearch
+                                                )
+                                            }
+                                            if ( options.closeOnSelect ) {
+                                                options.dropdownAdapter = Utils.Decorate(
+                                                    options.dropdownAdapter,
+                                                    CloseOnSelect
+                                                )
+                                            }
+                                            if ( options.dropdownCssClass != null ) {
+                                                options.dropdownAdapter = Utils.Decorate(
+                                                    options.dropdownAdapter,
+                                                    DropdownCSS
+                                                )
+                                            }
+                                            options.dropdownAdapter = Utils.Decorate(
+                                                options.dropdownAdapter,
+                                                AttachBody
+                                            )
+                                        }
+                                        if ( options.selectionAdapter == null ) {
+                                            if ( options.multiple ) {
+                                                options.selectionAdapter = MultipleSelection
+                                            } else {
+                                                options.selectionAdapter = SingleSelection
+                                            }
+                                            if ( options.placeholder != null ) {
+                                                options.selectionAdapter = Utils.Decorate(
+                                                    options.selectionAdapter,
+                                                    Placeholder
+                                                )
+                                            }
+                                            if ( options.allowClear ) {
+                                                options.selectionAdapter = Utils.Decorate(
+                                                    options.selectionAdapter,
+                                                    AllowClear
+                                                )
+                                            }
+                                            if ( options.multiple ) {
+                                                options.selectionAdapter = Utils.Decorate(
+                                                    options.selectionAdapter,
+                                                    SelectionSearch
+                                                )
+                                            }
+                                            if ( options.selectionCssClass != null ) {
+                                                options.selectionAdapter = Utils.Decorate(
+                                                    options.selectionAdapter,
+                                                    SelectionCSS
+                                                )
+                                            }
+                                            options.selectionAdapter = Utils.Decorate(
+                                                options.selectionAdapter,
+                                                EventRelay
+                                            )
+                                        }
+                                        options.language = this._resolveLanguage( options.language )
+                                        options.language.push( 'en' )
+                                        var uniqueLanguages = []
+                                        for ( var l = 0; l < options.language.length; l++ ) {
+                                            var language = options.language[ l ]
+                                            if ( uniqueLanguages.indexOf( language ) === -1 ) {
+                                                uniqueLanguages.push( language )
+                                            }
+                                        }
+                                        options.language = uniqueLanguages
+                                        options.translations = this._processTranslations(
+                                            options.language,
+                                            options.debug
+                                        )
+                                        return options
+                                    }
+                                    Defaults.prototype.reset = function () {
+                                        function stripDiacritics( text ) {
+                                            function match( a ) {
+                                                return DIACRITICS[ a ] || a
+                                            }
+
+                                            return text.replace( /[^\u0000-\u007E]/g, match )
+                                        }
+
+                                        function matcher( params, data ) {
+                                            if ( params.term == null || params.term.trim() === '' ) {
+                                                return data
+                                            }
+                                            if ( data.children && data.children.length > 0 ) {
+                                                var match = $2.extend( true, {}, data )
+                                                for ( var c = data.children.length - 1; c >= 0; c-- ) {
+                                                    var child = data.children[ c ]
+                                                    var matches = matcher( params, child )
+                                                    if ( matches == null ) {
+                                                        match.children.splice( c, 1 )
+                                                    }
+                                                }
+                                                if ( match.children.length > 0 ) {
+                                                    return match
+                                                }
+                                                return matcher( params, match )
+                                            }
+                                            var original = stripDiacritics( data.text ).toUpperCase()
+                                            var term = stripDiacritics( params.term ).toUpperCase()
+                                            if ( original.indexOf( term ) > -1 ) {
+                                                return data
+                                            }
+                                            return null
+                                        }
+
+                                        this.defaults = {
+                                            amdLanguageBase: './i18n/',
+                                            autocomplete: 'off',
+                                            closeOnSelect: true,
+                                            debug: false,
+                                            dropdownAutoWidth: false,
+                                            escapeMarkup: Utils.escapeMarkup,
+                                            language: {},
+                                            matcher,
+                                            minimumInputLength: 0,
+                                            maximumInputLength: 0,
+                                            maximumSelectionLength: 0,
+                                            minimumResultsForSearch: 0,
+                                            selectOnClose: false,
+                                            scrollAfterSelect: false,
+                                            sorter: function ( data ) {
+                                                return data
+                                            },
+                                            templateResult: function ( result ) {
+                                                return result.text
+                                            },
+                                            templateSelection: function ( selection ) {
+                                                return selection.text
+                                            },
+                                            theme: 'default',
+                                            width: 'resolve'
+                                        }
+                                    }
+                                    Defaults.prototype.applyFromElement = function ( options, $element ) {
+                                        var optionLanguage = options.language
+                                        var defaultLanguage = this.defaults.language
+                                        var elementLanguage = $element.prop( 'lang' )
+                                        var parentLanguage = $element.closest( '[lang]' ).prop( 'lang' )
+                                        var languages = Array.prototype.concat.call(
+                                            this._resolveLanguage( elementLanguage ),
+                                            this._resolveLanguage( optionLanguage ),
+                                            this._resolveLanguage( defaultLanguage ),
+                                            this._resolveLanguage( parentLanguage )
+                                        )
+                                        options.language = languages
+                                        return options
+                                    }
+                                    Defaults.prototype._resolveLanguage = function ( language ) {
+                                        if ( !language ) {
+                                            return []
+                                        }
+                                        if ( $2.isEmptyObject( language ) ) {
+                                            return []
+                                        }
+                                        if ( $2.isPlainObject( language ) ) {
+                                            return [ language ]
+                                        }
+                                        var languages
+                                        if ( !Array.isArray( language ) ) {
+                                            languages = [ language ]
+                                        } else {
+                                            languages = language
+                                        }
+                                        var resolvedLanguages = []
+                                        for ( var l = 0; l < languages.length; l++ ) {
+                                            resolvedLanguages.push( languages[ l ] )
+                                            if ( typeof languages[ l ]
+                                                 === 'string'
+                                                 && languages[ l ].indexOf( '-' )
+                                                 > 0 ) {
+                                                var languageParts = languages[ l ].split( '-' )
+                                                var baseLanguage = languageParts[ 0 ]
+                                                resolvedLanguages.push( baseLanguage )
+                                            }
+                                        }
+                                        return resolvedLanguages
+                                    }
+                                    Defaults.prototype._processTranslations = function ( languages, debug ) {
+                                        var translations = new Translation()
+                                        for ( var l = 0; l < languages.length; l++ ) {
+                                            var languageData = new Translation()
+                                            var language = languages[ l ]
+                                            if ( typeof language === 'string' ) {
+                                                try {
+                                                    languageData = Translation.loadPath( language )
+                                                } catch ( e ) {
+                                                    try {
+                                                        language = this.defaults.amdLanguageBase + language
+                                                        languageData = Translation.loadPath( language )
+                                                    } catch ( ex ) {
+                                                        if ( debug && window.console && console.warn ) {
+                                                            console.warn(
+                                                                'Select2: The language file for "'
+                                                                + language
+                                                                + '" could not be automatically loaded. A fallback will be used instead.'
+                                                            )
+                                                        }
+                                                    }
+                                                }
+                                            } else if ( $2.isPlainObject( language ) ) {
+                                                languageData = new Translation( language )
+                                            } else {
+                                                languageData = language
+                                            }
+                                            translations.extend( languageData )
+                                        }
+                                        return translations
+                                    }
+                                    Defaults.prototype.set = function ( key, value ) {
+                                        var camelKey = $2.camelCase( key )
+                                        var data = {}
+                                        data[ camelKey ] = value
+                                        var convertedData = Utils._convertData( data )
+                                        $2.extend( true, this.defaults, convertedData )
+                                    }
+                                    var defaults = new Defaults()
+                                    return defaults
+                                }
+                            )
+                            S22.define( 'select2/options', [
+                                'jquery',
+                                './defaults',
+                                './utils'
+                            ], function ( $2, Defaults, Utils ) {
+                                function Options( options, $element ) {
+                                    this.options = options
+                                    if ( $element != null ) {
+                                        this.fromElement( $element )
+                                    }
+                                    if ( $element != null ) {
+                                        this.options = Defaults.applyFromElement( this.options, $element )
+                                    }
+                                    this.options = Defaults.apply( this.options )
+                                }
+
+                                Options.prototype.fromElement = function ( $e ) {
+                                    var excludedData = [ 'select2' ]
+                                    if ( this.options.multiple == null ) {
+                                        this.options.multiple = $e.prop( 'multiple' )
+                                    }
+                                    if ( this.options.disabled == null ) {
+                                        this.options.disabled = $e.prop( 'disabled' )
+                                    }
+                                    if ( this.options.autocomplete == null && $e.prop( 'autocomplete' ) ) {
+                                        this.options.autocomplete = $e.prop( 'autocomplete' )
+                                    }
+                                    if ( this.options.dir == null ) {
+                                        if ( $e.prop( 'dir' ) ) {
+                                            this.options.dir = $e.prop( 'dir' )
+                                        } else if ( $e.closest( '[dir]' ).prop( 'dir' ) ) {
+                                            this.options.dir = $e.closest( '[dir]' ).prop( 'dir' )
+                                        } else {
+                                            this.options.dir = 'ltr'
+                                        }
+                                    }
+                                    $e.prop( 'disabled', this.options.disabled )
+                                    $e.prop( 'multiple', this.options.multiple )
+                                    if ( Utils.GetData( $e[ 0 ], 'select2Tags' ) ) {
+                                        if ( this.options.debug && window.console && console.warn ) {
+                                            console.warn(
+                                                'Select2: The `data-select2-tags` attribute has been changed to use the `data-data` and `data-tags="true"` attributes and will be removed in future versions of Select2.'
+                                            )
+                                        }
+                                        Utils.StoreData( $e[ 0 ], 'data', Utils.GetData( $e[ 0 ], 'select2Tags' ) )
+                                        Utils.StoreData( $e[ 0 ], 'tags', true )
+                                    }
+                                    if ( Utils.GetData( $e[ 0 ], 'ajaxUrl' ) ) {
+                                        if ( this.options.debug && window.console && console.warn ) {
+                                            console.warn(
+                                                'Select2: The `data-ajax-url` attribute has been changed to `data-ajax--url` and support for the old attribute will be removed in future versions of Select2.'
+                                            )
+                                        }
+                                        $e.attr( 'ajax--url', Utils.GetData( $e[ 0 ], 'ajaxUrl' ) )
+                                        Utils.StoreData( $e[ 0 ], 'ajax-Url', Utils.GetData( $e[ 0 ], 'ajaxUrl' ) )
+                                    }
+                                    var dataset = {}
+
+                                    function upperCaseLetter( _, letter ) {
+                                        return letter.toUpperCase()
+                                    }
+
+                                    for ( var attr = 0; attr < $e[ 0 ].attributes.length; attr++ ) {
+                                        var attributeName = $e[ 0 ].attributes[ attr ].name
+                                        var prefix = 'data-'
+                                        if ( attributeName.substr( 0, prefix.length ) == prefix ) {
+                                            var dataName = attributeName.substring( prefix.length )
+                                            var dataValue = Utils.GetData( $e[ 0 ], dataName )
+                                            var camelDataName = dataName.replace( /-([a-z])/g, upperCaseLetter )
+                                            dataset[ camelDataName ] = dataValue
+                                        }
+                                    }
+                                    if ( $2.fn.jquery && $2.fn.jquery.substr( 0, 2 ) == '1.' && $e[ 0 ].dataset ) {
+                                        dataset = $2.extend( true, {}, $e[ 0 ].dataset, dataset )
+                                    }
+                                    var data = $2.extend( true, {}, Utils.GetData( $e[ 0 ] ), dataset )
+                                    data = Utils._convertData( data )
+                                    for ( var key in data ) {
+                                        if ( excludedData.indexOf( key ) > -1 ) {
+                                            continue
+                                        }
+                                        if ( $2.isPlainObject( this.options[ key ] ) ) {
+                                            $2.extend( this.options[ key ], data[ key ] )
+                                        } else {
+                                            this.options[ key ] = data[ key ]
+                                        }
+                                    }
+                                    return this
+                                }
+                                Options.prototype.get = function ( key ) {
+                                    return this.options[ key ]
+                                }
+                                Options.prototype.set = function ( key, val ) {
+                                    this.options[ key ] = val
+                                }
+                                return Options
+                            } )
+                            S22.define( 'select2/core', [
+                                'jquery',
+                                './options',
+                                './utils',
+                                './keys'
+                            ], function ( $2, Options, Utils, KEYS ) {
+                                var Select2 = function ( $element, options ) {
+                                    if ( Utils.GetData( $element[ 0 ], 'select2' ) != null ) {
+                                        Utils.GetData( $element[ 0 ], 'select2' ).destroy()
+                                    }
+                                    this.$element = $element
+                                    this.id = this._generateId( $element )
+                                    options = options || {}
+                                    this.options = new Options( options, $element )
+                                    Select2.__super__.constructor.call( this )
+                                    var tabindex = $element.attr( 'tabindex' ) || 0
+                                    Utils.StoreData( $element[ 0 ], 'old-tabindex', tabindex )
+                                    $element.attr( 'tabindex', '-1' )
+                                    var DataAdapter = this.options.get( 'dataAdapter' )
+                                    this.dataAdapter = new DataAdapter( $element, this.options )
+                                    var $container = this.render()
+                                    this._placeContainer( $container )
+                                    var SelectionAdapter = this.options.get( 'selectionAdapter' )
+                                    this.selection = new SelectionAdapter( $element, this.options )
+                                    this.$selection = this.selection.render()
+                                    this.selection.position( this.$selection, $container )
+                                    var DropdownAdapter = this.options.get( 'dropdownAdapter' )
+                                    this.dropdown = new DropdownAdapter( $element, this.options )
+                                    this.$dropdown = this.dropdown.render()
+                                    this.dropdown.position( this.$dropdown, $container )
+                                    var ResultsAdapter = this.options.get( 'resultsAdapter' )
+                                    this.results = new ResultsAdapter( $element, this.options, this.dataAdapter )
+                                    this.$results = this.results.render()
+                                    this.results.position( this.$results, this.$dropdown )
+                                    var self = this
+                                    this._bindAdapters()
+                                    this._registerDomEvents()
+                                    this._registerDataEvents()
+                                    this._registerSelectionEvents()
+                                    this._registerDropdownEvents()
+                                    this._registerResultsEvents()
+                                    this._registerEvents()
+                                    this.dataAdapter.current( function ( initialData ) {
+                                        self.trigger( 'selection:update', {
+                                            data: initialData
+                                        } )
+                                    } )
+                                    $element[ 0 ].classList.add( 'select2-hidden-accessible' )
+                                    $element.attr( 'aria-hidden', 'true' )
+                                    this._syncAttributes()
+                                    Utils.StoreData( $element[ 0 ], 'select2', this )
+                                    $element.data( 'select2', this )
+                                }
+                                Utils.Extend( Select2, Utils.Observable )
+                                Select2.prototype._generateId = function ( $element ) {
+                                    var id = ''
+                                    if ( $element.attr( 'id' ) != null ) {
+                                        id = $element.attr( 'id' )
+                                    } else if ( $element.attr( 'name' ) != null ) {
+                                        id = $element.attr( 'name' ) + '-' + Utils.generateChars( 2 )
+                                    } else {
+                                        id = Utils.generateChars( 4 )
+                                    }
+                                    id = id.replace( /(:|\.|\[|\]|,)/g, '' )
+                                    id = 'select2-' + id
+                                    return id
+                                }
+                                Select2.prototype._placeContainer = function ( $container ) {
+                                    $container.insertAfter( this.$element )
+                                    var width = this._resolveWidth( this.$element, this.options.get( 'width' ) )
+                                    if ( width != null ) {
+                                        $container.css( 'width', width )
+                                    }
+                                }
+                                Select2.prototype._resolveWidth = function ( $element, method ) {
+                                    var WIDTH = /^width:(([-+]?([0-9]*\.)?[0-9]+)(px|em|ex|%|in|cm|mm|pt|pc))/i
+                                    if ( method == 'resolve' ) {
+                                        var styleWidth = this._resolveWidth( $element, 'style' )
+                                        if ( styleWidth != null ) {
+                                            return styleWidth
+                                        }
+                                        return this._resolveWidth( $element, 'element' )
+                                    }
+                                    if ( method == 'element' ) {
+                                        var elementWidth = $element.outerWidth( false )
+                                        if ( elementWidth <= 0 ) {
+                                            return 'auto'
+                                        }
+                                        return elementWidth + 'px'
+                                    }
+                                    if ( method == 'style' ) {
+                                        var style = $element.attr( 'style' )
+                                        if ( typeof style !== 'string' ) {
+                                            return null
+                                        }
+                                        var attrs = style.split( ';' )
+                                        for ( var i = 0, l = attrs.length; i < l; i = i + 1 ) {
+                                            var attr = attrs[ i ].replace( /\s/g, '' )
+                                            var matches = attr.match( WIDTH )
+                                            if ( matches !== null && matches.length >= 1 ) {
+                                                return matches[ 1 ]
+                                            }
+                                        }
+                                        return null
+                                    }
+                                    if ( method == 'computedstyle' ) {
+                                        var computedStyle = window.getComputedStyle( $element[ 0 ] )
+                                        return computedStyle.width
+                                    }
+                                    return method
+                                }
+                                Select2.prototype._bindAdapters = function () {
+                                    this.dataAdapter.bind( this, this.$container )
+                                    this.selection.bind( this, this.$container )
+                                    this.dropdown.bind( this, this.$container )
+                                    this.results.bind( this, this.$container )
+                                }
+                                Select2.prototype._registerDomEvents = function () {
+                                    var self = this
+                                    this.$element.on( 'change.select2', function () {
+                                        self.dataAdapter.current( function ( data ) {
+                                            self.trigger( 'selection:update', {
+                                                data
+                                            } )
+                                        } )
+                                    } )
+                                    this.$element.on( 'focus.select2', function ( evt ) {
+                                        self.trigger( 'focus', evt )
+                                    } )
+                                    this._syncA = Utils.bind( this._syncAttributes, this )
+                                    this._syncS = Utils.bind( this._syncSubtree, this )
+                                    this._observer = new window.MutationObserver( function ( mutations ) {
+                                        self._syncA()
+                                        self._syncS( mutations )
+                                    } )
+                                    this._observer.observe( this.$element[ 0 ], {
+                                        attributes: true,
+                                        childList: true,
+                                        subtree: false
+                                    } )
+                                }
+                                Select2.prototype._registerDataEvents = function () {
+                                    var self = this
+                                    this.dataAdapter.on( '*', function ( name, params ) {
+                                        self.trigger( name, params )
+                                    } )
+                                }
+                                Select2.prototype._registerSelectionEvents = function () {
+                                    var self = this
+                                    var nonRelayEvents = [ 'toggle', 'focus' ]
+                                    this.selection.on( 'toggle', function () {
+                                        self.toggleDropdown()
+                                    } )
+                                    this.selection.on( 'focus', function ( params ) {
+                                        self.focus( params )
+                                    } )
+                                    this.selection.on( '*', function ( name, params ) {
+                                        if ( nonRelayEvents.indexOf( name ) !== -1 ) {
+                                            return
+                                        }
+                                        self.trigger( name, params )
+                                    } )
+                                }
+                                Select2.prototype._registerDropdownEvents = function () {
+                                    var self = this
+                                    this.dropdown.on( '*', function ( name, params ) {
+                                        self.trigger( name, params )
+                                    } )
+                                }
+                                Select2.prototype._registerResultsEvents = function () {
+                                    var self = this
+                                    this.results.on( '*', function ( name, params ) {
+                                        self.trigger( name, params )
+                                    } )
+                                }
+                                Select2.prototype._registerEvents = function () {
+                                    var self = this
+                                    this.on( 'open', function () {
+                                        self.$container[ 0 ].classList.add( 'select2-container--open' )
+                                    } )
+                                    this.on( 'close', function () {
+                                        self.$container[ 0 ].classList.remove( 'select2-container--open' )
+                                    } )
+                                    this.on( 'enable', function () {
+                                        self.$container[ 0 ].classList.remove( 'select2-container--disabled' )
+                                    } )
+                                    this.on( 'disable', function () {
+                                        self.$container[ 0 ].classList.add( 'select2-container--disabled' )
+                                    } )
+                                    this.on( 'blur', function () {
+                                        self.$container[ 0 ].classList.remove( 'select2-container--focus' )
+                                    } )
+                                    this.on( 'query', function ( params ) {
+                                        if ( !self.isOpen() ) {
+                                            self.trigger( 'open', {} )
+                                        }
+                                        this.dataAdapter.query( params, function ( data ) {
+                                            self.trigger( 'results:all', {
+                                                data,
+                                                query: params
+                                            } )
+                                        } )
+                                    } )
+                                    this.on( 'query:append', function ( params ) {
+                                        this.dataAdapter.query( params, function ( data ) {
+                                            self.trigger( 'results:append', {
+                                                data,
+                                                query: params
+                                            } )
+                                        } )
+                                    } )
+                                    this.on( 'keypress', function ( evt ) {
+                                        var key = evt.which
+                                        if ( self.isOpen() ) {
+                                            if ( key === KEYS.ESC || key === KEYS.UP && evt.altKey ) {
+                                                self.close( evt )
+                                                evt.preventDefault()
+                                            } else if ( key === KEYS.ENTER || key === KEYS.TAB ) {
+                                                self.trigger( 'results:select', {} )
+                                                evt.preventDefault()
+                                            } else if ( key === KEYS.SPACE && evt.ctrlKey ) {
+                                                self.trigger( 'results:toggle', {} )
+                                                evt.preventDefault()
+                                            } else if ( key === KEYS.UP ) {
+                                                self.trigger( 'results:previous', {} )
+                                                evt.preventDefault()
+                                            } else if ( key === KEYS.DOWN ) {
+                                                self.trigger( 'results:next', {} )
+                                                evt.preventDefault()
+                                            }
+                                        } else {
+                                            if ( key
+                                                 === KEYS.ENTER
+                                                 || key
+                                                 === KEYS.SPACE
+                                                 || key
+                                                 === KEYS.DOWN
+                                                 && evt.altKey ) {
+                                                self.open()
+                                                evt.preventDefault()
+                                            }
+                                        }
+                                    } )
+                                }
+                                Select2.prototype._syncAttributes = function () {
+                                    this.options.set( 'disabled', this.$element.prop( 'disabled' ) )
+                                    if ( this.isDisabled() ) {
+                                        if ( this.isOpen() ) {
+                                            this.close()
+                                        }
+                                        this.trigger( 'disable', {} )
+                                    } else {
+                                        this.trigger( 'enable', {} )
+                                    }
+                                }
+                                Select2.prototype._isChangeMutation = function ( mutations ) {
+                                    var self = this
+                                    if ( mutations.addedNodes && mutations.addedNodes.length > 0 ) {
+                                        for ( var n = 0; n < mutations.addedNodes.length; n++ ) {
+                                            var node = mutations.addedNodes[ n ]
+                                            if ( node.selected ) {
+                                                return true
+                                            }
+                                        }
+                                    } else if ( mutations.removedNodes && mutations.removedNodes.length > 0 ) {
+                                        return true
+                                    } else if ( Array.isArray( mutations ) ) {
+                                        return mutations.some( function ( mutation ) {
+                                            return self._isChangeMutation( mutation )
+                                        } )
+                                    }
+                                    return false
+                                }
+                                Select2.prototype._syncSubtree = function ( mutations ) {
+                                    var changed = this._isChangeMutation( mutations )
+                                    var self = this
+                                    if ( changed ) {
+                                        this.dataAdapter.current( function ( currentData ) {
+                                            self.trigger( 'selection:update', {
+                                                data: currentData
+                                            } )
+                                        } )
+                                    }
+                                }
+                                Select2.prototype.trigger = function ( name, args ) {
+                                    var actualTrigger = Select2.__super__.trigger
+                                    var preTriggerMap = {
+                                        'open': 'opening',
+                                        'close': 'closing',
+                                        'select': 'selecting',
+                                        'unselect': 'unselecting',
+                                        'clear': 'clearing'
+                                    }
+                                    if ( args === void 0 ) {
+                                        args = {}
+                                    }
+                                    if ( name in preTriggerMap ) {
+                                        var preTriggerName = preTriggerMap[ name ]
+                                        var preTriggerArgs = {
+                                            prevented: false,
+                                            name,
+                                            args
+                                        }
+                                        actualTrigger.call( this, preTriggerName, preTriggerArgs )
+                                        if ( preTriggerArgs.prevented ) {
+                                            args.prevented = true
+                                            return
+                                        }
+                                    }
+                                    actualTrigger.call( this, name, args )
+                                }
+                                Select2.prototype.toggleDropdown = function () {
+                                    if ( this.isDisabled() ) {
+                                        return
+                                    }
+                                    if ( this.isOpen() ) {
+                                        this.close()
+                                    } else {
+                                        this.open()
+                                    }
+                                }
+                                Select2.prototype.open = function () {
+                                    if ( this.isOpen() ) {
+                                        return
+                                    }
+                                    if ( this.isDisabled() ) {
+                                        return
+                                    }
+                                    this.trigger( 'query', {} )
+                                }
+                                Select2.prototype.close = function ( evt ) {
+                                    if ( !this.isOpen() ) {
+                                        return
+                                    }
+                                    this.trigger( 'close', { originalEvent: evt } )
+                                }
+                                Select2.prototype.isEnabled = function () {
+                                    return !this.isDisabled()
+                                }
+                                Select2.prototype.isDisabled = function () {
+                                    return this.options.get( 'disabled' )
+                                }
+                                Select2.prototype.isOpen = function () {
+                                    return this.$container[ 0 ].classList.contains( 'select2-container--open' )
+                                }
+                                Select2.prototype.hasFocus = function () {
+                                    return this.$container[ 0 ].classList.contains( 'select2-container--focus' )
+                                }
+                                Select2.prototype.focus = function ( data ) {
+                                    if ( this.hasFocus() ) {
+                                        return
+                                    }
+                                    this.$container[ 0 ].classList.add( 'select2-container--focus' )
+                                    this.trigger( 'focus', {} )
+                                }
+                                Select2.prototype.enable = function ( args ) {
+                                    if ( this.options.get( 'debug' ) && window.console && console.warn ) {
+                                        console.warn(
+                                            'Select2: The `select2("enable")` method has been deprecated and will be removed in later Select2 versions. Use $element.prop("disabled") instead.'
+                                        )
+                                    }
+                                    if ( args == null || args.length === 0 ) {
+                                        args = [ true ]
+                                    }
+                                    var disabled = !args[ 0 ]
+                                    this.$element.prop( 'disabled', disabled )
+                                }
+                                Select2.prototype.data = function () {
+                                    if ( this.options.get( 'debug' )
+                                         && arguments.length
+                                         > 0
+                                         && window.console
+                                         && console.warn ) {
+                                        console.warn(
+                                            'Select2: Data can no longer be set using `select2("data")`. You should consider setting the value instead using `$element.val()`.'
+                                        )
+                                    }
+                                    var data = []
+                                    this.dataAdapter.current( function ( currentData ) {
+                                        data = currentData
+                                    } )
+                                    return data
+                                }
+                                Select2.prototype.val = function ( args ) {
+                                    if ( this.options.get( 'debug' ) && window.console && console.warn ) {
+                                        console.warn(
+                                            'Select2: The `select2("val")` method has been deprecated and will be removed in later Select2 versions. Use $element.val() instead.'
+                                        )
+                                    }
+                                    if ( args == null || args.length === 0 ) {
+                                        return this.$element.val()
+                                    }
+                                    var newVal = args[ 0 ]
+                                    if ( Array.isArray( newVal ) ) {
+                                        newVal = newVal.map( function ( obj ) {
+                                            return obj.toString()
+                                        } )
+                                    }
+                                    this.$element.val( newVal ).trigger( 'input' ).trigger( 'change' )
+                                }
+                                Select2.prototype.destroy = function () {
+                                    Utils.RemoveData( this.$container[ 0 ] )
+                                    this.$container.remove()
+                                    this._observer.disconnect()
+                                    this._observer = null
+                                    this._syncA = null
+                                    this._syncS = null
+                                    this.$element.off( '.select2' )
+                                    this.$element.attr(
+                                        'tabindex',
+                                        Utils.GetData( this.$element[ 0 ], 'old-tabindex' )
+                                    )
+                                    this.$element[ 0 ].classList.remove( 'select2-hidden-accessible' )
+                                    this.$element.attr( 'aria-hidden', 'false' )
+                                    Utils.RemoveData( this.$element[ 0 ] )
+                                    this.$element.removeData( 'select2' )
+                                    this.dataAdapter.destroy()
+                                    this.selection.destroy()
+                                    this.dropdown.destroy()
+                                    this.results.destroy()
+                                    this.dataAdapter = null
+                                    this.selection = null
+                                    this.dropdown = null
+                                    this.results = null
+                                }
+                                Select2.prototype.render = function () {
+                                    var $container = $2(
+                                        '<span class="select2 select2-container"><span class="selection"></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>'
+                                    )
+                                    $container.attr( 'dir', this.options.get( 'dir' ) )
+                                    this.$container = $container
+                                    this.$container[ 0 ].classList.add( 'select2-container--' + this.options.get(
+                                        'theme' ) )
+                                    Utils.StoreData( $container[ 0 ], 'element', this.$element )
+                                    return $container
+                                }
+                                return Select2
+                            } )
+                            S22.define( 'select2/dropdown/attachContainer', [], function () {
+                                function AttachContainer( decorated, $element, options ) {
+                                    decorated.call( this, $element, options )
+                                }
+
+                                AttachContainer.prototype.position = function ( decorated, $dropdown, $container ) {
+                                    var $dropdownContainer = $container.find( '.dropdown-wrapper' )
+                                    $dropdownContainer.append( $dropdown )
+                                    $dropdown[ 0 ].classList.add( 'select2-dropdown--below' )
+                                    $container[ 0 ].classList.add( 'select2-container--below' )
+                                }
+                                return AttachContainer
+                            } )
+                            S22.define( 'select2/dropdown/stopPropagation', [], function () {
+                                function StopPropagation() {
+                                }
+
+                                StopPropagation.prototype.bind = function ( decorated, container, $container ) {
+                                    decorated.call( this, container, $container )
+                                    var stoppedEvents = [
+                                        'blur',
+                                        'change',
+                                        'click',
+                                        'dblclick',
+                                        'focus',
+                                        'focusin',
+                                        'focusout',
+                                        'input',
+                                        'keydown',
+                                        'keyup',
+                                        'keypress',
+                                        'mousedown',
+                                        'mouseenter',
+                                        'mouseleave',
+                                        'mousemove',
+                                        'mouseover',
+                                        'mouseup',
+                                        'search',
+                                        'touchend',
+                                        'touchstart'
+                                    ]
+                                    this.$dropdown.on( stoppedEvents.join( ' ' ), function ( evt ) {
+                                        evt.stopPropagation()
+                                    } )
+                                }
+                                return StopPropagation
+                            } )
+                            S22.define( 'select2/selection/stopPropagation', [], function () {
+                                function StopPropagation() {
+                                }
+
+                                StopPropagation.prototype.bind = function ( decorated, container, $container ) {
+                                    decorated.call( this, container, $container )
+                                    var stoppedEvents = [
+                                        'blur',
+                                        'change',
+                                        'click',
+                                        'dblclick',
+                                        'focus',
+                                        'focusin',
+                                        'focusout',
+                                        'input',
+                                        'keydown',
+                                        'keyup',
+                                        'keypress',
+                                        'mousedown',
+                                        'mouseenter',
+                                        'mouseleave',
+                                        'mousemove',
+                                        'mouseover',
+                                        'mouseup',
+                                        'search',
+                                        'touchend',
+                                        'touchstart'
+                                    ]
+                                    this.$selection.on( stoppedEvents.join( ' ' ), function ( evt ) {
+                                        evt.stopPropagation()
+                                    } )
+                                }
+                                return StopPropagation
+                            } );
+                            /*!
+                             * jQuery Mousewheel 3.1.13
+                             *
+                             * Copyright jQuery Foundation and other contributors
+                             * Released under the MIT license
+                             * http://jquery.org/license
+                             */
+                            (
+                                function ( factory ) {
+                                    if ( typeof S22.define === 'function' && S22.define.amd ) {
+                                        S22.define( 'jquery-mousewheel', [ 'jquery' ], factory )
+                                    } else {
+                                        module.exports = factory
+                                    }
+                                }
+                            )( function ( $2 ) {
+                                var toFix = [ 'wheel', 'mousewheel', 'DOMMouseScroll', 'MozMousePixelScroll' ],
+                                    toBind = 'onwheel' in document || document.documentMode >= 9 ? [ 'wheel' ] : [
+                                        'mousewheel',
+                                        'DomMouseScroll',
+                                        'MozMousePixelScroll'
+                                    ],
+                                    slice = Array.prototype.slice,
+                                    nullLowestDeltaTimeout,
+                                    lowestDelta
+                                if ( $2.event.fixHooks ) {
+                                    for ( var i = toFix.length; i; ) {
+                                        $2.event.fixHooks[ toFix[ --i ] ] = $2.event.mouseHooks
+                                    }
+                                }
+                                var special = $2.event.special.mousewheel = {
+                                    version: '3.1.12',
+                                    setup: function () {
+                                        if ( this.addEventListener ) {
+                                            for ( var i2 = toBind.length; i2; ) {
+                                                this.addEventListener( toBind[ --i2 ], handler, false )
+                                            }
+                                        } else {
+                                            this.onmousewheel = handler
+                                        }
+                                        $2.data( this, 'mousewheel-line-height', special.getLineHeight( this ) )
+                                        $2.data( this, 'mousewheel-page-height', special.getPageHeight( this ) )
+                                    },
+                                    teardown: function () {
+                                        if ( this.removeEventListener ) {
+                                            for ( var i2 = toBind.length; i2; ) {
+                                                this.removeEventListener( toBind[ --i2 ], handler, false )
+                                            }
+                                        } else {
+                                            this.onmousewheel = null
+                                        }
+                                        $2.removeData( this, 'mousewheel-line-height' )
+                                        $2.removeData( this, 'mousewheel-page-height' )
+                                    },
+                                    getLineHeight: function ( elem ) {
+                                        var $elem = $2( elem ),
+                                            $parent = $elem[ 'offsetParent' in $2.fn ? 'offsetParent' : 'parent' ]()
+                                        if ( !$parent.length ) {
+                                            $parent = $2( 'body' )
+                                        }
+                                        return parseInt( $parent.css( 'fontSize' ), 10 )
+                                               || parseInt( $elem.css( 'fontSize' ), 10 )
+                                               || 16
+                                    },
+                                    getPageHeight: function ( elem ) {
+                                        return $2( elem ).height()
+                                    },
+                                    settings: {
+                                        adjustOldDeltas: true,
+                                        // see shouldAdjustOldDeltas() below
+                                        normalizeOffset: true
+                                        // calls getBoundingClientRect for each event
+                                    }
+                                }
+                                $2.fn.extend( {
+                                                  mousewheel: function ( fn ) {
+                                                      return fn ? this.bind( 'mousewheel', fn ) : this.trigger(
+                                                          'mousewheel' )
+                                                  },
+                                                  unmousewheel: function ( fn ) {
+                                                      return this.unbind( 'mousewheel', fn )
+                                                  }
+                                              } )
+
+                                function handler( event ) {
+                                    var orgEvent = event || window.event,
+                                        args = slice.call( arguments, 1 ),
+                                        delta = 0,
+                                        deltaX = 0,
+                                        deltaY = 0,
+                                        absDelta = 0,
+                                        offsetX = 0,
+                                        offsetY = 0
+                                    event = $2.event.fix( orgEvent )
+                                    event.type = 'mousewheel'
+                                    if ( 'detail' in orgEvent ) {
+                                        deltaY = orgEvent.detail * -1
+                                    }
+                                    if ( 'wheelDelta' in orgEvent ) {
+                                        deltaY = orgEvent.wheelDelta
+                                    }
+                                    if ( 'wheelDeltaY' in orgEvent ) {
+                                        deltaY = orgEvent.wheelDeltaY
+                                    }
+                                    if ( 'wheelDeltaX' in orgEvent ) {
+                                        deltaX = orgEvent.wheelDeltaX * -1
+                                    }
+                                    if ( 'axis' in orgEvent && orgEvent.axis === orgEvent.HORIZONTAL_AXIS ) {
+                                        deltaX = deltaY * -1
+                                        deltaY = 0
+                                    }
+                                    delta = deltaY === 0 ? deltaX : deltaY
+                                    if ( 'deltaY' in orgEvent ) {
+                                        deltaY = orgEvent.deltaY * -1
+                                        delta = deltaY
+                                    }
+                                    if ( 'deltaX' in orgEvent ) {
+                                        deltaX = orgEvent.deltaX
+                                        if ( deltaY === 0 ) {
+                                            delta = deltaX * -1
+                                        }
+                                    }
+                                    if ( deltaY === 0 && deltaX === 0 ) {
+                                        return
+                                    }
+                                    if ( orgEvent.deltaMode === 1 ) {
+                                        var lineHeight = $2.data( this, 'mousewheel-line-height' )
+                                        delta *= lineHeight
+                                        deltaY *= lineHeight
+                                        deltaX *= lineHeight
+                                    } else if ( orgEvent.deltaMode === 2 ) {
+                                        var pageHeight = $2.data( this, 'mousewheel-page-height' )
+                                        delta *= pageHeight
+                                        deltaY *= pageHeight
+                                        deltaX *= pageHeight
+                                    }
+                                    absDelta = Math.max( Math.abs( deltaY ), Math.abs( deltaX ) )
+                                    if ( !lowestDelta || absDelta < lowestDelta ) {
+                                        lowestDelta = absDelta
+                                        if ( shouldAdjustOldDeltas( orgEvent, absDelta ) ) {
+                                            lowestDelta /= 40
+                                        }
+                                    }
+                                    if ( shouldAdjustOldDeltas( orgEvent, absDelta ) ) {
+                                        delta /= 40
+                                        deltaX /= 40
+                                        deltaY /= 40
+                                    }
+                                    delta = Math[ delta >= 1 ? 'floor' : 'ceil' ]( delta / lowestDelta )
+                                    deltaX = Math[ deltaX >= 1 ? 'floor' : 'ceil' ]( deltaX / lowestDelta )
+                                    deltaY = Math[ deltaY >= 1 ? 'floor' : 'ceil' ]( deltaY / lowestDelta )
+                                    if ( special.settings.normalizeOffset && this.getBoundingClientRect ) {
+                                        var boundingRect = this.getBoundingClientRect()
+                                        offsetX = event.clientX - boundingRect.left
+                                        offsetY = event.clientY - boundingRect.top
+                                    }
+                                    event.deltaX = deltaX
+                                    event.deltaY = deltaY
+                                    event.deltaFactor = lowestDelta
+                                    event.offsetX = offsetX
+                                    event.offsetY = offsetY
+                                    event.deltaMode = 0
+                                    args.unshift( event, delta, deltaX, deltaY )
+                                    if ( nullLowestDeltaTimeout ) {
+                                        clearTimeout( nullLowestDeltaTimeout )
+                                    }
+                                    nullLowestDeltaTimeout = setTimeout( nullLowestDelta, 200 )
+                                    return (
+                                        $2.event.dispatch || $2.event.handle
+                                    ).apply( this, args )
+                                }
+
+                                function nullLowestDelta() {
+                                    lowestDelta = null
+                                }
+
+                                function shouldAdjustOldDeltas( orgEvent, absDelta ) {
+                                    return special.settings.adjustOldDeltas
+                                           && orgEvent.type
+                                           === 'mousewheel'
+                                           && absDelta
+                                           % 120
+                                           === 0
+                                }
+                            } )
+                            S22.define( 'jquery.select2', [
+                                'jquery',
+                                'jquery-mousewheel',
+                                './select2/core',
+                                './select2/defaults',
+                                './select2/utils'
+                            ], function ( $2, _, Select2, Defaults, Utils ) {
+                                if ( $2.fn.select2 == null ) {
+                                    var thisMethods = [ 'open', 'close', 'destroy' ]
+                                    $2.fn.select2 = function ( options ) {
+                                        options = options || {}
+                                        if ( typeof options === 'object' ) {
+                                            this.each( function () {
+                                                var instanceOptions = $2.extend( true, {}, options )
+                                                new Select2( $2( this ), instanceOptions )
+                                            } )
+                                            return this
+                                        } else if ( typeof options === 'string' ) {
+                                            var ret
+                                            var args = Array.prototype.slice.call( arguments, 1 )
+                                            this.each( function () {
+                                                var instance = Utils.GetData( this, 'select2' )
+                                                if ( instance == null && window.console && console.error ) {
+                                                    console.error(
+                                                        'The select2(\''
+                                                        + options
+                                                        + '\') method was called on an element that is not using Select2.'
+                                                    )
+                                                }
+                                                ret = instance[ options ].apply( instance, args )
+                                            } )
+                                            if ( thisMethods.indexOf( options ) > -1 ) {
+                                                return this
+                                            }
+                                            return ret
+                                        } else {
+                                            throw new Error( 'Invalid arguments for Select2: ' + options )
+                                        }
+                                    }
+                                }
+                                if ( $2.fn.select2.defaults == null ) {
+                                    $2.fn.select2.defaults = Defaults
+                                }
+                                return Select2
+                            } )
+                            return {
+                                define: S22.define,
+                                require: S22.require
+                            }
+                        }()
+                        var select2 = S2.require( 'jquery.select2' )
+                        jQuery2.fn.select2.amd = S2
+                        return select2
+                    } )
+                }
+            )( select2_full )
+            return select2_full.exports
+        }
+
+        requireSelect2_full()
+
+        function updateCurrencyOptions() {
+            const selectedCodes = $$1( '.yopago-currency-select' ).map( function () {
+                return $$1( this ).val()
+            } ).get().filter( Boolean )
+            $$1( '.yopago-currency-select' ).each( function () {
+                const $sel = $$1( this )
+                const myCode = $sel.val()
+                $sel.find( 'option' ).prop( 'disabled', false )
+                $sel.find( 'option' ).each( function () {
+                    const code = this.value
+                    if ( !code ) {
+                        return
+                    }
+                    $$1( this ).prop( 'disabled', code !== myCode && selectedCodes.includes( code ) )
+                } )
+                const currentVal = $sel.val()
+                $sel.select2( 'destroy' )
+                attachSelect2( $sel )
+                if ( currentVal ) {
+                    $sel.val( currentVal ).trigger( 'change.select2' )
+                }
+            } )
+        }
+
+        function updateAddButtonState() {
+            const total = window.yopagoCurrencies ? window.yopagoCurrencies.length : 0
+            const rows = $$1( '#yopago-currency-rates-table tbody tr' ).not( '.empty-row' ).length
+            $$1( '#yopago-add-rate' ).prop( 'disabled', rows >= total )
+        }
+
+        function initializeCurrencyDropdown( $select ) {
+            const selected = $select.data( 'selected' )
+            $select.empty().append(
+                `<option value='' disabled ${ selected ? '' : 'selected' } hidden></option>`
+            )
+            window.yopagoCurrencies.forEach( ( c ) => {
+                $select.append(
+                    new Option( `${ c.name } (${ c.symbol })`, c.code, false, c.code === selected )
+                )
+            } )
+            attachSelect2( $select )
+            if ( selected ) {
+                $select.val( selected ).trigger( 'change.select2' )
+            }
+            $select.closest( 'tr' ).find( '.yopago-example-btn' ).prop( 'disabled', !$select.val() )
+        }
+
+        function attachSelect2( $sel ) {
+            $sel.select2( {
+                              width: '100%',
+                              placeholder: wc_yopago_params.select_currency,
+                              allowClear: false,
+                              templateResult: ( option ) => formatCurrency( option, true ),
+                              templateSelection: ( option ) => formatCurrency( option, false )
+                          } )
+        }
+
+        function formatCurrency( option, isResult ) {
+            if ( !option.id ) {
+                return option.text
+            }
+            const c = window.yopagoCurrencies.find( ( x ) => x.code === option.id )
+            if ( !c ) {
+                return option.text
+            }
+            return isResult
+                   ? $$1( `<span><img src='${ c.flag }' class='yopago-flag' /> ${ c.name } (${ c.symbol })</span>` )
+                   : `${ c.code } - ${ c.name }`
+        }
+
+        const markSettingsAsDirty = () => $$1( '#mainform :input' ).first().trigger( 'change' )
+
+        function generateExampleHTML( currency, rate, fee, feeType ) {
+            const orderAmount = 50
+            const subtotal = orderAmount * rate
+            const feeAmount = feeType === 'fixed' ? fee : subtotal * (
+                fee / 100
+            )
+            const total = subtotal + feeAmount
+            return `
+    <h4>${ wc_yopago_params.ex_title.replace( '{from}', currency.code ).replace( '{to}', 'BOB' ) }</h4>
+    <p><strong>${ wc_yopago_params.ex_assumptions }</strong></p>
+    <ul>
+      <li>${ wc_yopago_params.ex_site_currency }: ${ currency.code }</li>
+      <li>${ wc_yopago_params.ex_rate }: 1 ${ currency.code } = ${ rate.toFixed( 4 ) } BOB</li>
+      <li>${ wc_yopago_params.ex_fee }: ${ feeType === 'fixed' ? wc_yopago_params.fixed + ' ' + fee : fee + '%' }</li>
+      <li>${ wc_yopago_params.ex_original }: ${ currency.symbol }${ orderAmount.toFixed( 2 ) }</li>
+    </ul>
+    <p><strong>${ wc_yopago_params.ex_calc }</strong></p>
+    <table class='widefat'>
+      <thead><tr><th>${ wc_yopago_params.ex_concept }</th><th>${ wc_yopago_params.ex_value }</th></tr></thead>
+      <tbody>
+        <tr><td>${ wc_yopago_params.ex_c_original.replace(
+                '{from}',
+                currency.code
+            ) }</td><td>${ currency.symbol }${ orderAmount.toFixed( 2 ) }</td></tr>
+        <tr><td>${ wc_yopago_params.ex_c_rate }</td><td>1 ${ currency.code } = ${ rate.toFixed( 4 ) } BOB</td></tr>
+        <tr><td>${ wc_yopago_params.ex_c_subtotal.replace( '{to}', 'BOB' ) }</td><td>Bs. ${ subtotal.toFixed( 2 ) }</td></tr>
+        <tr><td>${ wc_yopago_params.ex_c_commission }</td><td>Bs. ${ feeAmount.toFixed( 2 ) }</td></tr>
+        <tr><td><strong>${ wc_yopago_params.ex_c_total.replace(
+                '{to}',
+                'BOB'
+            ) }</strong></td><td><strong>Bs. ${ total.toFixed( 2 ) }</strong></td></tr>
+      </tbody>
+    </table>
+    <p><strong>${ wc_yopago_params.ex_result }</strong></p>
+    <p>${ wc_yopago_params.ex_result_text.replace( '{symbol}', 'Bs. ' )
+                          .replace( '{total}', total.toFixed( 2 ) )
+                          .replace( '{to}', 'BOB' ) }</p>
+  `
+        }
+
+        function buildCurrencyRateRow( index ) {
+            return `
+  <tr data-index='${ index }'>
+    <td>
+      <select class='yopago-currency-select' name='currency_rates[${ index }][currency]'>
+        <option value='' disabled selected hidden></option>
+      </select>
+    </td>
+    <td><input  type='number' step='0.0001' name='currency_rates[${ index }][rate]' value='1' min='0.0001' required></td>
+    <td><input  type='number' step='0.01'  name='currency_rates[${ index }][fee]'  value='0' min='0'     required></td>
+    <td>
+      <select name='currency_rates[${ index }][fee_type]'>
+        <option value='fixed'>${ wc_yopago_params.fixed }</option>
+        <option value='percent'>${ wc_yopago_params.percent }</option>
+      </select>
+    </td>
+    <td>
+      <button type='button' class='button yopago-example-btn' data-index='${ index }' disabled>
+        ${ wc_yopago_params.view }
+      </button>
+    </td>
+    <td>
+      <button type='button' class='button button-link-delete yopago-remove-rate'>
+        ${ wc_yopago_params.remove }
+      </button>
+    </td>
+  </tr>`
+        }
+
+        function bindUIEvents( { $table, $addBtn, $modal, $modalContent } ) {
+            $addBtn.on( 'click', function () {
+                const index = Date.now()
+                const newRow = buildCurrencyRateRow( index )
+                $table.find( 'tbody .empty-row' ).remove()
+                $table.find( 'tbody' ).append( newRow )
+                const $newSelect = $table.find(
+                    `tr[data-index="${ index }"] .yopago-currency-select`
+                )
+                initializeCurrencyDropdown( $newSelect )
+                updateCurrencyOptions()
+                updateAddButtonState()
+                markSettingsAsDirty()
+            } )
+            $table.on( 'click', '.yopago-remove-rate', function () {
+                $$1( this ).closest( 'tr' ).remove()
+                if ( $table.find( 'tbody tr' ).length === 0 ) {
+                    $table.find( 'tbody' ).append(
+                        `<tr class='empty-row'><td colspan='6'>${ wc_yopago_params.no_currencies }</td></tr>`
+                    )
+                }
+                updateCurrencyOptions()
+                updateAddButtonState()
+                markSettingsAsDirty()
+            } )
+            $table.on( 'click', '.yopago-example-btn', function () {
+                const index = $$1( this ).data( 'index' )
+                const $row = $table.find( `tr[data-index="${ index }"]` )
+                const rate = parseFloat( $row.find( 'input[name*="[rate]"]' ).val() ) || 1
+                const fee = parseFloat( $row.find( 'input[name*="[fee]"]' ).val() ) || 0
+                const feeType = $row.find( 'select[name*="[fee_type]"]' ).val()
+                const code = $row.find( '.yopago-currency-select' ).val()
+                const currency = window.yopagoCurrencies.find( ( c ) => c.code === code )
+                if ( !currency ) {
+                    return
+                }
+                $modalContent.html( generateExampleHTML( currency, rate, fee, feeType ) )
+                $modal.show()
+            } )
+            $$1( '#yopago-modal-close' ).on( 'click', () => $modal.hide() )
+        }
+
+        window.jQuery = window.$ = $$1
+        $$1( document ).ready( function ( $2 ) {
+            const $table = $2( '#yopago-currency-rates-table' )
+            const $modal = $2( '#yopago-example-modal' )
+            const $modalContent = $2( '#yopago-example-text' )
+            const $addBtn = $2( '#yopago-add-rate' )
+            initCurrencyRateManager()
+            $2( document ).on( 'change', '.yopago-currency-select', function () {
+                updateCurrencyOptions()
+                updateAddButtonState()
+                $2( this ).closest( 'tr' ).find( '.yopago-example-btn' ).prop( 'disabled', !$2( this ).val() )
+                $2( '#mainform :input' ).first().trigger( 'change' )
+            } )
+            $2( '#mainform' ).on( 'submit', function () {
+                $table.find( 'tbody tr' ).each( function () {
+                    if ( !$2( this ).find( '.yopago-currency-select' ).val() ) {
+                        $2( this ).remove()
+                    }
+                } )
+            } )
+
+            function initCurrencyRateManager() {
+                loadCurrencyData()
+                bindUIEvents( { $table, $addBtn, $modal, $modalContent } )
+            }
+
+            function loadCurrencyData() {
+                $2.getJSON( wc_yopago_params.currency_data_url ).done( function ( currencies ) {
+                    window.yopagoCurrencies = currencies
+                    $2( '.yopago-currency-select' ).each( function () {
+                        initializeCurrencyDropdown( $2( this ) )
+                    } )
+                    updateCurrencyOptions()
+                    updateAddButtonState()
+                } ).fail( function ( jqxhr, status, error ) {
+                    console.error( 'Failed to load currencies:', status, error )
+                    console.log( 'Attempted path:', wc_yopago_params.currency_data_url )
+                } )
+            }
+        } )
+    }
+)( jQuery )
+//# sourceMappingURL=currency-table.js.map

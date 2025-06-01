@@ -31,9 +31,9 @@ class YoPago_Assets {
 
 		wp_enqueue_script(
 			'yopago-currency-table',
-			WC_YOPAGO_PLUGIN_URL . 'assets/js/admin/currency-table.js',
+			WC_YOPAGO_PLUGIN_URL . 'assets/js/admin/currency-table.min.js',
 			[ 'jquery', 'select2' ],
-			filemtime( WC_YOPAGO_PLUGIN_PATH . 'assets/js/admin/currency-table.js' ),
+			filemtime( WC_YOPAGO_PLUGIN_PATH . 'assets/js/admin/currency-table.min.js' ),
 			TRUE
 		);
 
