@@ -10,6 +10,7 @@ jQuery( document ).ready( function ( $ ) {
     $( document ).on( 'change', '.yopago-currency-select', function () {
         updateCurrencyOptions()
         updateAddButtonState()
+        $( this ).closest( 'tr' ).find( '.yopago-example-btn' ).prop( 'disabled', !$( this ).val() )
         markSettingsAsDirty()
     } )
 
@@ -26,16 +27,12 @@ jQuery( document ).ready( function ( $ ) {
             const myCode = $sel.val()
 
             $sel.find( 'option' ).prop( 'disabled', false )
-
             $sel.find( 'option' ).each( function () {
                 const code = this.value
                 if ( !code ) {
                     return
                 }
-                $( this ).prop(
-                    'disabled',
-                    code !== myCode && selectedCodes.includes( code )
-                )
+                $( this ).prop( 'disabled', code !== myCode && selectedCodes.includes( code ) )
             } )
 
             const currentVal = $sel.val()
@@ -62,11 +59,9 @@ jQuery( document ).ready( function ( $ ) {
         $.getJSON( wc_yopago_params.currency_data_url )
          .done( function ( currencies ) {
              window.yopagoCurrencies = currencies
-
              $( '.yopago-currency-select' ).each( function () {
                  initializeCurrencyDropdown( $( this ) )
              } )
-
              updateCurrencyOptions()
              updateAddButtonState()
          } )
@@ -86,13 +81,10 @@ jQuery( document ).ready( function ( $ ) {
     function handleAddRate() {
         const index = Date.now()
         const newRow = buildCurrencyRateRow( index )
-
         $table.find( 'tbody .empty-row' ).remove()
         $table.find( 'tbody' ).append( newRow )
-
         const $newSelect = $table.find( `tr[data-index="${ index }"] .yopago-currency-select` )
         initializeCurrencyDropdown( $newSelect )
-
         updateCurrencyOptions()
         updateAddButtonState()
         markSettingsAsDirty()
@@ -100,13 +92,11 @@ jQuery( document ).ready( function ( $ ) {
 
     function handleRemoveRate() {
         $( this ).closest( 'tr' ).remove()
-
         if ( $table.find( 'tbody tr' ).length === 0 ) {
             $table.find( 'tbody' ).append(
                 `<tr class='empty-row'><td colspan='6'>${ wc_yopago_params.no_currencies }</td></tr>`
             )
         }
-
         updateCurrencyOptions()
         updateAddButtonState()
         markSettingsAsDirty()
@@ -115,7 +105,6 @@ jQuery( document ).ready( function ( $ ) {
     function handleShowExample() {
         const index = $( this ).data( 'index' )
         const $row = $( `tr[data-index="${ index }"]` )
-
         const rate = parseFloat( $row.find( 'input[name*="[rate]"]' ).val() ) || 1
         const fee = parseFloat( $row.find( 'input[name*="[fee]"]' ).val() ) || 0
         const feeType = $row.find( 'select[name*="[fee_type]"]' ).val()
@@ -124,7 +113,6 @@ jQuery( document ).ready( function ( $ ) {
         if ( !currency ) {
             return
         }
-
         const exampleHTML = generateExampleHTML( currency, rate, fee, feeType )
         $modalContent.html( exampleHTML )
         $modal.show()
@@ -134,20 +122,15 @@ jQuery( document ).ready( function ( $ ) {
         return `
             <tr data-index='${ index }'>
                 <td>
-                    <select class='yopago-currency-select'
-                            name='currency_rates[${ index }][currency]'>
+                    <select class='yopago-currency-select' name='currency_rates[${ index }][currency]'>
                         <option value='' disabled selected hidden></option>
                     </select>
                 </td>
                 <td>
-                    <input type='number' step='0.0001'
-                           name='currency_rates[${ index }][rate]' value='1'
-                           min='0.0001' required>
+                    <input type='number' step='0.0001' name='currency_rates[${ index }][rate]' value='1' min='0.0001' required>
                 </td>
                 <td>
-                    <input type='number' step='0.01'
-                           name='currency_rates[${ index }][fee]' value='0'
-                           min='0' required>
+                    <input type='number' step='0.01' name='currency_rates[${ index }][fee]' value='0' min='0' required>
                 </td>
                 <td>
                     <select name='currency_rates[${ index }][fee_type]'>
@@ -156,8 +139,7 @@ jQuery( document ).ready( function ( $ ) {
                     </select>
                 </td>
                 <td>
-                    <button type='button' class='button yopago-example-btn'
-                            data-index='${ index }'>
+                    <button type='button' class='button yopago-example-btn' data-index='${ index }' disabled>
                         ${ wc_yopago_params.view }
                     </button>
                 </td>
@@ -175,7 +157,6 @@ jQuery( document ).ready( function ( $ ) {
         $select.empty().append(
             `<option value='' disabled ${ selectedValue ? '' : 'selected' } hidden></option>`
         )
-
         window.yopagoCurrencies.forEach( currency => {
             $select.append(
                 new Option(
@@ -186,12 +167,11 @@ jQuery( document ).ready( function ( $ ) {
                 )
             )
         } )
-
         attachSelect2( $select )
-
         if ( selectedValue ) {
             $select.val( selectedValue ).trigger( 'change.select2' )
         }
+        $select.closest( 'tr' ).find( '.yopago-example-btn' ).prop( 'disabled', !$select.val() )
     }
 
     function attachSelect2( $sel ) {
@@ -239,9 +219,8 @@ jQuery( document ).ready( function ( $ ) {
             <ul>
                 <li>${ wc_yopago_params.ex_site_currency }: ${ currency.code }</li>
                 <li>${ wc_yopago_params.ex_rate }: 1 ${ currency.code } = ${ rate.toFixed( 4 ) } BOB</li>
-                <li>${ wc_yopago_params.ex_fee }: ${ feeType === 'fixed'
-                                                     ? wc_yopago_params.fixed + ' ' + fee
-                                                     : fee + '%' }</li>
+                <li>${ wc_yopago_params.ex_fee }: ${ feeType === 'fixed' ? wc_yopago_params.fixed + ' ' + fee : fee
+                                                                                                                + '%' }</li>
                 <li>${ wc_yopago_params.ex_original }: ${ currency.symbol }${ orderAmount.toFixed( 2 ) }</li>
             </ul>
             <p><strong>${ wc_yopago_params.ex_calc }</strong></p>
