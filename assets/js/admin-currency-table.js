@@ -3,11 +3,13 @@ jQuery( document ).ready( function ( $ ) {
     const $table = $( '#yopago-currency-rates-table' )
     const $modal = $( '#yopago-example-modal' )
     const $modalContent = $( '#yopago-example-text' )
+    const $addBtn = $( '#yopago-add-rate' )
 
     initCurrencyRateManager()
 
     $( document ).on( 'change', '.yopago-currency-select', function () {
         updateCurrencyOptions()
+        updateAddButtonState()
         markSettingsAsDirty()
     } )
 
@@ -45,6 +47,12 @@ jQuery( document ).ready( function ( $ ) {
         } )
     }
 
+    function updateAddButtonState() {
+        const totalCurrencies = window.yopagoCurrencies ? window.yopagoCurrencies.length : 0
+        const rowCount = $table.find( 'tbody tr' ).not( '.empty-row' ).length
+        $addBtn.prop( 'disabled', rowCount >= totalCurrencies )
+    }
+
     function initCurrencyRateManager() {
         loadCurrencyData()
         bindUIEvents()
@@ -60,6 +68,7 @@ jQuery( document ).ready( function ( $ ) {
              } )
 
              updateCurrencyOptions()
+             updateAddButtonState()
          } )
          .fail( function ( jqxhr, status, error ) {
              console.error( 'Failed to load currencies:', status, error )
@@ -68,7 +77,7 @@ jQuery( document ).ready( function ( $ ) {
     }
 
     function bindUIEvents() {
-        $( '#yopago-add-rate' ).on( 'click', handleAddRate )
+        $addBtn.on( 'click', handleAddRate )
         $table.on( 'click', '.yopago-remove-rate', handleRemoveRate )
         $table.on( 'click', '.yopago-example-btn', handleShowExample )
         $( '#yopago-modal-close' ).on( 'click', () => $modal.hide() )
@@ -85,6 +94,7 @@ jQuery( document ).ready( function ( $ ) {
         initializeCurrencyDropdown( $newSelect )
 
         updateCurrencyOptions()
+        updateAddButtonState()
         markSettingsAsDirty()
     }
 
@@ -98,6 +108,7 @@ jQuery( document ).ready( function ( $ ) {
         }
 
         updateCurrencyOptions()
+        updateAddButtonState()
         markSettingsAsDirty()
     }
 
@@ -110,7 +121,6 @@ jQuery( document ).ready( function ( $ ) {
         const feeType = $row.find( 'select[name*="[fee_type]"]' ).val()
         const currencyCode = $row.find( '.yopago-currency-select' ).val()
         const currency = window.yopagoCurrencies.find( c => c.code === currencyCode )
-
         if ( !currency ) {
             return
         }
@@ -146,15 +156,13 @@ jQuery( document ).ready( function ( $ ) {
                     </select>
                 </td>
                 <td>
-                    <button type='button'
-                            class='button yopago-example-btn'
+                    <button type='button' class='button yopago-example-btn'
                             data-index='${ index }'>
                         ${ wc_yopago_params.view }
                     </button>
                 </td>
                 <td>
-                    <button type='button'
-                            class='button button-link-delete yopago-remove-rate'>
+                    <button type='button' class='button button-link-delete yopago-remove-rate'>
                         ${ wc_yopago_params.remove }
                     </button>
                 </td>
@@ -187,15 +195,13 @@ jQuery( document ).ready( function ( $ ) {
     }
 
     function attachSelect2( $sel ) {
-        $sel.select2(
-            {
-                width: '100%',
-                placeholder: wc_yopago_params.select_currency,
-                allowClear: false,
-                templateResult: formatCurrencyOption,
-                templateSelection: formatCurrencySelection
-            }
-        )
+        $sel.select2( {
+                          width: '100%',
+                          placeholder: wc_yopago_params.select_currency,
+                          allowClear: false,
+                          templateResult: formatCurrencyOption,
+                          templateSelection: formatCurrencySelection
+                      } )
     }
 
     function formatCurrencyOption( option ) {
@@ -221,18 +227,14 @@ jQuery( document ).ready( function ( $ ) {
     }
 
     function generateExampleHTML( currency, rate, fee, feeType ) {
-        const orderAmount = Math.floor( Math.random() * (
-            200 - 20 + 1
-        ) ) + 20
+        const orderAmount = 50
         const subtotal = orderAmount * rate
         const feeAmount = feeType === 'fixed' ? fee : subtotal * (
             fee / 100
         )
         const total = subtotal + feeAmount
-
         return `
             <h4>${ wc_yopago_params.ex_title.replace( '{from}', currency.code ).replace( '{to}', 'BOB' ) }</h4>
-
             <p><strong>${ wc_yopago_params.ex_assumptions }</strong></p>
             <ul>
                 <li>${ wc_yopago_params.ex_site_currency }: ${ currency.code }</li>
@@ -242,15 +244,9 @@ jQuery( document ).ready( function ( $ ) {
                                                      : fee + '%' }</li>
                 <li>${ wc_yopago_params.ex_original }: ${ currency.symbol }${ orderAmount.toFixed( 2 ) }</li>
             </ul>
-
             <p><strong>${ wc_yopago_params.ex_calc }</strong></p>
             <table class='widefat'>
-                <thead>
-                    <tr>
-                        <th>${ wc_yopago_params.ex_concept }</th>
-                        <th>${ wc_yopago_params.ex_value }</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>${ wc_yopago_params.ex_concept }</th><th>${ wc_yopago_params.ex_value }</th></tr></thead>
                 <tbody>
                     <tr><td>${ wc_yopago_params.ex_c_original.replace(
             '{from}',
@@ -268,12 +264,11 @@ jQuery( document ).ready( function ( $ ) {
         ) }</strong></td><td><strong>Bs. ${ total.toFixed( 2 ) }</strong></td></tr>
                 </tbody>
             </table>
-
             <p><strong>${ wc_yopago_params.ex_result }</strong></p>
             <p>${ wc_yopago_params.ex_result_text
                                   .replace( '{symbol}', 'Bs. ' )
                                   .replace( '{total}', total.toFixed( 2 ) )
                                   .replace( '{to}', 'BOB' ) }</p>
-        `
+        `;
     }
-} )
+} );
