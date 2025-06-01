@@ -14,6 +14,14 @@ jQuery( document ).ready( function ( $ ) {
         markSettingsAsDirty()
     } )
 
+    $( '#mainform' ).on( 'submit', function () {
+        $table.find( 'tbody tr' ).each( function () {
+            if ( !$( this ).find( '.yopago-currency-select' ).val() ) {
+                $( this ).remove()
+            }
+        } )
+    } )
+
     function updateCurrencyOptions() {
         const selectedCodes = $( '.yopago-currency-select' )
             .map( function () {
@@ -248,6 +256,6 @@ jQuery( document ).ready( function ( $ ) {
                                   .replace( '{symbol}', 'Bs. ' )
                                   .replace( '{total}', total.toFixed( 2 ) )
                                   .replace( '{to}', 'BOB' ) }</p>
-        `;
+        `
     }
-} );
+} )
