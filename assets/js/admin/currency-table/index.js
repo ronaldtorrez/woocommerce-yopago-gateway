@@ -1,7 +1,9 @@
 import jQuery from 'jquery'
 import 'select2/dist/js/select2.full'
-import { initializeCurrencyDropdown, updateAddButtonState, updateCurrencyOptions } from './currency-utils'
 import { bindUIEvents } from './ui-events'
+import { initializeCurrencyDropdown } from './utils/initialize-currency-dropdown'
+import { updateAddButtonState } from './utils/update-add-button-state'
+import { updateCurrencyOptions } from './utils/update-currency-options'
 
 window.jQuery = window.$ = jQuery
 

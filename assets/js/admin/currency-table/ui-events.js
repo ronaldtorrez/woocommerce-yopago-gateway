@@ -1,13 +1,10 @@
 import $ from 'jquery'
-import {
-    initializeCurrencyDropdown,
-    markSettingsAsDirty,
-    updateAddButtonState,
-    updateCurrencyOptions
-} from './currency-utils'
 import { generateExampleHTML } from './example-generator'
-
 import { buildCurrencyRateRow } from './row-builder'
+import { markSettingsAsDirty } from './utils/global'
+import { initializeCurrencyDropdown } from './utils/initialize-currency-dropdown'
+import { updateAddButtonState } from './utils/update-add-button-state'
+import { updateCurrencyOptions } from './utils/update-currency-options'
 
 export function bindUIEvents( { $table, $addBtn, $modal, $modalContent } ) {
 

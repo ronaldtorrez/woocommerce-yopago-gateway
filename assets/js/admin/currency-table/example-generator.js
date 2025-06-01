@@ -1,5 +1,7 @@
+import { randomInt } from './utils/global'
+
 export function generateExampleHTML( currency, rate, fee, feeType ) {
-    const orderAmount = 50
+    const orderAmount = randomInt( 20, 200 )
     const subtotal = orderAmount * rate
     const feeAmount = feeType === 'fixed' ? fee : subtotal * (
         fee / 100
@@ -17,25 +19,41 @@ export function generateExampleHTML( currency, rate, fee, feeType ) {
     </ul>
     <p><strong>${ wc_yopago_params.ex_calc }</strong></p>
     <table class='widefat'>
-      <thead><tr><th>${ wc_yopago_params.ex_concept }</th><th>${ wc_yopago_params.ex_value }</th></tr></thead>
+      <thead>
+          <tr>
+              <th>${ wc_yopago_params.ex_concept }</th><th>${ wc_yopago_params.ex_value }</th>
+          </tr>
+      </thead>
       <tbody>
-        <tr><td>${ wc_yopago_params.ex_c_original.replace(
-        '{from}',
-        currency.code
-    ) }</td><td>${ currency.symbol }${ orderAmount.toFixed( 2 ) }</td></tr>
-        <tr><td>${ wc_yopago_params.ex_c_rate }</td><td>1 ${ currency.code } = ${ rate.toFixed( 4 ) } BOB</td></tr>
-        <tr><td>${ wc_yopago_params.ex_c_subtotal.replace( '{to}', 'BOB' ) }</td><td>Bs. ${ subtotal.toFixed( 2 ) }</td></tr>
-        <tr><td>${ wc_yopago_params.ex_c_commission }</td><td>Bs. ${ feeAmount.toFixed( 2 ) }</td></tr>
-        <tr><td><strong>${ wc_yopago_params.ex_c_total.replace(
-        '{to}',
-        'BOB'
-    ) }</strong></td><td><strong>Bs. ${ total.toFixed( 2 ) }</strong></td></tr>
+        <tr>
+            <td>${ wc_yopago_params.ex_c_original.replace( '{from}', currency.code ) }</td>
+            <td>${ currency.symbol }${ orderAmount.toFixed( 2 ) }</td>
+        </tr>
+        <tr>
+            <td>${ wc_yopago_params.ex_c_rate }</td><td>1 ${ currency.code } = ${ rate.toFixed( 4 ) } BOB</td>
+        </tr>
+        <tr>
+            <td>${ wc_yopago_params.ex_c_subtotal.replace( '{to}', 'BOB' ) }</td><td>Bs. ${ subtotal.toFixed( 2 ) }</td>
+        </tr>
+        <tr>
+            <td>${ wc_yopago_params.ex_c_commission }</td><td>Bs. ${ feeAmount.toFixed( 2 ) }</td>
+        </tr>
+        <tr>
+            <td>
+                <strong>${ wc_yopago_params.ex_c_total.replace( '{to}', 'BOB' ) }</strong>
+            </td>
+            <td>
+                <strong>Bs. ${ total.toFixed( 2 ) }</strong>
+            </td>
+        </tr>
       </tbody>
     </table>
     <p><strong>${ wc_yopago_params.ex_result }</strong></p>
-    <p>${ wc_yopago_params.ex_result_text
-                          .replace( '{symbol}', 'Bs. ' )
-                          .replace( '{total}', total.toFixed( 2 ) )
-                          .replace( '{to}', 'BOB' ) }</p>
+    <p>
+    ${ wc_yopago_params.ex_result_text
+                       .replace( '{symbol}', 'Bs. ' )
+                       .replace( '{total}', total.toFixed( 2 ) )
+                       .replace( '{to}', 'BOB' ) }
+    </p>
   `
 }
