@@ -28,7 +28,7 @@ class YoPago_Currency_Table {
 					<th><?php
 						esc_html_e( 'Rate', WC_YOPAGO_ID ); ?></th>
 					<th><?php
-						esc_html_e( 'Fee', WC_YOPAGO_ID ); ?></th>
+						esc_html_e( 'Fee (BOB)', WC_YOPAGO_ID ); ?></th>
 					<th><?php
 						esc_html_e( 'Fee Type', WC_YOPAGO_ID ); ?></th>
 					<th><?php

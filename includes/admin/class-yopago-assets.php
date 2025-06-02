@@ -15,7 +15,6 @@ class YoPago_Assets {
 			return;
 		}
 
-		// Verifica si estamos en la página de configuración de nuestro gateway
 		if ( ! isset( $_GET['section'] ) || $_GET['section'] !== 'yopago' ) {
 			return;
 		}
@@ -53,7 +52,8 @@ class YoPago_Assets {
 				'ex_assumptions'   => __( 'Assumptions', WC_YOPAGO_ID ),
 				'ex_site_currency' => __( 'Site currency', WC_YOPAGO_ID ),
 				'ex_rate'          => __( 'Exchange rate', WC_YOPAGO_ID ),
-				'ex_fee'           => __( 'Commission', WC_YOPAGO_ID ),
+				'ex_fee_fixed'     => __( 'Commission fixed', WC_YOPAGO_ID ),
+				'ex_fee_percent'   => __( 'Commission percent', WC_YOPAGO_ID ),
 				'ex_original'      => __( 'Original order amount', WC_YOPAGO_ID ),
 				'ex_calc'          => __( 'Calculation', WC_YOPAGO_ID ),
 				'ex_concept'       => __( 'Concept', WC_YOPAGO_ID ),
@@ -61,10 +61,9 @@ class YoPago_Assets {
 				'ex_c_original'    => __( 'Original amount ({from})', WC_YOPAGO_ID ),
 				'ex_c_rate'        => __( 'Exchange rate', WC_YOPAGO_ID ),
 				'ex_c_subtotal'    => __( 'Subtotal converted ({to})', WC_YOPAGO_ID ),
-				'ex_c_commission'  => __( 'Commission', WC_YOPAGO_ID ),
 				'ex_c_total'       => __( 'Total to charge ({to})', WC_YOPAGO_ID ),
 				'ex_result'        => __( 'Final result', WC_YOPAGO_ID ),
-				'ex_result_text'   => __( 'The customer will pay {symbol}{total} {to} thanks to automatic conversion.',
+				'ex_result_text'   => __( 'The customer will pay <strong>{total} {to}</strong> thanks to automatic conversion.',
 					WC_YOPAGO_ID ),
 			]
 		);
