@@ -1,4 +1,3 @@
-// vite.config.js
 import { resolve } from 'path'
 import { terser } from 'rollup-plugin-terser'
 import { defineConfig } from 'vite'
