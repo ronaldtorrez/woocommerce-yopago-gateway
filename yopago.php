@@ -1,11 +1,15 @@
 <?php
 /*
 Plugin Name: WooCommerce YoPago Gateway
-Plugin URI: https://yopago.com.bo/
-Description: Formas de pago por tarjeta, QR, y transferencias bancarias para Woocommerce en Bolivia
+Plugin URI: https://github.com/larafriend/woocommerce-yopago-gateway
+Description: Payment methods by card, QR code, and bank transfer for WooCommerce in Bolivia.
 Version: 1.0
 Author: Ronald Torrez
-Author URI: https://ronaldtorrez.com/
+Author URI: https://github.com/larafriend/
+License: GPLv2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: yopago
+Domain Path: /languages
 */
 
 if ( ! defined( 'ABSPATH' ) ) {

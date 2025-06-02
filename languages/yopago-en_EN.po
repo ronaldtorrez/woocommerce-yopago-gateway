@@ -1,0 +1,247 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce YoPago Gateway 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2025-06-02 00:52-0400\n"
+"Last-Translator: \n"
+"Language-Team: en_US\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+msgctxt "Plugin Name"
+msgid "WooCommerce YoPago Gateway"
+msgstr ""
+
+msgctxt "Description"
+msgid ""
+"Payment methods by card, QR code, and bank transfer for WooCommerce in "
+"Bolivia."
+msgstr ""
+
+msgid "%s url"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Add Currency"
+msgstr ""
+
+msgid "Allow currency conversion for payments."
+msgstr ""
+
+msgid "Assumptions"
+msgstr ""
+
+msgid "Awaiting %s payment"
+msgstr ""
+
+msgid "Calculation"
+msgstr ""
+
+msgid "Checkout Message Title"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Commission fixed"
+msgstr ""
+
+msgid "Commission percent"
+msgstr ""
+
+msgid "Company Name"
+msgstr ""
+
+msgid "Concept"
+msgstr ""
+
+msgid "Conversion Example"
+msgstr ""
+
+msgid ""
+"Conversion applied: %s %.2f × %.4f = Bs. %.2f. Commission %s: %.2f. Total "
+"charged: Bs. %.2f."
+msgstr ""
+
+msgid "Conversion example: {from} → {to}"
+msgstr ""
+
+msgid "Currency"
+msgstr ""
+
+msgid "Currency Conversion"
+msgstr ""
+
+msgid "Currency Conversion Rates"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Enable %s gateway"
+msgstr ""
+
+msgid "Enable currency conversion"
+msgstr ""
+
+msgid "Enable/Disable"
+msgstr ""
+
+msgid "Enter a description for the payment method."
+msgstr ""
+
+msgid "Enter a title for the checkout message."
+msgstr ""
+
+msgid "Enter a title for the payment method."
+msgstr ""
+
+msgid "Enter the URL for payment processing."
+msgstr ""
+
+msgid "Enter the URL to redirect after successful payment."
+msgstr ""
+
+msgid "Enter the URL to redirect in case of payment error."
+msgstr ""
+
+msgid "Enter the code for the payment method."
+msgstr ""
+
+msgid "Enter the name of your company."
+msgstr ""
+
+msgid "Error URL"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Exchange rate"
+msgstr ""
+
+msgid "Fee (BOB)"
+msgstr ""
+
+msgid "Fee Type"
+msgstr ""
+
+msgid "Final result"
+msgstr ""
+
+msgid "Fixed"
+msgstr ""
+
+msgid "Go to error page"
+msgstr ""
+
+msgid "Go to page"
+msgstr ""
+
+msgid "Go to success page"
+msgstr ""
+
+msgid "Hash verification failed."
+msgstr ""
+
+msgid "Invalid or missing order."
+msgstr ""
+
+msgid "Missing required parameters."
+msgstr ""
+
+msgid ""
+"Multiple payment methods including credit/debit cards, QR, and Bolivian "
+"banks."
+msgstr ""
+
+msgid "No currency rates added yet."
+msgstr ""
+
+msgid "Order not found."
+msgstr ""
+
+msgid "Original amount ({from})"
+msgstr ""
+
+msgid "Original order amount"
+msgstr ""
+
+msgid "Pay with %s"
+msgstr ""
+
+msgid "Payment gateway %s not found."
+msgstr ""
+
+msgid "Percent"
+msgstr ""
+
+msgid "Rate"
+msgstr ""
+
+msgid "Redirecting..."
+msgstr ""
+
+msgid "Redirection failed. Please click the link below:"
+msgstr ""
+
+msgid "Redirection to error page failed. Please click the link below:"
+msgstr ""
+
+msgid "Redirection to success page failed. Please click the link below:"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Select a currency"
+msgstr ""
+
+msgid "Site currency"
+msgstr ""
+
+msgid "Subtotal converted ({to})"
+msgstr ""
+
+msgid "Thank You URL"
+msgstr ""
+
+msgid "Thank you for use our service"
+msgstr ""
+
+msgid ""
+"The customer will pay <strong>{total} {to}</strong> thanks to automatic "
+"conversion."
+msgstr ""
+
+msgid "There was a problem connecting to YoPago."
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Total to charge ({to})"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid ""
+"WooCommerce is not active. Activate WooCommerce to use this payment gateway."
+msgstr ""
+
+msgid "YoPago confirmed payment. Transaction #%s via %s."
+msgstr ""

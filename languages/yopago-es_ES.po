@@ -1,0 +1,260 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce YoPago Gateway 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2025-06-02 00:54-0400\n"
+"Last-Translator: \n"
+"Language-Team: es_ES\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgctxt "Plugin Name"
+msgid "WooCommerce YoPago Gateway"
+msgstr "Pasarela de pago YoPago para WooCommerce"
+
+msgctxt "Description"
+msgid ""
+"Payment methods by card, QR code, and bank transfer for WooCommerce in "
+"Bolivia."
+msgstr ""
+"Métodos de pago con tarjeta, QR y transferencia bancaria para WooCommerce en "
+"Bolivia."
+
+msgid "%s url"
+msgstr "URL de %s"
+
+msgid "Actions"
+msgstr "Acciones"
+
+msgid "Add Currency"
+msgstr "Añadir moneda"
+
+msgid "Allow currency conversion for payments."
+msgstr "Permitir la conversión de moneda para los pagos."
+
+msgid "Assumptions"
+msgstr "Suposiciones"
+
+msgid "Awaiting %s payment"
+msgstr "Esperando pago de %s"
+
+msgid "Calculation"
+msgstr "Cálculo"
+
+msgid "Checkout Message Title"
+msgstr "Título del mensaje de pago"
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "Code"
+msgstr "Código"
+
+msgid "Commission fixed"
+msgstr "Comisión fija"
+
+msgid "Commission percent"
+msgstr "Comisión porcentual"
+
+msgid "Company Name"
+msgstr "Nombre de la empresa"
+
+msgid "Concept"
+msgstr "Concepto"
+
+msgid "Conversion Example"
+msgstr "Ejemplo de Conversión"
+
+msgid ""
+"Conversion applied: %s %.2f × %.4f = Bs. %.2f. Commission %s: %.2f. Total "
+"charged: Bs. %.2f."
+msgstr ""
+"Conversión aplicada: %s %.2f × %.4f = Bs. %.2f. Comisión %s: %.2f. Total "
+"cobrado: Bs. %.2f."
+
+msgid "Conversion example: {from} → {to}"
+msgstr "Ejemplo de conversión: {from} → {to}"
+
+msgid "Currency"
+msgstr "Moneda"
+
+msgid "Currency Conversion"
+msgstr "Conversión de moneda"
+
+msgid "Currency Conversion Rates"
+msgstr "Tasas de conversión de moneda"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Enable %s gateway"
+msgstr "Habilitar la pasarela %s"
+
+msgid "Enable currency conversion"
+msgstr "Habilitar la conversión de moneda"
+
+msgid "Enable/Disable"
+msgstr "Habilitar/Deshabilitar"
+
+msgid "Enter a description for the payment method."
+msgstr "Introduce una descripción para el método de pago."
+
+msgid "Enter a title for the checkout message."
+msgstr "Introduce un título para el mensaje de pago."
+
+msgid "Enter a title for the payment method."
+msgstr "Introduce un título para el método de pago."
+
+msgid "Enter the URL for payment processing."
+msgstr "Introduce la URL para el procesamiento de pagos."
+
+msgid "Enter the URL to redirect after successful payment."
+msgstr "Introduce la URL a la que redirigir después de un pago exitoso."
+
+msgid "Enter the URL to redirect in case of payment error."
+msgstr "Introduce la URL a la que redirigir en caso de error de pago."
+
+msgid "Enter the code for the payment method."
+msgstr "Introduce el código para el método de pago."
+
+msgid "Enter the name of your company."
+msgstr "Introduce el nombre de tu empresa."
+
+msgid "Error URL"
+msgstr "URL de error"
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid "Exchange rate"
+msgstr "Tipo de cambio"
+
+msgid "Fee (BOB)"
+msgstr "Comisión (BOB)"
+
+msgid "Fee Type"
+msgstr "Tipo de comisión"
+
+msgid "Final result"
+msgstr "Resultado final"
+
+msgid "Fixed"
+msgstr "Fijo"
+
+msgid "Go to error page"
+msgstr "Ir a la página de error"
+
+msgid "Go to page"
+msgstr "Ir a la página"
+
+msgid "Go to success page"
+msgstr "Ir a la página de éxito"
+
+msgid "Hash verification failed."
+msgstr "La verificación del hash falló."
+
+msgid "Invalid or missing order."
+msgstr "Pedido inválido o faltante."
+
+msgid "Missing required parameters."
+msgstr "Faltan parámetros obligatorios."
+
+msgid ""
+"Multiple payment methods including credit/debit cards, QR, and Bolivian "
+"banks."
+msgstr ""
+"Múltiples métodos de pago incluyendo tarjetas de crédito/débito, QR y bancos "
+"bolivianos."
+
+msgid "No currency rates added yet."
+msgstr "Aún no se añadieron tasas de cambio."
+
+msgid "Order not found."
+msgstr "Pedido no encontrado."
+
+msgid "Original amount ({from})"
+msgstr "Monto original ({from})"
+
+msgid "Original order amount"
+msgstr "Monto original del pedido"
+
+msgid "Pay with %s"
+msgstr "Pagar con %s"
+
+msgid "Payment gateway %s not found."
+msgstr "Pasarela de pago %s no encontrada."
+
+msgid "Percent"
+msgstr "Porcentaje"
+
+msgid "Rate"
+msgstr "Tasa"
+
+msgid "Redirecting..."
+msgstr "Redirigiendo..."
+
+msgid "Redirection failed. Please click the link below:"
+msgstr "La redirección falló. Por favor haz clic en el enlace abajo:"
+
+msgid "Redirection to error page failed. Please click the link below:"
+msgstr ""
+"La redirección a la página de error falló. Por favor haz clic en el enlace "
+"abajo:"
+
+msgid "Redirection to success page failed. Please click the link below:"
+msgstr ""
+"La redirección a la página de éxito falló. Por favor haz clic en el enlace "
+"abajo:"
+
+msgid "Remove"
+msgstr "Eliminar"
+
+msgid "Select a currency"
+msgstr "Seleccione una moneda"
+
+msgid "Site currency"
+msgstr "Moneda del sitio"
+
+msgid "Subtotal converted ({to})"
+msgstr "Subtotal convertido ({to})"
+
+msgid "Thank You URL"
+msgstr "URL de agradecimiento"
+
+msgid "Thank you for use our service"
+msgstr "Gracias por utilizar nuestro servicio"
+
+msgid ""
+"The customer will pay <strong>{total} {to}</strong> thanks to automatic "
+"conversion."
+msgstr ""
+"El cliente pagará <strong>{total} {to}</strong> gracias a la conversión "
+"automática."
+
+msgid "There was a problem connecting to YoPago."
+msgstr "Hubo un problema al conectar con YoPago."
+
+msgid "Title"
+msgstr "Título"
+
+msgid "Total to charge ({to})"
+msgstr "Total a cobrar ({to})"
+
+msgid "Value"
+msgstr "Valor"
+
+msgid "View"
+msgstr "Ver"
+
+msgid ""
+"WooCommerce is not active. Activate WooCommerce to use this payment gateway."
+msgstr "WooCommerce no está activo. Actívalo para usar este método de pago."
+
+msgid "YoPago confirmed payment. Transaction #%s via %s."
+msgstr "YoPago confirmó el pago. Transacción #%s vía %s."
