@@ -71,18 +71,21 @@ const otherToBob = Object.fromEntries(
 
 /* --------------------------------------------------------------------------
  4. Merge metadata with exchange rates and flag URLs
- Builds final array: includes symbol, full name, ISO code, flag icon,
- and current rate to BOB. Sorted alphabetically by code.
+ Includes only currencies with a valid exchange rate to BOB.
+ This excludes obsolete or historical currencies (e.g. ARP, ARA).
  --------------------------------------------------------------------------- */
-const allCurrencies = metadata.map( entry => (
-    {
-        ...entry,
-        flag: `https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/${ entry.flag }.svg`,
-        rateToBOB: +(
-            otherToBob[ entry.code ]?.toFixed( 6 ) || NaN
-        )
-    }
-) ).sort( ( a, b ) => a.code.localeCompare( b.code ) )
+const allCurrencies = metadata
+    .map( entry => (
+        {
+            ...entry,
+            flag: `https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/${ entry.flag }.svg`,
+            rateToBOB: +(
+                otherToBob[ entry.code ]?.toFixed( 6 ) || NaN
+            )
+        }
+    ) )
+    .filter( entry => !isNaN( entry.rateToBOB ) )
+    .sort( ( a, b ) => a.code.localeCompare( b.code ) )
 
 /* --------------------------------------------------------------------------
  5. Save output JSON to the same directory as this script
@@ -91,4 +94,4 @@ const allCurrencies = metadata.map( entry => (
  --------------------------------------------------------------------------- */
 await fs.writeFile( OUTPUT, JSON.stringify( allCurrencies, null, 2 ) )
 
-console.log( `✅  ${ allCurrencies.length } currencies saved to ${ OUTPUT }` )
+console.log( `✅  Saved ${ allCurrencies.length } active currencies to ${ OUTPUT }` )
