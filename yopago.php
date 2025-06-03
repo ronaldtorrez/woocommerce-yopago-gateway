@@ -23,7 +23,7 @@ define( 'WC_YOPAGO_PLUGIN_FILE', __FILE__ );
 define( 'WC_YOPAGO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WC_YOPAGO_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'WC_YOPAGO_SETTING', 'woocommerce_' . WC_YOPAGO_ID . '_settings' );
-define( 'WC_YOPAGO_CURRENCY_DATA_URL', WC_YOPAGO_PLUGIN_URL . 'assets/data/currency.json' );
+define( 'WC_YOPAGO_CURRENCY_DATA_URL', WC_YOPAGO_PLUGIN_URL . 'assets/data/currencies.json' );
 
 require_once WC_YOPAGO_PLUGIN_PATH . 'includes/core/class-yopago.php';
 require_once WC_YOPAGO_PLUGIN_PATH . 'includes/admin/class-yopago-assets.php';

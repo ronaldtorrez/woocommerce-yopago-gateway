@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "",
 	"scripts": {
-		"build": "vite build",
+		"build": "vite build && pnpm run update:rates",
 		"update:rates": "node ./assets/data/generate-currency.js"
 	},
 	"keywords": [],

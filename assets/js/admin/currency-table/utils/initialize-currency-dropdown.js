@@ -7,8 +7,12 @@ export function initializeCurrencyDropdown( $select ) {
     )
 
     window.yopagoCurrencies.forEach( c => {
-        $select.append(
-            new Option( `${ c.name } (${ c.symbol })`, c.code, false, c.code === selected )
+        $select.append( new Option(
+                            `${ c.name } (${ c.symbol })`,
+                            c.code,
+                            false,
+                            c.code === selected
+                        )
         )
     } )
 
@@ -16,6 +20,17 @@ export function initializeCurrencyDropdown( $select ) {
 
     if ( selected ) {
         $select.val( selected ).trigger( 'change.select2' )
+    }
+
+    if ( selected ) {
+        $select.val( selected ).trigger( 'change.select2' )
+        const currency = window.yopagoCurrencies.find( c => c.code === selected )
+        const rate = (
+                         currency && currency.rateToBOB != null
+                     )
+                     ? currency.rateToBOB
+                     : 1
+        $select.closest( 'tr' ).find( 'input[name*="[rate]"]' ).val( rate.toFixed( 4 ) )
     }
 
     $select.closest( 'tr' ).find( '.yopago-example-btn' ).prop( 'disabled', !$select.val() )

@@ -51,5 +51,22 @@ export function bindUIEvents( { $table, $addBtn, $modal, $modalContent } ) {
         $modal.show()
     } )
 
+    $table.on( 'change', '.yopago-currency-select', function () {
+        const $row = $( this ).closest( 'tr' )
+        const code = $( this ).val()
+        const currency = window.yopagoCurrencies.find( c => c.code === code )
+
+        const rate = (
+                         currency && currency.rateToBOB != null
+                     )
+                     ? currency.rateToBOB
+                     : 1
+        $row.find( 'input[name*="[rate]"]' ).val( rate.toFixed( 4 ) )
+
+        updateCurrencyOptions()
+        updateAddButtonState()
+        markSettingsAsDirty()
+    } )
+
     $( '#yopago-modal-close' ).on( 'click', () => $modal.hide() )
 }
