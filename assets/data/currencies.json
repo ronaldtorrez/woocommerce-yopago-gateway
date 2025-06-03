@@ -1,1325 +1,835 @@
 [
-	{
-		"code": "AED",
-		"name": "United Arab Emirates Dirham",
-		"symbol": "AED",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ae.svg",
-		"rateToBOB": 1.881678
-	},
-	{
-		"code": "AFN",
-		"name": "Afghan Afghani",
-		"symbol": "AFN",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/af.svg",
-		"rateToBOB": 0.099513
-	},
-	{
-		"code": "ALL",
-		"name": "Albanian Lek",
-		"symbol": "ALL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/al.svg",
-		"rateToBOB": 0.080269
-	},
-	{
-		"code": "AMD",
-		"name": "Armenian Dram",
-		"symbol": "AMD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/am.svg",
-		"rateToBOB": 0.018038
-	},
-	{
-		"code": "ANG",
-		"name": "Netherlands Antillean Guilder",
-		"symbol": "ANG",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/an.svg",
-		"rateToBOB": 3.842357
-	},
-	{
-		"code": "AOA",
-		"name": "Angolan Kwanza",
-		"symbol": "AOA",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ao.svg",
-		"rateToBOB": 0.007508
-	},
-	{
-		"code": "ARS",
-		"name": "Argentine Peso",
-		"symbol": "$",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ar.svg",
-		"rateToBOB": 0.005853
-	},
-	{
-		"code": "ATS",
-		"name": "Austrian Schilling",
-		"symbol": "ATS",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/at.svg",
-		"rateToBOB": 0.57385
-	},
-	{
-		"code": "AUD",
-		"name": "Australian Dollar",
-		"symbol": "AUD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/au.svg",
-		"rateToBOB": 4.478246
-	},
-	{
-		"code": "AWG",
-		"name": "Aruban Florin",
-		"symbol": "AWG",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/aw.svg",
-		"rateToBOB": 3.860593
-	},
-	{
-		"code": "AZM",
-		"name": "Azerbaijani Manat (1993–2006)",
-		"symbol": "AZM",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/az.svg",
-		"rateToBOB": 0.000813
-	},
-	{
-		"code": "AZN",
-		"name": "Azerbaijani Manat",
-		"symbol": "AZN",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/az.svg",
-		"rateToBOB": 4.064978
-	},
-	{
-		"code": "BAM",
-		"name": "Bosnia-Herzegovina Convertible Mark",
-		"symbol": "BAM",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ba.svg",
-		"rateToBOB": 4.037338
-	},
-	{
-		"code": "BBD",
-		"name": "Barbadian Dollar",
-		"symbol": "BBD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bb.svg",
-		"rateToBOB": 3.455231
-	},
-	{
-		"code": "BDT",
-		"name": "Bangladeshi Taka",
-		"symbol": "BDT",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bd.svg",
-		"rateToBOB": 0.056627
-	},
-	{
-		"code": "BEF",
-		"name": "Belgian Franc",
-		"symbol": "BEF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/be.svg",
-		"rateToBOB": 0.195745
-	},
-	{
-		"code": "BGN",
-		"name": "Bulgarian Lev",
-		"symbol": "BGN",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bg.svg",
-		"rateToBOB": 4.037338
-	},
-	{
-		"code": "BHD",
-		"name": "Bahraini Dinar",
-		"symbol": "BHD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bh.svg",
-		"rateToBOB": 18.378888
-	},
-	{
-		"code": "BIF",
-		"name": "Burundian Franc",
-		"symbol": "BIF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bi.svg",
-		"rateToBOB": 0.002324
-	},
-	{
-		"code": "BMD",
-		"name": "Bermudan Dollar",
-		"symbol": "BMD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bm.svg",
-		"rateToBOB": 6.910462
-	},
-	{
-		"code": "BND",
-		"name": "Brunei Dollar",
-		"symbol": "BND",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bn.svg",
-		"rateToBOB": 5.370248
-	},
-	{
-		"code": "BOB",
-		"name": "Bolivian Boliviano",
-		"symbol": "BOB",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bo.svg",
-		"rateToBOB": 1
-	},
-	{
-		"code": "BRL",
-		"name": "Brazilian Real",
-		"symbol": "R$",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/br.svg",
-		"rateToBOB": 1.217691
-	},
-	{
-		"code": "BSD",
-		"name": "Bahamian Dollar",
-		"symbol": "BSD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bs.svg",
-		"rateToBOB": 6.910462
-	},
-	{
-		"code": "BTN",
-		"name": "Bhutanese Ngultrum",
-		"symbol": "BTN",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bt.svg",
-		"rateToBOB": 0.080876
-	},
-	{
-		"code": "BWP",
-		"name": "Botswanan Pula",
-		"symbol": "BWP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bw.svg",
-		"rateToBOB": 0.514347
-	},
-	{
-		"code": "BYN",
-		"name": "Belarusian Ruble",
-		"symbol": "BYN",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/by.svg",
-		"rateToBOB": 2.112074
-	},
-	{
-		"code": "BYR",
-		"name": "Belarusian Ruble (2000–2016)",
-		"symbol": "BYR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/by.svg",
-		"rateToBOB": 0.000211
-	},
-	{
-		"code": "BZD",
-		"name": "Belize Dollar",
-		"symbol": "BZD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bz.svg",
-		"rateToBOB": 3.445557
-	},
-	{
-		"code": "CAD",
-		"name": "Canadian Dollar",
-		"symbol": "CAD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ca.svg",
-		"rateToBOB": 5.034957
-	},
-	{
-		"code": "CDF",
-		"name": "Congolese Franc",
-		"symbol": "CDF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cd.svg",
-		"rateToBOB": 0.00238
-	},
-	{
-		"code": "CHF",
-		"name": "Swiss Franc",
-		"symbol": "CHF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ch.svg",
-		"rateToBOB": 8.444098
-	},
-	{
-		"code": "CLP",
-		"name": "Chilean Peso",
-		"symbol": "$",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cl.svg",
-		"rateToBOB": 0.007354
-	},
-	{
-		"code": "CNY",
-		"name": "Chinese Yuan",
-		"symbol": "CNY",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cn.svg",
-		"rateToBOB": 0.959727
-	},
-	{
-		"code": "COP",
-		"name": "Colombian Peso",
-		"symbol": "COP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/co.svg",
-		"rateToBOB": 0.001666
-	},
-	{
-		"code": "CRC",
-		"name": "Costa Rican Colón",
-		"symbol": "CRC",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cr.svg",
-		"rateToBOB": 0.013603
-	},
-	{
-		"code": "CUC",
-		"name": "Cuban Convertible Peso",
-		"symbol": "CUC",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cu.svg",
-		"rateToBOB": 6.910462
-	},
-	{
-		"code": "CUP",
-		"name": "Cuban Peso",
-		"symbol": "CUP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cu.svg",
-		"rateToBOB": 0.288309
-	},
-	{
-		"code": "CVE",
-		"name": "Cape Verdean Escudo",
-		"symbol": "CVE",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cv.svg",
-		"rateToBOB": 0.071609
-	},
-	{
-		"code": "CYP",
-		"name": "Cypriot Pound",
-		"symbol": "CYP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cy.svg",
-		"rateToBOB": 13.491709
-	},
-	{
-		"code": "CZK",
-		"name": "Czech Koruna",
-		"symbol": "CZK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cz.svg",
-		"rateToBOB": 0.317555
-	},
-	{
-		"code": "DEM",
-		"name": "German Mark",
-		"symbol": "DEM",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/de.svg",
-		"rateToBOB": 4.037338
-	},
-	{
-		"code": "DJF",
-		"name": "Djiboutian Franc",
-		"symbol": "DJF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/dj.svg",
-		"rateToBOB": 0.038845
-	},
-	{
-		"code": "DKK",
-		"name": "Danish Krone",
-		"symbol": "DKK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/dk.svg",
-		"rateToBOB": 1.05846
-	},
-	{
-		"code": "DOP",
-		"name": "Dominican Peso",
-		"symbol": "DOP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/do.svg",
-		"rateToBOB": 0.11742
-	},
-	{
-		"code": "DZD",
-		"name": "Algerian Dinar",
-		"symbol": "DZD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/dz.svg",
-		"rateToBOB": 0.052464
-	},
-	{
-		"code": "EEK",
-		"name": "Estonian Kroon",
-		"symbol": "EEK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ee.svg",
-		"rateToBOB": 0.504667
-	},
-	{
-		"code": "EGP",
-		"name": "Egyptian Pound",
-		"symbol": "EGP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/eg.svg",
-		"rateToBOB": 0.139082
-	},
-	{
-		"code": "ERN",
-		"name": "Eritrean Nakfa",
-		"symbol": "ERN",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/er.svg",
-		"rateToBOB": 0.460697
-	},
-	{
-		"code": "ESP",
-		"name": "Spanish Peseta",
-		"symbol": "ESP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/es.svg",
-		"rateToBOB": 0.047458
-	},
-	{
-		"code": "ETB",
-		"name": "Ethiopian Birr",
-		"symbol": "ETB",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/et.svg",
-		"rateToBOB": 0.050838
-	},
-	{
-		"code": "EUR",
-		"name": "Euro",
-		"symbol": "€",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/eu.svg",
-		"rateToBOB": 7.896347
-	},
-	{
-		"code": "FIM",
-		"name": "Finnish Markka",
-		"symbol": "FIM",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/fi.svg",
-		"rateToBOB": 1.32807
-	},
-	{
-		"code": "FJD",
-		"name": "Fijian Dollar",
-		"symbol": "FJD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/fj.svg",
-		"rateToBOB": 3.07114
-	},
-	{
-		"code": "FKP",
-		"name": "Falkland Islands Pound",
-		"symbol": "FKP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/fk.svg",
-		"rateToBOB": 9.351473
-	},
-	{
-		"code": "FRF",
-		"name": "French Franc",
-		"symbol": "FRF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/fr.svg",
-		"rateToBOB": 1.20379
-	},
-	{
-		"code": "GBP",
-		"name": "British Pound",
-		"symbol": "GBP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gb.svg",
-		"rateToBOB": 9.351473
-	},
-	{
-		"code": "GEL",
-		"name": "Georgian Lari",
-		"symbol": "GEL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ge.svg",
-		"rateToBOB": 2.530414
-	},
-	{
-		"code": "GHC",
-		"name": "Ghanaian Cedi (1979–2007)",
-		"symbol": "GHC",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gh.svg",
-		"rateToBOB": 0.000067
-	},
-	{
-		"code": "GHS",
-		"name": "Ghanaian Cedi",
-		"symbol": "GHS",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gh.svg",
-		"rateToBOB": 0.673945
-	},
-	{
-		"code": "GIP",
-		"name": "Gibraltar Pound",
-		"symbol": "GIP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gi.svg",
-		"rateToBOB": 9.351473
-	},
-	{
-		"code": "GMD",
-		"name": "Gambian Dalasi",
-		"symbol": "GMD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gm.svg",
-		"rateToBOB": 0.095442
-	},
-	{
-		"code": "GNF",
-		"name": "Guinean Franc",
-		"symbol": "GNF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gn.svg",
-		"rateToBOB": 0.000797
-	},
-	{
-		"code": "GRD",
-		"name": "Greek Drachma",
-		"symbol": "GRD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gr.svg",
-		"rateToBOB": 0.023173
-	},
-	{
-		"code": "GTQ",
-		"name": "Guatemalan Quetzal",
-		"symbol": "GTQ",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gt.svg",
-		"rateToBOB": 0.900422
-	},
-	{
-		"code": "GYD",
-		"name": "Guyanaese Dollar",
-		"symbol": "GYD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gy.svg",
-		"rateToBOB": 0.033109
-	},
-	{
-		"code": "HKD",
-		"name": "Hong Kong Dollar",
-		"symbol": "HKD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/hk.svg",
-		"rateToBOB": 0.881023
-	},
-	{
-		"code": "HNL",
-		"name": "Honduran Lempira",
-		"symbol": "HNL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/hn.svg",
-		"rateToBOB": 0.265421
-	},
-	{
-		"code": "HRK",
-		"name": "Croatian Kuna",
-		"symbol": "HRK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/hr.svg",
-		"rateToBOB": 1.048025
-	},
-	{
-		"code": "HTG",
-		"name": "Haitian Gourde",
-		"symbol": "HTG",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ht.svg",
-		"rateToBOB": 0.052858
-	},
-	{
-		"code": "HUF",
-		"name": "Hungarian Forint",
-		"symbol": "HUF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/hu.svg",
-		"rateToBOB": 0.019586
-	},
-	{
-		"code": "IDR",
-		"name": "Indonesian Rupiah",
-		"symbol": "IDR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/id.svg",
-		"rateToBOB": 0.000424
-	},
-	{
-		"code": "IEP",
-		"name": "Irish Pound",
-		"symbol": "IEP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ie.svg",
-		"rateToBOB": 10.026292
-	},
-	{
-		"code": "ILS",
-		"name": "Israeli New Shekel",
-		"symbol": "ILS",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/il.svg",
-		"rateToBOB": 1.962644
-	},
-	{
-		"code": "INR",
-		"name": "Indian Rupee",
-		"symbol": "INR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/in.svg",
-		"rateToBOB": 0.080876
-	},
-	{
-		"code": "IQD",
-		"name": "Iraqi Dinar",
-		"symbol": "IQD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/iq.svg",
-		"rateToBOB": 0.005282
-	},
-	{
-		"code": "IRR",
-		"name": "Iranian Rial",
-		"symbol": "IRR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ir.svg",
-		"rateToBOB": 0.000164
-	},
-	{
-		"code": "ISK",
-		"name": "Icelandic Króna",
-		"symbol": "ISK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/is.svg",
-		"rateToBOB": 0.05468
-	},
-	{
-		"code": "ITL",
-		"name": "Italian Lira",
-		"symbol": "ITL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/it.svg",
-		"rateToBOB": 0.004078
-	},
-	{
-		"code": "JMD",
-		"name": "Jamaican Dollar",
-		"symbol": "JMD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/jm.svg",
-		"rateToBOB": 0.043401
-	},
-	{
-		"code": "JOD",
-		"name": "Jordanian Dinar",
-		"symbol": "JOD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/jo.svg",
-		"rateToBOB": 9.746772
-	},
-	{
-		"code": "JPY",
-		"name": "Japanese Yen",
-		"symbol": "JPY",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/jp.svg",
-		"rateToBOB": 0.048256
-	},
-	{
-		"code": "KES",
-		"name": "Kenyan Shilling",
-		"symbol": "KES",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ke.svg",
-		"rateToBOB": 0.053536
-	},
-	{
-		"code": "KGS",
-		"name": "Kyrgystani Som",
-		"symbol": "KGS",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/kg.svg",
-		"rateToBOB": 0.079
-	},
-	{
-		"code": "KHR",
-		"name": "Cambodian Riel",
-		"symbol": "KHR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/kh.svg",
-		"rateToBOB": 0.001729
-	},
-	{
-		"code": "KMF",
-		"name": "Comorian Franc",
-		"symbol": "KMF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/km.svg",
-		"rateToBOB": 0.016051
-	},
-	{
-		"code": "KPW",
-		"name": "North Korean Won",
-		"symbol": "KPW",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/kp.svg",
-		"rateToBOB": 0.007679
-	},
-	{
-		"code": "KRW",
-		"name": "South Korean Won",
-		"symbol": "KRW",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/kr.svg",
-		"rateToBOB": 0.005017
-	},
-	{
-		"code": "KWD",
-		"name": "Kuwaiti Dinar",
-		"symbol": "KWD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/kw.svg",
-		"rateToBOB": 22.540739
-	},
-	{
-		"code": "KYD",
-		"name": "Cayman Islands Dollar",
-		"symbol": "KYD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ky.svg",
-		"rateToBOB": 8.346464
-	},
-	{
-		"code": "KZT",
-		"name": "Kazakhstani Tenge",
-		"symbol": "KZT",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/kz.svg",
-		"rateToBOB": 0.013523
-	},
-	{
-		"code": "LAK",
-		"name": "Laotian Kip",
-		"symbol": "LAK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/la.svg",
-		"rateToBOB": 0.000321
-	},
-	{
-		"code": "LBP",
-		"name": "Lebanese Pound",
-		"symbol": "LBP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/lb.svg",
-		"rateToBOB": 0.000077
-	},
-	{
-		"code": "LKR",
-		"name": "Sri Lankan Rupee",
-		"symbol": "LKR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/lk.svg",
-		"rateToBOB": 0.023113
-	},
-	{
-		"code": "LRD",
-		"name": "Liberian Dollar",
-		"symbol": "LRD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/lr.svg",
-		"rateToBOB": 0.03466
-	},
-	{
-		"code": "LSL",
-		"name": "Lesotho Loti",
-		"symbol": "LSL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ls.svg",
-		"rateToBOB": 0.387036
-	},
-	{
-		"code": "LTL",
-		"name": "Lithuanian Litas",
-		"symbol": "LTL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/lt.svg",
-		"rateToBOB": 2.28694
-	},
-	{
-		"code": "LUF",
-		"name": "Luxembourgian Franc",
-		"symbol": "LUF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/lu.svg",
-		"rateToBOB": 0.195745
-	},
-	{
-		"code": "LVL",
-		"name": "Latvian Lats",
-		"symbol": "LVL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/lv.svg",
-		"rateToBOB": 11.235553
-	},
-	{
-		"code": "LYD",
-		"name": "Libyan Dinar",
-		"symbol": "LYD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ly.svg",
-		"rateToBOB": 1.268151
-	},
-	{
-		"code": "MAD",
-		"name": "Moroccan Dirham",
-		"symbol": "MAD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ma.svg",
-		"rateToBOB": 0.751732
-	},
-	{
-		"code": "MDL",
-		"name": "Moldovan Leu",
-		"symbol": "MDL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/md.svg",
-		"rateToBOB": 0.400682
-	},
-	{
-		"code": "MGA",
-		"name": "Malagasy Ariary",
-		"symbol": "MGA",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mg.svg",
-		"rateToBOB": 0.001524
-	},
-	{
-		"code": "MGF",
-		"name": "Malagasy Franc",
-		"symbol": "MGF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mg.svg",
-		"rateToBOB": 0.000305
-	},
-	{
-		"code": "MKD",
-		"name": "Macedonian Denar",
-		"symbol": "MKD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mk.svg",
-		"rateToBOB": 0.128445
-	},
-	{
-		"code": "MMK",
-		"name": "Myanmar Kyat",
-		"symbol": "MMK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mm.svg",
-		"rateToBOB": 0.003291
-	},
-	{
-		"code": "MNT",
-		"name": "Mongolian Tugrik",
-		"symbol": "MNT",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mn.svg",
-		"rateToBOB": 0.001933
-	},
-	{
-		"code": "MOP",
-		"name": "Macanese Pataca",
-		"symbol": "MOP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mo.svg",
-		"rateToBOB": 0.855362
-	},
-	{
-		"code": "MRO",
-		"name": "Mauritanian Ouguiya",
-		"symbol": "MRO",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mr.svg",
-		"rateToBOB": 0.017479
-	},
-	{
-		"code": "MTL",
-		"name": "Maltese Lira",
-		"symbol": "MTL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mt.svg",
-		"rateToBOB": 18.39354
-	},
-	{
-		"code": "MUR",
-		"name": "Mauritian Rupee",
-		"symbol": "MUR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mu.svg",
-		"rateToBOB": 0.151159
-	},
-	{
-		"code": "MVR",
-		"name": "Maldivian Rufiyaa",
-		"symbol": "MVR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mv.svg",
-		"rateToBOB": 0.446999
-	},
-	{
-		"code": "MWK",
-		"name": "Malawian Kwacha",
-		"symbol": "MWK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mw.svg",
-		"rateToBOB": 0.003991
-	},
-	{
-		"code": "MXN",
-		"name": "Mexican Peso",
-		"symbol": "MXN",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg",
-		"rateToBOB": 0.359723
-	},
-	{
-		"code": "MXV",
-		"name": "Mexican Investment Unit",
-		"symbol": "MXV",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg",
-		"rateToBOB": 3.049982
-	},
-	{
-		"code": "MYR",
-		"name": "Malaysian Ringgit",
-		"symbol": "MYR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/my.svg",
-		"rateToBOB": 1.629579
-	},
-	{
-		"code": "MZM",
-		"name": "Mozambican Metical (1980–2006)",
-		"symbol": "MZM",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mz.svg",
-		"rateToBOB": 0.000108
-	},
-	{
-		"code": "MZN",
-		"name": "Mozambican Metical",
-		"symbol": "MZN",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mz.svg",
-		"rateToBOB": 0.108175
-	},
-	{
-		"code": "NAD",
-		"name": "Namibian Dollar",
-		"symbol": "NAD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/na.svg",
-		"rateToBOB": 0.387036
-	},
-	{
-		"code": "NGN",
-		"name": "Nigerian Naira",
-		"symbol": "NGN",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ng.svg",
-		"rateToBOB": 0.004371
-	},
-	{
-		"code": "NIO",
-		"name": "Nicaraguan Córdoba",
-		"symbol": "NIO",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ni.svg",
-		"rateToBOB": 0.188002
-	},
-	{
-		"code": "NLG",
-		"name": "Dutch Guilder",
-		"symbol": "NLG",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/nl.svg",
-		"rateToBOB": 3.583206
-	},
-	{
-		"code": "NOK",
-		"name": "Norwegian Krone",
-		"symbol": "NOK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/no.svg",
-		"rateToBOB": 0.684995
-	},
-	{
-		"code": "NPR",
-		"name": "Nepalese Rupee",
-		"symbol": "NPR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/np.svg",
-		"rateToBOB": 0.050524
-	},
-	{
-		"code": "NZD",
-		"name": "New Zealand Dollar",
-		"symbol": "NZD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/nz.svg",
-		"rateToBOB": 4.17314
-	},
-	{
-		"code": "OMR",
-		"name": "Omani Rial",
-		"symbol": "OMR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/om.svg",
-		"rateToBOB": 17.956711
-	},
-	{
-		"code": "PAB",
-		"name": "Panamanian Balboa",
-		"symbol": "PAB",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/pa.svg",
-		"rateToBOB": 6.910462
-	},
-	{
-		"code": "PEN",
-		"name": "Peruvian Sol",
-		"symbol": "PEN",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/pe.svg",
-		"rateToBOB": 1.911227
-	},
-	{
-		"code": "PGK",
-		"name": "Papua New Guinean Kina",
-		"symbol": "PGK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/pg.svg",
-		"rateToBOB": 1.685201
-	},
-	{
-		"code": "PHP",
-		"name": "Philippine Peso",
-		"symbol": "PHP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ph.svg",
-		"rateToBOB": 0.124109
-	},
-	{
-		"code": "PKR",
-		"name": "Pakistani Rupee",
-		"symbol": "PKR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/pk.svg",
-		"rateToBOB": 0.024532
-	},
-	{
-		"code": "PLN",
-		"name": "Polish Zloty",
-		"symbol": "PLN",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/pl.svg",
-		"rateToBOB": 1.854939
-	},
-	{
-		"code": "PTE",
-		"name": "Portuguese Escudo",
-		"symbol": "PTE",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/pt.svg",
-		"rateToBOB": 0.039387
-	},
-	{
-		"code": "PYG",
-		"name": "Paraguayan Guarani",
-		"symbol": "PYG",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/py.svg",
-		"rateToBOB": 0.000866
-	},
-	{
-		"code": "QAR",
-		"name": "Qatari Rial",
-		"symbol": "QAR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/qa.svg",
-		"rateToBOB": 1.898478
-	},
-	{
-		"code": "ROL",
-		"name": "Romanian Leu (1952–2006)",
-		"symbol": "ROL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ro.svg",
-		"rateToBOB": 0.000156
-	},
-	{
-		"code": "RON",
-		"name": "Romanian Leu",
-		"symbol": "RON",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ro.svg",
-		"rateToBOB": 1.559908
-	},
-	{
-		"code": "RSD",
-		"name": "Serbian Dinar",
-		"symbol": "RSD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/rs.svg",
-		"rateToBOB": 0.067376
-	},
-	{
-		"code": "RUB",
-		"name": "Russian Ruble",
-		"symbol": "RUB",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ru.svg",
-		"rateToBOB": 0.087453
-	},
-	{
-		"code": "RWF",
-		"name": "Rwandan Franc",
-		"symbol": "RWF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/rw.svg",
-		"rateToBOB": 0.004837
-	},
-	{
-		"code": "SAR",
-		"name": "Saudi Riyal",
-		"symbol": "SAR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sa.svg",
-		"rateToBOB": 1.84279
-	},
-	{
-		"code": "SBD",
-		"name": "Solomon Islands Dollar",
-		"symbol": "SBD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sb.svg",
-		"rateToBOB": 0.818274
-	},
-	{
-		"code": "SCR",
-		"name": "Seychellois Rupee",
-		"symbol": "SCR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sc.svg",
-		"rateToBOB": 0.471243
-	},
-	{
-		"code": "SDD",
-		"name": "Sudanese Dinar (1992–2007)",
-		"symbol": "SDD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sd.svg",
-		"rateToBOB": 0.000115
-	},
-	{
-		"code": "SDG",
-		"name": "Sudanese Pound",
-		"symbol": "SDG",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sd.svg",
-		"rateToBOB": 0.011511
-	},
-	{
-		"code": "SEK",
-		"name": "Swedish Krona",
-		"symbol": "SEK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/se.svg",
-		"rateToBOB": 0.724393
-	},
-	{
-		"code": "SGD",
-		"name": "Singapore Dollar",
-		"symbol": "SGD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sg.svg",
-		"rateToBOB": 5.370248
-	},
-	{
-		"code": "SHP",
-		"name": "St. Helena Pound",
-		"symbol": "SHP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sh.svg",
-		"rateToBOB": 9.351473
-	},
-	{
-		"code": "SIT",
-		"name": "Slovenian Tolar",
-		"symbol": "SIT",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/si.svg",
-		"rateToBOB": 0.032951
-	},
-	{
-		"code": "SKK",
-		"name": "Slovak Koruna",
-		"symbol": "SKK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sk.svg",
-		"rateToBOB": 0.262111
-	},
-	{
-		"code": "SLL",
-		"name": "Sierra Leonean Leone",
-		"symbol": "SLL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sl.svg",
-		"rateToBOB": 0.000303
-	},
-	{
-		"code": "SOS",
-		"name": "Somali Shilling",
-		"symbol": "SOS",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/so.svg",
-		"rateToBOB": 0.012137
-	},
-	{
-		"code": "SRD",
-		"name": "Surinamese Dollar",
-		"symbol": "SRD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sr.svg",
-		"rateToBOB": 0.187361
-	},
-	{
-		"code": "SRG",
-		"name": "Surinamese Guilder",
-		"symbol": "SRG",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sr.svg",
-		"rateToBOB": 0.000187
-	},
-	{
-		"code": "STD",
-		"name": "São Tomé & Príncipe Dobra",
-		"symbol": "STD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/st.svg",
-		"rateToBOB": 0.00032
-	},
-	{
-		"code": "SVC",
-		"name": "Salvadoran Colón",
-		"symbol": "SVC",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sv.svg",
-		"rateToBOB": 0.789767
-	},
-	{
-		"code": "SYP",
-		"name": "Syrian Pound",
-		"symbol": "SYP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sy.svg",
-		"rateToBOB": 0.000531
-	},
-	{
-		"code": "SZL",
-		"name": "Swazi Lilangeni",
-		"symbol": "SZL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sz.svg",
-		"rateToBOB": 0.387036
-	},
-	{
-		"code": "THB",
-		"name": "Thai Baht",
-		"symbol": "THB",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/th.svg",
-		"rateToBOB": 0.212259
-	},
-	{
-		"code": "TJS",
-		"name": "Tajikistani Somoni",
-		"symbol": "TJS",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tj.svg",
-		"rateToBOB": 0.692971
-	},
-	{
-		"code": "TMM",
-		"name": "Turkmenistani Manat (1993–2009)",
-		"symbol": "TMM",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tm.svg",
-		"rateToBOB": 0.000394
-	},
-	{
-		"code": "TMT",
-		"name": "Turkmenistani Manat",
-		"symbol": "TMT",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tm.svg",
-		"rateToBOB": 1.970337
-	},
-	{
-		"code": "TND",
-		"name": "Tunisian Dinar",
-		"symbol": "TND",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tn.svg",
-		"rateToBOB": 2.335207
-	},
-	{
-		"code": "TOP",
-		"name": "Tongan Paʻanga",
-		"symbol": "TOP",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/to.svg",
-		"rateToBOB": 2.903027
-	},
-	{
-		"code": "TRL",
-		"name": "Turkish Lira (1922–2005)",
-		"symbol": "TRL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tr.svg",
-		"rateToBOB": 0
-	},
-	{
-		"code": "TRY",
-		"name": "Turkish Lira",
-		"symbol": "TRY",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tr.svg",
-		"rateToBOB": 0.176318
-	},
-	{
-		"code": "TTD",
-		"name": "Trinidad & Tobago Dollar",
-		"symbol": "TTD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tt.svg",
-		"rateToBOB": 1.018898
-	},
-	{
-		"code": "TWD",
-		"name": "New Taiwan Dollar",
-		"symbol": "TWD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tw.svg",
-		"rateToBOB": 0.230525
-	},
-	{
-		"code": "TZS",
-		"name": "Tanzanian Shilling",
-		"symbol": "TZS",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tz.svg",
-		"rateToBOB": 0.002574
-	},
-	{
-		"code": "UAH",
-		"name": "Ukrainian Hryvnia",
-		"symbol": "UAH",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ua.svg",
-		"rateToBOB": 0.165904
-	},
-	{
-		"code": "UGX",
-		"name": "Ugandan Shilling",
-		"symbol": "UGX",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ug.svg",
-		"rateToBOB": 0.001899
-	},
-	{
-		"code": "USD",
-		"name": "US Dollar",
-		"symbol": "$",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg",
-		"rateToBOB": 6.910462
-	},
-	{
-		"code": "UYU",
-		"name": "Uruguayan Peso",
-		"symbol": "UYU",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/uy.svg",
-		"rateToBOB": 0.166627
-	},
-	{
-		"code": "UZS",
-		"name": "Uzbekistani Som",
-		"symbol": "UZS",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/uz.svg",
-		"rateToBOB": 0.00054
-	},
-	{
-		"code": "VEB",
-		"name": "Venezuelan Bolívar (1871–2008)",
-		"symbol": "VEB",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ve.svg",
-		"rateToBOB": 0
-	},
-	{
-		"code": "VEF",
-		"name": "Venezuelan Bolívar",
-		"symbol": "VEF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ve.svg",
-		"rateToBOB": 0.000001
-	},
-	{
-		"code": "VND",
-		"name": "Vietnamese Dong",
-		"symbol": "VND",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/vn.svg",
-		"rateToBOB": 0.000265
-	},
-	{
-		"code": "VUV",
-		"name": "Vanuatu Vatu",
-		"symbol": "VUV",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/vu.svg",
-		"rateToBOB": 0.057292
-	},
-	{
-		"code": "WST",
-		"name": "Samoan Tala",
-		"symbol": "WST",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ws.svg",
-		"rateToBOB": 2.516004
-	},
-	{
-		"code": "XAF",
-		"name": "Central African CFA Franc",
-		"symbol": "XAF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/xa.svg",
-		"rateToBOB": 0.012038
-	},
-	{
-		"code": "XCD",
-		"name": "East Caribbean Dollar",
-		"symbol": "XCD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/xc.svg",
-		"rateToBOB": 2.553986
-	},
-	{
-		"code": "XOF",
-		"name": "West African CFA Franc",
-		"symbol": "XOF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/xo.svg",
-		"rateToBOB": 0.012038
-	},
-	{
-		"code": "XPF",
-		"name": "CFP Franc",
-		"symbol": "XPF",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/xp.svg",
-		"rateToBOB": 0.066171
-	},
-	{
-		"code": "YER",
-		"name": "Yemeni Rial",
-		"symbol": "YER",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ye.svg",
-		"rateToBOB": 0.028339
-	},
-	{
-		"code": "ZAR",
-		"name": "South African Rand",
-		"symbol": "ZAR",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/za.svg",
-		"rateToBOB": 0.387036
-	},
-	{
-		"code": "ZMK",
-		"name": "Zambian Kwacha (1968–2012)",
-		"symbol": "ZMK",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/zm.svg",
-		"rateToBOB": 0.000259
-	},
-	{
-		"code": "ZMW",
-		"name": "Zambian Kwacha",
-		"symbol": "ZMW",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/zm.svg",
-		"rateToBOB": 0.258681
-	},
-	{
-		"code": "ZWD",
-		"name": "Zimbabwean Dollar (1980–2008)",
-		"symbol": "ZWD",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/zw.svg",
-		"rateToBOB": 0.019095
-	},
-	{
-		"code": "ZWL",
-		"name": "Zimbabwean Dollar (2009)",
-		"symbol": "ZWL",
-		"flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/zw.svg",
-		"rateToBOB": 0.000103
-	}
+  {
+    "code": "AED",
+    "name": "United Arab Emirates Dirham",
+    "symbol": "AED",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ae.svg",
+    "rateToBOB": 1.881678
+  },
+  {
+    "code": "AFN",
+    "name": "Afghan Afghani",
+    "symbol": "Af",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/af.svg",
+    "rateToBOB": 0.099513
+  },
+  {
+    "code": "ALL",
+    "name": "Albanian Lek",
+    "symbol": "ALL",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/al.svg",
+    "rateToBOB": 0.080269
+  },
+  {
+    "code": "AMD",
+    "name": "Armenian Dram",
+    "symbol": "AMD",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/am.svg",
+    "rateToBOB": 0.018038
+  },
+  {
+    "code": "ARS",
+    "name": "Argentine Peso",
+    "symbol": "AR$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ar.svg",
+    "rateToBOB": 0.005853
+  },
+  {
+    "code": "AUD",
+    "name": "Australian Dollar",
+    "symbol": "AU$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/au.svg",
+    "rateToBOB": 4.478246
+  },
+  {
+    "code": "AZN",
+    "name": "Azerbaijani Manat",
+    "symbol": "man.",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/az.svg",
+    "rateToBOB": 4.064978
+  },
+  {
+    "code": "BAM",
+    "name": "Bosnia-Herzegovina Convertible Mark",
+    "symbol": "KM",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ba.svg",
+    "rateToBOB": 4.037338
+  },
+  {
+    "code": "BDT",
+    "name": "Bangladeshi Taka",
+    "symbol": "Tk",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bd.svg",
+    "rateToBOB": 0.056627
+  },
+  {
+    "code": "BGN",
+    "name": "Bulgarian Lev",
+    "symbol": "BGN",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bg.svg",
+    "rateToBOB": 4.037338
+  },
+  {
+    "code": "BHD",
+    "name": "Bahraini Dinar",
+    "symbol": "BD",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bh.svg",
+    "rateToBOB": 18.378888
+  },
+  {
+    "code": "BIF",
+    "name": "Burundian Franc",
+    "symbol": "FBu",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bi.svg",
+    "rateToBOB": 0.002324
+  },
+  {
+    "code": "BND",
+    "name": "Brunei Dollar",
+    "symbol": "BN$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bn.svg",
+    "rateToBOB": 5.370248
+  },
+  {
+    "code": "BOB",
+    "name": "Bolivian Boliviano",
+    "symbol": "Bs",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bo.svg",
+    "rateToBOB": 1
+  },
+  {
+    "code": "BRL",
+    "name": "Brazilian Real",
+    "symbol": "R$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/br.svg",
+    "rateToBOB": 1.217691
+  },
+  {
+    "code": "BWP",
+    "name": "Botswanan Pula",
+    "symbol": "BWP",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bw.svg",
+    "rateToBOB": 0.514347
+  },
+  {
+    "code": "BYN",
+    "name": "Belarusian Ruble",
+    "symbol": "Br",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/by.svg",
+    "rateToBOB": 2.112074
+  },
+  {
+    "code": "BZD",
+    "name": "Belize Dollar",
+    "symbol": "BZ$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/bz.svg",
+    "rateToBOB": 3.445557
+  },
+  {
+    "code": "CAD",
+    "name": "Canadian Dollar",
+    "symbol": "CA$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ca.svg",
+    "rateToBOB": 5.034957
+  },
+  {
+    "code": "CDF",
+    "name": "Congolese Franc",
+    "symbol": "CDF",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cd.svg",
+    "rateToBOB": 0.00238
+  },
+  {
+    "code": "CHF",
+    "name": "Swiss Franc",
+    "symbol": "CHF",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ch.svg",
+    "rateToBOB": 8.444098
+  },
+  {
+    "code": "CLP",
+    "name": "Chilean Peso",
+    "symbol": "CL$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cl.svg",
+    "rateToBOB": 0.007354
+  },
+  {
+    "code": "CNY",
+    "name": "Chinese Yuan",
+    "symbol": "CN¥",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cn.svg",
+    "rateToBOB": 0.959727
+  },
+  {
+    "code": "COP",
+    "name": "Colombian Peso",
+    "symbol": "CO$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/co.svg",
+    "rateToBOB": 0.001666
+  },
+  {
+    "code": "CRC",
+    "name": "Costa Rican Colón",
+    "symbol": "₡",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cr.svg",
+    "rateToBOB": 0.013603
+  },
+  {
+    "code": "CVE",
+    "name": "Cape Verdean Escudo",
+    "symbol": "CV$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cv.svg",
+    "rateToBOB": 0.071609
+  },
+  {
+    "code": "CZK",
+    "name": "Czech Republic Koruna",
+    "symbol": "Kč",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cz.svg",
+    "rateToBOB": 0.317555
+  },
+  {
+    "code": "DJF",
+    "name": "Djiboutian Franc",
+    "symbol": "Fdj",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/dj.svg",
+    "rateToBOB": 0.038845
+  },
+  {
+    "code": "DKK",
+    "name": "Danish Krone",
+    "symbol": "Dkr",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/dk.svg",
+    "rateToBOB": 1.05846
+  },
+  {
+    "code": "DOP",
+    "name": "Dominican Peso",
+    "symbol": "RD$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/do.svg",
+    "rateToBOB": 0.11742
+  },
+  {
+    "code": "DZD",
+    "name": "Algerian Dinar",
+    "symbol": "DA",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/dz.svg",
+    "rateToBOB": 0.052464
+  },
+  {
+    "code": "EEK",
+    "name": "Estonian Kroon",
+    "symbol": "Ekr",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ee.svg",
+    "rateToBOB": 0.504667
+  },
+  {
+    "code": "EGP",
+    "name": "Egyptian Pound",
+    "symbol": "EGP",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/eg.svg",
+    "rateToBOB": 0.139082
+  },
+  {
+    "code": "ERN",
+    "name": "Eritrean Nakfa",
+    "symbol": "Nfk",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/er.svg",
+    "rateToBOB": 0.460697
+  },
+  {
+    "code": "ETB",
+    "name": "Ethiopian Birr",
+    "symbol": "Br",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/et.svg",
+    "rateToBOB": 0.050838
+  },
+  {
+    "code": "EUR",
+    "name": "Euro",
+    "symbol": "€",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/eu.svg",
+    "rateToBOB": 7.896347
+  },
+  {
+    "code": "GBP",
+    "name": "British Pound Sterling",
+    "symbol": "£",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gb.svg",
+    "rateToBOB": 9.351473
+  },
+  {
+    "code": "GEL",
+    "name": "Georgian Lari",
+    "symbol": "GEL",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ge.svg",
+    "rateToBOB": 2.530414
+  },
+  {
+    "code": "GHS",
+    "name": "Ghanaian Cedi",
+    "symbol": "GH₵",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gh.svg",
+    "rateToBOB": 0.673945
+  },
+  {
+    "code": "GNF",
+    "name": "Guinean Franc",
+    "symbol": "FG",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gn.svg",
+    "rateToBOB": 0.000797
+  },
+  {
+    "code": "GTQ",
+    "name": "Guatemalan Quetzal",
+    "symbol": "GTQ",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gt.svg",
+    "rateToBOB": 0.900422
+  },
+  {
+    "code": "HKD",
+    "name": "Hong Kong Dollar",
+    "symbol": "HK$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/hk.svg",
+    "rateToBOB": 0.881023
+  },
+  {
+    "code": "HNL",
+    "name": "Honduran Lempira",
+    "symbol": "HNL",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/hn.svg",
+    "rateToBOB": 0.265421
+  },
+  {
+    "code": "HRK",
+    "name": "Croatian Kuna",
+    "symbol": "kn",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/hr.svg",
+    "rateToBOB": 1.048025
+  },
+  {
+    "code": "HUF",
+    "name": "Hungarian Forint",
+    "symbol": "Ft",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/hu.svg",
+    "rateToBOB": 0.019586
+  },
+  {
+    "code": "IDR",
+    "name": "Indonesian Rupiah",
+    "symbol": "Rp",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/id.svg",
+    "rateToBOB": 0.000424
+  },
+  {
+    "code": "ILS",
+    "name": "Israeli New Sheqel",
+    "symbol": "₪",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/il.svg",
+    "rateToBOB": 1.962644
+  },
+  {
+    "code": "INR",
+    "name": "Indian Rupee",
+    "symbol": "Rs",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/in.svg",
+    "rateToBOB": 0.080876
+  },
+  {
+    "code": "IQD",
+    "name": "Iraqi Dinar",
+    "symbol": "IQD",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/iq.svg",
+    "rateToBOB": 0.005282
+  },
+  {
+    "code": "IRR",
+    "name": "Iranian Rial",
+    "symbol": "IRR",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ir.svg",
+    "rateToBOB": 0.000164
+  },
+  {
+    "code": "ISK",
+    "name": "Icelandic Króna",
+    "symbol": "Ikr",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/is.svg",
+    "rateToBOB": 0.05468
+  },
+  {
+    "code": "JMD",
+    "name": "Jamaican Dollar",
+    "symbol": "J$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/jm.svg",
+    "rateToBOB": 0.043401
+  },
+  {
+    "code": "JOD",
+    "name": "Jordanian Dinar",
+    "symbol": "JD",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/jo.svg",
+    "rateToBOB": 9.746772
+  },
+  {
+    "code": "JPY",
+    "name": "Japanese Yen",
+    "symbol": "¥",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/jp.svg",
+    "rateToBOB": 0.048256
+  },
+  {
+    "code": "KES",
+    "name": "Kenyan Shilling",
+    "symbol": "Ksh",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ke.svg",
+    "rateToBOB": 0.053536
+  },
+  {
+    "code": "KHR",
+    "name": "Cambodian Riel",
+    "symbol": "KHR",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/kh.svg",
+    "rateToBOB": 0.001729
+  },
+  {
+    "code": "KMF",
+    "name": "Comorian Franc",
+    "symbol": "CF",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/km.svg",
+    "rateToBOB": 0.016051
+  },
+  {
+    "code": "KRW",
+    "name": "South Korean Won",
+    "symbol": "₩",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/kr.svg",
+    "rateToBOB": 0.005017
+  },
+  {
+    "code": "KWD",
+    "name": "Kuwaiti Dinar",
+    "symbol": "KD",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/kw.svg",
+    "rateToBOB": 22.540739
+  },
+  {
+    "code": "KZT",
+    "name": "Kazakhstani Tenge",
+    "symbol": "KZT",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/kz.svg",
+    "rateToBOB": 0.013523
+  },
+  {
+    "code": "LBP",
+    "name": "Lebanese Pound",
+    "symbol": "L.L.",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/lb.svg",
+    "rateToBOB": 0.000077
+  },
+  {
+    "code": "LKR",
+    "name": "Sri Lankan Rupee",
+    "symbol": "SLRs",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/lk.svg",
+    "rateToBOB": 0.023113
+  },
+  {
+    "code": "LTL",
+    "name": "Lithuanian Litas",
+    "symbol": "Lt",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/lt.svg",
+    "rateToBOB": 2.28694
+  },
+  {
+    "code": "LVL",
+    "name": "Latvian Lats",
+    "symbol": "Ls",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/lv.svg",
+    "rateToBOB": 11.235553
+  },
+  {
+    "code": "LYD",
+    "name": "Libyan Dinar",
+    "symbol": "LD",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ly.svg",
+    "rateToBOB": 1.268151
+  },
+  {
+    "code": "MAD",
+    "name": "Moroccan Dirham",
+    "symbol": "MAD",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ma.svg",
+    "rateToBOB": 0.751732
+  },
+  {
+    "code": "MDL",
+    "name": "Moldovan Leu",
+    "symbol": "MDL",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/md.svg",
+    "rateToBOB": 0.400682
+  },
+  {
+    "code": "MGA",
+    "name": "Malagasy Ariary",
+    "symbol": "MGA",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mg.svg",
+    "rateToBOB": 0.001524
+  },
+  {
+    "code": "MKD",
+    "name": "Macedonian Denar",
+    "symbol": "MKD",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mk.svg",
+    "rateToBOB": 0.128445
+  },
+  {
+    "code": "MMK",
+    "name": "Myanma Kyat",
+    "symbol": "MMK",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mm.svg",
+    "rateToBOB": 0.003291
+  },
+  {
+    "code": "MOP",
+    "name": "Macanese Pataca",
+    "symbol": "MOP$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mo.svg",
+    "rateToBOB": 0.855362
+  },
+  {
+    "code": "MUR",
+    "name": "Mauritian Rupee",
+    "symbol": "MURs",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mu.svg",
+    "rateToBOB": 0.151159
+  },
+  {
+    "code": "MXN",
+    "name": "Mexican Peso",
+    "symbol": "MX$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg",
+    "rateToBOB": 0.359723
+  },
+  {
+    "code": "MYR",
+    "name": "Malaysian Ringgit",
+    "symbol": "RM",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/my.svg",
+    "rateToBOB": 1.629579
+  },
+  {
+    "code": "MZN",
+    "name": "Mozambican Metical",
+    "symbol": "MTn",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mz.svg",
+    "rateToBOB": 0.108175
+  },
+  {
+    "code": "NAD",
+    "name": "Namibian Dollar",
+    "symbol": "N$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/na.svg",
+    "rateToBOB": 0.387036
+  },
+  {
+    "code": "NGN",
+    "name": "Nigerian Naira",
+    "symbol": "₦",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ng.svg",
+    "rateToBOB": 0.004371
+  },
+  {
+    "code": "NIO",
+    "name": "Nicaraguan Córdoba",
+    "symbol": "C$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ni.svg",
+    "rateToBOB": 0.188002
+  },
+  {
+    "code": "NOK",
+    "name": "Norwegian Krone",
+    "symbol": "Nkr",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/no.svg",
+    "rateToBOB": 0.684995
+  },
+  {
+    "code": "NPR",
+    "name": "Nepalese Rupee",
+    "symbol": "NPRs",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/np.svg",
+    "rateToBOB": 0.050524
+  },
+  {
+    "code": "NZD",
+    "name": "New Zealand Dollar",
+    "symbol": "NZ$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/nz.svg",
+    "rateToBOB": 4.17314
+  },
+  {
+    "code": "OMR",
+    "name": "Omani Rial",
+    "symbol": "OMR",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/om.svg",
+    "rateToBOB": 17.956711
+  },
+  {
+    "code": "PAB",
+    "name": "Panamanian Balboa",
+    "symbol": "B/.",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/pa.svg",
+    "rateToBOB": 6.910462
+  },
+  {
+    "code": "PEN",
+    "name": "Peruvian Nuevo Sol",
+    "symbol": "S/.",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/pe.svg",
+    "rateToBOB": 1.911227
+  },
+  {
+    "code": "PHP",
+    "name": "Philippine Peso",
+    "symbol": "₱",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ph.svg",
+    "rateToBOB": 0.124109
+  },
+  {
+    "code": "PKR",
+    "name": "Pakistani Rupee",
+    "symbol": "PKRs",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/pk.svg",
+    "rateToBOB": 0.024532
+  },
+  {
+    "code": "PLN",
+    "name": "Polish Zloty",
+    "symbol": "zł",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/pl.svg",
+    "rateToBOB": 1.854939
+  },
+  {
+    "code": "PYG",
+    "name": "Paraguayan Guarani",
+    "symbol": "₲",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/py.svg",
+    "rateToBOB": 0.000866
+  },
+  {
+    "code": "QAR",
+    "name": "Qatari Rial",
+    "symbol": "QR",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/qa.svg",
+    "rateToBOB": 1.898478
+  },
+  {
+    "code": "RON",
+    "name": "Romanian Leu",
+    "symbol": "RON",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ro.svg",
+    "rateToBOB": 1.559908
+  },
+  {
+    "code": "RSD",
+    "name": "Serbian Dinar",
+    "symbol": "din.",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/rs.svg",
+    "rateToBOB": 0.067376
+  },
+  {
+    "code": "RUB",
+    "name": "Russian Ruble",
+    "symbol": "RUB",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ru.svg",
+    "rateToBOB": 0.087453
+  },
+  {
+    "code": "RWF",
+    "name": "Rwandan Franc",
+    "symbol": "RWF",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/rw.svg",
+    "rateToBOB": 0.004837
+  },
+  {
+    "code": "SAR",
+    "name": "Saudi Riyal",
+    "symbol": "SR",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sa.svg",
+    "rateToBOB": 1.84279
+  },
+  {
+    "code": "SDG",
+    "name": "Sudanese Pound",
+    "symbol": "SDG",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sd.svg",
+    "rateToBOB": 0.011511
+  },
+  {
+    "code": "SEK",
+    "name": "Swedish Krona",
+    "symbol": "Skr",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/se.svg",
+    "rateToBOB": 0.724393
+  },
+  {
+    "code": "SGD",
+    "name": "Singapore Dollar",
+    "symbol": "S$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sg.svg",
+    "rateToBOB": 5.370248
+  },
+  {
+    "code": "SOS",
+    "name": "Somali Shilling",
+    "symbol": "Ssh",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/so.svg",
+    "rateToBOB": 0.012137
+  },
+  {
+    "code": "SYP",
+    "name": "Syrian Pound",
+    "symbol": "SY£",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/sy.svg",
+    "rateToBOB": 0.000531
+  },
+  {
+    "code": "THB",
+    "name": "Thai Baht",
+    "symbol": "฿",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/th.svg",
+    "rateToBOB": 0.212259
+  },
+  {
+    "code": "TND",
+    "name": "Tunisian Dinar",
+    "symbol": "DT",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tn.svg",
+    "rateToBOB": 2.335207
+  },
+  {
+    "code": "TOP",
+    "name": "Tongan Paʻanga",
+    "symbol": "T$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/to.svg",
+    "rateToBOB": 2.903027
+  },
+  {
+    "code": "TRY",
+    "name": "Turkish Lira",
+    "symbol": "TL",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tr.svg",
+    "rateToBOB": 0.176318
+  },
+  {
+    "code": "TTD",
+    "name": "Trinidad and Tobago Dollar",
+    "symbol": "TT$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tt.svg",
+    "rateToBOB": 1.018898
+  },
+  {
+    "code": "TWD",
+    "name": "New Taiwan Dollar",
+    "symbol": "NT$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tw.svg",
+    "rateToBOB": 0.230525
+  },
+  {
+    "code": "TZS",
+    "name": "Tanzanian Shilling",
+    "symbol": "TSh",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/tz.svg",
+    "rateToBOB": 0.002574
+  },
+  {
+    "code": "UAH",
+    "name": "Ukrainian Hryvnia",
+    "symbol": "₴",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ua.svg",
+    "rateToBOB": 0.165904
+  },
+  {
+    "code": "UGX",
+    "name": "Ugandan Shilling",
+    "symbol": "USh",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ug.svg",
+    "rateToBOB": 0.001899
+  },
+  {
+    "code": "USD",
+    "name": "US Dollar",
+    "symbol": "$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg",
+    "rateToBOB": 6.910462
+  },
+  {
+    "code": "UYU",
+    "name": "Uruguayan Peso",
+    "symbol": "$U",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/uy.svg",
+    "rateToBOB": 0.166627
+  },
+  {
+    "code": "UZS",
+    "name": "Uzbekistan Som",
+    "symbol": "UZS",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/uz.svg",
+    "rateToBOB": 0.00054
+  },
+  {
+    "code": "VEF",
+    "name": "Venezuelan Bolívar",
+    "symbol": "Bs.F.",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ve.svg",
+    "rateToBOB": 0.000001
+  },
+  {
+    "code": "VND",
+    "name": "Vietnamese Dong",
+    "symbol": "₫",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/vn.svg",
+    "rateToBOB": 0.000265
+  },
+  {
+    "code": "XAF",
+    "name": "CFA Franc BEAC",
+    "symbol": "FCFA",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/xa.svg",
+    "rateToBOB": 0.012038
+  },
+  {
+    "code": "XOF",
+    "name": "CFA Franc BCEAO",
+    "symbol": "CFA",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/xo.svg",
+    "rateToBOB": 0.012038
+  },
+  {
+    "code": "YER",
+    "name": "Yemeni Rial",
+    "symbol": "YR",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/ye.svg",
+    "rateToBOB": 0.028339
+  },
+  {
+    "code": "ZAR",
+    "name": "South African Rand",
+    "symbol": "R",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/za.svg",
+    "rateToBOB": 0.387036
+  },
+  {
+    "code": "ZMK",
+    "name": "Zambian Kwacha",
+    "symbol": "ZK",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/zm.svg",
+    "rateToBOB": 0.000259
+  },
+  {
+    "code": "ZWL",
+    "name": "Zimbabwean Dollar",
+    "symbol": "ZWL$",
+    "flag": "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/zw.svg",
+    "rateToBOB": 0.000103
+  }
 ]

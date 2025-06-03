@@ -1,61 +1,59 @@
 // generate-currencies-bob.js
-// This script builds a full list of world currencies with:
-// - ISO code, name, symbol, flag icon URL
-// - Exchange rate to Bolivian Boliviano (BOB)
-// Output: currencies-to-bob.json (saved next to this script)
+// -----------------------------------------------
+// Builds a complete currency list that contains
+//   • ISO code, English name, symbol, flag URL
+//   • Exchange-rate *to* Bolivian Boliviano (BOB)
+// Output: currencies.json (saved next to script)
+// -----------------------------------------------
 
 import fs from 'fs/promises'
 import fetch from 'node-fetch'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-/* --------------------------------------------------------------------------
- 0. Determine output location (same directory as this script)
- This ensures the JSON is written where the script resides, regardless
- of where it's executed from.
- --------------------------------------------------------------------------- */
+/* ───────────────────────────────────────────────
+ 0. Figure out the output location (same folder)
+ ------------------------------------------------*/
 const __filename = fileURLToPath( import.meta.url )
 const __dirname = path.dirname( __filename )
 const OUTPUT = path.join( __dirname, 'currencies.json' )
 
-/* --------------------------------------------------------------------------
- 1. Base currency metadata
- Initial list of currencies, including USD, EUR, and Latin American
- examples. Each item includes ISO code, name, symbol, and flag code.
- --------------------------------------------------------------------------- */
-const metadata = [
-    { code: 'USD', name: 'US Dollar', symbol: '$', flag: 'us' },
-    { code: 'EUR', name: 'Euro', symbol: '€', flag: 'eu' },
-    { code: 'BRL', name: 'Brazilian Real', symbol: 'R$', flag: 'br' },
-    { code: 'ARS', name: 'Argentine Peso', symbol: '$', flag: 'ar' },
-    { code: 'CLP', name: 'Chilean Peso', symbol: '$', flag: 'cl' }
-]
+/* ───────────────────────────────────────────────
+ 1. Seed list – the ones you care about most
+ (can be empty; they’ll be updated in step 2)
+ ------------------------------------------------*/
+const metadata = []
 
-/* --------------------------------------------------------------------------
- 2. Load ISO 4217 currency list from GitHub
- Adds any missing currencies (code + name) not already in metadata.
- Default symbol is the code itself. Flags use the first 2 letters.
- --------------------------------------------------------------------------- */
-const iso4217 = await fetch(
-    'https://raw.githubusercontent.com/umpirsky/currency-list/master/data/en_US/currency.json'
-).then( res => res.json() )
+/* ───────────────────────────────────────────────
+ 2. Pull an extended list with real symbols
+ Source: “Common-Currency-Codes” JSON Gist
+ https://gist.githubusercontent.com/ksafranski/2973986/raw
+ ------------------------------------------------*/
+const extended = await fetch(
+    'https://gist.githubusercontent.com/ksafranski/2973986/raw'
+).then( res => res.json() )   // key = ISO code, value = { name, symbol, … }
 
-for ( const [ code, name ] of Object.entries( iso4217 ) ) {
-    if ( !metadata.find( m => m.code === code ) ) {
-        metadata.push( {
-                           code,
-                           name,
-                           symbol: code,
-                           flag: code.slice( 0, 2 ).toLowerCase()
-                       } )
+for ( const [ code, data ] of Object.entries( extended ) ) {
+    const entry = {
+        code,
+        name: data.name,
+        symbol: data.symbol || data.symbol_native || code,
+        flag: code.slice( 0, 2 ).toLowerCase()                // fallback for flags
+    }
+
+    // Update if already present, otherwise append
+    const existing = metadata.find( m => m.code === code )
+    if ( existing ) {
+        Object.assign( existing, entry )
+    } else {
+        metadata.push( entry )
     }
 }
 
-/* --------------------------------------------------------------------------
- 3. Get exchange rates from BOB to all currencies
- Source: @fawazahmed0/currency-api (CDN version, no API key required)
- Converts "1 BOB → other" to "1 OTHER → BOB" via inversion.
- --------------------------------------------------------------------------- */
+/* ───────────────────────────────────────────────
+ 3. Get BOB → other rates and invert them
+ API: @fawazahmed0/currency-api (no key)
+ ------------------------------------------------*/
 const ratesData = await fetch(
     'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/bob.json'
 ).then( res => res.json() )
@@ -65,15 +63,13 @@ const bobToOthers = ratesData.bob
 const otherToBob = Object.fromEntries(
     Object.entries( bobToOthers ).map( ( [ code, rate ] ) => [
         code.toUpperCase(),
-        1 / rate
+        1 / rate                                              // 1 OTHER → BOB
     ] )
 )
 
-/* --------------------------------------------------------------------------
- 4. Merge metadata with exchange rates and flag URLs
- Includes only currencies with a valid exchange rate to BOB.
- This excludes obsolete or historical currencies (e.g. ARP, ARA).
- --------------------------------------------------------------------------- */
+/* ───────────────────────────────────────────────
+ 4. Merge everything, attach flag URL & rate
+ ------------------------------------------------*/
 const allCurrencies = metadata
     .map( entry => (
         {
@@ -84,14 +80,12 @@ const allCurrencies = metadata
             )
         }
     ) )
-    .filter( entry => !isNaN( entry.rateToBOB ) )
+    .filter( entry => !isNaN( entry.rateToBOB ) )               // drop obsolete codes
     .sort( ( a, b ) => a.code.localeCompare( b.code ) )
 
-/* --------------------------------------------------------------------------
- 5. Save output JSON to the same directory as this script
- This ensures the file is written next to generate-currencies-bob.js,
- regardless of the working directory used to run the script.
- --------------------------------------------------------------------------- */
+/* ───────────────────────────────────────────────
+ 5. Write the JSON next to this script
+ ------------------------------------------------*/
 await fs.writeFile( OUTPUT, JSON.stringify( allCurrencies, null, 2 ) )
 
 console.log( `✅  Saved ${ allCurrencies.length } active currencies to ${ OUTPUT }` )
