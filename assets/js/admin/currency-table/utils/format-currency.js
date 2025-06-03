@@ -9,6 +9,6 @@ export function formatCurrency( option, isResult ) {
         return option.text
     }
     return isResult
-           ? $( `<span><img src='${ c.flag }' class='yopago-flag' /> ${ c.name } (${ c.symbol })</span>` )
+           ? $( `<span><img src='${ c.flag }' class='yopago-flag' /> ${ c.name } (${ c.code } - ${ c.symbol })</span>` )
            : `${ c.code } - ${ c.name }`
 }

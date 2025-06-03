@@ -8,7 +8,7 @@ export function initializeCurrencyDropdown( $select ) {
 
     window.yopagoCurrencies.forEach( c => {
         $select.append( new Option(
-                            `${ c.name } (${ c.symbol })`,
+                            `${ c.name } (${ c.code } - ${ c.symbol })`,
                             c.code,
                             false,
                             c.code === selected
