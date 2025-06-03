@@ -17,12 +17,6 @@ export default defineConfig(
                 external: [ 'jquery', 'select2' ],
                 output: [
                     {
-                        entryFileNames: 'currency-table.js',
-                        dir: 'assets/js/admin',
-                        format: 'es',
-                        globals: { jquery: 'jQuery', select2: 'jQuery.fn.select2' }
-                    },
-                    {
                         entryFileNames: 'currency-table.min.js',
                         dir: 'assets/js/admin',
                         format: 'iife',
