@@ -4,13 +4,17 @@
 	"description": "",
 	"scripts": {
 		"build": "vite build && pnpm run update:rates",
-		"update:rates": "node ./assets/data/generate-currency.js"
+		"update:rates": "node ./assets/data/generate-currency.js",
+		"prepare": "husky"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"packageManager": "pnpm@10.11.0",
 	"devDependencies": {
+		"@commitlint/cli": "^19.8.1",
+		"@commitlint/config-conventional": "^19.8.1",
+		"husky": "^9.1.7",
 		"jquery": "^3.7.1",
 		"lint-staged": "^16.1.0",
 		"node-fetch": "^3.3.2",
@@ -22,5 +26,22 @@
 		"assets/**/*.js": [
 			"pnpm run build"
 		]
+	},
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-conventional"
+		],
+		"rules": {
+			"body-max-line-length": [
+				2,
+				"always",
+				100
+			],
+			"footer-max-line-length": [
+				2,
+				"always",
+				100
+			]
+		}
 	}
 }
